@@ -31,11 +31,13 @@ Roles:
 		- Exportar trabajo de campo		
 - # Módulo Informes datos y estadísticas
 	"Los informes solo viven al generarse y en su salida en pdf"
-	- Generar informes
-	- Validar informes - ¿? se registra en auditoría eventos
-	- imprimir informes
+#### Procedimiento
+		- Generar informes
+		- Validar informes - ¿? se registra en auditoría eventos
+			- Disponer del rol adecuado
+		- imprimir informes
 	- Informes de Preventivos.
-		- Opción de lanzar lanzar informe por campañas 
+		- Opción de lanzar informe por campañas 
 			- Datos identificativos: fecha, centro, etc.
 			- Total de preventivos realizados 
 				- Preventivos OK
