@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: Tabla
+    filters:
+      and:
+        - file.tags.containsAny("hospital")
+    order:
+      - file.name
+      - file.ctime
+      - file.folder
+      - Autor
+      - tags

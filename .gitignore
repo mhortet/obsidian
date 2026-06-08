@@ -1,0 +1,11 @@
+# Obsidian - estado de ventanas y pestañas
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspace.local.json
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# VS Code
+.vscode/

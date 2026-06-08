@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "apiKey": "1603191109",
+    "notesFolder": "E2Oinbox",
+    "periodicSync": false,
+    "syncInterval": "daily",
+    "runOnOpen": false,
+    "debugLogging": false,
+    "lastRunAt": null
+  }
+}

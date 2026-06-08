@@ -1,0 +1,22 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "cr": "date",
+    "Relacionado": "multitext",
+    "Creado": "date",
+    "Referencias": "multitext",
+    "Autor": "multitext",
+    "Palabras Clave": "multitext",
+    "Temática": "multitext",
+    "Autor(a)": "multitext",
+    "Año publicación": "multitext",
+    "ex": "multitext",
+    "excali": "checkbox",
+    "excalidraw": "checkbox",
+    "excalidraw-open-md": "checkbox",
+    "f": "date",
+    "Fecha": "date"
+  }
+}

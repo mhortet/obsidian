@@ -1,0 +1,24 @@
+{
+  "pluginList": [
+    "marr00n/email2obsidian-plugin-releases"
+  ],
+  "pluginSubListFrozenVersion": [
+    {
+      "repo": "marr00n/email2obsidian-plugin-releases",
+      "version": ""
+    }
+  ],
+  "themesList": [],
+  "updateAtStartup": true,
+  "updateThemesAtStartup": true,
+  "enableAfterInstall": true,
+  "loggingEnabled": false,
+  "loggingPath": "BRAT-log",
+  "loggingVerboseEnabled": false,
+  "debuggingMode": false,
+  "notificationsEnabled": true,
+  "globalTokenName": "",
+  "personalAccessToken": "",
+  "selectLatestPluginVersionByDefault": false,
+  "allowIncompatiblePlugins": false
+}

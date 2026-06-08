@@ -1,0 +1,10 @@
+{
+  "id": "flowscript-diagrams",
+  "name": "FlowScript Diagrams",
+  "version": "0.1.1",
+  "minAppVersion": "1.0.0",
+  "description": "Render ```flow code blocks as inline SVG flowcharts using FlowScript.",
+  "author": "kilrkrow",
+  "authorUrl": "https://github.com/kilrkrow",
+  "isDesktopOnly": false
+}
