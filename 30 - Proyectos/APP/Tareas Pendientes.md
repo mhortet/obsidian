@@ -97,7 +97,7 @@
 
 ## Quirófanos
 - [ ] Informe por periodo.
-- [ ] Agrupación por CECO.
+- [ ] Agrupación por Centro.
 - [ ] Exportación Excel.
 - [ ] Exportación PDF.
 - [ ] Estadísticas.
