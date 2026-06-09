@@ -48,6 +48,13 @@
         "a": 1,
         "rgb": 391726
       }
+    },
+    {
+      "query": "tag:#SegElec  ",
+      "color": {
+        "a": 1,
+        "rgb": 4391534
+      }
     }
   ],
   "collapse-display": false,
@@ -60,6 +67,6 @@
   "repelStrength": 8.95833333333333,
   "linkStrength": 0.192708333333333,
   "linkDistance": 145,
-  "scale": 0.713275462622439,
+  "scale": 0.5087618855792565,
   "close": true
 }

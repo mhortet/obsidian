@@ -1,6 +1,6 @@
 # Estado de continuidad
 [[masgesth]]
-Fecha: 2026-06-08
+Fecha: 2026-06-09
 
 Este documento es la foto viva del estado actual del proyecto conjunto. Debe
 permitir reabrir trabajo sin depender del chat anterior y sin competir con el
@@ -57,6 +57,8 @@ Y crear o actualizar el parte externo de sesion en:
     `campana_equipos_preventivo`;
   - primer corte visual `Compras -> Gestion` en portada y entrada del modulo;
   - selector cerrado `MAX/MIN` en puntos preventivos;
+  - `NA` manual habilitado tambien en cuantitativos, manteniendolo en
+    cualitativos y seguridad;
   - documentacion viva de sesion y continuidad en revision.
 
 Lectura operativa:
@@ -103,40 +105,61 @@ Lectura operativa:
 - Excepcion activa de esta sesion:
   - correccion de campo en Preventivos para preparar campana real con 144
     desfibriladores.
+- Cierre validado en esta misma linea:
+  - el flujo `maxgesth -> maxgesth_port` ya ha quedado validado en terminal
+    real para tecnico asignado y clase o tipo de equipo por defecto;
+  - a falta de nueva evidencia de campo, este frente deja de ser tarea abierta
+    de implementacion inmediata y pasa a observacion.
+
+## Cola operativa de campo
+
+- documento de trabajo: `docs/cola_triaje_campo.md`;
+- uso previsto:
+  - volcar incidencias y mejoras detectadas en uso real;
+  - clasificarlas antes de convertirlas en cambios de codigo;
+  - evitar abrir correctivos prematuros por observaciones aisladas.
+- estado actual:
+  - no hay bloqueo confirmado abierto en Preventivos tablet tras la validacion
+    real del 2026-06-09;
+  - ya hay una primera tanda de cinco observaciones documentadas en
+    `docs/cola_triaje_campo.md`;
+  - criterio operativo vigente: mientras no haya volumen significativo de
+    evidencia, documentar primero y no abrir correctivo de codigo salvo
+    recurrencia clara o bloqueo real de operativa.
 
 ## Tarea recomendada de la proxima sesion
 
 ### Tarea principal recomendada
 
-`Cerrar y validar fix-trabajo-campo en Preventivos + tablet`
+`Triage de incidencias de campo y retorno al roadmap transversal`
 
 Objetivo inmediato:
 
-- validar export real de Preventivos con tecnico asignado;
-- comprobar que la tablet recibe `clase_seguridad` por equipo y la propone
-  correctamente al abrir informe;
-- comprobar que la tablet usa el tecnico asignado del paquete como valor por
-  defecto de informe;
-- continuar con:
-  - validacion real de la nueva trazabilidad `exportado/descargado`;
-  - revision de seguridad en exportaciones parciales de la misma campana;
-  - `NA` manual solo para cuantitativos.
+- seguir volcando en `docs/cola_triaje_campo.md` las incidencias o mejoras
+  acumuladas en el siguiente bloque de pruebas reales;
+- clasificar cada entrada como `bloqueante`, `alta`, `media` o `mejora`;
+- decidir si alguna incidencia merece rama correctiva inmediata solo cuando ya
+  exista recurrencia o volumen significativo y, si no, mantener el roadmap en
+  endurecimiento transversal y maestros;
+- si no aparece nada `bloqueante` o `alta`, retomar `Gestion`, `Centros`,
+  `roles` y `auditoria` como linea principal.
 
 Ataque recomendado:
 
-1. generar un JSON real desde `maxgesth` con tipologia y tecnico seleccionados;
-2. importarlo en `maxgesth_port` y verificar equipo, clase y tecnico por
-   defecto;
-3. si el contrato queda estable, ejecutar y validar la migracion de
-   trazabilidad tablet en la BD real;
-4. dejar anotadas las reglas definitivas de `valor_referencia` para
-   desfibriladores antes de tocar mas evaluacion automatica.
+1. revisar primero `docs/cola_triaje_campo.md` y completar el detalle de las
+   nuevas observaciones de campo y confirmar si las ya documentadas se repiten
+   o fueron aisladas;
+2. confirmar si la trazabilidad `exportado/descargado` en la BD real ya quedo
+   ejecutada y validada;
+3. abrir correctivo solo si la severidad de campo lo justifica;
+4. si no lo justifica, volver al frente transversal ya recomendado en el
+   roadmap maestro.
 
 Tests a preparar para cerrar esa tarea:
 
-- `python -m py_compile src\preventivos\services\export_preventivos_service.py src\preventivos\main_preventivos.py src\preventivos\ui\pc_preventivos_ui.py`
-- `python -m py_compile src\data\schema.py src\services\import_service.py src\services\report_service.py src\ui\report_page.py`
-- validacion manual de export/import real `maxgesth -> maxgesth_port`.
+- no fijar tests de codigo hasta que exista incidencia concreta priorizada;
+- mantener como prueba base disponible la validacion manual real
+  `maxgesth -> maxgesth_port` si aparece una regresion en ese flujo.
 
 ### Tarea alternativa valida
 
@@ -183,25 +206,64 @@ Cada sesion debe arrancar dejando claro:
 
 ### Roles
 
-- decision operativa vigente:
-  - solo `Administrador` y `Tecnico`;
-  - sin permisos finos por usuario en esta fase;
-  - si no existe columna `rol`, usar `es_tecnico = 1` como tecnico y
-    `es_tecnico = 0` como administrador;
-- matriz exacta de acciones por rol;
-- si en una fase posterior hacen falta permisos por rol o excepciones por
-  usuario.
+- decision funcional adoptada:
+  - crear por defecto un primer rol `superusuario` con poderes plenos;
+  - este rol sera quien pueda crear nuevos roles y asignar permisos por
+    seleccion explicita tipo `checking`;
+  - mantener compatibilidad transitoria con el esquema actual mientras no exista
+    el modelo completo de roles, usando `es_tecnico` solo como puente tecnico y
+    no como contrato final de autorizacion.
+- permisos base a contemplar en la primera matriz:
+  - `acceso_total`;
+  - `borrar_informes` como permiso explicito y separado, aunque el
+    `superusuario` lo tenga concedido por defecto;
+  - acceso a todos los CRUD de la aplicacion;
+  - crear informes;
+  - ver informes;
+  - rellenar o modificar informes;
+  - cerrar informes;
+  - imprimir informes;
+  - importar campanas;
+  - exportar e importar trabajo de campo;
+  - ampliaciones futuras sin romper el modelo.
+- criterio de implantacion:
+  - no dejar permisos destructivos implicitos dentro de roles intermedios;
+  - cualquier visibilidad o accion sensible debe colgar del permiso asociado y
+    no solo del nombre del rol.
 
 ### Auditoria
 
-- politica de retencion;
-- si habra consulta o exportacion de logs desde UI;
-- alcance exacto de impresion y reimpresion en todos los modulos.
+- decision funcional adoptada:
+  - si habra acceso desde UI para consulta y exportacion documental de logs;
+  - ese acceso quedara restringido a roles de alto nivel;
+  - la interfaz vivira en la nueva seccion de `Gestion` y solo sera visible si
+    el usuario dispone del rol o permiso correspondiente.
+- pendientes que siguen abiertos:
+  - politica de retencion;
+  - alcance exacto de impresion y reimpresion en todos los modulos.
 
 ### Centros
 
-- confirmacion final del conjunto de campos;
-- validaciones obligatorias de contacto o formato.
+- decision funcional adoptada:
+  - el maestro tecnico `cecos` debe evolucionar funcionalmente a `Centros`;
+  - ademas de los campos actuales, la ampliacion minima debe incluir:
+    - direccion completa del centro o CECO;
+    - codigo postal;
+    - ciudad;
+    - persona de contacto;
+    - telefono principal;
+    - telefono alternativo;
+    - correo electronico;
+    - contacto de mantenimiento con nombre, telefono y correo electronico;
+    - observaciones;
+    - subida o vinculacion de documentos;
+    - cualquier dato operativo adicional que resulte necesario para el trabajo
+      real dentro de la app.
+- criterio de modelado:
+  - separar claramente datos del centro, datos del contacto principal y datos
+    del contacto de mantenimiento;
+  - preparar validaciones de formato para telefonos, correo y completitud
+    minima antes de llevarlo a produccion.
 
 ### Informes y analitica
 
@@ -213,9 +275,11 @@ Cada sesion debe arrancar dejando claro:
 
 - que incidencias de campo escalan a bloqueante;
 - cuales quedan como mejora acumulada.
-- confirmar si la validacion de `maxgesth_port` en movil se hara por `APK` como
-  flujo principal o si merece la pena seguir invirtiendo tiempo en preview
-  Flet por QR/web dentro de este entorno.
+- decision operativa adoptada:
+  - la validacion principal de `maxgesth_port` en movil se hara por compilacion
+    `APK`, descarga e instalacion en terminal real;
+  - el preview Flet por web o QR deja de ser via prioritaria en este entorno,
+    salvo que en otra sesion aparezca una necesidad concreta que lo justifique.
 
 ## Riesgos abiertos
 

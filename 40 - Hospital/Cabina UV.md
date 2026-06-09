@@ -5,7 +5,7 @@ tags:
 Creado:
 Autor:
 Relacionado:
-  - "[[Manual Seguridad eléctrica]]"
+  - "[[Manual Seguridad Eléctrica]]"
   - 10 - índice Hospital
 ---
 ## Alcance

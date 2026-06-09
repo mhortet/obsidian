@@ -5,7 +5,7 @@ tags:
 Creado: 2026-05-14
 Autor:
 Relacionado:
-  - "[[Manual Seguridad eléctrica]]"
+  - "[[Manual Seguridad Eléctrica]]"
 ---
 ## Alcance
 
