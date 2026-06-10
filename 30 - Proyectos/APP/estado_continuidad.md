@@ -110,6 +110,23 @@ Lectura operativa:
     real para tecnico asignado y clase o tipo de equipo por defecto;
   - a falta de nueva evidencia de campo, este frente deja de ser tarea abierta
     de implementacion inmediata y pasa a observacion.
+- Contexto operativo confirmado el 2026-06-10:
+  - la campana real en curso esta funcionando;
+  - todos los informes reales de esa campana viven actualmente en movil;
+  - los informes cargados en sobremesa se estan usando como datos ficticios de
+    prueba;
+  - las nuevas observaciones abiertas deben tratarse como mejoras para futuras
+    cargas en dispositivos moviles, no como correctivos urgentes de la campana
+    activa.
+  - el criterio operativo vigente de exportacion `sobremesa -> movil` no debe
+    cambiarse por ahora: la campana se carga completa desde `equipos_gmao`
+    para trabajarla en movil, o bien se trabaja fuera de movil con papel y
+    sobremesa;
+  - la observacion abierta sobre evitar reenvios repetidos afecta al flujo
+    `movil -> sobremesa` por bloques de informes ya enviados, no al armado
+    inicial de la campana en escritorio.
+  - durante esta sesion se ha decidido dejar fuera cambios en app movil y
+    centrar el correctivo solo en sobremesa.
 
 ## Cola operativa de campo
 
@@ -123,6 +140,18 @@ Lectura operativa:
     real del 2026-06-09;
   - ya hay una primera tanda de cinco observaciones documentadas en
     `docs/cola_triaje_campo.md`;
+  - a fecha 2026-06-10, la cola incorpora cuatro mejoras adicionales
+    orientadas a futuras cargas moviles y no a resolver un fallo de la
+    campana viva;
+  - en `maxgesth` ya queda implementado sobre datos de prueba:
+    - mantenimiento de filtro y orden en `Puntos de control preventivo`;
+    - carga de referencia editable por informe para `DESF-Q01` a `DESF-Q08`
+      usando persistencia en `resultados_preventivo` y sin sobrescribir el
+      maestro de `puntos_control`;
+    - busqueda de equipo por inventario o numero de serie en
+      `informe_preventivo_ui`;
+    - coherencia del limite visual y del PDF con la referencia guardada por
+      informe cuando exista;
   - criterio operativo vigente: mientras no haya volumen significativo de
     evidencia, documentar primero y no abrir correctivo de codigo salvo
     recurrencia clara o bloqueo real de operativa.
@@ -151,9 +180,15 @@ Ataque recomendado:
    o fueron aisladas;
 2. confirmar si la trazabilidad `exportado/descargado` en la BD real ya quedo
    ejecutada y validada;
-3. abrir correctivo solo si la severidad de campo lo justifica;
-4. si no lo justifica, volver al frente transversal ya recomendado en el
-   roadmap maestro.
+3. validar manualmente en sobremesa con informes ficticios:
+   - referencia editable y persistida en `DESF-Q01` a `DESF-Q08`;
+   - salto al siguiente punto tras `Enter`;
+   - busqueda por numero de serie;
+   - coherencia del PDF con la referencia guardada;
+4. abrir nuevo correctivo solo si la severidad de campo o la validacion local
+   detectan un desajuste real;
+5. si no aparece ese desajuste, volver al frente transversal ya recomendado en
+   el roadmap maestro.
 
 Tests a preparar para cerrar esa tarea:
 

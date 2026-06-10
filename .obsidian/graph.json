@@ -46,7 +46,7 @@
       "query": "tag:#hospital  ",
       "color": {
         "a": 1,
-        "rgb": 391726
+        "rgb": 393767
       }
     },
     {
@@ -63,10 +63,10 @@
   "nodeSizeMultiplier": 0.916666666666667,
   "lineSizeMultiplier": 0.916666666666667,
   "collapse-forces": false,
-  "centerStrength": 0.625,
-  "repelStrength": 8.95833333333333,
-  "linkStrength": 0.192708333333333,
-  "linkDistance": 145,
-  "scale": 0.5087618855792565,
-  "close": true
+  "centerStrength": 0.348958333333333,
+  "repelStrength": 10.9375,
+  "linkStrength": 0.0260416666666667,
+  "linkDistance": 162,
+  "scale": 0.13873223932666065,
+  "close": false
 }
