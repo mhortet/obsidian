@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"3d6b23eab45e81c1","type":"file","file":"20 - Notas enlazadas/Notas atómicas/Como linkar el directorio.md","x":-1440,"y":-550,"width":400,"height":400},
+		{"id":"2379d7f641685a68","type":"file","file":"20 - Notas enlazadas/Notas atómicas/SQL Windows.md","x":-1440,"y":-150,"width":400,"height":400},
+		{"id":"d74ee11120168563","type":"file","file":"20 - Notas enlazadas/Notas atómicas/Flujo Normal.md","x":-1040,"y":-550,"width":400,"height":480},
+		{"id":"e5b26ed2c259ec16","x":-640,"y":-550,"width":400,"height":400,"type":"file","file":"20 - Notas enlazadas/Notas atómicas/SQL pass.md"}
+	],
+	"edges":[]
+}

@@ -1,5 +1,6 @@
 ---
 tags:
+  - software
   - git
 Creado: 2026-06-06
 Autor: Notebooklm

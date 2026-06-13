@@ -1,7 +1,8 @@
 ---
 tags:
-  - git
   - Error
+  - git
+  - software
 Creado: 2026-06-06
 Autor:
 Relacionado:
@@ -9,6 +10,7 @@ Relacionado:
 ## Alcance
 Conversación con IA sobre error en título
 ## Descripción
+
 
 
 Ese error suele aparecer cuando **la carpeta `obsidian/` está siendo tratada como un submódulo Git**, pero dentro no hay ningún commit válido asociado.

@@ -1,8 +1,7 @@
 ---
 tags:
-  - desarrollo
-  - codigo
-  - manuales
+  - software
+  - git
 Creado: 2026-06-01
 Autor: Codex
 Relacionado:

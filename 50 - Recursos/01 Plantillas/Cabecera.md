@@ -1,6 +1,0 @@
----
-tags:
-  - Plantilla
-Relacionado:
-Creado:
----

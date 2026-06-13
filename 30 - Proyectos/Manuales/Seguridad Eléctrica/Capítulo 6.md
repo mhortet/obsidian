@@ -1,7 +1,7 @@
 ---
 tags:
-  - manuales
   - SegElec
+  - manuales
 Referencias:
   - "[[Capítulo 7]]"
 ---

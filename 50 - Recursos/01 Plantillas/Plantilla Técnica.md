@@ -5,7 +5,7 @@ Creado:
 Autor:
 Relacionado:
 ---
-## Alcance
+## Resumen
 
 ## Descripción
 

@@ -17,7 +17,7 @@ excalidraw-plugin: parsed
 Describe los distintos roles que se proponen para aplicar en Qontrolmed e informes a implementar
 
 ---
-Roles:
+# Roles:
 - # Posibilidad de crear roles.
 	- Puntos a asignar a roles mediante checking
 		- Acceso Total - ¿Crear Opción de borrar informes?

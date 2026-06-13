@@ -1,7 +1,8 @@
 ---
 tags:
-  - git
   - codigo
+  - software
+  - git
 Creado: 2026-06-08
 Autor:
   - M.Hortet
