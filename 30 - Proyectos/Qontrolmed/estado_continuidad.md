@@ -223,6 +223,49 @@ Lectura operativa:
     - el CSV sale limpio con los filtros aplicados;
   - esta linea puede darse por cerrada en primera aproximacion y pasar a
     mantenimiento, salvo remate UX puntual o nueva necesidad real.
+- Primer corte de `login/acceso` productivo confirmado en codigo el 2026-06-14:
+  - desaparece el acceso implicito al primer usuario activo cuando no hay
+    contrasenas;
+  - el bootstrap temporal pasa a flujo guiado y acotado:
+    - solo sobre cuentas `superusuario` si existen;
+    - o sobre usuario activo unico, promoviendolo a `superusuario` cuando el
+      entorno lo soporta;
+    - y bloqueandose si hay varios usuarios activos sin candidato seguro;
+  - el bootstrap ya exige configurar contrasena inicial antes de abrir sesion;
+  - el login normal añade bloqueo temporal en memoria de proceso tras 3 intentos
+    fallidos sobre la misma cuenta;
+  - quedan trazados en `auditoria_eventos`:
+    - `bootstrap_password` o `bootstrap_superusuario`;
+    - `login_bootstrap`;
+    - `login_bloqueado_intentos`;
+  - validacion tecnica completada con:
+    - `python -m compileall main.py src`;
+    - `python -m py_compile src/Compras/ui/login_ui.py src/Compras/services/usuarios_service.py src/compartido/auth.py src/compartido/auditoria_service.py`;
+  - validacion manual ya confirmada en entorno real:
+    - el `superusuario` entra correctamente y recupera acceso a todos los
+      modulos esperados;
+    - con un usuario de prueba, 3 intentos fallidos consecutivos bloquean el
+      acceso durante 5 minutos;
+    - en `gestion.auditoria_eventos` quedan trazados los 3 intentos fallidos y
+      el evento de bloqueo temporal;
+    - pasado el periodo de bloqueo, el mismo usuario vuelve a entrar con normalidad
+      al usar la contrasena correcta;
+  - pendiente todavia:
+    - decidir si el bloqueo por intentos debe persistir mas alla del proceso
+      local o si basta como primer corte de piloto controlado;
+    - validar el flujo de bootstrap en una base de prueba aislada, sin tocar
+      la base buena ya saneada.
+  - regularizacion operativa posterior confirmada en entorno real:
+    - tras una prueba manual sobre tabla `usuarios`, se detecto una importacion
+      legacy que habia dejado la cuenta activa sin `id_rol`;
+    - la base vuelve a quedar ya saneada con:
+      - una sola cuenta activa;
+      - rol real `superusuario`;
+      - contrasena valida;
+      - copia de seguridad ya generada sobre ese estado;
+    - retirado el fallback mas laxo que abria `Gestion` por nombre de rol alto;
+    - se mantiene la compatibilidad robusta por resolucion de rol y la
+      regularizacion segura de cuenta unica como red de seguridad controlada.
 - Excepcion activa de esta sesion:
   - correccion de campo en Preventivos para preparar campana real con 144
     desfibriladores.
@@ -297,33 +340,70 @@ Lectura operativa:
 
 ### Tarea principal recomendada
 
-`Endurecer login/acceso y dejar preparado el bootstrap seguro de superusuario`
+`Rematar login/acceso y validar bootstrap en base de prueba`
 
 Objetivo inmediato:
 
-- dar por cerrado el primer corte de `auditoria` minima ya validado en
-  operativa y CSV;
-- retomar el siguiente hueco central de `Fase 2`, que ya no es `auditoria`
-  sino `login/acceso` de cara a piloto o produccion controlada;
-- revisar y acotar cualquier bypass no aceptable en autenticacion;
-- preparar el camino para exigir contrasena valida y arrancar con
-  `superusuario` real;
-- dejar documentado el bloque futuro de avisos por correo sin implementarlo
-  todavia.
+- dar por estable el primer corte de `login/acceso` ya validado en entorno
+  real sobre la base buena;
+- cerrar lo que queda pendiente de verdad:
+  - prueba de bootstrap en base aislada;
+  - decision sobre persistencia del bloqueo por intentos;
+  - remate documental del bootstrap de instalacion;
+- mantener documentado, pero sin implementar todavia, el futuro bloque de
+  avisos por correo.
+
+Arranque operativo ya preparado para esta sesion:
+
+- repo a tocar por defecto: solo `maxgesth`;
+- repos que quedan en observacion y no deben tocarse salvo hallazgo real:
+  - `maxgesth_port`;
+  - `maxgestq_mov`;
+- punto real de entrada en codigo:
+  - `src/main.py`;
+  - `src/Compras/ui/login_ui.py`;
+  - `src/Compras/services/usuarios_service.py`;
+  - `src/compartido/auth.py`;
+  - `src/compartido/auditoria_service.py`;
+- foto tecnica confirmada antes de programar:
+  - el acceso principal entra unicamente por `solicitar_login(...)`;
+  - el hash actual ya usa `PBKDF2-SHA256` con iteraciones altas y no es hoy el
+    punto debil prioritario;
+  - el bypass temporal sigue dependiendo de
+    `QONTROLMED_ALLOW_PASSWORDLESS_LOGIN=1`, pero ya no concede acceso
+    implicito a una cuenta sin fijar contrasena inicial;
+  - el login fallido ya audita error por intento y aplica enfriamiento temporal
+    en memoria de proceso, aunque todavia no deja bloqueo persistente entre
+    reinicios;
+  - el bootstrap ya existe como flujo guiado, pero queda pendiente su
+    validacion manual y su cierre documental para instalacion o primer arranque.
+
+Estado actual tras el corte tecnico de esta sesion:
+
+- el bootstrap guiado ya sustituye al acceso implicito sin contrasena;
+- el arranque temporal ya no entra sobre "el primer usuario activo" sino sobre
+  candidato seguro o se bloquea;
+- el login normal ya aplica enfriamiento temporal por cuenta dentro del proceso;
+- la deuda abierta ya no es de implementacion base sino de:
+  - validacion manual de bootstrap en base de prueba;
+  - decision de persistencia del bloqueo por intentos;
+  - documentacion del bootstrap de instalacion.
 
 Ataque recomendado:
 
-1. revisar el estado real del login actual y localizar bypass o accesos
-   excepcionales que no deban llegar a piloto;
-2. comprobar si todos los usuarios productivos exigen ya contrasena valida y
-   hash consistente;
-3. revisar gestion de intentos fallidos y su posible trazabilidad en
-   `auditoria_eventos`;
-4. acotar el diseno minimo del bootstrap de `superusuario` en primer arranque o
-   instalacion;
+1. clonar o restaurar una base de prueba aislada antes de tocar el escenario de
+   bootstrap;
+2. validar manualmente el caso bloqueado sin contrasena y sin
+   `QONTROLMED_ALLOW_PASSWORDLESS_LOGIN`;
+3. validar el bootstrap guiado con la variable activa en escenario seguro y en
+   escenario bloqueado;
+4. comprobar la trazabilidad real en `gestion.auditoria_eventos` para:
+   - `bootstrap_password` o `bootstrap_superusuario`;
+   - `login_bootstrap`;
+   - `login_bloqueado_intentos`;
 5. decidir si el siguiente corte entra como:
-   - endurecimiento tecnico directo de autenticacion;
-   - o primero consultoria/documentacion corta de instalacion y bootstrap;
+   - remate tecnico con persistencia mayor del bloqueo por intentos;
+   - o cierre documental y de instalacion del bootstrap;
 6. mantener fuera de implementacion, de momento, los avisos por correo, pero
    dejar claro donde enganchan con los eventos de seguridad.
 
@@ -348,28 +428,35 @@ Documentos operativos a usar:
 Tests a preparar para cerrar esa tarea:
 
 - `python -m compileall main.py src`;
+- `python -m py_compile src/Compras/ui/login_ui.py src/Compras/services/usuarios_service.py src/compartido/auth.py src/compartido/auditoria_service.py`;
 - caso feliz de login con usuario permitido;
 - denegacion correcta en credenciales invalidas o usuario inactivo;
+- bootstrap guiado correcto con `QONTROLMED_ALLOW_PASSWORDLESS_LOGIN=1` en
+  escenario seguro;
+- bloqueo correcto del bootstrap cuando hay varios usuarios activos sin
+  candidato seguro;
 - comprobacion de que no existe camino no controlado para elevar o saltar
   autenticacion;
-- si entra cambio sobre intentos fallidos, verificar trazabilidad coherente en
+- validacion del bloqueo temporal tras 3 intentos fallidos sobre la misma
+  cuenta;
+- verificar trazabilidad coherente en
   `gestion.auditoria_eventos`.
 
 Punto de reentrada recomendado para la siguiente sesion:
 
 1. leer esta seccion y `docs/diario_sesiones/2026-06-14.md`;
-2. asumir ya cerrada la primera aproximacion de `auditoria` minima;
-3. abrir el frente de `login/acceso` revisando primero servicios y UI actuales;
-4. localizar el criterio real de contrasena, intento fallido y sesion;
-5. decidir si el siguiente commit sera de consultoria/documentacion o de
-   enforcement tecnico directo;
+2. asumir ya validado el login real sobre la base buena con `superusuario`;
+3. preparar una base de prueba aislada para no tocar el entorno ya saneado;
+4. ejecutar solo la validacion pendiente del bootstrap guiado y su auditoria;
+5. decidir si el siguiente commit sera de remate tecnico sobre persistencia de
+   intentos o de cierre documental del bootstrap;
 6. mantener como nota aparte, no implementada, los avisos por correo ligados a
    eventos de seguridad.
 
 Plan de commits recomendado:
 
-1. `Aísla gestión de superusuario`;
-2. `Documenta siguiente corte de login y bootstrap` si se separa del cambio
+1. `Remata login productivo y bootstrap seguro`;
+2. `Documenta bootstrap seguro de superusuario` si se separa del cambio
    tecnico.
 
 Validacion manual ya cerrada en esta linea:

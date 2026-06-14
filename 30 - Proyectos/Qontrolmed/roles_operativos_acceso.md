@@ -1,6 +1,6 @@
 # Roles operativos de acceso
 [[masgesth]]
-Fecha de revision: 2026-06-03
+Fecha de revision: 2026-06-14
 
 ## Objetivo
 
@@ -10,34 +10,51 @@ trabajo de campo real.
 
 ## Decision vigente
 
-Por ahora el modelo activo se limita a dos roles:
+El modelo activo ya no se limita solo a `Administrador` y `Tecnico`.
 
-- `Administrador`
-- `Tecnico`
+La aplicacion trabaja ahora en un estado hibrido y controlado:
 
-No se activan todavia permisos finos por usuario ni una matriz detallada de
-autorizaciones por rol. Esa evolucion queda aplazada a una fase posterior.
+- si la base ya dispone de `roles`, `permisos`, `roles_permisos` e
+  `usuarios.id_rol`, la autorizacion real usa el esquema `usuario -> rol ->
+  permisos`;
+- si la base aun no tiene ese modelo completo, la app mantiene compatibilidad
+  con el `rol` textual y, en ultimo termino, con `es_tecnico`;
+- `superusuario` queda ya tratado como rol reservado del sistema;
+- la primera matriz funcional de permisos ya esta implantada en:
+  - `Gestion`;
+  - `Preventivos`;
+  - `Quirofanos`.
 
-## Regla operativa actual sin migracion de BD
+## Regla operativa actual de compatibilidad
 
-Mientras la tabla `gestion.usuarios` no tenga columna `rol`, la aplicacion
-sigue funcionando con la columna existente `es_tecnico`:
+Mientras siga habiendo entornos legacy o transicion de datos:
 
-- `es_tecnico = 1` equivale a `Tecnico`
-- `es_tecnico = 0` equivale a `Administrador`
+- `usuarios.id_rol` es el contrato objetivo cuando existe;
+- `usuarios.rol` puede seguir actuando como puente textual;
+- `es_tecnico` se mantiene como puente operativo para selectores y flujos que
+  aun lo consumen.
 
-Esto permite trabajar sin tocar la base de datos durante una ventana operativa
-de hospital o campo.
+Interpretacion operativa residual:
+
+- `es_tecnico = 1` sigue implicando perfil tecnico de campo efectivo;
+- `es_tecnico = 0` deja de equivaler necesariamente a un unico rol funcional,
+  porque ya pueden existir `administrativo`, `consulta` o `superusuario`.
 
 ## Efecto funcional esperado
 
 - Los usuarios tecnicos deben seguir apareciendo en selectores de tecnico de
   Preventivos y Quirofanos.
-- Si un usuario pasa a `es_tecnico = 0`, debe dejar de aparecer en esos
+- Un usuario sin condicion tecnica efectiva no debe aparecer en esos
   selectores.
-- Un `Administrador` no se considera tecnico de campo por defecto.
-- Si una misma persona necesita ambos perfiles, debe usar identidades
-  separadas segun el contexto operativo.
+- La condicion tecnica efectiva puede venir de:
+  - `es_tecnico = 1`;
+  - rol con `tecnico_campo = 1`;
+  - o rol funcional `Tecnico` mientras siga la compatibilidad.
+- Un operador que no sea `superusuario` no puede:
+  - asignar el rol `superusuario`;
+  - retirarlo;
+  - modificar una cuenta que ya lo tenga;
+  - desactivar una cuenta que ya lo tenga.
 
 ## Login sin contrasena
 
@@ -47,25 +64,36 @@ Solo se permite bootstrap temporal si se activa expresamente:
 
 - `QONTROLMED_ALLOW_PASSWORDLESS_LOGIN=1`
 
-Fuera de un bootstrap controlado, lo correcto es exigir al menos un usuario
-activo con contrasena.
+Y solo si, ademas, no existe ningun usuario activo con `password_hash`.
+
+Fuera de un bootstrap controlado de soporte o desarrollo:
+
+- lo correcto es exigir al menos un usuario activo con contrasena;
+- ese camino excepcional no debe formar parte del flujo normal de piloto o
+  produccion;
+- el siguiente frente de hardening debe revisar este bypass y sustituirlo por
+  un bootstrap seguro de `superusuario`.
 
 ## Cuando tocar la BD
 
-No es obligatorio migrar la BD para usar la regla actual.
+No es obligatorio tocar la BD para seguir operando en modo compatible.
 
-La migracion solo hace falta cuando se quiera dejar el rol explicito en base de
-datos con la columna `rol` y abandonar la interpretacion operativa basada en
-`es_tecnico`.
+Pero si se abre una ventana controlada para consolidar el modelo final, el
+camino preferente ya no es solo la columna `rol`.
 
-Referencia preparada:
+Referencias preparadas:
 
-- `bd/migracion_gestion_roles.sql`
+- `bd/migraciones/migracion_gestion_roles.sql`
+- `bd/migraciones/migracion_gestion_roles_permisos_base.sql`
+- `bd/migraciones/migracion_gestion_roles_permisos_backfill_usuarios.sql`
 
 ## Regla de prudencia
 
 Si hay trabajo de campo real en curso, priorizar estabilidad:
 
 - no tocar esquema si no es necesario;
-- usar `es_tecnico` como criterio operativo actual;
-- dejar la migracion de roles para una ventana tranquila de mantenimiento.
+- mantener `es_tecnico` como puente operativo mientras siga siendo necesario;
+- no mezclar una correccion de login o autenticacion con una tanda grande de
+  migraciones;
+- reservar la consolidacion final del bootstrap de `superusuario` para una
+  ventana controlada y documentada.

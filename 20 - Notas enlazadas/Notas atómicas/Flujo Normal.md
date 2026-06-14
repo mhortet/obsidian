@@ -20,3 +20,5 @@ git add -p                  -> añadir solo partes
 git commit -m "texto descriptivo"
 git branch                  -> Te dice la rama en la q estas, la marca con un * a la izda.
 git push                     -> sube a github
+
+Compilar: pyinstaller --clean main.spec 

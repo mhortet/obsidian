@@ -1,6 +1,6 @@
 # Mapa documental del proyecto
 [[masgesth]]
-Fecha de revision: 2026-06-01
+Fecha de revision: 2026-06-14
 
 ## Objetivo
 
@@ -10,12 +10,16 @@ duplicadas o backlog competidor.
 
 ## Lectura recomendada al iniciar sesion
 
-Orden minimo obligatorio:
+Orden minimo obligatorio fijado por el playbook:
 
 1. `docs/security_delivery_playbook.md`
 2. `docs/estado_continuidad.md`
 3. `docs/plan_seguridad_consistencia.md`
-4. `specifications/criterios_transversales_capas.md`
+4. `docs/mapa_documental_proyecto.md`
+
+Lectura transversal adicional recomendada justo despues:
+
+- `specifications/criterios_transversales_capas.md`
 
 Lectura de apoyo segun tarea:
 

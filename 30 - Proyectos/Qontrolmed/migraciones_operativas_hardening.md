@@ -1,14 +1,6 @@
----
-tags:
-  - SQL
-  - software
-Creado: 2026-06-12
-Autor:
-Relacionado:
-  - "[[masgesth]]"
----
-## Resumen
-migrar MySQL a versión actualizada
+﻿# Migraciones operativas de hardening
+[[masgesth]]
+Fecha de revision: 2026-06-14
 
 ## Objetivo
 
@@ -22,8 +14,8 @@ aplicacion.
 
 Hay dos tipos de fichero:
 
-- `bd/<tabla>.sql`: definicion base o estructura completa de una tabla.
-- `bd/migracion_<algo>.sql`: cambio incremental pensado para ejecutarse a mano
+- `bd/base/<tabla>.sql`: definicion base o estructura completa de una tabla.
+- `bd/migraciones/migracion_<algo>.sql`: cambio incremental pensado para ejecutarse a mano
   sobre una base ya existente.
 
 Por tanto, si aparece una migracion nueva, hay que lanzarla manualmente en la
@@ -41,23 +33,25 @@ Antes de ejecutar una migracion nueva sobre `gestion`, `quirofanos` o
 
 Caso abierto actual:
 
-- la migracion `docs/migracion_centros_gestion.sql` ha obligado a revisar la
+- la migracion `bd/migraciones/migracion_centros_gestion.sql` ha obligado a revisar la
   compatibilidad por error de sintaxis con `ADD COLUMN IF NOT EXISTS`;
-- la version real del servidor queda confirmada el `2026-06-12` como
-  `MySQL 8.0.44`;
-- la decision operativa vigente pasa a ser preparar la evolucion a
-  `MySQL 8.4 LTS` antes de abrir una nueva tanda principal de roles/permisos o
-  de ampliaciones de esquema sobre `gestion`.
+- la version real del servidor queda ya confirmada el `2026-06-13` como
+  `MySQL 8.4.9`;
+- el upgrade operativo desde `8.0.44` ya se ha completado y validado con
+  apertura correcta de la app;
+- aprendizaje a no olvidar en futuras subidas a `8.4+`:
+  revisar el `plugin` de autenticacion de los usuarios de aplicacion, porque el
+  entorno requirio migrar `administrador@%` a `caching_sha2_password`.
 
 ## Orden recomendado ahora mismo
 
-### 1. Preparar la evolucion del servidor
+### 1. Servidor ya estabilizado en `MySQL 8.4.9`
 
-Antes de nuevas migraciones relevantes sobre `gestion`, conviene:
+La preparacion principal de infraestructura ya no esta pendiente. Antes de
+nuevas migraciones relevantes sobre `gestion`, conviene:
 
-- preparar backup completo;
-- restaurar en entorno seguro;
-- validar arranque de la app contra `MySQL 8.4 LTS`;
+- conservar backup verificado y referencia de restauracion;
+- revisar compatibilidad concreta del SQL nuevo contra `8.4.9`;
 - ejecutar una prueba funcional minima sobre `Gestion`, `Preventivos` y
   `Quirofanos`.
 
@@ -67,18 +61,18 @@ Referencia operativa:
 
 ### 2. Sin tocar mas BD de negocio, operativa valida de corto plazo
 
-Mientras llega esa ventana de upgrade, se puede seguir trabajando si:
+Mientras no haga falta una migracion nueva, se puede seguir trabajando si:
 
 - el login funciona bien;
 - `es_tecnico = 1` y `es_tecnico = 0` ya cubren la operativa actual;
-- no necesitas todavia activar permisos finos por rol;
+- la base actual ya sostiene el primer corte de permisos por rol implantado;
 - no abres una nueva tanda grande de cambios de esquema.
 
-### 3. Primera migracion recomendada despues del upgrade o en ventana muy controlada
+### 3. Auditoria en entornos donde aun falte
 
 Ejecutar en la base `gestion`:
 
-- `bd/migracion_gestion_auditoria.sql`
+- `bd/migraciones/migracion_gestion_auditoria.sql`
 
 Motivo:
 
@@ -87,6 +81,12 @@ Motivo:
 - solo crea la tabla `auditoria_eventos`;
 - a partir de ahi empezaran a guardarse logs de login y cambios de usuarios.
 
+Nota:
+
+- en el entorno principal de trabajo esta linea ya queda operativa y validada;
+- este paso sigue siendo relevante para replicas, restauraciones o entornos
+  nuevos donde la tabla aun no exista.
+
 Validacion minima:
 
 ```sql
@@ -94,18 +94,18 @@ SHOW TABLES LIKE 'auditoria_eventos';
 SELECT * FROM auditoria_eventos ORDER BY id DESC;
 ```
 
-### 4. Migracion de roles explicitos, despues de estabilizar `8.4 LTS`
+### 4. Migracion de roles explicitos, solo si hace falta el puente textual
 
 Ejecutar en la base `gestion`:
 
-- `bd/migracion_gestion_roles.sql`
+- `bd/migraciones/migracion_gestion_roles.sql`
 
 Motivo:
 
 - esta migracion ya da el paso de dejar el rol explicito en BD;
 - hoy no es necesaria para operar porque la app puede seguir interpretando:
   - `es_tecnico = 1` como `Tecnico`;
-  - `es_tecnico = 0` como `Administrador`.
+  - `es_tecnico = 0` como base no tecnica legacy.
 
 Validacion minima:
 
@@ -114,19 +114,80 @@ SHOW COLUMNS FROM usuarios LIKE 'rol';
 SELECT idUsuario, Nombre, es_tecnico, rol FROM usuarios ORDER BY Nombre;
 ```
 
+### 5. Base del modelo final de roles y permisos, en ventana controlada
+
+Ejecutar en la base `gestion`:
+
+- `bd/migraciones/migracion_gestion_roles_permisos_base.sql`
+
+Alcance:
+
+- crea `roles`;
+- crea `permisos`;
+- crea `roles_permisos`;
+- anade `usuarios.id_rol`;
+- siembra roles reservados y permisos base.
+
+Criterio:
+
+- este es el primer paso real hacia el modelo final `usuario -> rol -> permisos`;
+- no sustituye todavia toda la logica actual basada en `es_tecnico`;
+- no exige haber ejecutado antes `bd/migraciones/migracion_gestion_roles.sql`;
+- no hace aun la migracion funcional completa de usuarios existentes a
+  `id_rol`.
+
+Validacion minima:
+
+```sql
+SHOW TABLES LIKE 'roles';
+SHOW TABLES LIKE 'permisos';
+SHOW TABLES LIKE 'roles_permisos';
+SHOW COLUMNS FROM usuarios LIKE 'id_rol';
+SELECT codigo, nombre, acceso_total, tecnico_campo FROM roles ORDER BY id;
+SELECT codigo, modulo, accion FROM permisos ORDER BY codigo;
+```
+
+### 6. Backfill inicial de usuarios hacia `id_rol`
+
+Ejecutar en la base `gestion`, despues de la migracion base:
+
+- `bd/migraciones/migracion_gestion_roles_permisos_backfill_usuarios.sql`
+
+Alcance:
+
+- rellena `usuarios.id_rol` para usuarios ya existentes;
+- conserva `es_tecnico` como puente operativo;
+- no promociona automaticamente a `superusuario`.
+
+Criterio:
+
+- `es_tecnico = 1` se asigna a `tecnico`;
+- cualquier otro caso se asigna a `administrativo`;
+- la subida de un usuario concreto a `superusuario` debe hacerse manualmente
+  tras revisar el censo real de usuarios.
+
+Validacion minima:
+
+```sql
+SELECT u.idUsuario, u.Nombre, u.es_tecnico, u.id_rol, r.codigo, r.nombre
+FROM usuarios u
+LEFT JOIN roles r ON r.id = u.id_rol
+ORDER BY u.Nombre;
+```
+
 ## Que fichero usar en cada caso
 
 ### Si la tabla no existe y solo quieres crearla
 
 Usar normalmente la migracion:
 
-- `bd/migracion_gestion_auditoria.sql`
+- `bd/migraciones/migracion_gestion_auditoria.sql`
 
 ### Si necesitas revisar la estructura completa de referencia
 
 Consultar:
 
-- `bd/gestion_auditoria_eventos.sql`
+- `bd/base/gestion_auditoria_eventos.sql`
 
 Ese fichero describe la tabla final, pero no implica ejecucion automatica.
 
@@ -135,7 +196,13 @@ Ese fichero describe la tabla final, pero no implica ejecucion automatica.
 - nada de `bd/` se lanza solo desde la app;
 - las migraciones se ejecutan a mano en MySQL;
 - antes de migrar, revisar version del servidor y compatibilidad del script;
-- la prioridad operativa actual ya no es `roles`, sino subir de
-  `MySQL 8.0.44` a `MySQL 8.4 LTS`;
-- despues del upgrade, primer paso recomendado: `migracion_gestion_auditoria.sql`;
-- dejar `migracion_gestion_roles.sql` para una ventana posterior.
+- el servidor principal ya queda estabilizado en `MySQL 8.4.9`;
+- si montas un entorno nuevo, el primer paso recomendado sigue siendo
+  `migracion_gestion_auditoria.sql`;
+- despues, para abrir el modelo final, basta con
+  `migracion_gestion_roles_permisos_base.sql`;
+- despues debe ejecutarse `migracion_gestion_roles_permisos_backfill_usuarios.sql`
+  para enlazar usuarios existentes con `id_rol`;
+- `migracion_gestion_roles.sql` queda como puente legado si en algun momento se
+  quiere mantener solo el rol textual sin abrir aun la matriz completa.
+
