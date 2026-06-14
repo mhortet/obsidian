@@ -1,4 +1,4 @@
-# Propuesta de modelo de roles y permisos
+﻿# Propuesta de modelo de roles y permisos
 [[masgesth]]
 Fecha de revision: 2026-06-13
 
@@ -215,6 +215,10 @@ Propuesta:
 - sustituir el rol fijo textual por selector de `rol` real;
 - mostrar si el rol marcado implica `tecnico_campo`;
 - impedir asignar un rol inexistente o inactivo.
+- impedir ademas que un operador no `superusuario` pueda:
+  - asignar el rol `superusuario`;
+  - retirarlo;
+  - modificar o desactivar una cuenta que ya lo tenga.
 
 ## Bootstrap futuro en instalacion
 
@@ -249,7 +253,7 @@ La transicion debe respetar lo ya implantado:
 
 Por tanto:
 
-- no conviene tomar `bd/migracion_gestion_roles.sql` como modelo final de
+- no conviene tomar `bd/migraciones/migracion_gestion_roles.sql` como modelo final de
   roles dinamicos;
 - esa migracion actual sirve para el paso intermedio de `rol` explicito, no
   para el modelo completo basado en tablas de roles y permisos;
@@ -270,6 +274,20 @@ Por tanto:
 - mapear usuarios actuales a un rol inicial;
 - rellenar `usuarios.id_rol`;
 - mantener `usuarios.rol` y `es_tecnico` mientras existan dependencias.
+
+Entregables preparados:
+
+- `bd/migraciones/migracion_gestion_roles_permisos_backfill_usuarios.sql`
+- `src/compartido/autorizacion.py`
+
+Criterio aplicado:
+
+- el backfill inicial no promociona automaticamente ningun usuario a
+  `superusuario`;
+- por seguridad, asigna `tecnico` a quien hoy tenga `es_tecnico = 1` y
+  `administrativo` al resto;
+- la promocion de al menos un usuario a `superusuario` debe hacerse de forma
+  manual y consciente tras revisar usuarios reales.
 
 ### Fase 3. Servicios comunes de autorizacion
 
@@ -300,21 +318,28 @@ Regla:
 - cierre del camino excepcional de acceso sin contrasena para entornos
   productivos.
 
-## Migraciones y ficheros recomendados
+## Migraciones y ficheros preparados
 
 No se propone reutilizar como solucion final el actual:
 
-- `bd/migracion_gestion_roles.sql`
+- `bd/migraciones/migracion_gestion_roles.sql`
 
-Se recomienda preparar una tanda separada de scripts, por ejemplo:
+Para la Fase 1 ya quedan preparados:
 
-- `bd/gestion_roles.sql`
-- `bd/gestion_permisos.sql`
-- `bd/gestion_roles_permisos.sql`
-- `bd/migracion_gestion_roles_permisos_base.sql`
+- `bd/base/gestion_roles.sql`
+- `bd/base/gestion_permisos.sql`
+- `bd/base/gestion_roles_permisos.sql`
+- `bd/migraciones/migracion_gestion_roles_permisos_base.sql`
 
-Y dejar la migracion de usuarios en un paso distinto, para poder validar mejor
-el backfill y el rollback manual.
+Criterio aplicado:
+
+- la migracion nueva crea tablas, siembra roles y permisos base y anade
+  `usuarios.id_rol`;
+- la migracion nueva no depende de haber ejecutado antes el puente textual
+  `bd/migraciones/migracion_gestion_roles.sql`;
+- no hace aun el backfill de usuarios existentes hacia un rol definitivo;
+- ese paso se deja para una fase separada, para validar mejor el mapeo y el
+  rollback manual.
 
 ## Validacion funcional minima cuando se implemente
 
@@ -327,3 +352,4 @@ el backfill y el rollback manual.
 - compatibilidad mantenida de selectores tecnicos mientras siga existiendo
   dependencia de `es_tecnico`;
 - trazabilidad en auditoria de cambios de usuarios, roles y permisos.
+

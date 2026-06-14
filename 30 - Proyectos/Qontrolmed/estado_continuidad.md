@@ -1,6 +1,6 @@
 # Estado de continuidad
 [[masgesth]]
-Fecha: 2026-06-12
+Fecha: 2026-06-14
 
 Este documento es la foto viva del estado actual del proyecto conjunto. Debe
 permitir reabrir trabajo sin depender del chat anterior y sin competir con el
@@ -85,7 +85,7 @@ Lectura operativa:
 - esta rama ya estaba preparada para tecnico y clase por defecto; la trazabilidad
   de exportado/descargado queda resuelta en `maxgesth` sobre
   `campana_equipos_preventivo`, pendiente de migracion en la BD real si aun no
-  se ha ejecutado `docs/migracion_tablet_tracking_preventivos.sql`.
+  se ha ejecutado `bd/migraciones/migracion_tablet_tracking_preventivos.sql`.
 
 ### maxgestq_mov
 
@@ -125,8 +125,104 @@ Lectura operativa:
   - el guardado y el cambio de estado del centro recuperan el foco en la
     propia ventana tras el emergente de exito, evitando salto al menu
     principal;
-  - queda creada la migracion `docs/migracion_centros_gestion.sql` como paso
+  - queda creada la migracion `bd/migraciones/migracion_centros_gestion.sql` como paso
     explicito para evolucionar el maestro sin tocar runtime.
+- Avance confirmado el 2026-06-13 en `roles/permisos`:
+  - ya existe pantalla operativa de `Roles` en `Gestion/Seguridad` con alta,
+    edicion, desactivacion y asignacion de permisos por modulo;
+  - `Usuarios` ya asigna rol y no permisos directos;
+  - ya queda endurecido el aislamiento de `superusuario` para que solo otro
+    `superusuario` pueda:
+    - asignarlo;
+    - retirarlo;
+    - modificar una cuenta que ya lo tenga;
+    - desactivar una cuenta que ya lo tenga;
+  - la UI ya oculta `superusuario` del selector de rol cuando el operador no
+    lo es, y el servicio bloquea igualmente cualquier intento directo;
+  - queda ya resuelta la correccion transversal para impedir abrir varias
+    instancias de la misma ventana si ya hay una abierta, al menos en la
+    portada, menus principales y pantallas operativas maestras de
+    `Gestion`, `Preventivos` y `Quirofanos`;
+  - queda ampliada la matriz de permisos sobre `Preventivos` y `Quirofanos`
+    con control visible y funcional por permiso, incluyendo acceso a modulo,
+    menus, historicos, libro, mantenimiento y flujos de informe.
+- Avance confirmado el 2026-06-13 en endurecimiento transversal de ventanas y
+  permisos:
+  - creado helper comun `src/compartido/utils/window_manager.py`;
+  - las ventanas ya abiertas recuperan foco en lugar de duplicarse en los
+    accesos principales y pantallas no modales cubiertas;
+  - la portada principal ya filtra modulos visibles segun permisos reales del
+    usuario;
+  - `Preventivos` ya distingue entre:
+    - consulta de informes;
+    - edicion;
+    - cierre;
+    - impresion;
+    - import/export y mantenimiento;
+  - `Quirofanos` ya distingue entre:
+    - consulta de informes;
+    - edicion;
+    - cierre;
+    - impresion;
+    - libro;
+    - import/export Android;
+    - mantenimiento y plantillas en blanco;
+  - validacion tecnica completada con `python -m compileall main.py src`.
+- Validacion manual confirmada el 2026-06-14 sobre hardening transversal:
+  - smoke test manual completado con perfiles amplios y restringidos sobre
+    `Gestion`, `Preventivos` y `Quirofanos`;
+  - el control visible y funcional por permisos se comporta como se esperaba en
+    las pruebas ejecutadas;
+  - la regla de ventana unica queda verificada en las pantallas principales
+    cubiertas, sin duplicidad ni salto de foco al menu principal;
+  - en `Quirofanos` queda confirmada tambien la recuperacion de foco al volver
+    de los selectores de ruta de import/export;
+  - no aparece bloqueo funcional nuevo ni regresion clara sobre la operativa
+    legacy basada en `es_tecnico`.
+- Remate visual confirmado el 2026-06-14 sobre modo consulta:
+  - `Informe preventivo` e `Informes Quirofanos` ya resaltan `Modo lectura`
+    en cabecera cuando el usuario abre la pantalla sin permisos de
+    modificacion;
+  - con este ajuste queda rematado el bloque corto de UX asociado al smoke test
+    de permisos y ventanas.
+- Primer corte de auditoria confirmado en codigo el 2026-06-14:
+  - `Preventivos` ya registra auditoria en:
+    - `exportar_tablet`;
+    - `importar_tablet`;
+  - `Quirofanos` ya registra auditoria en:
+    - `exportar_android`;
+    - `importar_android`;
+  - el registro cubre tanto resultado `ok/parcial` como errores de ejecucion o
+    validacion temprana del fichero;
+  - el `detalle` deja trazada la ruta de salida o entrada y el resumen tecnico
+    de la operativa;
+  - `usuario` y `fecha_hora` se mantienen en sus columnas propias de
+    `auditoria_eventos`, sin duplicarlos dentro de `detalle`;
+  - la validacion visual funcional de las 4 operativas de import/export ya
+    queda completada;
+  - validacion manual/SQL ya confirmada en `gestion.auditoria_eventos`:
+    - `Preventivos/exportar_tablet`;
+    - `Preventivos/importar_tablet`;
+    - `Quirofanos/exportar_android`;
+    - `Quirofanos/importar_android`;
+  - la consulta minima ya queda abierta en `Gestion/Seguridad/Auditoria` con:
+    - filtro por fechas `De/A`;
+    - filtro por modulo;
+    - filtro por familia de accion:
+      - `Importar/Exportar`;
+      - `Gestion informes`;
+    - detalle ampliado en emergente;
+    - scroll horizontal en la tabla;
+  - la exportacion CSV inicial ya queda implementada desde el boton
+    `Imprimir`, respetando filtros activos y creando salida en
+    `output/auditoria`;
+  - el CSV deja 5 columnas base, 18 columnas intermedias reservadas para
+    componentes estructurados de detalle y `detalle` completo al final;
+  - validacion funcional de esta consulta minima ya confirmada por usuario:
+    - la tabla y el detalle emergente se visualizan correctamente;
+    - el CSV sale limpio con los filtros aplicados;
+  - esta linea puede darse por cerrada en primera aproximacion y pasar a
+    mantenimiento, salvo remate UX puntual o nueva necesidad real.
 - Excepcion activa de esta sesion:
   - correccion de campo en Preventivos para preparar campana real con 144
     desfibriladores.
@@ -201,48 +297,93 @@ Lectura operativa:
 
 ### Tarea principal recomendada
 
-`Hardening transversal: siguiente escalon en roles y auditoria`
+`Endurecer login/acceso y dejar preparado el bootstrap seguro de superusuario`
 
 Objetivo inmediato:
 
-- aprovechar que la base ya queda subida a `MySQL 8.4.9` para retomar el
-  siguiente frente natural del roadmap;
-- preparar el primer corte real de `roles` sobre `gestion.usuarios` sin romper
-  la compatibilidad transitoria con `es_tecnico`;
-- revisar el alcance minimo de `auditoria` ya implantada y decidir si la
-  siguiente sesion abre consulta visible desde UI, ampliacion de eventos o
-  consolidacion documental;
-- mantener Preventivos escritorio solo en seguimiento pasivo salvo que aparezca
-  una incidencia real nueva en la operativa.
+- dar por cerrado el primer corte de `auditoria` minima ya validado en
+  operativa y CSV;
+- retomar el siguiente hueco central de `Fase 2`, que ya no es `auditoria`
+  sino `login/acceso` de cara a piloto o produccion controlada;
+- revisar y acotar cualquier bypass no aceptable en autenticacion;
+- preparar el camino para exigir contrasena valida y arrancar con
+  `superusuario` real;
+- dejar documentado el bloque futuro de avisos por correo sin implementarlo
+  todavia.
 
 Ataque recomendado:
 
-1. cerrar documentalmente la ejecucion real del upgrade ya completado,
-   incluyendo warning de Workbench y cambio de plugin de autenticacion;
-2. revisar el estado actual de `usuarios`, `login`, `rol` y
-   `auditoria_eventos` para elegir una pieza pequena y cerrable en una sesion;
-3. priorizar como primer bloque:
-   - visibilidad/control de rol en `Usuarios`, o
-   - consulta minima de auditoria desde `Gestion`;
-4. no reabrir cambios en `informe_preventivo_ui` ni `pc_preventivos_ui` salvo
-   regresion reproducible o nueva necesidad de campo con evidencia.
+1. revisar el estado real del login actual y localizar bypass o accesos
+   excepcionales que no deban llegar a piloto;
+2. comprobar si todos los usuarios productivos exigen ya contrasena valida y
+   hash consistente;
+3. revisar gestion de intentos fallidos y su posible trazabilidad en
+   `auditoria_eventos`;
+4. acotar el diseno minimo del bootstrap de `superusuario` en primer arranque o
+   instalacion;
+5. decidir si el siguiente corte entra como:
+   - endurecimiento tecnico directo de autenticacion;
+   - o primero consultoria/documentacion corta de instalacion y bootstrap;
+6. mantener fuera de implementacion, de momento, los avisos por correo, pero
+   dejar claro donde enganchan con los eventos de seguridad.
+
+Estado del bloque previo:
+
+- `auditoria` minima ya implementada en codigo;
+- commit base ya cerrado: `4e1dd9e` (`Audita import/export de campo`);
+- validado visualmente en 4 de 4 operativas;
+- contraste funcional/SQL confirmado en 4 de 4 operativas;
+- consulta minima de UI ya implementada;
+- exportacion CSV inicial ya implementada;
+- validacion funcional final de consulta y CSV ya confirmada por usuario;
+- esta linea puede pasar a mantenimiento.
 
 Documentos operativos a usar:
 
-- `docs/plan_upgrade_mysql_8_0_44_a_8_4_lts.md`
-- `docs/checklist_ejecucion_upgrade_mysql_8_4_lts.md`
-- `scripts/db/registrar_backup_mysql.ps1`
+- `docs/plan_seguridad_consistencia.md`
+- `docs/propuesta_modelo_roles_permisos.md`
+- `docs/security_delivery_playbook.md`
+- `docs/estado_continuidad.md`
 
 Tests a preparar para cerrar esa tarea:
 
-- definirlos segun el frente exacto entre `roles` y `auditoria`;
 - `python -m compileall main.py src`;
-- validacion manual pendiente:
-  - login con usuario administrador;
-  - crear/modificar usuario o revisar consulta de auditoria segun el bloque
-    elegido;
-  - verificar que no se rompe la operativa actual basada en `es_tecnico`;
-  - confirmar trazabilidad y naming visible en `Gestion`.
+- caso feliz de login con usuario permitido;
+- denegacion correcta en credenciales invalidas o usuario inactivo;
+- comprobacion de que no existe camino no controlado para elevar o saltar
+  autenticacion;
+- si entra cambio sobre intentos fallidos, verificar trazabilidad coherente en
+  `gestion.auditoria_eventos`.
+
+Punto de reentrada recomendado para la siguiente sesion:
+
+1. leer esta seccion y `docs/diario_sesiones/2026-06-14.md`;
+2. asumir ya cerrada la primera aproximacion de `auditoria` minima;
+3. abrir el frente de `login/acceso` revisando primero servicios y UI actuales;
+4. localizar el criterio real de contrasena, intento fallido y sesion;
+5. decidir si el siguiente commit sera de consultoria/documentacion o de
+   enforcement tecnico directo;
+6. mantener como nota aparte, no implementada, los avisos por correo ligados a
+   eventos de seguridad.
+
+Plan de commits recomendado:
+
+1. `Aísla gestión de superusuario`;
+2. `Documenta siguiente corte de login y bootstrap` si se separa del cambio
+   tecnico.
+
+Validacion manual ya cerrada en esta linea:
+
+- portada:
+  - modulos visibles correctos segun permiso en los perfiles probados;
+- `Preventivos`:
+  - permisos visibles y funcionales validados en las combinaciones probadas;
+- `Quirofanos`:
+  - permisos visibles y funcionales validados en las combinaciones probadas;
+  - foco de import/export validado tras el selector de ruta;
+- ventanas:
+  - segunda apertura devuelve foco y no crea nueva instancia en las pantallas
+    principales revisadas.
 
 Checklist operativa recomendada para esta misma validacion:
 
@@ -267,7 +408,7 @@ Checklist operativa recomendada para esta misma validacion:
      - criterio operativo aprendido: en futuras subidas a `MySQL 8.4+`,
        revisar siempre el `plugin` de los usuarios de aplicacion antes de dar
        por cerrada la validacion.
-   - verificado el 2026-06-12: `docs/migracion_centros_gestion.sql` aplicada
+   - verificado el 2026-06-12: `bd/migraciones/migracion_centros_gestion.sql` aplicada
      con columnas ampliadas presentes en `gestion.cecos`;
    - verificado el 2026-06-12 en `SHOW COLUMNS FROM gestion.cecos;`:
      `direccion`, `codigo_postal`, `ciudad`, `contacto_principal`,
@@ -374,13 +515,20 @@ Cada sesion debe arrancar dejando claro:
 - mecanismo final de instalacion y distribucion;
 - ubicacion final de credenciales y parametros de conexion;
 - si habra asistente inicial o fichero de configuracion gestionado.
+- dejar prevista una futura configuracion de avisos por correo electronico,
+  sin implementarla todavia en esta tanda;
+- variables funcionales ya identificadas para ese futuro bloque:
+  - asignar correo electronico destino;
+  - aviso en caso de intentos de entrada erroneos tras 2 series de 3 intentos
+    fallidos;
+  - apertura a nuevos tipos de avisos configurables.
 
 ### Base de datos y versionado del servidor
 
 - verificado el 2026-06-13: el servidor actual del entorno queda ya en
   `MySQL 8.4.9`;
 - revisar compatibilidad de sintaxis antes de ejecutar nuevas migraciones de
-  `gestion`, en especial `docs/migracion_centros_gestion.sql`;
+  `gestion`, en especial `bd/migraciones/migracion_centros_gestion.sql`;
 - decision operativa adoptada el 2026-06-12:
   - fijar `MySQL 8.4 LTS` como version objetivo recomendada para la siguiente
     evolucion controlada del servidor;
@@ -448,6 +596,12 @@ Cada sesion debe arrancar dejando claro:
   - `docs/propuesta_modelo_roles_permisos.md` fija el modelo objetivo
     `usuario -> rol -> permisos`, el bootstrap del `superusuario`, el catalogo
     inicial y el orden de implantacion.
+- entregable tecnico ya preparado en repo:
+  - `bd/base/gestion_roles.sql`;
+  - `bd/base/gestion_permisos.sql`;
+  - `bd/base/gestion_roles_permisos.sql`;
+  - `bd/migraciones/migracion_gestion_roles_permisos_base.sql`.
+  - `bd/migraciones/migracion_gestion_roles_permisos_backfill_usuarios.sql`.
 - permisos base a contemplar en la primera matriz:
   - `acceso_total`;
   - `borrar_informes` como permiso explicito y separado, aunque el
@@ -465,6 +619,20 @@ Cada sesion debe arrancar dejando claro:
   - no dejar permisos destructivos implicitos dentro de roles intermedios;
   - cualquier visibilidad o accion sensible debe colgar del permiso asociado y
     no solo del nombre del rol.
+  - siguiente corte natural tras ejecutar la migracion base:
+    - backfill controlado de `usuarios.id_rol`;
+    - helpers comunes de autorizacion;
+    - mantenimiento UI de roles y asignacion real en usuarios.
+  - criterio de backfill inicial ya adoptado:
+    - `es_tecnico = 1` migra a `tecnico`;
+    - el resto migra a `administrativo`;
+    - `superusuario` requiere promocion manual consciente y no se asigna en
+      bloque de forma automatica.
+  - criterio de enforcement ya implantado en aplicacion:
+    - `seguridad.usuarios_gestionar` no basta por si solo para tocar cuentas
+      o asignaciones de `superusuario`;
+    - solo un `superusuario` autenticado puede promover, degradar, modificar
+      o desactivar una cuenta con ese rol.
 
 ### Auditoria
 
@@ -476,6 +644,8 @@ Cada sesion debe arrancar dejando claro:
 - pendientes que siguen abiertos:
   - politica de retencion;
   - alcance exacto de impresion y reimpresion en todos los modulos.
+  - valorar el mejor momento para introducir avisos por correo apoyados en
+    eventos de seguridad, empezando por intentos de acceso erroneos repetidos.
 
 ### Centros
 
@@ -524,6 +694,9 @@ Cada sesion debe arrancar dejando claro:
 - El login actual puede seguir teniendo criterios aceptables para desarrollo
   pero no para piloto o produccion.
 - Roles, auditoria y migraciones documentadas siguen siendo deuda central.
+- la matriz de permisos de `Preventivos` y `Quirofanos` ya queda implantada en
+  primer corte, pero su cierre real depende aun de validacion manual con
+  perfiles de usuario;
 - La version real del servidor de base de datos puede condicionar la sintaxis
   aceptable de futuras migraciones y debe revisarse antes de seguir ampliando
   `gestion.cecos`.
@@ -531,3 +704,4 @@ Cada sesion debe arrancar dejando claro:
   centros.
 - Preventivos y Quirofanos pueden seguir revelando incidencias de campo, pero no
   deben arrastrar el roadmap salvo severidad alta o bloqueante.
+

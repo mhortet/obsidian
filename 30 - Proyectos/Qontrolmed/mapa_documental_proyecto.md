@@ -59,6 +59,9 @@ Soporte externo no versionado:
   Obsidian como capa de conocimiento operativo.
 - `docs/Manual/manual_usuario_final_tecnicos_hospitalarios.md`: manual de uso
   operativo.
+- `docs/checklist_validacion_hardening_permisos_ventanas.md`: guia ejecutable
+  para el smoke test manual de permisos, foco y ventana unica antes de abrir
+  `auditoria`.
 - `docs/migraciones_operativas_hardening.md`: orden recomendado de migraciones
   manuales y diferencia entre script base y migracion incremental.
 - `docs/roles_operativos_acceso.md`: regla operativa vigente de acceso,

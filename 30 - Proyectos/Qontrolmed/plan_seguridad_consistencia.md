@@ -32,7 +32,7 @@ prioridad, validacion, trazabilidad y continuidad.
 | Linea | Estado | Prioridad | Lectura operativa |
 | --- | --- | --- | --- |
 | Fase 1. Rebase documental y criterio unico | en curso | alta | Ya es la linea viva actual y debe consolidar entrada a sesion, continuidad y criterio unico de roadmap. |
-| Fase 2. Hardening transversal y readiness | en curso | muy alta | Ya hay primer corte real de roles, permisos y ventana unica; siguiente paso inmediato: validacion manual dirigida y remate de auditoria. |
+| Fase 2. Hardening transversal y readiness | en curso | muy alta | Ya hay primer corte real de roles, permisos, ventana unica y auditoria minima; siguiente paso inmediato: endurecer login/acceso y preparar bootstrap seguro de `superusuario`. |
 | Fase 3. Gestion y maestros | pendiente | alta | Renombrado funcional, equipos de medida y evolucion de `cecos` a Centros. |
 | Fase 4. Trazabilidad y consolidacion de datos | pendiente | alta | Debe apoyarse en la auditoria central y cerrar riesgos de persistencia. |
 | Fase 5. Informes y analitica futura | pendiente | media | Se mantiene como destino arquitectonico, no como frente inmediato. |
@@ -143,7 +143,7 @@ criterios provisionales o atajos de desarrollo.
 - mantener `maxgesth_port` y `maxgestq_mov` en compatibilidad contractual salvo
   que una decision transversal exija tocar esos repos.
 
-### Avance confirmado a 2026-06-13
+### Avance confirmado a 2026-06-14
 
 - ya existe primer corte operativo de `usuario -> rol -> permisos` en
   `Gestion`;
@@ -152,8 +152,14 @@ criterios provisionales o atajos de desarrollo.
 - la portada principal filtra modulos segun permisos efectivos del usuario;
 - queda implantada una regla transversal de ventana unica para portada, modulos
   principales y pantallas no modales clave;
-- falta cierre manual con perfiles reales antes de declarar terminada esta
-  subfase.
+- la validacion manual base con perfiles reales ya queda superada en smoke test
+  dirigido;
+- no aparece bloqueo funcional en permisos, foco ni duplicidad de ventanas;
+- el remate pequeno de UX sobre `Modo lectura` visible en pantallas editables
+  abiertas sin permiso de modificacion ya queda resuelto;
+- con el primer corte de `auditoria` ya operativo, el siguiente paso natural de
+  la fase pasa a ser endurecer `login/acceso`, contrasenas e intentos
+  fallidos, dejando preparado el bootstrap seguro de `superusuario`.
 
 ### Eventos minimos de auditoria
 
@@ -313,8 +319,8 @@ Mantener esta lista viva y revisarla al iniciar cada sesion:
 
 ### Auditoria
 
+- la consulta/exportacion minima desde UI ya queda resuelta en primer corte;
 - politica de retencion;
-- si habra consulta o exportacion de logs desde UI;
 - alcance exacto de impresion y reimpresion en todos los modulos.
 
 ### Centros
