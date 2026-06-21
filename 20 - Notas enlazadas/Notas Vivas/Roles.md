@@ -18,7 +18,7 @@ Describe los distintos roles que se proponen para aplicar en Qontrolmed e inform
 
 ---
 # Roles:
-- # Posibilidad de crear roles.
+- # Posibilidad de crear roles. ¡CERRADO!
 	- Puntos a asignar a roles mediante checking
 		- Acceso Total - ¿Crear Opción de borrar informes?
 		- Acceso a todos los CRUD de la aplicación
@@ -29,6 +29,7 @@ Describe los distintos roles que se proponen para aplicar en Qontrolmed e inform
 		- Imprimir informes
 		- Importar Campañas
 		- Exportar trabajo de campo		
+		-
 - # Módulo Informes datos y estadísticas
 	"Los informes solo viven al generarse y en su salida en pdf"
 #### Procedimiento

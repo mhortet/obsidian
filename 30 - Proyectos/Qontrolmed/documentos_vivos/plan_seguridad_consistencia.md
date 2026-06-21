@@ -1,6 +1,6 @@
 # Plan maestro unico de trabajo, seguridad y consistencia
 [[masgesth]]
-Fecha de revision: 2026-06-15
+Fecha de revision: 2026-06-01
 
 ## Objetivo
 
@@ -32,7 +32,7 @@ prioridad, validacion, trazabilidad y continuidad.
 | Linea | Estado | Prioridad | Lectura operativa |
 | --- | --- | --- | --- |
 | Fase 1. Rebase documental y criterio unico | en curso | alta | Ya es la linea viva actual y debe consolidar entrada a sesion, continuidad y criterio unico de roadmap. |
-| Fase 2. Hardening transversal y readiness | en curso | muy alta | Ya hay primer corte real de roles, permisos, ventana unica, auditoria minima y login seguro validado; siguiente paso inmediato: ordenar configuracion local y cerrar la receta operativa de acceso. |
+| Fase 2. Hardening transversal y readiness | en curso | muy alta | Ya hay primer corte real de roles, permisos, ventana unica y auditoria minima; siguiente paso inmediato: endurecer login/acceso y preparar bootstrap seguro de `superusuario`. |
 | Fase 3. Gestion y maestros | pendiente | alta | Renombrado funcional, equipos de medida y evolucion de `cecos` a Centros. |
 | Fase 4. Trazabilidad y consolidacion de datos | pendiente | alta | Debe apoyarse en la auditoria central y cerrar riesgos de persistencia. |
 | Fase 5. Informes y analitica futura | pendiente | media | Se mantiene como destino arquitectonico, no como frente inmediato. |
@@ -143,7 +143,7 @@ criterios provisionales o atajos de desarrollo.
 - mantener `maxgesth_port` y `maxgestq_mov` en compatibilidad contractual salvo
   que una decision transversal exija tocar esos repos.
 
-### Avance confirmado a 2026-06-15
+### Avance confirmado a 2026-06-14
 
 - ya existe primer corte operativo de `usuario -> rol -> permisos` en
   `Gestion`;
@@ -157,15 +157,9 @@ criterios provisionales o atajos de desarrollo.
 - no aparece bloqueo funcional en permisos, foco ni duplicidad de ventanas;
 - el remate pequeno de UX sobre `Modo lectura` visible en pantallas editables
   abiertas sin permiso de modificacion ya queda resuelto;
-- `login/acceso` ya queda endurecido en primer corte con:
-  - bootstrap guiado y acotado para `superusuario`;
-  - contrasena inicial obligatoria en escenario seguro;
-  - bloqueo temporal por intentos fallidos;
-  - trazabilidad base en `auditoria_eventos`;
-- el bloqueo temporal de 3 intentos y 5 minutos se mantiene como criterio
-  vigente de esta fase, sin ampliar por ahora persistencia entre reinicios;
-- el siguiente paso natural de la fase pasa a ser ordenar la configuracion
-  local y dejar cerrada la receta operativa del acceso seguro.
+- con el primer corte de `auditoria` ya operativo, el siguiente paso natural de
+  la fase pasa a ser endurecer `login/acceso`, contrasenas e intentos
+  fallidos, dejando preparado el bootstrap seguro de `superusuario`.
 
 ### Eventos minimos de auditoria
 

@@ -1,4 +1,4 @@
-﻿# Estado de continuidad
+# Estado de continuidad
 [[masgesth]]
 Fecha: 2026-06-15
 
@@ -250,9 +250,6 @@ Lectura operativa:
       el evento de bloqueo temporal;
     - pasado el periodo de bloqueo, el mismo usuario vuelve a entrar con normalidad
       al usar la contrasena correcta;
-    - criterio adoptado tras la verificacion posterior:
-      - se mantiene este bloqueo temporal actual de 3 intentos y 5 minutos;
-      - no se amplia por ahora a persistencia entre reinicios;
   - validacion manual especifica del bootstrap completada el 2026-06-15 en
     base de prueba aislada:
     - la restauracion inicial de `gestion_restore` vino desde una foto legacy
@@ -270,6 +267,8 @@ Lectura operativa:
       - el servicio ahora normaliza ese identificador antes de buscar el
         usuario actualizado.
   - pendiente todavia:
+    - decidir si el bloqueo por intentos debe persistir mas alla del proceso
+      local o si basta como primer corte de piloto controlado;
     - ordenar la configuracion local del repo y unificar el criterio de
       `compartido/.env`, porque la coexistencia de `compartido` fuera de `src`
       y `src/compartido` ya ha provocado editar la ruta equivocada en una
@@ -367,6 +366,7 @@ Objetivo inmediato:
   - en entorno real sobre la base buena;
   - y en base aislada sobre el bootstrap guiado;
 - cerrar lo que queda pendiente de verdad:
+  - decision sobre persistencia del bloqueo por intentos;
   - remate documental del bootstrap de instalacion;
   - orden y simplificacion de la configuracion local para no volver a editar
     el `.env` equivocado;
@@ -393,9 +393,8 @@ Arranque operativo ya preparado para esta sesion:
     `QONTROLMED_ALLOW_PASSWORDLESS_LOGIN=1`, pero ya no concede acceso
     implicito a una cuenta sin fijar contrasena inicial;
   - el login fallido ya audita error por intento y aplica enfriamiento temporal
-    en memoria de proceso;
-  - la decision vigente es mantener ese bloqueo temporal de 3 intentos y
-    5 minutos sin ampliar por ahora persistencia entre reinicios;
+    en memoria de proceso, aunque todavia no deja bloqueo persistente entre
+    reinicios;
   - el bootstrap ya existe como flujo guiado y queda validado funcionalmente
     en base aislada;
   - la deuda abierta ya no es probarlo, sino dejarlo mejor documentado y
@@ -408,6 +407,7 @@ Estado actual tras el corte tecnico de esta sesion:
   candidato seguro o se bloquea;
 - el login normal ya aplica enfriamiento temporal por cuenta dentro del proceso;
 - la deuda abierta ya no es de implementacion base sino de:
+  - decision de persistencia del bloqueo por intentos;
   - documentacion del bootstrap de instalacion;
   - limpieza/orden de configuracion local para evitar confundir
     `compartido/.env` con `src/compartido/.env`.
@@ -422,11 +422,13 @@ Ataque recomendado:
    consumida por la app en desarrollo;
 4. comprobar si conviene resolver la duplicidad de `compartido` dentro y fuera
    de `src` con una limpieza controlada del repo;
-5. comprobar la trazabilidad real en `gestion.auditoria_eventos` para:
+5. si se mantiene el frente de seguridad, decidir si el siguiente corte entra
+   como persistencia mayor del bloqueo por intentos;
+6. comprobar la trazabilidad real en `gestion.auditoria_eventos` para:
    - `bootstrap_password` o `bootstrap_superusuario`;
    - `login_bootstrap`;
    - `login_bloqueado_intentos`;
-6. mantener fuera de implementacion, de momento, los avisos por correo, pero
+7. mantener fuera de implementacion, de momento, los avisos por correo, pero
    dejar claro donde enganchan con los eventos de seguridad.
 
 Estado del bloque previo:
@@ -472,13 +474,12 @@ Punto de reentrada recomendado para la siguiente sesion:
    - el bootstrap guiado en base aislada;
 3. comprobar antes de nada que el entorno local ya vuelve a apuntar a la base
    habitual y no a las `_restore`;
-4. dar por asentado el criterio de bloqueo temporal actual sin ampliar
-   persistencia entre reinicios en esta tanda;
-5. empezar la siguiente ventana por la limpieza de configuracion/estructura del
-   repo;
-6. si se aborda la limpieza, empezar por la ruta canonica del `.env` y la
+4. decidir si la siguiente ventana va primero a:
+   - persistencia del bloqueo por intentos;
+   - o limpieza de configuracion/estructura del repo;
+5. si se aborda la limpieza, empezar por la ruta canonica del `.env` y la
    documentacion que hoy induce a tocar la carpeta equivocada;
-7. mantener como nota aparte, no implementada, los avisos por correo ligados a
+6. mantener como nota aparte, no implementada, los avisos por correo ligados a
    eventos de seguridad.
 
 Plan de commits recomendado:
