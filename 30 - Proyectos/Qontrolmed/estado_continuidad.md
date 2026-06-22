@@ -1,4 +1,4 @@
-﻿# Estado de continuidad
+# Estado de continuidad
 [[masgesth]]
 Fecha: 2026-06-15
 
