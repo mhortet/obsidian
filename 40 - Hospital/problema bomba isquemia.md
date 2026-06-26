@@ -12,22 +12,7 @@ Relacionado:
 ![[Drawing 2026-06-26 14.38.42.excalidraw]]
 ## Descripción
 
-He estado buscando y no encuentro prácticamente nada del **Center Medical TR4500**. Parece ser un equipo bastante antiguo o muy poco documentado en internet.
-
-¿Me puedes confirmar alguna de estas cosas?
-
-- ¿Es un equipo de **isquemia vascular/neumática** para extremidades?
-- ¿Lleva manguitos y bomba de presión?
-- ¿Tienes una foto de la placa de características o del frontal?
-- ¿Es de la marca **Center Medical** o **Centermedical**?
-
-Si me subes una foto del equipo (frontal y placa trasera), normalmente puedo identificarlo y localizar manuales, esquemas o información técnica mucho mejor.
-
-Por el modelo **TR4500**, lo único que he encontrado en abierto son resultados que no tienen relación con electromedicina, por lo que sospecho que la documentación del equipo no está indexada públicamente.
-
-Si tienes una foto, seguimos desde ahí.
-
-es vascular/neumatica para extremidades con manguito y bomba, el problema es que necesito un repuesto, el problema está localizado. y el nombre rotulado en el equipo, es center medical separado
+Bomba vascular/neumática para extremidades con manguito y bomba, 
 
 Pues con lo que me acabas de decir, ya no buscaría por "equipo de isquemia", sino por **torniquete neumático quirúrgico**.
 
@@ -45,44 +30,8 @@ Lo que suele averiarse en estos equipos es:
 - Pera o bomba neumática (si es manual).
 - Electroválvula (si es automático).
 
-Antes de seguir buscando el repuesto, necesito saber:
-
-1. **¿Qué componente concreto está averiado?**
-2. ¿Puedes subir una foto del componente?
-3. ¿Es un TR4500 de mesa con alimentación eléctrica o uno neumático/manual?
-4. ¿La avería es:
-    - no mantiene presión,
-    - no infla,
-    - marca mal la presión,
-    - fuga de aire,
-    - error electrónico?
-
-Muchas veces en estos equipos no hace falta encontrar el repuesto "Center Medical"; el componente suele ser un neumático estándar (SMC, Festo, Parker, Norgren, etc.) y se sustituye por equivalente industrial.
-
-Si me mandas una foto del interior o del componente averiado, seguramente podamos identificar la referencia real en 5 minutos. Eso suele funcionar mejor que buscar por TR4500. 😄
-![[WhatsApp Image 2026-06-11 at 12.26.42.jpeg]]
-
-
-es este conjunto, tiene una microperdida de aire, ya le hemos reparado unas pocas de veces, pero sigue dando guerra
-
-Buena foto. Ahí no veo un componente específico de Center Medical, veo una **microbomba ASF Thomas**.
-
-La etiqueta deja leer:
-
-- **ASF Thomas**
-- **D-82178 Puchheim**
-- **ANR: 80060007**
-- **SNR: 82805388**
 
 Lo primero que haría sería descartar que la fuga esté realmente en la bomba.
-
-En esa foto veo varios sospechosos habituales:
-
-1. **Racor blanco de salida** (muy típico que fisure con los años).
-2. **Tubo de silicona envejecido**.
-3. Junta interna del cabezal de la bomba.
-4. Membrana (diafragma) de la bomba.
-5. Válvulas antirretorno internas.
 
 ### Prueba rápida
 
@@ -100,31 +49,6 @@ Si no pierde:
 
 - la fuga está aguas abajo (racor, tubo, electroválvula, regulador, depósito, etc.).
 
-### Lo que me llama la atención
-
-Dices que ya la habéis reparado varias veces y vuelve a fallar.
-
-Eso suele ocurrir cuando:
-
-- se cambia la junta pero no la membrana,
-- se sella el cabezal con silicona,
-- o el cuerpo plástico ya está deformado por temperatura y horas de trabajo.
-
-En esos casos normalmente dejo de reparar y sustituyo la bomba completa.
-
-### ¿Puedes hacer otra foto?
-
-Una foto:
-
-- frontal del equipo,
-- bomba completa,
-- y si es posible la etiqueta de la bomba más enfocada.
-
-Me interesa especialmente identificar el **modelo exacto Thomas**, porque muchas veces todavía se encuentran kits de membrana o incluso bombas equivalentes nuevas. Por la forma me recuerda bastante a una Thomas de la serie 1410/1610, pero con esta foto no me atrevo a asegurarlo.
-
-es un problema estructural, está dañado el bloque de presión, se ha reparado, pero vuelve a fallar
-
-Entonces yo ya no invertiría mucho tiempo en kits de reparación.
 
 Si el problema está en el **bloque neumático/cabezal de presión** y ya lo habéis reparado varias veces, has entrado en el típico caso de:
 
