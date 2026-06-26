@@ -6,9 +6,10 @@ tags:
 Creado:
 Autor:
 Relacionado:
+  - "[[Drawing 2026-06-26 14.38.42.excalidraw]]"
 ---
 ## Alcance
-
+![[Drawing 2026-06-26 14.38.42.excalidraw]]
 ## Descripción
 
 He estado buscando y no encuentro prácticamente nada del **Center Medical TR4500**. Parece ser un equipo bastante antiguo o muy poco documentado en internet.
@@ -228,3 +229,7 @@ Por eso yo estimaría:
 - 20% cabezal de la bomba.
 
 Una foto general del circuito neumático del TR4500 (bomba, electroválvulas, regulador y sensor) ayudaría bastante. Ahí suelen aparecer los culpables rápidamente. Además, siendo electromedicina, ya sabes que las fugas "inexistentes" suelen terminar siendo una tórica de 2 céntimos escondida en el peor sitio posible. 😅
+
+## Conclusión final:
+
+La micro fuga, estaba en uno de los canales de las electro válvulas que tiene una pequeña fuga, pero el canal B funciona sin problemas.

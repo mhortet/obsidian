@@ -18,7 +18,11 @@ Haría dos tipos de laboratorio distintos:
 Un repositorio totalmente independiente.
 
 ```
-AI-LAB    pruebas_context7    pruebas_agentes    pruebas_mcp    pruebas_codex
+AI-LAB
+    pruebas_context7
+    pruebas_agentes
+    pruebas_mcp    
+    pruebas_codex
 ```
 
 Aquí rompes absolutamente todo.

@@ -1,3 +1,16 @@
+---
+tags:
+  - androidstudio
+  - Error
+  - software
+Creado:
+Autor:
+Relacionado:
+---
+## Resumen
+
+## Descripción
+
 
 1. Activa el hipervisor de forma manual
 

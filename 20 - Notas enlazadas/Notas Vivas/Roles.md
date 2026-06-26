@@ -4,6 +4,7 @@ tags:
   - codigo
   - desarrollo
   - prompt
+  - pendiente
 Fecha: 2026-06-05
 Relacionado:
 excalidraw-open-md: true

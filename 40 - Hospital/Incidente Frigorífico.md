@@ -83,4 +83,4 @@ El frigorífico queda operativo y en periodo de observación en taller, verific�
 
 ### Conclusión
 
-	 El equipo queda funcinando, pero dado la edad del mismo 21 años y los materiales que habría que sustituir, caso de conseguirlos, para quedarle totalmente operativo con completa seguridad, no aconsejan proponer su BAJA y sustitución por en equipo nuevo de similares características.
+	 El equipo queda funcinando, pero dado la edad del mismo 21 años y los materiales que habría que sustituir, caso de conseguirlos, para quedarle totalmente operativo con completa seguridad, aconsejan proponer su BAJA y sustitución por en equipo nuevo de similares características.

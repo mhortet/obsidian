@@ -8,10 +8,10 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "tag:#app  ",
+      "query": "tag:#pendiente  ",
       "color": {
         "a": 1,
-        "rgb": 6443744
+        "rgb": 16582664
       }
     },
     {
@@ -29,17 +29,17 @@
       }
     },
     {
-      "query": "tag:#pendiente  ",
-      "color": {
-        "a": 1,
-        "rgb": 16582664
-      }
-    },
-    {
       "query": "tag:#estructura  ",
       "color": {
         "a": 1,
         "rgb": 8192759
+      }
+    },
+    {
+      "query": "tag:#app  ",
+      "color": {
+        "a": 1,
+        "rgb": 6443744
       }
     },
     {
