@@ -12,6 +12,8 @@ Relacionado:
 
 
 Comandos básicos
+Inicializar  en una carpeta
+git init
 
 git status
 git add .
