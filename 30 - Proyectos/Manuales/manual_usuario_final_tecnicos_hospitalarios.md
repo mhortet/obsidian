@@ -1,6 +1,6 @@
 # Manual de usuario final para tecnicos hospitalarios
 
-Fecha de revision: 30/05/2026  
+Fecha de revision: 27/06/2026  
 Proyecto: Qontrolmed (`maxgesth`)  
 Perfil destinatario: tecnicos hospitalarios no informaticos
 
@@ -14,11 +14,13 @@ Las capturas y ejemplos incluidos se han preparado con datos reales de la instal
 
 ## 2. Vision general
 
-La aplicacion se abre con un acceso inicial de usuario y despues muestra una portada con tres modulos:
+La aplicacion se abre con un acceso inicial de usuario y despues muestra una portada de usuario. En la cabecera se ve el usuario activo, su rol y el centro asociado. Debajo aparecen solo los modulos para los que ese usuario tiene permiso.
 
-- `Compras`
+- `Gestion`
 - `Quirofanos`
 - `Preventivos`
+
+Si falta un modulo o una entrada de menu, lo primero es revisar los permisos del usuario. La aplicacion oculta las opciones no autorizadas para evitar accesos accidentales a funciones que no corresponden a ese perfil.
 
 El trabajo normal suele seguir este orden:
 
@@ -30,19 +32,65 @@ El trabajo normal suele seguir este orden:
 6. Cerrar el informe solo cuando ya no vaya a modificarse.
 7. Confirmar que el archivo final ha quedado guardado en la carpeta `output`.
 
+## 2.1 Menu principal de usuario
+
+La portada inicial actua como selector de area. Cada tarjeta abre una ventana de trabajo independiente:
+
+| Entrada | Uso principal | Perfil habitual |
+| --- | --- | --- |
+| `Gestion` | Compras, maestros, historicos, usuarios, roles y auditoria segun permisos. | Administracion, responsables de servicio, soporte autorizado. |
+| `Quirofanos` | Informes mensuales, libro de quirofano, trabajo con Android y catalogos del modulo. | Tecnicos de quirofano, responsables de validacion, soporte autorizado. |
+| `Preventivos` | Informes preventivos, campanas, tablet, plantillas y puntos de control. | Tecnicos de electromedicina, coordinacion de preventivos, soporte autorizado. |
+| `Salir` | Cierra la aplicacion y libera la conexion de trabajo. | Todos los usuarios. |
+
+La regla operativa es sencilla: cada usuario debe entrar con su cuenta nominal y trabajar solo en las opciones visibles para su perfil. No se recomienda compartir usuarios porque se pierde trazabilidad de tecnico, centro y auditoria.
+
+## 2.2 Mapa rapido de menus
+
+Este mapa resume las entradas que puede mostrar la aplicacion. La visibilidad real depende del rol y de los permisos concedidos.
+
+### `Gestion`
+
+| Bloque | Entradas | Uso |
+| --- | --- | --- |
+| `Maestros` | `Equipos`, `Centros` | Consulta y mantenimiento de datos base usados por compras y trabajos tecnicos. |
+| `Seguridad` | `Roles`, `Usuarios`, `Auditoria` | Alta de usuarios, asignacion de permisos y revision de eventos relevantes. |
+| `Operativa` | `Compras`, `Estadisticas`, `Proveedores`, `Repuestos`, `Marcas`, `Tipos trabajo` | Registro de compras, consulta economica y mantenimiento de catalogos operativos. |
+| `Importacion` | `Historicos Excel`, `Importar PDF` | Carga de historicos. `Importar PDF` aparece como opcion en construccion y no debe usarse como flujo normal. |
+| Pie | `Cerrar` | Cierra la ventana del modulo y vuelve a la portada. |
+
+### `Quirofanos`
+
+| Bloque | Entradas | Uso |
+| --- | --- | --- |
+| `Informes` | `Informes quirofanos`, `Libro de quirofano`, `Historico de informes` | Creacion, consulta, cierre y emision documental de revisiones de quirofano. |
+| `Trabajo de campo` | `Exportar para Android`, `Importar desde Android`, `Plantillas en blanco` | Preparacion y retorno del trabajo realizado fuera del puesto fijo. |
+| `Configuracion` | `Quirofanos`, `Puntos de control`, `Equipos de medida`, `Puntos de control por quirofano` | Mantenimiento de catalogos que condicionan la validez de los informes. |
+| Pie | `Cerrar` | Cierra la ventana del modulo. |
+
+### `Preventivos`
+
+| Bloque | Entradas | Uso |
+| --- | --- | --- |
+| `Informes` | `Informes preventivos`, `Historico de informes`, `Imprimir multiples` | Alta, consulta, generacion PDF, cierre e impresion por campana. |
+| `Trabajo de campo` | `Plantillas en blanco` | Genera hojas de apoyo cuando se necesita trabajar sin registro directo en pantalla. |
+| `Importacion` | `Importar Excel GMAO`, `Exportar para tablet`, `Importar desde tablet` | Carga de inventario y sincronizacion controlada con tablet. |
+| `Configuracion` | `Plantillas preventivo`, `Puntos de control`, `Asignar puntos a plantillas` | Normalizacion de controles por tipologia de equipo. |
+| Pie | `Cerrar` | Cierra la ventana del modulo. |
+
 ## 3. Flujo de trabajo general recomendado
 
-1. Identificarse siempre con el usuario correcto. El programa usa ese dato para asociar técnicos, centros y trazabilidad.
+1. Identificarse siempre con el usuario correcto. El programa usa ese dato para asociar tecnicos, centros y trazabilidad.
 2. Trabajar primero sobre registros abiertos. Si un informe ya esta cerrado, el sistema lo deja en modo lectura o limita cambios.
-3. Generar PDF antes de imprimir o enviar documentación.
-4. Hacer exportaciones a Tablet o Android solo cuando se vayan a usar realmente en campo.
-5. Antes de importaciones masivas o cambios de configuración, hacer copia de seguridad.
+3. Generar PDF antes de imprimir o enviar documentacion.
+4. Hacer exportaciones a tablet o Android solo cuando se vayan a usar realmente en campo.
+5. Antes de importaciones masivas o cambios de configuracion, hacer copia de seguridad.
 
-## 4. Compras
+## 4. Gestion y Compras
 
 ## 4.1 Para que sirve
 
-El modulo `Compras` se usa para:
+El modulo visible en la portada se llama `Gestion`. Dentro de el, la entrada `Compras` se usa para:
 
 - registrar compras de material y repuestos,
 - asociarlas a una `OT`,
@@ -51,15 +99,26 @@ El modulo `Compras` se usa para:
 - sacar un Excel de peticion de presupuesto,
 - consultar historicos y datos economicos.
 
+![Menu de Gestion](capturas/compras_menu.png)
 
-![[compras_menu.png]]
+Figura 1. Pantalla de entrada al modulo Gestion, con acceso a compras, maestros, seguridad e importaciones segun permisos.
 
-Figura 1. Pantalla de entrada al modulo Compras.
+## 4.1.1 Entradas del menu de Gestion
+
+La pantalla de `Gestion` esta dividida por bloques:
+
+- `Maestros`: permite acceder a `Equipos` y `Centros`.
+- `Seguridad`: agrupa `Roles`, `Usuarios` y `Auditoria`. Estas opciones deben reservarse a perfiles autorizados.
+- `Operativa`: contiene `Compras`, `Estadisticas`, `Proveedores`, `Repuestos`, `Marcas` y `Tipos trabajo`.
+- `Importacion`: contiene `Historicos Excel` e `Importar PDF`.
+
+Para el tecnico que registra actividad diaria, la entrada mas habitual es `Gestion > Compras`. Las demas opciones afectan a datos maestros, permisos o catalogos compartidos y deben modificarse con criterio de responsable.
 
 ## 4.2 Pantalla principal de trabajo
 
-La ventana de `Compras` esta pensada para rellenar una cabecera y despues ir anadiendo lineas de detalle.
+La ventana `Gestion > Compras` esta pensada para rellenar una cabecera y despues ir anadiendo lineas de detalle.
 
+![Formulario de Compras](capturas/compras_detalle.png)
 
 Figura 2. Formulario de alta y consulta de compras.
 
@@ -79,7 +138,7 @@ Campos que conviene revisar siempre:
 
 ## 4.3 Flujo recomendado
 
-1. Entrar en `Compras > Compras`.
+1. Entrar en `Gestion > Compras`.
 2. Comprobar fecha y `CECO`.
 3. Indicar la `OT`.
 4. Pulsar `Seleccionar equipo` para buscar el equipo correcto.
@@ -130,9 +189,9 @@ Ejemplo 2:
 - Proveedor: `BATSOL`
 - Cantidad: `2`
 
-## 4.6 Botones utiles
+## 4.6 Botones y entradas utiles
 
-- `Dashboard`: resumen economico y graficas.
+- `Estadisticas`: resumen economico y graficas.
 - `Historicos Excel`: importacion masiva desde carpetas de Excel.
 - `Importar PDF`: en esta revision aparece en menu, pero sigue en construccion y no debe usarse como flujo normal.
 
@@ -576,7 +635,7 @@ Solucion:
 
 Si se usa la aplicacion con un orden claro, el trabajo diario es sencillo:
 
-1. `Compras` para registrar gasto y sacar Excel.
+1. `Gestion > Compras` para registrar gasto y sacar Excel.
 2. `Quirofanos` para revisar espacios, generar PDF y cerrar informes mensuales.
 3. `Preventivos` para revisar equipos, generar informes y mantener historico.
 4. `Configuracion` solo cuando haga falta ajustar datos maestros.
