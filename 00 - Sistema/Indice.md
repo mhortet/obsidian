@@ -32,6 +32,17 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 - [20 - Notas enlazadas/Analisis](../20 - Notas enlazadas/Analisis/README.md): respuestas o estudios archivados.
 - [20 - Notas enlazadas/Procesos](../20 - Notas enlazadas/Procesos/ingesta-de-fuentes.md): procedimientos de trabajo de la boveda.
 
+### Primeras ingestas
+
+- [El microscopio de fluorescencia](../20 - Notas enlazadas/Fuentes/2026-06-27-microscopio-fluorescencia.md): fuente didactica sobre microscopia de fluorescencia.
+- [Microscopia de fluorescencia](../20 - Notas enlazadas/Conceptos/microscopia-de-fluorescencia.md): concepto reutilizable derivado de la fuente.
+- [MySQL Reference Architectures for Security](../20 - Notas enlazadas/Fuentes/2026-06-27-mysql-reference-architectures-security.md): white paper de Oracle sobre seguridad de bases de datos MySQL.
+- [Arquitectura de seguridad MySQL](../20 - Notas enlazadas/Conceptos/arquitectura-de-seguridad-mysql.md): concepto reutilizable derivado del white paper.
+- [Checklist de seguridad MySQL](../20 - Notas enlazadas/Procesos/checklist-seguridad-mysql.md): proceso preliminar de revision tecnica basado en la fuente.
+- [Engram Cloud y contexto compartido entre agentes](../20 - Notas enlazadas/Fuentes/2026-06-27-engram-cloud-contexto-compartido-agentes.md): fuente sobre memoria persistente local-first para agentes.
+- [Contexto persistente para agentes](../20 - Notas enlazadas/Conceptos/contexto-persistente-para-agentes.md): concepto para diferenciar memoria canonica, operativa y acceso por MCP.
+- [Opciones de integracion de contexto persistente para agentes](../20 - Notas enlazadas/Analisis/2026-06-27-opciones-integracion-contexto-persistente-agentes.md): analisis de opciones y recomendacion incremental.
+
 ## Carpetas existentes
 
 - [10 - In box](../10 - In box/): entrada rapida sin procesar.
