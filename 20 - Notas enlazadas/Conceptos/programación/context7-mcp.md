@@ -17,38 +17,38 @@ review_after: 2026-09-28
 
 ## Para que sirve
 
-Context7 MCP es un servidor MCP orientado a dar al agente documentacion tecnica actualizada de librerias, frameworks y APIs. Su objetivo es reducir respuestas basadas en conocimiento antiguo del modelo, APIs inventadas o ejemplos obsoletos.
+Context7 MCP es un servidor MCP orientado a dar al agente documentación técnica actualizada de librerías, frameworks y APIs. Su objetivo es reducir respuestas basadas en conocimiento antiguo del modelo, APIs inventadas o ejemplos obsoletos.
 
-En la practica, Context7 encaja cuando el agente va a escribir o modificar codigo que depende de una libreria concreta: Next.js, Supabase, Prisma, FastAPI, Playwright, Flet, SQLAlchemy u otras herramientas con APIs cambiantes.
+En la practica, Context7 encaja cuando el agente va a escribir o modificar código que depende de una librería concreta: Next.js, Supabase, Prisma, FastAPI, Playwright, Flet, SQLAlchemy u otras herramientas con APIs cambiantes.
 
 ## Cuando usarlo
 
-- Al pedir codigo con una libreria o framework que cambia rapido.
+- Al pedir código con una librería o framework que cambia rápido.
 - Cuando hay duda entre versiones.
-- Antes de generar configuracion, middleware, autenticacion, migraciones o llamadas a APIs.
-- Cuando el agente devuelve codigo que "suena bien" pero no coincide con la version instalada.
-- Al revisar un error que podria deberse a cambios recientes de API.
+- Antes de generar configuración, middleware, autenticación, migraciones o llamadas a APIs.
+- Cuando el agente devuelve código que "suena bien" pero no coincide con la versión instalada.
+- Al revisar un error que podría deberse a cambios recientes de API.
 
-No hace falta usarlo para logica propia, refactor sencillo, lectura del repositorio local o tareas donde la documentacion oficial no aporta nada.
+No hace falta usarlo para lógica propia, refactor sencillo, lectura del repositorio local o tareas donde la documentación oficial no aporta nada.
 
-## Implementacion recomendada
+## Implementación recomendada
 
 ### 1. Empezar en modo MCP o plugin
 
-Segun la documentacion oficial de Context7 para Codex, puede configurarse con:
+Según la documentación oficial de Context7 para Codex, puede configurarse con:
 
 ```bash
 npx ctx7 setup --codex
 ```
 
-Ese asistente autentica via OAuth, genera una clave API y escribe configuracion en `~/.codex/config.toml` y `AGENTS.md`. Tambien existe instalacion como plugin de Codex:
+Ese asistente autentica vía OAuth, genera una clave API y escribe configuración en `~/.codex/config.toml` y `AGENTS.md`. También existe instalación como plugin de Codex:
 
 ```bash
 codex plugin marketplace add upstash/context7
 codex plugin add context7@context7-marketplace
 ```
 
-Para configuracion manual en Codex, Context7 documenta dos opciones:
+Para configuración manual en Codex, Context7 documenta dos opciones:
 
 ```bash
 codex mcp add context7 -- npx -y @upstash/context7-mcp --api-key YOUR_API_KEY
@@ -63,7 +63,7 @@ args = ["-y", "@upstash/context7-mcp", "--api-key", "YOUR_API_KEY"]
 startup_timeout_ms = 20_000
 ```
 
-Tambien puede usarse el servidor remoto:
+También puede usarse el servidor remoto:
 
 ```toml
 [mcp_servers.context7]

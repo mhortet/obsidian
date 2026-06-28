@@ -16,11 +16,11 @@ review_after: 2026-09-28
 
 ## Nota de nombre
 
-La fuente cruda previa transcribia "Sengrab" o "Seng Grip", pero la herramienta correcta es Semgrep. En esta boveda se normaliza como `Semgrep MCP`.
+La fuente cruda previa transcribía "Sengrab" o "Seng Grip", pero la herramienta correcta es Semgrep. En esta bóveda se normaliza como `Semgrep MCP`.
 
 ## Para que sirve
 
-Semgrep MCP permite que un agente de IA ejecute analisis Semgrep desde el flujo de trabajo de programacion. Semgrep es una herramienta de analisis estatico que busca patrones semanticos en codigo para detectar vulnerabilidades, errores, malas practicas y reglas de estilo o arquitectura.
+Semgrep MCP permite que un agente de IA ejecute análisis Semgrep desde el flujo de trabajo de programación. Semgrep es una herramienta de análisis estático que busca patrones semánticos en código para detectar vulnerabilidades, errores, malas practicas y reglas de estilo o arquitectura.
 
 El valor no es que la IA "opine" sobre seguridad, sino que pueda apoyarse en un motor determinista de analisis y devolver hallazgos accionables dentro del contexto de trabajo.
 
