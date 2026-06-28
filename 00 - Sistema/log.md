@@ -93,3 +93,17 @@ Tipos recomendados: `bootstrap`, `ingest`, `query`, `lint`, `decision`, `mainten
 - Se mueve `mcp-vs-api.md` a `ia/`.
 - Se actualizan `AGENTS.md`, `00 - Sistema/Indice.md` y `20 - Notas enlazadas/Conceptos/README.md`.
 - Se define que `30 - Proyectos/`, `32 - programación/` y las areas `40 - Hospital/`, `45 - coches electricos/` y `55 - Ayuntamiento/` quedan como espacios de trabajo vivo que pueden promocionar conocimiento maduro a conceptos.
+
+## [2026-06-28] maintenance | Limpieza documental Qontrolmed raiz
+
+- Se revisan los documentos situados directamente en `30 - Proyectos/Qontrolmed/`, sin reorganizar subcarpetas existentes.
+- Se crea `README.md` como entrada limpia del proyecto.
+- Se crea `evolucion_proyecto.md` como diario sintetico deducido de los documentos raiz.
+- Se crea `mapa_documental_qontrolmed.md` para separar documentos vivos, historicos y entregables.
+- Se crean carpetas de organizacion:
+  - `01_gobierno_y_decisiones/`;
+  - `02_historico/`;
+  - `03_entregables/`.
+- Se conservan los documentos absorbidos por trazabilidad y se sacan de la raiz para reducir ruido.
+- Se mantienen como documentos vivos de raiz `security_delivery_playbook.md`, `estado_continuidad.md`, `plan_seguridad_consistencia.md` y `cola_triaje_campo.md`.
+- Se restaura la ruta estructural `55 - Ayuntamiento/` con un README minimo para resolver el enlace del indice.
