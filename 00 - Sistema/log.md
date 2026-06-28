@@ -3,7 +3,7 @@ title: "Log"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-27
+updated: 2026-06-28
 sources: []
 tags: [sistema, log]
 review_after:
@@ -54,3 +54,26 @@ Tipos recomendados: `bootstrap`, `ingest`, `query`, `lint`, `decision`, `mainten
 - Se crea el analisis `20 - Notas enlazadas/Analisis/2026-06-27-opciones-integracion-contexto-persistente-agentes.md`.
 - Se registra la fuente en `00 - Sistema/meta/registro-fuentes.csv`.
 - Se marca como pendiente validar madurez tecnica y seguridad antes de cualquier despliegue.
+
+## [2026-06-28] ingest | MCP y herramientas agenticas
+
+- Se procesan las fuentes nuevas en `raw/sources/` sobre MCP:
+  - `raw/sources/Que es MCP Explicado fácil en 5 minutos, con ej.  productividad.md`.
+  - `raw/sources/MCP desde cero Conecta tu IA a cualquier dato.md`.
+  - `raw/sources/7 MCP que mejoran tu IA para programar.md`.
+  - `raw/sources/🔥 ASÍ se crea  un MCP - CON @Achetronic.md`.
+- Se crean cuatro fichas en `20 - Notas enlazadas/Fuentes/`.
+- Se crea la carpeta `20 - Notas enlazadas/Conceptos/Herramientas agenticas/` para agrupar conceptos sobre agentes de IA, MCP, memoria, integraciones y gobierno.
+- Se mueve `contexto-persistente-para-agentes.md` a la nueva carpeta tematica.
+- Se crean conceptos sobre MCP, servidores locales/remotos, herramientas MCP para desarrollo, seguridad/gobierno y posible MCP propio para la boveda.
+- Se actualizan indice, README de fuentes, README de conceptos y registro de fuentes.
+- Se crea `15 - Notas diarias/README.md` para resolver el enlace estructural del indice.
+- Se mantienen intactas las fuentes crudas; varias transcripciones se marcan como orientativas por errores de codificacion y reconocimiento.
+
+## [2026-06-28] ingest | Context7 MCP y Semgrep MCP
+
+- Se amplian los conceptos de `20 - Notas enlazadas/Conceptos/Herramientas agenticas/`.
+- Se crea `context7-mcp.md` con uso, instalacion orientativa en Codex, pautas de consulta y cautelas de privacidad.
+- Se crea `semgrep-mcp.md` normalizando la transcripcion "Sengrab" como Semgrep MCP, con estado de vigencia, proceso de uso y criterios de seguridad.
+- Se usan fuentes oficiales actuales: repositorios y documentacion de Context7 y Semgrep.
+- Se actualiza el README de la carpeta tematica.

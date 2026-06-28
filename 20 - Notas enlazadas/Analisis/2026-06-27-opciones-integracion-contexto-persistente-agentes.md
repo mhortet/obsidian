@@ -3,10 +3,10 @@ title: "Opciones de integracion de contexto persistente para agentes"
 type: analysis
 status: active
 created: 2026-06-27
-updated: 2026-06-27
+updated: 2026-06-28
 sources:
   - "20 - Notas enlazadas/Fuentes/2026-06-27-engram-cloud-contexto-compartido-agentes.md"
-  - "20 - Notas enlazadas/Conceptos/contexto-persistente-para-agentes.md"
+  - "20 - Notas enlazadas/Conceptos/Herramientas agenticas/contexto-persistente-para-agentes.md"
   - "raw/sources/llm-wiki.md"
 tags: [ia, agentes, memoria, obsidian, mcp]
 review_after: 2026-09-27

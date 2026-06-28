@@ -3,7 +3,7 @@ title: "Indice operativo"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-27
+updated: 2026-06-28
 sources: []
 tags: [sistema, indice, gobierno]
 review_after: 2026-09-27
@@ -40,8 +40,12 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 - [Arquitectura de seguridad MySQL](../20 - Notas enlazadas/Conceptos/arquitectura-de-seguridad-mysql.md): concepto reutilizable derivado del white paper.
 - [Checklist de seguridad MySQL](../20 - Notas enlazadas/Procesos/checklist-seguridad-mysql.md): proceso preliminar de revision tecnica basado en la fuente.
 - [Engram Cloud y contexto compartido entre agentes](../20 - Notas enlazadas/Fuentes/2026-06-27-engram-cloud-contexto-compartido-agentes.md): fuente sobre memoria persistente local-first para agentes.
-- [Contexto persistente para agentes](../20 - Notas enlazadas/Conceptos/contexto-persistente-para-agentes.md): concepto para diferenciar memoria canonica, operativa y acceso por MCP.
+- [Contexto persistente para agentes](../20 - Notas enlazadas/Conceptos/Herramientas agenticas/contexto-persistente-para-agentes.md): concepto para diferenciar memoria canonica, operativa y acceso por MCP.
 - [Opciones de integracion de contexto persistente para agentes](../20 - Notas enlazadas/Analisis/2026-06-27-opciones-integracion-contexto-persistente-agentes.md): analisis de opciones y recomendacion incremental.
+- [MCP desde cero](../20 - Notas enlazadas/Fuentes/2026-06-28-mcp-desde-cero.md): fuente amplia sobre arquitectura, primitivos, conexion e implementacion de servidores MCP.
+- [Model Context Protocol (MCP)](../20 - Notas enlazadas/Conceptos/Herramientas agenticas/model-context-protocol-mcp.md): concepto base sobre MCP como capa de herramientas para agentes.
+- [Herramientas MCP para desarrollo](../20 - Notas enlazadas/Conceptos/Herramientas agenticas/herramientas-mcp-para-desarrollo.md): taxonomia practica de conectores utiles en desarrollo asistido por IA.
+- [Seguridad y gobierno de MCP](../20 - Notas enlazadas/Conceptos/Herramientas agenticas/seguridad-y-gobierno-de-mcp.md): criterios de permisos, trazabilidad y cautelas en entornos sensibles.
 
 ## Carpetas existentes
 

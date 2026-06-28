@@ -3,7 +3,7 @@ title: "Conceptos"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-27
+updated: 2026-06-28
 sources: []
 tags: [conceptos, conocimiento]
 review_after:
@@ -21,3 +21,6 @@ Una buena nota conceptual debe responder:
 - De que fuentes o experiencias procede.
 - Con que otras notas se relaciona.
 
+## Subcarpetas tematicas
+
+- [[Herramientas agenticas/README|Herramientas agenticas]]: agentes de IA, MCP, memoria, integraciones, herramientas externas y gobierno de automatizaciones agenticas.

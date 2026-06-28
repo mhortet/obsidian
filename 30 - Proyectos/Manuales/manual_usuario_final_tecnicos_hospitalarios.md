@@ -1,12 +1,10 @@
-# Manual de usuario final para tecnicos hospitalarios
 
-Fecha de revision: 27/06/2026  
-Proyecto: Qontrolmed (`maxgesth`)  
-Perfil destinatario: tecnicos hospitalarios no informaticos
+
+
 
 ## 1. Objetivo de este manual
 
-Este manual explica el uso diario de la aplicacion desde el punto de vista del tecnico que trabaja con compras, revisiones de quirofano y mantenimiento preventivo.
+Este manual explica el uso diario de la aplicación desde el punto de vista del tecnico que trabaja con compras, revisiones de quirofano y mantenimiento preventivo.
 
 No es un manual informatico. La idea es que sirva para trabajar con seguridad, entender el orden correcto de cada tarea y saber donde quedan guardados los resultados.
 
@@ -36,12 +34,12 @@ El trabajo normal suele seguir este orden:
 
 La portada inicial actua como selector de area. Cada tarjeta abre una ventana de trabajo independiente:
 
-| Entrada | Uso principal | Perfil habitual |
-| --- | --- | --- |
-| `Gestion` | Compras, maestros, historicos, usuarios, roles y auditoria segun permisos. | Administracion, responsables de servicio, soporte autorizado. |
-| `Quirofanos` | Informes mensuales, libro de quirofano, trabajo con Android y catalogos del modulo. | Tecnicos de quirofano, responsables de validacion, soporte autorizado. |
-| `Preventivos` | Informes preventivos, campanas, tablet, plantillas y puntos de control. | Tecnicos de electromedicina, coordinacion de preventivos, soporte autorizado. |
-| `Salir` | Cierra la aplicacion y libera la conexion de trabajo. | Todos los usuarios. |
+| Entrada       | Uso principal                                                                       | Perfil habitual                                                               |
+| ------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `Gestion`     | Maestros, historicos, usuarios, roles y auditoria segun permisos.                   | Administracion, responsables de servicio, soporte autorizado.                 |
+| `Quirofanos`  | Informes mensuales, libro de quirofano, trabajo con Android y catalogos del modulo. | Tecnicos de quirofano, responsables de validacion, soporte autorizado.        |
+| `Preventivos` | Informes preventivos, campanas, tablet, plantillas y puntos de control.             | Tecnicos de electromedicina, coordinacion de preventivos, soporte autorizado. |
+| `Salir`       | Cierra la aplicacion y libera la conexion de trabajo.                               | Todos los usuarios.                                                           |
 
 La regla operativa es sencilla: cada usuario debe entrar con su cuenta nominal y trabajar solo en las opciones visibles para su perfil. No se recomienda compartir usuarios porque se pierde trazabilidad de tecnico, centro y auditoria.
 
@@ -51,13 +49,13 @@ Este mapa resume las entradas que puede mostrar la aplicacion. La visibilidad re
 
 ### `Gestion`
 
-| Bloque | Entradas | Uso |
-| --- | --- | --- |
-| `Maestros` | `Equipos`, `Centros` | Consulta y mantenimiento de datos base usados por compras y trabajos tecnicos. |
-| `Seguridad` | `Roles`, `Usuarios`, `Auditoria` | Alta de usuarios, asignacion de permisos y revision de eventos relevantes. |
-| `Operativa` | `Compras`, `Estadisticas`, `Proveedores`, `Repuestos`, `Marcas`, `Tipos trabajo` | Registro de compras, consulta economica y mantenimiento de catalogos operativos. |
-| `Importacion` | `Historicos Excel`, `Importar PDF` | Carga de historicos. `Importar PDF` aparece como opcion en construccion y no debe usarse como flujo normal. |
-| Pie | `Cerrar` | Cierra la ventana del modulo y vuelve a la portada. |
+| Bloque        | Entradas                                                              | Uso                                                                                                         |
+| ------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `Maestros`    | `Equipos`, `Centros`                                                  | Consulta y mantenimiento de datos base usados por compras y trabajos tecnicos.                              |
+| `Seguridad`   | `Roles`, `Usuarios`, `Auditoria`                                      | Alta de usuarios, asignacion de permisos y revision de eventos relevantes.                                  |
+| `Operativa`   | `Estadisticas`, `Proveedores`, `Repuestos`, `Marcas`, `Tipos trabajo` | Registro de compras, consulta economica y mantenimiento de catalogos operativos.                            |
+| `Importacion` | `Historicos Excel`, `Importar PDF`                                    | Carga de historicos. `Importar PDF` aparece como opcion en construccion y no debe usarse como flujo normal. |
+| Pie           | `Cerrar`                                                              | Cierra la ventana del modulo y vuelve a la portada.                                                         |
 
 ### `Quirofanos`
 
@@ -99,7 +97,7 @@ El modulo visible en la portada se llama `Gestion`. Dentro de el, la entrada `Co
 - sacar un Excel de peticion de presupuesto,
 - consultar historicos y datos economicos.
 
-![Menu de Gestion](capturas/compras_menu.png)
+![[compras_menu.png]]
 
 Figura 1. Pantalla de entrada al modulo Gestion, con acceso a compras, maestros, seguridad e importaciones segun permisos.
 
@@ -172,21 +170,21 @@ Ejemplo 1:
 
 - Fecha: `11/05/2026`
 - OT: `1098485`
-- Hospital: `Hospital U. San Agustin`
+- Hospital: `Centro`
 - Equipo: `MUESTREADOR DE AIRE`
 - Marca y modelo: `VWR SUPER 360`
-- Repuesto/servicio: `CALIBRACION STANDARD MUESTREADOR DE AIRE SUPER 360 SN 24-D-20761`
-- Proveedor: `Laborat`
-- Importe: `831 EUR`
+- Repuesto/servicio: `CALIBRACION STANDARD MUESTREADOR DE AIRE SUPER 360 
+- Proveedor: `Laboratorio Calibración`
+- Importe: `XXX EUR`
 - Tipo de trabajo: `Intervencion casa Externa`
 
 Ejemplo 2:
 
 - Fecha: `07/05/2026`
-- OT: `89961`
+- OT: `88967`
 - Equipo: `CAMILLA ELECTRICA`
 - Repuesto: `Bateria HEYCAR AGM 12V 1.2Ah`
-- Proveedor: `BATSOL`
+- Proveedor: Proveedor
 - Cantidad: `2`
 
 ## 4.6 Botones y entradas utiles
@@ -309,7 +307,7 @@ Los intercambios se guardan en:
 
 Flujo:
 
-1. Elegir el ano.
+1. Elegir el año.
 2. Elegir el ultimo mes que debe incluirse.
 3. Seleccionar todos los quirofanos o solo algunos.
 4. Pulsar `Generar libro`.
@@ -326,9 +324,9 @@ Figura 5. Mantenimiento de equipos de medida y certificado.
 
 En la instalacion revisada hay, por ejemplo:
 
-- `ALTHAE 34947`
-- marca `CHAUVIN ARNAUX`
-- modelo `C.A 6116`
+- `12345`
+- marca `MARCA`
+- modelo `MODELO`
 
 Antes de usar un equipo de medida conviene revisar:
 
@@ -403,9 +401,9 @@ En la instalacion revisada existen, entre otras:
 
 Esto significa que antes de crear muchos informes conviene comprobar que la plantilla correcta existe y esta activa.
 
-## 6.5 Acciones de campana
+## 6.5 Acciones de campaña
 
-Desde `Imprimir multiples` se anaden dos acciones para acelerar campanas completas:
+Desde `Imprimir multiples` se añaden dos acciones para acelerar campanas completas:
 
 - `Cargar equipos de medida`: permite elegir una tipologia concreta y asignar uno o varios equipos de medida a todos los informes abiertos de esa tipologia en la campana activa.
 - `Cerrar correctos sin comentarios`: cierra en bloque solo los informes abiertos que estan completos, tienen todos los controles en `B` o `NA`, no tienen incidencias, no tienen observaciones/comentarios y ya tienen equipos de medida cargados.
