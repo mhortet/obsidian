@@ -6,7 +6,7 @@ created: 2026-06-27
 updated: 2026-06-28
 sources:
   - "20 - Notas enlazadas/Fuentes/2026-06-27-engram-cloud-contexto-compartido-agentes.md"
-  - "20 - Notas enlazadas/Conceptos/Herramientas agenticas/contexto-persistente-para-agentes.md"
+  - "20 - Notas enlazadas/Conceptos/ia/contexto-persistente-para-agentes.md"
   - "raw/sources/llm-wiki.md"
 tags: [ia, agentes, memoria, obsidian, mcp]
 review_after: 2026-09-27

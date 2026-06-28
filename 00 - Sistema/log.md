@@ -77,3 +77,19 @@ Tipos recomendados: `bootstrap`, `ingest`, `query`, `lint`, `decision`, `mainten
 - Se crea `semgrep-mcp.md` normalizando la transcripcion "Sengrab" como Semgrep MCP, con estado de vigencia, proceso de uso y criterios de seguridad.
 - Se usan fuentes oficiales actuales: repositorios y documentacion de Context7 y Semgrep.
 - Se actualiza el README de la carpeta tematica.
+
+## [2026-06-28] ingest | MCP vs API
+
+- Se crea `20 - Notas enlazadas/Conceptos/mcp-vs-api.md`.
+- Se resume la conversacion conceptual sobre diferencias entre MCP y API.
+- Se deja como concepto transversal fuera de `Herramientas agenticas`, enlazando a las notas tecnicas de MCP.
+
+## [2026-06-28] maintenance | Segmentacion de conceptos
+
+- Se reorganiza `20 - Notas enlazadas/Conceptos/` en carpetas tematicas: `conocimiento/`, `gobierno/`, `ia/`, `ingenieria/`, `movilidad-electrica/` y `programación/`.
+- Se mueve el contenido de `Herramientas agenticas/` a `ia/`, `programación/` o `gobierno/` segun su centro de gravedad.
+- Se mueve `microscopia-de-fluorescencia.md` a `ingenieria/`.
+- Se mueve `arquitectura-de-seguridad-mysql.md` a `gobierno/`.
+- Se mueve `mcp-vs-api.md` a `ia/`.
+- Se actualizan `AGENTS.md`, `00 - Sistema/Indice.md` y `20 - Notas enlazadas/Conceptos/README.md`.
+- Se define que `30 - Proyectos/`, `32 - programación/` y las areas `40 - Hospital/`, `45 - coches electricos/` y `55 - Ayuntamiento/` quedan como espacios de trabajo vivo que pueden promocionar conocimiento maduro a conceptos.

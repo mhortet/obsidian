@@ -88,4 +88,3 @@ En sistemas con datos sanitarios, identificadores personales, trazabilidad asist
 
 - Fuente principal: [[2026-06-27-mysql-reference-architectures-security]].
 - Proceso operativo: [[checklist-seguridad-mysql]].
-

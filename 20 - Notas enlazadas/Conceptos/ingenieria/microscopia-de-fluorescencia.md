@@ -51,4 +51,3 @@ En biologia celular se utiliza para identificar proteinas, acidos nucleicos u ot
 
 - Fuente principal: [[2026-06-27-microscopio-fluorescencia]].
 - Areas relacionadas: laboratorio, biologia celular, equipamiento tecnico-sanitario.
-

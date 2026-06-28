@@ -7,7 +7,7 @@ updated: 2026-06-28
 sources:
   - "20 - Notas enlazadas/Fuentes/2026-06-28-mcp-desde-cero.md"
   - "20 - Notas enlazadas/Fuentes/2026-06-27-engram-cloud-contexto-compartido-agentes.md"
-  - "20 - Notas enlazadas/Conceptos/Herramientas agenticas/contexto-persistente-para-agentes.md"
+  - "20 - Notas enlazadas/Conceptos/ia/contexto-persistente-para-agentes.md"
 tags: [ia, agentes, mcp, obsidian, conocimiento]
 review_after: 2026-09-28
 ---
