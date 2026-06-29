@@ -3,7 +3,7 @@ title: "Indice operativo"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-28
+updated: 2026-06-29
 sources: []
 tags: [sistema, indice, gobierno]
 review_after: 2026-09-27
@@ -61,6 +61,10 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 - [50 - Recursos](../50 - Recursos/): plantillas, adjuntos y esquemas.
 - [55 - Ayuntamiento](../55 - Ayuntamiento/): tramites y documentacion municipal.
 - [raw](../raw/README.md): fuentes crudas y capturas originales.
+
+## Proyectos vivos
+
+- [Aprendizaje de programacion con Fortnite](../30 - Proyectos/Aprendizaje programacion con Fortnite/README.md): apunte para retomar en septiembre de 2026 como posible puerta de entrada familiar a la programacion mediante Fortnite Creative, UEFN y Verse.
 
 ## Prioridad de implantacion
 

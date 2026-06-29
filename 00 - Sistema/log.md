@@ -3,7 +3,7 @@ title: "Log"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-28
+updated: 2026-06-29
 sources: []
 tags: [sistema, log]
 review_after:
@@ -107,3 +107,16 @@ Tipos recomendados: `bootstrap`, `ingest`, `query`, `lint`, `decision`, `mainten
 - Se conservan los documentos absorbidos por trazabilidad y se sacan de la raiz para reducir ruido.
 - Se mantienen como documentos vivos de raiz `security_delivery_playbook.md`, `estado_continuidad.md`, `plan_seguridad_consistencia.md` y `cola_triaje_campo.md`.
 - Se restaura la ruta estructural `55 - Ayuntamiento/` con un README minimo para resolver el enlace del indice.
+
+## [2026-06-29] query | Aprendizaje de programacion con Fortnite
+
+- Se crea `30 - Proyectos/Aprendizaje programacion con Fortnite/README.md` como apunte de proyecto para retomar a partir de septiembre de 2026.
+- Se resume el ecosistema Fortnite Creative, UEFN y Verse desde un enfoque educativo y no comercial.
+- Se incorpora una explicacion basica de NPCs como personajes no jugadores controlados por reglas del sistema.
+- Se actualiza `00 - Sistema/Indice.md` con el enlace al proyecto vivo.
+
+## [2026-06-29] maintenance | Concepto NPC
+
+- Se promociona la explicacion de NPC a `20 - Notas enlazadas/Conceptos/conocimiento/npc-personaje-no-jugador.md`.
+- Se actualiza `30 - Proyectos/Aprendizaje programacion con Fortnite/README.md` para enlazar al concepto en vez de contener la definicion completa.
+- Se actualiza `20 - Notas enlazadas/Conceptos/conocimiento/README.md` con el nuevo concepto.
