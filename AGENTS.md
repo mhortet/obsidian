@@ -33,6 +33,7 @@ La boveda combina el archivo existente con una capa nueva de conocimiento curado
 
 - `conocimiento/`: conocimiento general no relacionado con las categorias existentes.
 - `gobierno/`: gestion, orden, seguridad, normativa, calidad, permisos y reglas que gobiernan proyectos o sistemas.
+- `humanidades/`: filosofia, etica, cultura, politica, educacion, sentido del trabajo y condicion humana.
 - `ia/`: inteligencia artificial de forma generica, agentes, memoria, protocolos y herramientas agenticas no centradas especificamente en desarrollo.
 - `ingenieria/`: ingenieria no informatica, tecnologia sanitaria, equipamiento, laboratorio y seguridad tecnica.
 - `movilidad-electrica/`: vehiculos electricos, bateria, carga, eficiencia e infraestructura.

@@ -3,7 +3,7 @@ title: "Fuentes"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-28
+updated: 2026-07-01
 sources: []
 tags: [fuentes, conocimiento]
 review_after:
@@ -17,6 +17,7 @@ Regla: la fuente original se conserva en `raw/sources/`; esta carpeta contiene e
 
 ## Ingestas recientes
 
+- [[2026-07-01-entrevista-geoffrey-hinton-monstruo-ia]]
 - [[2026-06-28-mcp-explicado-productividad]]
 - [[2026-06-28-mcp-desde-cero]]
 - [[2026-06-28-mcp-herramientas-desarrollo]]

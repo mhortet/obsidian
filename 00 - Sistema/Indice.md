@@ -3,7 +3,7 @@ title: "Indice operativo"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-29
+updated: 2026-07-01
 sources: []
 tags: [sistema, indice, gobierno]
 review_after: 2026-09-27
@@ -26,7 +26,7 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 ## Capa curada
 
 - [20 - Notas enlazadas/Fuentes](../20 - Notas enlazadas/Fuentes/README.md): fichas de fuentes capturadas o importadas.
-- [20 - Notas enlazadas/Conceptos](../20 - Notas enlazadas/Conceptos/README.md): ideas reutilizables segmentadas por conocimiento, gobierno, IA, ingenieria, movilidad electrica y programacion.
+- [20 - Notas enlazadas/Conceptos](../20 - Notas enlazadas/Conceptos/README.md): ideas reutilizables segmentadas por conocimiento, gobierno, humanidades, IA, ingenieria, movilidad electrica y programacion.
 - [20 - Notas enlazadas/Entidades](../20 - Notas enlazadas/Entidades/README.md): proveedores, herramientas, equipos, organizaciones, sistemas o personas.
 - [20 - Notas enlazadas/Sintesis](../20 - Notas enlazadas/Sintesis/README.md): vistas transversales.
 - [20 - Notas enlazadas/Analisis](../20 - Notas enlazadas/Analisis/README.md): respuestas o estudios archivados.
@@ -46,6 +46,9 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 - [Model Context Protocol (MCP)](../20 - Notas enlazadas/Conceptos/ia/model-context-protocol-mcp.md): concepto base sobre MCP como capa de herramientas para agentes.
 - [Herramientas MCP para desarrollo](../20 - Notas enlazadas/Conceptos/programación/herramientas-mcp-para-desarrollo.md): taxonomia practica de conectores utiles en desarrollo asistido por IA.
 - [Seguridad y gobierno de MCP](../20 - Notas enlazadas/Conceptos/gobierno/seguridad-y-gobierno-de-mcp.md): criterios de permisos, trazabilidad y cautelas en entornos sensibles.
+- [Entrevista con Geoffrey Hinton: He creado un monstruo](../20 - Notas enlazadas/Fuentes/2026-07-01-entrevista-geoffrey-hinton-monstruo-ia.md): fuente sobre IA, riesgo, conciencia, humanismo, trabajo y sociedad.
+- [Humanidades en la entrevista a Geoffrey Hinton](../20 - Notas enlazadas/Analisis/2026-07-01-humanidades-entrevista-hinton.md): analisis que justifica abrir la seccion de Humanidades.
+- [Humanismo ante la superinteligencia](../20 - Notas enlazadas/Conceptos/humanidades/humanismo-ante-superinteligencia.md): concepto semilla sobre valor de lo humano ante inteligencias superiores.
 
 ## Carpetas existentes
 

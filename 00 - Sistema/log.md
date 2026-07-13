@@ -3,7 +3,7 @@ title: "Log"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-29
+updated: 2026-07-01
 sources: []
 tags: [sistema, log]
 review_after:
@@ -120,3 +120,13 @@ Tipos recomendados: `bootstrap`, `ingest`, `query`, `lint`, `decision`, `mainten
 - Se promociona la explicacion de NPC a `20 - Notas enlazadas/Conceptos/conocimiento/npc-personaje-no-jugador.md`.
 - Se actualiza `30 - Proyectos/Aprendizaje programacion con Fortnite/README.md` para enlazar al concepto en vez de contener la definicion completa.
 - Se actualiza `20 - Notas enlazadas/Conceptos/conocimiento/README.md` con el nuevo concepto.
+
+## [2026-07-01] ingest | Entrevista con Geoffrey Hinton y apertura de Humanidades
+
+- Se procesa la fuente `raw/sources/“He creado un MONSTRUO”. Entrevista con Geoff Hinton, el PADRE de la IA.md`.
+- Se crea la ficha `20 - Notas enlazadas/Fuentes/2026-07-01-entrevista-geoffrey-hinton-monstruo-ia.md`.
+- Se crea el analisis `20 - Notas enlazadas/Analisis/2026-07-01-humanidades-entrevista-hinton.md`.
+- Se abre `20 - Notas enlazadas/Conceptos/humanidades/` como seccion semilla para filosofia, etica, cultura, educacion, politica, sentido del trabajo y condicion humana.
+- Se crean los conceptos `humanismo-ante-superinteligencia.md`, `experiencia-subjetiva-en-ia.md` e `ia-maternal-y-etica-del-cuidado.md`.
+- Se actualizan indice, taxonomia, README de fuentes, README de conceptos, README de analisis y registro de fuentes.
+- La transcripcion cruda se conserva intacta y se marca como fuente con problemas de codificacion; las predicciones y cifras se tratan como opinion experta hasta verificacion externa.

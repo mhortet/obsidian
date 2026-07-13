@@ -8,7 +8,7 @@ Autor:
 Relacionado:
 ---
 ## Resumen
-Descripción del error 1 - 319
+Descripción del error 1 - 319 en inyector de contraste de Bayer
 ## Descripción
 
 Se trata de un bug de la última versión instalada, de momento la única solución es desconectar tanto inyector como consola de alimentación y reiniciarlos.

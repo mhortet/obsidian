@@ -3,7 +3,7 @@ title: "Conceptos"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-28
+updated: 2026-07-01
 sources: []
 tags: [conceptos, conocimiento]
 review_after:
@@ -25,6 +25,7 @@ Una buena nota conceptual debe responder:
 
 - [[conocimiento/README|Conocimiento]]: conocimiento general no relacionado con las categorias existentes.
 - [[gobierno/README|Gobierno]]: gestion, orden, seguridad, normativa, calidad, permisos y reglas que gobiernan proyectos o sistemas.
+- [[humanidades/README|Humanidades]]: filosofia, etica, cultura, politica, educacion, sentido del trabajo y condicion humana.
 - [[ia/README|IA]]: inteligencia artificial de forma generica, agentes, memoria, protocolos y herramientas agenticas no especificamente centradas en desarrollo.
 - [[ingenieria/README|Ingenieria]]: ingenieria no informatica, tecnologia sanitaria, equipamiento, laboratorio y seguridad tecnica.
 - [[movilidad-electrica/README|Movilidad electrica]]: vehiculos electricos, bateria, carga, eficiencia e infraestructura.

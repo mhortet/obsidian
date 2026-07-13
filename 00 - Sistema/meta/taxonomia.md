@@ -3,7 +3,7 @@ title: "Taxonomia"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-06-27
+updated: 2026-07-01
 sources: []
 tags: [sistema, taxonomia]
 review_after: 2026-09-27
@@ -36,6 +36,7 @@ review_after: 2026-09-27
 - `programacion`: desarrollo, arquitectura, herramientas, Git, bases de datos.
 - `proyectos`: Qontrolmed y otros trabajos vivos.
 - `ia`: agentes, prompts, modelos, automatizacion, MCP, Codex.
+- `humanidades`: filosofia, etica, cultura, educacion, politica, sentido del trabajo y condicion humana.
 - `movilidad-electrica`: coche electrico, carga, autonomia, viajes.
 - `administracion`: ayuntamiento, tramites y documentacion administrativa.
 - `conocimiento`: Obsidian, LLM Wiki, metodo personal, pedagogia.
@@ -49,4 +50,3 @@ La carpeta no es la verdad completa. La carpeta ayuda a encontrar, pero el valor
 - enlaces entre piezas,
 - sintesis transversales,
 - decisiones fechadas.
-
