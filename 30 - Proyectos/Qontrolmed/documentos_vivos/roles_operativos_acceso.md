@@ -1,3 +1,11 @@
+---
+tags:
+  - app
+  - documentacion
+Creado: 2026-06-15
+Relacionado:
+---
+
 # Roles operativos de acceso
 [[masgesth]]
 Fecha de revision: 2026-06-15
@@ -72,6 +80,14 @@ Regla operativa concreta:
 - solo debe ponerse a `1` durante una ventana controlada de soporte,
   restauracion o validacion de bootstrap;
 - al terminar esa ventana debe devolverse inmediatamente a `0`.
+
+Bloqueo vigente por intentos:
+
+- tras 3 intentos fallidos consecutivos sobre la misma cuenta, el acceso queda
+  bloqueado 5 minutos;
+- este bloqueo temporal se mantiene como primer corte vigente de hardening;
+- por ahora no se abre persistencia adicional entre reinicios mientras no
+  aparezca una necesidad real de piloto o produccion.
 
 Fuera de un bootstrap controlado de soporte o desarrollo:
 

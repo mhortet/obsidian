@@ -1,395 +1,389 @@
+---
+tags:
+  - app
+  - documentacion
+Creado: 2026-07-14
+Relacionado:
+---
+
 # Plan maestro unico de trabajo, seguridad y consistencia
 [[masgesth]]
-Fecha de revision: 2026-06-01
+Fecha de revision: 2026-07-14
 
 ## Objetivo
 
-Este documento pasa a ser la unica guia viva del roadmap de `Qontrolmed`
-(`maxgesth`), coordinando tambien `maxgesth_port` y `maxgestq_mov` cuando una
-tarea toque contrato, importacion/exportacion o criterios compartidos de
-produccion.
+Este documento es la guia viva del roadmap de `Qontrolmed` y coordina los tres
+repositorios actuales:
 
-El objetivo ya no es abrir frentes grandes en todos los modulos a la vez. El
-objetivo es llegar a una salida madura a produccion con criterio unico de
-prioridad, validacion, trazabilidad y continuidad.
+- `maxgesth`: escritorio, datos, seguridad, maestros y documentacion viva.
+- `maxgesth_port`: tablet offline de Preventivos.
+- `maxgestq_mov`: tablet offline de Quirofanos IT.
 
-## Decisiones activas de esta etapa
+El objetivo de etapa es llegar hacia mediados de septiembre con una version
+inicial de produccion controlada. La prioridad ya no es ampliar superficie
+funcional, sino cerrar lo necesario para instalar, operar, auditar, recuperar y
+mantener el sistema con seguridad razonable.
+
+## Decisiones activas
 
 - `Qontrolmed` es el nombre funcional del escritorio.
-- El roadmap vive en `maxgesth`, pero gobierna los tres repos.
-- Preventivos y Quirofanos pasan a estado de operativa bastante cerrada.
-- Preventivos y Quirofanos quedan en mantenimiento correctivo guiado por campo,
-  no como frente principal de ampliacion.
-- La prioridad pasa a endurecimiento transversal, consistencia de datos,
-  maestros, gobierno documental y readiness real de produccion.
-- El diario externo de cada sesion debe guardarse en
-  `D:\trabajo\Proyectos\diario_qontrolmed\sesion_YYYY-MM-DD_HH-mm.md`.
-- Los nombres tecnicos actuales de paquetes, rutas y tablas no se renombraran
-  salvo necesidad clara de produccion o migracion separada.
+- El roadmap vive en `maxgesth` y gobierna los tres repositorios.
+- Las observaciones de `docs/cola_triaje_campo.md` se dan por validas tras
+  prueba de campo y entran en planificacion.
+- Preventivos tablet queda como modulo de campo aceptado; Paquete A
+  (`observaciones` y `NA` cuantitativo) queda validado manualmente el
+  2026-07-12, y Paquete B queda cerrado/tagueado en `maxgesth_port` el
+  2026-07-13.
+- La exportacion movil -> sobremesa por lotes queda aplazada para una revision
+  posterior y no forma parte del corte inicial de septiembre.
+- Quirofanos tablet queda en standby salvo incidencia real o dependencia de
+  contrato.
+- Compras funcionales e Informes/Analitica ampliados pasan a version posterior.
+- `Gestion` se conserva en la version inicial solo para usuarios, roles,
+  seguridad, centros y maestros imprescindibles.
+- La ruta canonica de configuracion queda fijada en `compartido/.env` para
+  desarrollo y `C:\ProgramData\Qontrolmed\config\.env` para el ejecutable.
+- No se renombran nombres tecnicos de paquetes, rutas o tablas salvo migracion
+  separada.
 
-## Estado de las lineas activas
+## Alcance congelado de la primera version
+
+Entran en el corte inicial:
+
+- escritorio `Qontrolmed` como hub operativo;
+- login seguro, usuarios, roles, permisos y auditoria minima;
+- `Gestion` limitada a usuarios, roles, Centros y maestros imprescindibles;
+- Preventivos con Paquete A y Paquete B ya aceptados, manteniendo el contrato
+  tablet-sobremesa vigente;
+- Quirofanos existente, sin ampliacion funcional, salvo correccion bloqueante
+  o de contrato;
+- importaciones, exportaciones y PDF ya necesarios para los circuitos
+  aceptados;
+- instalacion, configuracion, migraciones, backup/restauracion, smoke test y
+  paquete RC de preproduccion.
+
+Quedan fuera del corte inicial:
+
+- exportacion de Preventivos por lotes;
+- Compras operativas y sus informes;
+- Informes/Analitica ampliados;
+- nuevas prestaciones moviles o mejoras ergonomicas sin incidencia real;
+- ampliaciones de identidad visual que no sean necesarias para operar.
+
+Este alcance solo se reabre antes del RC por una incidencia bloqueante, perdida
+de datos, rotura de contrato o requisito externo imprescindible para instalar y
+operar.
+
+## Estado de lineas activas
 
 | Linea | Estado | Prioridad | Lectura operativa |
 | --- | --- | --- | --- |
-| Fase 1. Rebase documental y criterio unico | en curso | alta | Ya es la linea viva actual y debe consolidar entrada a sesion, continuidad y criterio unico de roadmap. |
-| Fase 2. Hardening transversal y readiness | en curso | muy alta | Ya hay primer corte real de roles, permisos, ventana unica y auditoria minima; siguiente paso inmediato: endurecer login/acceso y preparar bootstrap seguro de `superusuario`. |
-| Fase 3. Gestion y maestros | pendiente | alta | Renombrado funcional, equipos de medida y evolucion de `cecos` a Centros. |
-| Fase 4. Trazabilidad y consolidacion de datos | pendiente | alta | Debe apoyarse en la auditoria central y cerrar riesgos de persistencia. |
-| Fase 5. Informes y analitica futura | pendiente | media | Se mantiene como destino arquitectonico, no como frente inmediato. |
-| Fase 6. Mantenimiento correctivo de modulos estables | validado en campo parcial | continua | Preventivos y Quirofanos solo escalan por incidencias reales bloqueantes o altas. |
+| Fase 1. Documentacion viva y criterio unico | en curso | alta | Reordenar documentos para que la entrada de sesion sea breve, actual y sin backlogs competidores. |
+| Fase 2. Hardening y readiness de produccion | en curso | muy alta | Acceso, configuracion local, auditoria, migraciones, backup y preparacion de instalacion. |
+| Fase 3. Maestros minimos de produccion | pendiente | alta | Centros, equipos de medida y datos base necesarios para operar sin deuda critica. |
+| Fase 4. Campo Preventivos validado | validado en campo | alta | Paquete A y Paquete B cerrados; exportacion por lotes aplazada para estabilizacion posterior. |
+| Fase 5. Trazabilidad y recuperacion | pendiente | alta | Consistencia, atomicidad, backup/restauracion y checklist de preproduccion. |
+| Fase 6. Quirofanos movil en standby | standby | media | Mantener contrato y pruebas; no abrir nuevas prestaciones sin evidencia real. |
+| Fase 7. Compras e Informes futuros | standby | baja | Pospone compras operativas, informes directivos y analitica ampliada a version posterior. |
 
-Estados permitidos para mantener esta tabla:
+Estados permitidos:
 
 - `pendiente`
 - `en curso`
-- `bloqueado`
 - `validado en campo`
+- `standby`
+- `bloqueado`
 
 ## Regla de prioridad
 
-Mientras no cambie este documento, el orden por defecto es:
+Orden por defecto hasta septiembre:
 
-1. Fase 2. Hardening transversal y readiness de produccion.
-2. Fase 3. Gestion: saneamiento de maestros y nomenclatura funcional.
-3. Fase 4. Trazabilidad operativa y consolidacion de datos.
-4. Fase 6. Correcciones derivadas de campo en Preventivos y Quirofanos.
-5. Fase 5. Modulo de informes y analitica futura.
+1. Configuracion local, acceso seguro, auditoria y receta de instalacion.
+2. Maestros minimos y migraciones necesarias para produccion controlada.
+3. Observaciones de campo Preventivos con severidad `alta`.
+4. Trazabilidad, backup/restauracion y checklist de preproduccion.
+5. Observaciones Preventivos de severidad `media` que mejoren eficiencia sin
+   comprometer las prioridades anteriores.
+6. Quirofanos movil solo por contrato o incidencia real.
+7. Compras operativas e Informes/Analitica ampliados para version posterior.
 
-Excepcion permitida:
+Excepcion:
 
 - una incidencia `bloqueante` o `alta` detectada en campo puede romper el orden
-  anterior si impide operativa real o compromete persistencia, contrato de
-  intercambio o salida a produccion.
+  si impide terminar trabajo real, compromete persistencia o rompe el contrato
+  tablet-sobremesa.
 
-## Tabla minima de arranque de sesion
+## Arranque minimo de sesion
 
-La primera propuesta de cada sesion debe dejar, como minimo:
+La primera propuesta de cada sesion debe dejar:
 
 | Campo | Contenido obligatorio |
 | --- | --- |
-| Tarea principal | frente elegido del roadmap y objetivo concreto |
-| Tarea alternativa | trabajo ya preparado para saltar si hay bloqueo |
-| Tests exigibles | comandos reales de cierre para esa tarea |
-| Validacion manual esperada | prueba funcional o visual pendiente, si aplica |
-| Dependencias | repos, modulos, migraciones o documentos que condicionan la tarea |
+| Tarea principal | Frente elegido y objetivo concreto. |
+| Tarea alternativa | Trabajo preparado si aparece bloqueo. |
+| Tests exigibles | Comandos reales si hay codigo; coherencia documental si solo hay texto. |
+| Validacion manual | Prueba funcional o visual pendiente, si aplica. |
+| Dependencias | Repos, contratos, migraciones, entorno o decision externa. |
 
-Si la sesion es solo documental:
+Si la sesion es documental:
 
-- verificar rutas, comandos, referencias cruzadas y coherencia entre playbook,
-  continuidad y roadmap;
-- no hace falta test de codigo si no cambia ninguna regla funcional.
+- verificar fechas, rutas, nombres de modulo y referencias cruzadas;
+- no duplicar backlog;
+- mover detalle historico fuera de la entrada viva;
+- comprobar que `estado_continuidad`, `plan` y `playbook` no se contradicen.
 
-## Regla cuando falte informacion
-
-- Si la informacion que falta no es bloqueante, se solicita con el mayor
-  detalle posible y la sesion continua con otra tarea ya preparada del roadmap.
-- Si la informacion es bloqueante para la linea activa, se solicita y esa linea
-  se pausa hasta respuesta; la sesion debe saltar a otra tarea lista.
-- Las dudas abiertas no deben quedarse solo en el chat: deben anotarse en
-  `docs/estado_continuidad.md` y en el diario externo de la sesion.
-
-## Fase 1. Rebase documental y criterio unico de produccion
+## Fase 1. Documentacion viva y criterio unico
 
 ### Objetivo
 
-Consolidar una unica fuente de verdad para continuidad, prioridad, rutina de
-entrada y criterio de cierre.
+Reducir ruido de reentrada y dejar una unica fuente de verdad para continuidad,
+prioridad, criterios de cierre y lectura inicial.
 
 ### Criterio de terminado
 
-- `docs/plan_seguridad_consistencia.md` es la guia viva unica del roadmap.
-- `docs/estado_continuidad.md` refleja tarea recomendada, riesgos y pendientes
-  de informacion reales.
-- `docs/security_delivery_playbook.md` refleja el ritual de sesion vigente.
-- `docs/mapa_documental_proyecto.md` deja clara la fuente de verdad y evita
-  competir con documentos antiguos.
-- `docs/Tareas Pendientes.md` deja de funcionar como backlog paralelo.
-- Existe parte externo de sesion fuera del repo en cada bloque de trabajo
-  relevante.
+- `docs/estado_continuidad.md` funciona como foto ejecutiva breve.
+- `docs/plan_seguridad_consistencia.md` contiene el roadmap y las prioridades.
+- `docs/security_delivery_playbook.md` contiene la rutina de trabajo.
+- `docs/mapa_documental_proyecto.md` clasifica fuentes vivas, historicas y de
+  apoyo.
+- `docs/Tareas Pendientes.md` no actua como backlog paralelo.
+- Las notas locales de `maxgesth_port` y `maxgestq_mov` apuntan al roadmap
+  canonico.
 
-### Acciones activas
-
-- mantener esta tabla de estados actualizada;
-- reclasificar Preventivos y Quirofanos como modulos estables con incidencias
-  de campo;
-- mantener un apartado fijo de `Pendientes de informacion`;
-- registrar en cada sesion objetivo, cambios, tests, validacion pendiente y
-  notas para manual tecnico/usuario.
-
-## Fase 2. Hardening transversal y readiness de produccion
+## Fase 2. Hardening y readiness de produccion
 
 ### Objetivo
 
-Endurecer el escritorio para un piloto o produccion controlada sin depender de
-criterios provisionales o atajos de desarrollo.
+Preparar `Qontrolmed` para piloto o produccion controlada sin atajos de
+desarrollo.
 
-### Alcance objetivo
+### Alcance
 
-- revisar login y acceso para eliminar bypass no aceptable en produccion;
-- exigir contrasenas para usuarios productivos;
-- revisar mensajes, intentos fallidos y sesion actual;
-- implantar permisos por roles, no por checklist de permisos por usuario;
-- roles iniciales recomendados:
-  - `Administrador`;
-  - `Tecnico`;
-  - `Administrativo`;
-  - `Consulta` si aporta valor real;
-- posponer overrides por usuario salvo caso justificado;
-- disenar e implantar auditoria minima central;
-- sustituir autoajustes de schema en runtime por migraciones SQL documentadas
-  cuando se detecten;
-- definir la linea de configuracion e instalacion para cliente, separada de la
-  implementacion tecnica del mecanismo final;
-- mantener `maxgesth_port` y `maxgestq_mov` en compatibilidad contractual salvo
-  que una decision transversal exija tocar esos repos.
+- ruta canonica de configuracion local y `.env`;
+- separacion entre variables normales y variables de soporte;
+- receta de bootstrap seguro;
+- roles iniciales y permisos efectivos;
+- auditoria minima de eventos sensibles;
+- migraciones SQL documentadas en lugar de autoajustes silenciosos;
+- politica de secretos, exports, runtime y artefactos generados;
+- checklist inicial de instalacion, backup y restauracion.
 
-### Avance confirmado a 2026-06-14
+### Avance confirmado
 
-- ya existe primer corte operativo de `usuario -> rol -> permisos` en
-  `Gestion`;
-- la visibilidad y el acceso funcional por permiso quedan extendidos en primer
-  corte a `Preventivos` y `Quirofanos`;
-- la portada principal filtra modulos segun permisos efectivos del usuario;
-- queda implantada una regla transversal de ventana unica para portada, modulos
-  principales y pantallas no modales clave;
-- la validacion manual base con perfiles reales ya queda superada en smoke test
-  dirigido;
-- no aparece bloqueo funcional en permisos, foco ni duplicidad de ventanas;
-- el remate pequeno de UX sobre `Modo lectura` visible en pantallas editables
-  abiertas sin permiso de modificacion ya queda resuelto;
-- con el primer corte de `auditoria` ya operativo, el siguiente paso natural de
-  la fase pasa a ser endurecer `login/acceso`, contrasenas e intentos
-  fallidos, dejando preparado el bootstrap seguro de `superusuario`.
+- primer corte de `usuario -> rol -> permisos`;
+- visibilidad por permisos en portada, Preventivos y Quirofanos;
+- ventana unica para portada, modulos y pantallas no modales clave;
+- bootstrap guiado de `superusuario` validado;
+- bloqueo temporal de 3 intentos y 5 minutos;
+- auditoria base de login/acceso e import/export;
+- consulta y exportacion CSV de auditoria como base inicial.
+- ruta canonica de `.env` alineada: `compartido/.env` en desarrollo y
+  `C:\ProgramData\Qontrolmed\config\.env` en ejecutable congelado;
+- modelo de despliegue elegido para una organizacion con varios usuarios:
+  PyInstaller `onedir`, binarios protegidos en `Program Files` y datos
+  compartidos en `ProgramData`;
+- generador de RC versionada con manifiesto SHA-256 y rechazo de `.env` real;
+- RC tecnica `2026.07.14-rc3` generada y sometida a prueba de arranque, pendiente
+  de instalacion y smoke test funcional contra entorno controlado.
 
-### Eventos minimos de auditoria
+### Pendiente inmediato
 
-- creacion de informe;
-- exportacion a tablet;
-- importacion desde tablet;
-- cierre o firma;
-- generacion de PDF;
-- impresion;
-- reimpresion;
-- cambios sensibles de configuracion;
-- altas, bajas y cambios de permisos de usuarios.
+- retirar o ignorar operativamente cualquier `src/compartido/.env` legado;
+- validar instalacion y permisos de la RC con usuarios Windows reales;
+- resolver firma digital si la politica del centro la exige;
+- ensayar backup/restauracion antes de hablar de produccion.
 
-### Campos minimos de auditoria
-
-- fecha y hora;
-- usuario;
-- modulo;
-- entidad afectada;
-- id de entidad;
-- accion;
-- resultado;
-- detalle resumido.
-
-## Fase 3. Gestion: renombrado funcional y saneamiento de maestros
+## Fase 3. Maestros minimos de produccion
 
 ### Objetivo
 
-Sacar al modulo maestro de su estado hibrido actual y dejar una base funcional
-clara para operativa diaria, mantenimiento y futura produccion.
+Dejar datos base suficientes para operar sin inconsistencias graves.
 
-### Alcance objetivo
+### Alcance inicial
 
-- renombrar visiblemente `Compras` a `Gestion` en menu principal, ventanas y
-  textos de usuario;
-- mantener nombres tecnicos de paquete, tabla y ruta mientras no haya migracion
-  tecnica separada;
-- dejar esa dualidad documentada en mantenimiento;
-- completar CRUD maestro de equipos de medida como fuente unica comun;
-- integrar acceso a equipos de medida desde Gestion y desde los flujos que lo
-  consumen;
-- revisar duplicidades entre Preventivos y Quirofanos para que la regla de
-  negocio quede centralizada;
-- ampliar `CECOS` a `Centros` en UI y documentacion funcional, manteniendo la
-  tabla tecnica `cecos` por ahora.
+- `Centros` como nombre funcional apoyado por la tabla tecnica `cecos`;
+- campos de contacto y mantenimiento necesarios;
+- equipos de medida como maestro comun cuando proceda;
+- reglas de activacion/desactivacion;
+- migraciones SQL explicitas;
+- revision de dependencias en usuarios, Preventivos, Quirofanos y PDF.
 
-### Campos minimos previstos para Centros
+### Fuera de alcance
 
-- direccion;
-- codigo postal;
-- ciudad;
-- persona de contacto;
-- telefono principal;
-- telefono alternativo;
-- correo electronico;
-- contacto de mantenimiento;
-- telefono de mantenimiento;
-- correo de mantenimiento;
-- observaciones si aporta valor operativo.
+- evolucion completa de Compras;
+- informes de compra;
+- analitica directiva o cuadros ampliados.
 
-### Criterio de implementacion
-
-- migracion SQL explicita;
-- adaptacion de servicios y formularios;
-- revision de dependencias en usuarios, compras, preventivos y PDFs donde se
-  muestre o consuma el centro;
-- anotacion clara en mantenimiento de que `Centro` es nombre funcional y
-  `cecos` sigue siendo nombre tecnico legado.
-
-## Fase 4. Trazabilidad operativa y consolidacion de datos
+## Fase 4. Campo Preventivos validado
 
 ### Objetivo
 
-Reducir riesgo de inconsistencia, perdida de contexto y estados parciales en
-los flujos operativos del escritorio.
+Incorporar las observaciones reales de campo sin abrir una nueva fase funcional
+descontrolada.
 
-### Alcance objetivo
+### Prioridad alta
 
-- reutilizar la auditoria central en Preventivos y Quirofanos;
-- revisar persistencia y atomicidad en operaciones cabecera-detalle;
-- revisar flujos de mayor riesgo:
-  - creacion y edicion de informes;
-  - cierres;
-  - import/export;
-  - regeneracion de PDFs;
-  - libro de quirofano;
-  - operaciones masivas;
-- introducir checklist minima de backup, restauracion y recuperacion antes de
-  considerar piloto;
-- definir politica de rutas runtime y artefactos para cliente final;
-- revisar secretos, logos de cliente y material sensible para que no dependan
-  del repo como si fueran fuente estable.
+- anadir `observaciones` al final del formulario movil y asegurar retorno a
+  sobremesa;
+- permitir `NA` en puntos cuantitativos cuando el control no aplique;
+- revisar contrato tablet-sobremesa si cualquiera de los dos cambios modifica
+  JSON, persistencia o PDF.
 
-## Fase 5. Modulo de informes y analitica futura
+### Avance confirmado
+
+- Analisis de Paquete A cerrado como `LISTO PARA IMPLEMENTAR` en
+  `docs/analisis_paquete_a_preventivos_2026-06-25.md`.
+- Implementacion tablet observada en `maxgesth_port` commit `92013f1`, con
+  exportacion version `1.1`, feature `informe_observaciones` y feature
+  `cuantitativo_na`.
+- Validacion local de `maxgesth_port` el 2026-06-26 mediante
+  `scripts/build_android_apk.ps1 -ChecksOnly`: compilacion, `test_import.py` y
+  `test_report_service.py` correctos.
+- Validacion de contrato en `maxgesth` el 2026-06-26: fixture JSON `1.1`
+  generado desde el exportador real de `maxgesth_port` y validado con
+  `scripts/validate_preventivos_tablet_fixture.py`, sin tocar BD real.
+- Validacion de esquema en `maxgesth` el 2026-06-27: la BD Preventivos
+  configurada contiene `informes_preventivo.observaciones` como `text` y
+  `resultados_preventivo.estado` como `enum('P','B','M','NA')`. Herramienta:
+  `scripts/check_preventivos_paquete_a_schema.py`.
+- Validacion manual de 2026-07-12: calculo de resultado desde valor de
+  referencia, `NA` cuantitativo, traslado de observaciones e informe PDF
+  correctos en ambos sentidos revisados por el usuario.
+
+### Seguimiento especifico
+
+- No quedan pendientes funcionales de Paquete A salvo regresion.
+- Paquete B queda cerrado en `maxgesth_port` y tagueado como
+  `preventivos-pruebas-campo-2026-07-13` sobre commit `1c82696`.
+- Mantener pruebas de contrato si se toca exportacion/importacion.
+- Si se genera nuevo APK por cambios de UI o flujo, probar build local y
+  dispositivo antes de cerrar.
+- La exportacion por lotes queda fuera del corte inicial y solo se reabrira en
+  una revision posterior de estabilizacion.
+
+### Cerrado en Paquete B
+
+- mostrar numero de serie e inventario en identificacion de equipo;
+- referencia editable en `DESF-Q01` a `DESF-Q08`;
+- busqueda por numero de serie en escritorio;
+- mejoras de ergonomia ya validadas localmente, solo por regresion o extension
+  planificada.
+
+### Decision cerrada el 2026-07-14
+
+- La exportacion movil -> sobremesa por lotes queda aplazada.
+- Se mantiene el contrato actual y no se consume la ventana previa a vacaciones
+  en una mejora de flujo no imprescindible para el circuito inicial.
+- Una futura reapertura exigira necesidad operativa confirmada, criterio
+  anti-duplicados, validacion de escritorio y prueba Android.
+
+## Fase 5. Trazabilidad y recuperacion
 
 ### Objetivo
 
-Mantener preparada la arquitectura de analitica sin adelantar una linea de
-implementacion prematura.
+Reducir riesgo de perdida de datos, duplicidad o estados parciales.
 
-### Decisiones activas
+### Alcance
 
-- `src/Analitico/` se mantiene como destino arquitectonico de solo lectura;
-- no se abre ahora una gran linea funcional de analitica en Preventivos ni en
-  Quirofanos;
-- el acceso futuro seguira embebido en cada dominio, no en un menu principal
-  `Analitico`, salvo necesidad real de perfiles directivos o administrativos;
-- la primera implementacion de esta linea solo debe arrancar cuando esten
-  estables:
-  - centros;
-  - equipos de medida;
-  - roles;
-  - auditoria;
-  - configuracion de produccion.
+- atomicidad en operaciones cabecera-detalle;
+- importaciones con resumen claro y rollback real;
+- cierre, firma, PDF, impresion y reimpresion auditables;
+- politica de backup/restauracion;
+- rutas runtime fuera de codigo fuente;
+- validacion de migraciones en entorno de prueba;
+- checklist de preproduccion.
 
-## Fase 6. Mantenimiento correctivo de modulos estables
+## Fase 6. Quirofanos movil en standby
 
-### Preventivos
+### Objetivo
 
-- solo correcciones derivadas de pruebas reales;
-- prioridad baja salvo bloqueo de campo o de produccion.
+Conservar el modulo operativo sin consumir prioridad de la primera salida.
 
-### Quirofanos
+### Regla
 
-- solo correcciones derivadas de pruebas reales;
-- prioridad baja salvo bloqueo de campo o de produccion.
+- tocar solo por incidencia real, contrato JSON, import/export, build Android o
+  regresion confirmada.
 
-### Android y tablet
+### Tests recomendados si se toca
 
-- tocar solo por contrato, import/export o incidencias que bloqueen trabajo
-  real.
+```powershell
+python -m unittest test_import_export_contract.py test_catalog_service.py test_point_validation.py test_informe_service.py
+python -m compileall -q main.py src test_catalog_service.py test_import_export_contract.py test_informe_service.py test_point_validation.py
+```
 
-### Cola de triage para incidencias de campo
+## Fase 7. Compras e Informes futuros
 
-- `bloqueante`
-- `alta`
-- `media`
-- `mejora`
+### Objetivo
 
-Solo las incidencias `bloqueante` o `alta` pueden romper la prioridad general
-del roadmap.
+Dejar claro que no son parte del primer corte de septiembre.
+
+### Standby
+
+- Compras operativas;
+- informes de compra;
+- modulo analitico ampliado;
+- informes directivos o dashboards;
+- nuevas prestaciones no necesarias para seguridad, maestros, campo o
+  produccion controlada.
 
 ## Pendientes de informacion
 
-Mantener esta lista viva y revisarla al iniciar cada sesion:
+### Instalacion y entorno
 
-### Configuracion de cliente
+- mecanismo final de distribucion;
+- ubicacion de credenciales y parametros;
+- asistente inicial o fichero gestionado;
+- ruta final de exports, backups y artefactos runtime.
 
-- mecanismo final de instalacion y distribucion;
-- ubicacion final de credenciales y parametros de conexion;
-- si habra asistente inicial o fichero de configuracion gestionado.
+### Seguridad
 
-### Roles
+- matriz final de permisos por rol;
+- si `Consulta` entra en primera version;
+- politica de retencion de auditoria;
+- criterios de impresion y reimpresion.
 
-- matriz exacta de acciones por rol;
-- si `Consulta` existe desde el inicio o se difiere.
+### Produccion
 
-### Auditoria
+- checklist de backup/restauracion;
+- entorno de prueba de migraciones;
+- datos minimos de Centros;
+- criterio de aceptacion para septiembre.
 
-- la consulta/exportacion minima desde UI ya queda resuelta en primer corte;
-- politica de retencion;
-- alcance exacto de impresion y reimpresion en todos los modulos.
+### Campo Preventivos
 
-### Centros
-
-- confirmacion final del conjunto de campos;
-- validaciones obligatorias de contacto o formato.
-
-### Informes y analitica
-
-- destinatario real de cada informe;
-- diseno y filtros finales;
-- prioridad relativa frente a salida a produccion.
-
-### Mobile
-
-- que incidencias de campo escalan a bloqueante y cuales quedan como mejora
-  acumulada.
+- exportacion por lotes aplazada para revision posterior;
+- mantener Paquete A cerrado salvo regresion;
+- mantener Paquete B cerrado salvo regresion.
 
 ## Politica de pruebas y cierre
 
-Definicion operativa fija:
+Una tarea puede estar implementada o validada sin estar cerrada. Cerrar tarea
+implica:
 
-- una tarea puede quedar implementada o validada sin quedar cerrada;
-- `cerrar tarea` implica de forma explicita: tests proporcionados al cambio,
-  commit, push y nota de continuidad actualizada;
-- si falta cualquiera de esos pasos, el trabajo no debe marcarse como cierre
-  completo.
+- tests proporcionales ejecutados;
+- validacion manual si aplica;
+- documentacion viva actualizada;
+- commit pequeno y coherente;
+- push de la rama correspondiente.
 
-Validacion base de escritorio para sesiones con codigo:
+Validacion base de escritorio si hay codigo:
 
 ```powershell
 python -m compileall main.py src
+python scripts\validate_preventivos_tablet_fixture.py
+python scripts\check_preventivos_paquete_a_schema.py
 ```
 
-Si se toca autenticacion, permisos, usuarios o maestros:
+Tablet Preventivos si se toca import/export o informes:
 
-- compilar modulos tocados;
-- probar caso feliz;
-- probar denegacion o conflicto;
-- verificar persistencia real.
+```powershell
+python test_import.py
+python test_report_service.py
+python -m py_compile src\data\schema.py src\services\import_service.py src\services\report_service.py src\services\export_service.py
+```
 
-Si se toca auditoria:
+Si la sesion solo toca documentacion:
 
-- verificar alta de log en exito;
-- verificar no dejar inconsistencia en error;
-- verificar usuario, entidad y accion correctos.
-
-Si se toca schema:
-
-- validar migracion en entorno de prueba;
-- documentar rollback o reversion manual razonable.
-
-Si se toca UI o PDF:
-
-- dejar validacion manual proporcional;
-- anotarla en continuidad y en el diario externo.
-
-Ninguna tarea se considera lista para commit si falta cualquiera de estas
-cosas:
-
-- resumen claro del cambio;
-- tests ejecutados y resultado;
-- validacion manual realizada o pendiente;
-- confirmacion positiva del usuario para cerrar.
-
-Y ninguna tarea se considera cerrada del todo si falta cualquiera de estas
-cosas:
-
-- commit pequeno y coherente;
-- `push` de la rama correspondiente;
-- actualizacion de `docs/estado_continuidad.md` o del documento vivo que haga
-  de nota de continuidad para esa tarea.
+- comprobar referencias cruzadas;
+- comprobar que no se duplica backlog;
+- verificar que las notas locales de los modulos no contradicen el roadmap.
