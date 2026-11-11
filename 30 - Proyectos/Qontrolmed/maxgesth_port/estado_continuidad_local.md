@@ -1,9 +1,8 @@
 ---
 tags:
-  - app
+  - qontrolmed
   - aprendizaje
-  - desarrollo
-  - codigo
+  - programacion
 Creado:
 Autor:
 Relacionado:

@@ -1,7 +1,7 @@
 ---
 tags:
-  - hospital
-  - manuales
+  - sanidad
+  - documentacion
 Creado: 2026-05-14
 Autor:
 Relacionado:

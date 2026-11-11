@@ -1,7 +1,7 @@
 ---
 tags:
-  - Error
-  - hospital
+  - incidencia
+  - sanidad
 Creado: 2026-06-24
 Autor:
   - M.Hortet

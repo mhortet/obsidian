@@ -1,7 +1,7 @@
 ---
 tags:
-  - Error
-  - hospital
+  - incidencia
+  - sanidad
   - radiologia
 Creado: 2026-07-07
 Autor:

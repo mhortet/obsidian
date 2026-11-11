@@ -1,8 +1,8 @@
 ---
 tags:
-  - Error
-  - hospital
-  - equipos
+  - incidencia
+  - sanidad
+  - equipamiento
   - mantenimiento
 Creado:
 Relacionado:

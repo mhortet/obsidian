@@ -1,8 +1,8 @@
 ---
 tags:
-  - SQL
-  - software
-  - app
+  - base-de-datos
+  - programacion
+  - qontrolmed
 Creado: 2026-06-17
 Autor:
   - M.Hortet

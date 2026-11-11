@@ -1,9 +1,8 @@
 ---
 tags:
-  - desarrollo
-  - pendiente
-  - estructura
-  - hard
+  - programacion
+  - arquitectura
+  - aprendizaje
 Relacionado:
 Creado: 2026-06-07
 ---

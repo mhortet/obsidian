@@ -1,7 +1,6 @@
 ---
 tags:
-  - desarrollo
-  - software
+  - programacion
 Creado: 2026-06-27
 Relacionado:
 ---

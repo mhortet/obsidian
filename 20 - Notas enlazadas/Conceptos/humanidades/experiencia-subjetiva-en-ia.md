@@ -6,7 +6,7 @@ created: 2026-07-01
 updated: 2026-07-01
 sources:
   - "20 - Notas enlazadas/Fuentes/2026-07-01-entrevista-geoffrey-hinton-monstruo-ia.md"
-tags: [humanidades, ia, filosofia-de-la-mente, conciencia]
+tags: [humanidades, ia, conciencia]
 review_after: 2026-10-01
 ---
 

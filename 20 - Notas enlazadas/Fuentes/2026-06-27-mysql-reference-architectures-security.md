@@ -7,7 +7,7 @@ updated: 2026-06-27
 source_id: "2026-06-27-mysql-reference-architectures-security"
 raw_path: "raw/sources/mysql_wp_reference_architecture_security.pdf"
 sources: ["raw/sources/mysql_wp_reference_architecture_security.pdf", "50 - Recursos/03 documentos/mysql_wp_reference_architecture_security.pdf", "raw/sources/MySQL.md"]
-tags: [fuente, mysql, seguridad, base-de-datos, arquitectura, ransomware, auditoria, cifrado]
+tags: [mysql, seguridad, base-de-datos, arquitectura, auditoria]
 review_after: 2026-12-27
 ---
 

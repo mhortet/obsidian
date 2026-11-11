@@ -1,9 +1,7 @@
 ---
 tags:
-  - app
-  - codigo
-  - desarrollo
-  - diario
+  - qontrolmed
+  - programacion
 Creado: 2026-05-15
 Autor: Codex
 Relacionado:

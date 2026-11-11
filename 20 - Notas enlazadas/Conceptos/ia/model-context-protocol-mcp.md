@@ -8,7 +8,7 @@ sources:
   - "20 - Notas enlazadas/Fuentes/2026-06-28-mcp-explicado-productividad.md"
   - "20 - Notas enlazadas/Fuentes/2026-06-28-mcp-desde-cero.md"
   - "20 - Notas enlazadas/Fuentes/2026-06-28-creacion-mcp-go.md"
-tags: [ia, agentes, mcp, integraciones]
+tags: [ia, agentes, mcp, arquitectura]
 review_after: 2026-09-28
 ---
 

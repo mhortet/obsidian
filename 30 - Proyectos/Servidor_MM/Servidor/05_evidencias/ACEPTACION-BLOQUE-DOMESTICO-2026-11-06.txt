@@ -1,0 +1,79 @@
+ACCEPTANCE_START=2026-11-06T17:14:43+01:00
+HTTP_BEGIN
+CLIENT_STATUS=302
+ADMIN_STATUS=302
+ADMIN_ON_CLIENT_STATUS=404
+CLIENT_ON_ADMIN_STATUS=404
+HTTP_END
+Validating rules from  /etc/cloudflared/config.documentos.invalid.yml
+OK
+Using rules from /etc/cloudflared/config.documentos.invalid.yml
+Matched rule #0
+	hostname: documentos.invalid
+	service: http://127.0.0.1:18080
+Using rules from /etc/cloudflared/config.documentos.invalid.yml
+Matched rule #1
+	service: http_status:404
+created restic repository 5929195a30 at /root/srv-mm-preparacion-20261106/restic-ensayo
+
+Please note that knowledge of your password is required to access
+the repository. Losing your password means that your data is
+irrecoverably lost.
+Stopping SFTPGo for consistent backup
+no parent snapshot found, will read all files
+
+Files:          12 new,     0 changed,     0 unmodified
+Dirs:           15 new,     0 changed,     0 unmodified
+Added to the repository: 926.366 KiB (18.514 KiB stored)
+
+processed 12 files, 245.364 MiB in 0:00
+snapshot ad68b9ac saved
+using temporary cache in /tmp/restic-check-cache-3739042192
+create exclusive lock for repository
+load indexes
+check all packs
+check snapshots, trees and blobs
+[0:00] 100.00%  1 / 1 snapshots
+
+no errors were found
+restoring <Snapshot ad68b9ac of [/srv/compartido/repositorio/piloto-20261106 /var/lib/sftpgo /etc/sftpgo] at 2026-11-06 17:14:46.405361737 +0100 CET by root@srv-mm-01> to /root/srv-mm-preparacion-20261106/restore-20261106T171447
+Summary: Restored 27 files/dirs (245.364 MiB) in 0:00
+SQLITE_INTEGRITY=ok
+Applying Policy: keep 1 latest snapshots
+keep 1 snapshots:
+ID        Time                 Host        Tags        Reasons        Paths
+-----------------------------------------------------------------------------------------------------------------
+ad68b9ac  2026-11-06 17:14:46  srv-mm-01               last snapshot  /etc/sftpgo
+                                                                      /srv/compartido/repositorio/piloto-20261106
+                                                                      /var/lib/sftpgo
+-----------------------------------------------------------------------------------------------------------------
+1 snapshots
+
+PACKAGES_BEGIN
+acl 2.3.2-1build1.1 install ok installed
+cloudflared 2026.10.7 install ok installed
+restic 0.16.4-2ubuntu0.24.04.3 install ok installed
+sftpgo 2.7.6-1 install ok installed
+PACKAGES_END
+UFW_BEGIN
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    192.168.1.0/24             # SSH LAN nueva 2026-10-31
+22/tcp                     ALLOW IN    192.168.0.0/24             # SSH LAN cliente 2026-10-31
+
+Status: active
+
+     To                         Action      From
+     --                         ------      ----
+[ 1] 22/tcp                     ALLOW IN    192.168.1.0/24             # SSH LAN nueva 2026-10-31
+[ 2] 22/tcp                     ALLOW IN    192.168.0.0/24             # SSH LAN cliente 2026-10-31
+
+UFW_END
+ACCEPTANCE_RESULT=OK
+RESTIC_CLASSIFICATION=local-test-not-independent-not-3-2-1
+ACCEPTANCE_END=2026-11-06T17:14:50+01:00

@@ -8,7 +8,7 @@ sources:
   - "20 - Notas enlazadas/Conceptos/ia/model-context-protocol-mcp.md"
   - "20 - Notas enlazadas/Conceptos/ia/mcp-propio-para-la-boveda-obsidian.md"
   - "20 - Notas enlazadas/Conceptos/gobierno/seguridad-y-gobierno-de-mcp.md"
-tags: [concepto, ia, agentes, mcp, api, arquitectura]
+tags: [ia, agentes, mcp, arquitectura]
 review_after: 2026-09-28
 ---
 

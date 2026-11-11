@@ -1,8 +1,7 @@
 ---
 tags:
-  - app
-  - desarrollo
-  - codigo
+  - qontrolmed
+  - programacion
 Creado: 2026-07-13
 Relacionado:
 ---

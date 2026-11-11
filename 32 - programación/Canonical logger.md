@@ -1,7 +1,7 @@
 ---
 tags:
-  - codigo
-  - estructura
+  - programacion
+  - arquitectura
 Creado: 2026-06-15
 Autor:
   - Brandur Leach

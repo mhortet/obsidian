@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import json
 import pathlib
 import re
 import sys
@@ -23,6 +24,8 @@ REQUIRED_PATHS = [
     "00 - Sistema/meta/taxonomia.md",
     "00 - Sistema/meta/checklist-calidad.md",
     "00 - Sistema/meta/registro-fuentes.csv",
+    "00 - Sistema/meta/tags-controlados.json",
+    "00 - Sistema/tools/obsidian_tags.py",
     "20 - Notas enlazadas/Fuentes",
     "20 - Notas enlazadas/Conceptos",
     "20 - Notas enlazadas/Entidades",
@@ -178,6 +181,44 @@ def check_duplicate_curated_stems(findings: list[Finding]) -> None:
             findings.append(Finding("WARN", "20 - Notas enlazadas", f"nombre ambiguo '{stem}': {joined}"))
 
 
+def check_controlled_tags(findings: list[Finding]) -> None:
+    try:
+        import obsidian_tags as tag_tool
+    except (ImportError, SyntaxError) as exc:
+        findings.append(Finding("ERROR", "00 - Sistema/tools/obsidian_tags.py", f"no se puede cargar: {exc}"))
+        return
+
+    policy_path = ROOT / "00 - Sistema" / "meta" / "tags-controlados.json"
+    try:
+        policy = tag_tool.load_policy(policy_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        findings.append(Finding("ERROR", rel(policy_path), f"politica de tags invalida: {exc}"))
+        return
+
+    max_tags = policy.get("max_tags_per_note", 5)
+    max_domains = policy.get("max_domain_tags_per_note", 2)
+    domains = policy["domain_set"]
+    for block in tag_tool.collect(policy):
+        normalized, unknown = tag_tool.normalize_tags(block.tags, policy)
+        if unknown:
+            findings.append(
+                Finding("WARN", rel(block.path), f"tags no controlados: {', '.join(unknown)}")
+            )
+        if block.tags != normalized:
+            findings.append(
+                Finding("WARN", rel(block.path), f"tags pendientes de normalizar: {block.tags} -> {normalized}")
+            )
+        if len(normalized) > max_tags:
+            findings.append(
+                Finding("WARN", rel(block.path), f"demasiados tags ({len(normalized)}; maximo {max_tags})")
+            )
+        domain_tags = [tag for tag in normalized if tag in domains]
+        if len(domain_tags) > max_domains:
+            findings.append(
+                Finding("WARN", rel(block.path), f"demasiados dominios en tags: {domain_tags}")
+            )
+
+
 def check_log(findings: list[Finding]) -> None:
     path = ROOT / "00 - Sistema" / "log.md"
     if not path.exists():
@@ -199,6 +240,7 @@ def main() -> int:
     check_frontmatter(findings)
     check_links(findings)
     check_duplicate_curated_stems(findings)
+    check_controlled_tags(findings)
     check_log(findings)
 
     if not findings:

@@ -1,7 +1,7 @@
 ---
 tags:
   - obsidian
-  - software
+  - programacion
 Creado: 2026-06-26
 Relacionado:
 ---

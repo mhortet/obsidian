@@ -1,8 +1,7 @@
 ---
 tags:
-  - codigo
-  - desarrollo
-  - IA
+  - programacion
+  - ia
 Creado: 2026-06-25
 Autor:
 Relacionado:

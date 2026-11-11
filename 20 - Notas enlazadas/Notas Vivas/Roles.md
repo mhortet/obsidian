@@ -1,10 +1,8 @@
 ---
 tags:
-  - app
-  - codigo
-  - desarrollo
+  - qontrolmed
+  - programacion
   - prompt
-  - pendiente
 Fecha: 2026-06-05
 Relacionado:
 excalidraw-open-md: true

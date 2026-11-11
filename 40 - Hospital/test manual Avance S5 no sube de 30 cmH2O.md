@@ -1,7 +1,7 @@
 ---
 tags:
-  - Error
-  - hospital
+  - incidencia
+  - sanidad
 Creado:
 Autor:
 Relacionado:

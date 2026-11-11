@@ -1,0 +1,211 @@
+===== CAPTURA PREVIA =====
+2026-10-02T12:33:39+02:00
+hostname=srv-mm-01
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages will be upgraded:
+  apparmor dmidecode krb5-locales libapparmor1 libaudit-common libaudit1
+  libgssapi-krb5-2 libk5crypto3 libkrb5-3 libkrb5support0 libnetplan1
+  netplan-generator netplan.io python3-netplan sosreport
+15 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Inst libaudit-common [1:3.1.2-2.1build1.1] (1:3.1.2-2.1ubuntu0.1 Ubuntu:24.04/noble-updates [all])
+Conf libaudit-common (1:3.1.2-2.1ubuntu0.1 Ubuntu:24.04/noble-updates [all])
+Inst libaudit1 [1:3.1.2-2.1build1.1] (1:3.1.2-2.1ubuntu0.1 Ubuntu:24.04/noble-updates [amd64])
+Conf libaudit1 (1:3.1.2-2.1ubuntu0.1 Ubuntu:24.04/noble-updates [amd64])
+Inst krb5-locales [1.20.1-6ubuntu2.8] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [all])
+Inst libapparmor1 [4.0.1really4.0.1-0ubuntu0.24.04.7] (4.0.1really4.0.1-0ubuntu0.24.04.8 Ubuntu:24.04/noble-updates [amd64])
+Inst libgssapi-krb5-2 [1.20.1-6ubuntu2.8] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64]) []
+Inst libkrb5-3 [1.20.1-6ubuntu2.8] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64]) []
+Inst libkrb5support0 [1.20.1-6ubuntu2.8] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64]) [libk5crypto3:amd64 ]
+Inst libk5crypto3 [1.20.1-6ubuntu2.8] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Inst netplan-generator [1.1.2-8ubuntu1~24.04.2] (1.1.2-8ubuntu1~24.04.3 Ubuntu:24.04/noble-updates [amd64]) []
+Inst python3-netplan [1.1.2-8ubuntu1~24.04.2] (1.1.2-8ubuntu1~24.04.3 Ubuntu:24.04/noble-updates [amd64]) []
+Inst netplan.io [1.1.2-8ubuntu1~24.04.2] (1.1.2-8ubuntu1~24.04.3 Ubuntu:24.04/noble-updates [amd64]) []
+Inst libnetplan1 [1.1.2-8ubuntu1~24.04.2] (1.1.2-8ubuntu1~24.04.3 Ubuntu:24.04/noble-updates [amd64])
+Inst apparmor [4.0.1really4.0.1-0ubuntu0.24.04.7] (4.0.1really4.0.1-0ubuntu0.24.04.8 Ubuntu:24.04/noble-updates [amd64])
+Inst dmidecode [3.5-3ubuntu0.1] (3.5-3ubuntu0.2 Ubuntu:24.04/noble-updates [amd64])
+Inst sosreport [4.10.2-0ubuntu0~24.04.1] (4.11.2-0ubuntu0~24.04.1 Ubuntu:24.04/noble-updates [amd64])
+Conf krb5-locales (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [all])
+Conf libapparmor1 (4.0.1really4.0.1-0ubuntu0.24.04.8 Ubuntu:24.04/noble-updates [amd64])
+Conf libgssapi-krb5-2 (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Conf libkrb5-3 (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Conf libkrb5support0 (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Conf libk5crypto3 (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Conf netplan-generator (1.1.2-8ubuntu1~24.04.3 Ubuntu:24.04/noble-updates [amd64])
+Conf python3-netplan (1.1.2-8ubuntu1~24.04.3 Ubuntu:24.04/noble-updates [amd64])
+Conf netplan.io (1.1.2-8ubuntu1~24.04.3 Ubuntu:24.04/noble-updates [amd64])
+Conf libnetplan1 (1.1.2-8ubuntu1~24.04.3 Ubuntu:24.04/noble-updates [amd64])
+Conf apparmor (4.0.1really4.0.1-0ubuntu0.24.04.8 Ubuntu:24.04/noble-updates [amd64])
+Conf dmidecode (3.5-3ubuntu0.2 Ubuntu:24.04/noble-updates [amd64])
+Conf sosreport (4.11.2-0ubuntu0~24.04.1 Ubuntu:24.04/noble-updates [amd64])
+
+===== INSTALACION APROBADA =====
+La lista coincide exactamente. APT solicitara confirmacion en esta consola.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages will be upgraded:
+  apparmor dmidecode krb5-locales libapparmor1 libaudit-common libaudit1
+  libgssapi-krb5-2 libk5crypto3 libkrb5-3 libkrb5support0 libnetplan1
+  netplan-generator netplan.io python3-netplan sosreport
+15 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2136 kB of archives.
+After this operation, 161 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libaudit-common all 1:3.1.2-2.1ubuntu0.1 [5948 B]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libaudit1 amd64 1:3.1.2-2.1ubuntu0.1 [47.1 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 krb5-locales all 1.20.1-6ubuntu2.10 [15.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libapparmor1 amd64 4.0.1really4.0.1-0ubuntu0.24.04.8 [51.4 kB]
+Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgssapi-krb5-2 amd64 1.20.1-6ubuntu2.10 [143 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5-3 amd64 1.20.1-6ubuntu2.10 [348 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5support0 amd64 1.20.1-6ubuntu2.10 [34.9 kB]
+Get:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libk5crypto3 amd64 1.20.1-6ubuntu2.10 [81.9 kB]
+Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 netplan-generator amd64 1.1.2-8ubuntu1~24.04.3 [61.2 kB]
+Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-netplan amd64 1.1.2-8ubuntu1~24.04.3 [24.3 kB]
+Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 netplan.io amd64 1.1.2-8ubuntu1~24.04.3 [69.7 kB]
+Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnetplan1 amd64 1.1.2-8ubuntu1~24.04.3 [133 kB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 apparmor amd64 4.0.1really4.0.1-0ubuntu0.24.04.8 [640 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dmidecode amd64 3.5-3ubuntu0.2 [73.4 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 sosreport amd64 4.11.2-0ubuntu0~24.04.1 [407 kB]
+Preconfiguring packages ...
+Fetched 2136 kB in 1s (3695 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 88444 files and directories currently installed.)
+Preparing to unpack .../libaudit-common_1%3a3.1.2-2.1ubuntu0.1_all.deb ...
+Unpacking libaudit-common (1:3.1.2-2.1ubuntu0.1) over (1:3.1.2-2.1build1.1) ...
+Setting up libaudit-common (1:3.1.2-2.1ubuntu0.1) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 88444 files and directories currently installed.)
+Preparing to unpack .../libaudit1_1%3a3.1.2-2.1ubuntu0.1_amd64.deb ...
+Unpacking libaudit1:amd64 (1:3.1.2-2.1ubuntu0.1) over (1:3.1.2-2.1build1.1) ...
+Setting up libaudit1:amd64 (1:3.1.2-2.1ubuntu0.1) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 88444 files and directories currently installed.)
+Preparing to unpack .../00-krb5-locales_1.20.1-6ubuntu2.10_all.deb ...
+Unpacking krb5-locales (1.20.1-6ubuntu2.10) over (1.20.1-6ubuntu2.8) ...
+Preparing to unpack .../01-libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.8_amd64.deb ...
+Unpacking libapparmor1:amd64 (4.0.1really4.0.1-0ubuntu0.24.04.8) over (4.0.1really4.0.1-0ubuntu0.24.04.7) ...
+Preparing to unpack .../02-libgssapi-krb5-2_1.20.1-6ubuntu2.10_amd64.deb ...
+Unpacking libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.10) over (1.20.1-6ubuntu2.8) ...
+Preparing to unpack .../03-libkrb5-3_1.20.1-6ubuntu2.10_amd64.deb ...
+Unpacking libkrb5-3:amd64 (1.20.1-6ubuntu2.10) over (1.20.1-6ubuntu2.8) ...
+Preparing to unpack .../04-libkrb5support0_1.20.1-6ubuntu2.10_amd64.deb ...
+Unpacking libkrb5support0:amd64 (1.20.1-6ubuntu2.10) over (1.20.1-6ubuntu2.8) ...
+Preparing to unpack .../05-libk5crypto3_1.20.1-6ubuntu2.10_amd64.deb ...
+Unpacking libk5crypto3:amd64 (1.20.1-6ubuntu2.10) over (1.20.1-6ubuntu2.8) ...
+Preparing to unpack .../06-netplan-generator_1.1.2-8ubuntu1~24.04.3_amd64.deb ...
+Adding 'diversion of /lib/systemd/system-generators/netplan to /lib/systemd/system-generators/netplan.usr-is-merged by netplan-generator'
+Unpacking netplan-generator (1.1.2-8ubuntu1~24.04.3) over (1.1.2-8ubuntu1~24.04.2) ...
+Preparing to unpack .../07-python3-netplan_1.1.2-8ubuntu1~24.04.3_amd64.deb ...
+Unpacking python3-netplan (1.1.2-8ubuntu1~24.04.3) over (1.1.2-8ubuntu1~24.04.2) ...
+Preparing to unpack .../08-netplan.io_1.1.2-8ubuntu1~24.04.3_amd64.deb ...
+Unpacking netplan.io (1.1.2-8ubuntu1~24.04.3) over (1.1.2-8ubuntu1~24.04.2) ...
+Preparing to unpack .../09-libnetplan1_1.1.2-8ubuntu1~24.04.3_amd64.deb ...
+Unpacking libnetplan1:amd64 (1.1.2-8ubuntu1~24.04.3) over (1.1.2-8ubuntu1~24.04.2) ...
+Preparing to unpack .../10-apparmor_4.0.1really4.0.1-0ubuntu0.24.04.8_amd64.deb ...
+Unpacking apparmor (4.0.1really4.0.1-0ubuntu0.24.04.8) over (4.0.1really4.0.1-0ubuntu0.24.04.7) ...
+Preparing to unpack .../11-dmidecode_3.5-3ubuntu0.2_amd64.deb ...
+Unpacking dmidecode (3.5-3ubuntu0.2) over (3.5-3ubuntu0.1) ...
+Preparing to unpack .../12-sosreport_4.11.2-0ubuntu0~24.04.1_amd64.deb ...
+Unpacking sosreport (4.11.2-0ubuntu0~24.04.1) over (4.10.2-0ubuntu0~24.04.1) ...
+Setting up libapparmor1:amd64 (4.0.1really4.0.1-0ubuntu0.24.04.8) ...
+Setting up krb5-locales (1.20.1-6ubuntu2.10) ...
+Setting up libnetplan1:amd64 (1.1.2-8ubuntu1~24.04.3) ...
+Setting up libkrb5support0:amd64 (1.20.1-6ubuntu2.10) ...
+Setting up apparmor (4.0.1really4.0.1-0ubuntu0.24.04.8) ...
+/var/lib/dpkg/info/apparmor.postinst: 148: [: Illegal number: yes
+Reloading AppArmor profiles 
+Setting up libk5crypto3:amd64 (1.20.1-6ubuntu2.10) ...
+Setting up sosreport (4.11.2-0ubuntu0~24.04.1) ...
+Setting up python3-netplan (1.1.2-8ubuntu1~24.04.3) ...
+Setting up libkrb5-3:amd64 (1.20.1-6ubuntu2.10) ...
+Setting up netplan-generator (1.1.2-8ubuntu1~24.04.3) ...
+Removing 'diversion of /lib/systemd/system-generators/netplan to /lib/systemd/system-generators/netplan.usr-is-merged by netplan-generator'
+Setting up dmidecode (3.5-3ubuntu0.2) ...
+Setting up netplan.io (1.1.2-8ubuntu1~24.04.3) ...
+Setting up libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.10) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for dbus (1.14.10-4ubuntu4.1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+
+Running kernel seems to be up-to-date.
+
+The processor microcode seems to be up-to-date.
+
+Restarting services...
+ /etc/needrestart/restart.d/systemd-manager
+ systemctl restart cron.service fwupd.service ssh.service systemd-journald.service systemd-networkd.service systemd-resolved.service systemd-timesyncd.service
+
+Service restarts being deferred:
+ /etc/needrestart/restart.d/dbus.service
+ systemctl restart systemd-logind.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ vicente @ session #28: sshd[4355]
+ vicente @ session #9: login[2254]
+ vicente @ user manager service: systemd[2792]
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+
+===== PAQUETES PENDIENTES =====
+Listando...
+
+===== REINICIO PENDIENTE =====
+No hay reinicio pendiente.
+
+===== SERVICIOS FALLIDOS =====
+  UNIT LOAD ACTIVE SUB DESCRIPTION
+
+0 loaded units listed.
+
+===== HORA =====
+               Local time: vie 2026-10-02 12:33:59 CEST
+           Universal time: vie 2026-10-02 10:33:59 UTC
+                 RTC time: vie 2026-10-02 10:33:59
+                Time zone: Europe/Madrid (CEST, +0200)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+
+===== RED =====
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+enp5s0           DOWN           
+enp6s0           DOWN           
+enp7s0           DOWN           
+eno1             UP             192.168.2.104/24 metric 100 fe80::76fe:48ff:fe67:becc/64 
+default via 192.168.2.1 dev eno1 proto dhcp src 192.168.2.104 metric 100 
+192.168.2.0/24 dev eno1 proto kernel scope link src 192.168.2.104 metric 100 
+192.168.2.1 dev eno1 proto dhcp scope link src 192.168.2.104 metric 100 
+
+===== UFW =====
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    192.168.2.0/24             # SSH LAN preparacion
+
+
+===== SSH EFECTIVO =====
+maxauthtries 3
+permitrootlogin no
+pubkeyauthentication yes
+passwordauthentication no
+kbdinteractiveauthentication no
+x11forwarding no
+
+===== ERRORES DEL ARRANQUE =====
+oct 02 11:46:39 srv-mm-01 kernel: x86/cpu: SGX disabled by BIOS.
+oct 02 12:12:50 srv-mm-01 login[2254]: PAM unable to dlopen(pam_lastlog.so): /usr/lib/security/pam_lastlog.so: cannot open shared object file: No such file or directory
+oct 02 12:12:50 srv-mm-01 login[2254]: PAM adding faulty module: pam_lastlog.so
+oct 02 12:14:04 srv-mm-01 sudo[2865]:  vicente : a password is required ; PWD=/home/vicente ; USER=root ; COMMAND=/usr/bin/true
+oct 02 12:14:15 srv-mm-01 sudo[2926]:  vicente : a password is required ; PWD=/home/vicente ; USER=root ; COMMAND=/usr/bin/true
+
+===== PAM LASTLOG =====
+/etc/pam.d/login:82:session    optional   pam_lastlog.so
+
+===== FIN =====
+2026-10-02T12:33:59+02:00

@@ -1,0 +1,10 @@
+REGISTRO_ROOT=/root/srv-mm-piloto-20261105/cambio01.8hrxnujl
+2026-11-05T11:31:24+01:00
+VALIDACION_PREVIA_OK
+bind-address 127.0.0.1
+mysqlx OFF
+require-secure-transport TRUE
+94069a958ccf6f51fddcedc3e480028dc86e443709861fec996bd525f89b13c7  /etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf
+root:root 644 /etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf
+MYSQL_INACTIVE_DISABLED_SIN_ESCUCHAS
+CAMBIO01_COMPLETADO

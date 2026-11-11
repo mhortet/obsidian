@@ -5,7 +5,7 @@ status: active
 created: 2026-06-27
 updated: 2026-06-27
 sources: ["20 - Notas enlazadas/Fuentes/2026-06-27-microscopio-fluorescencia.md"]
-tags: [microscopia, fluorescencia, biologia-celular, laboratorio, equipamiento]
+tags: [laboratorio, equipamiento]
 review_after: 2028-06-27
 ---
 

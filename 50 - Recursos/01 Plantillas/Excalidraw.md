@@ -1,6 +1,6 @@
 ---
 tags:
-  - Plantilla
+  - plantilla
 Fecha:
 Relacionado:
 excalidraw-open-md: true

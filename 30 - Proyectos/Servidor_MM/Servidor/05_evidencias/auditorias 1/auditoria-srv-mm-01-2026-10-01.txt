@@ -1,0 +1,374 @@
+
+===== CAPTURA =====
+2026-10-01T21:39:00+00:00
+usuario_solicitante=vicente
+
+===== SISTEMA =====
+ Static hostname: srv-mm-01
+       Icon name: computer-desktop
+         Chassis: desktop 🖥️
+      Machine ID: 998676e6ecc5428794d47e30e5d401a6
+         Boot ID: 9ca21a6e374b4e2d9519c1c36b7f9d05
+Operating System: Ubuntu 24.04.5 LTS
+          Kernel: Linux 6.8.0-146-generic
+    Architecture: x86-64
+ Hardware Vendor: Default string
+  Hardware Model: Default string
+Firmware Version: 5.13
+   Firmware Date: Fri 2021-04-23
+    Firmware Age: 5y 5month 1w 2d
+
+               Local time: jue 2026-10-01 21:39:01 UTC
+           Universal time: jue 2026-10-01 21:39:01 UTC
+                 RTC time: jue 2026-10-01 21:39:01
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+
+Linux srv-mm-01 6.8.0-146-generic #146-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep  3 16:12:30 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.5 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+===== RECURSOS =====
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  8
+On-line CPU(s) list:                     0-7
+Vendor ID:                               GenuineIntel
+BIOS Vendor ID:                          Intel(R) Corporation
+Model name:                              Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz
+BIOS Model name:                         Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz To Be Filled By O.E.M. CPU @ 4.5GHz
+BIOS CPU family:                         198
+CPU family:                              6
+Model:                                   158
+Thread(s) per core:                      1
+Core(s) per socket:                      8
+Socket(s):                               1
+Stepping:                                13
+CPU(s) scaling MHz:                      96%
+CPU max MHz:                             4900,0000
+CPU min MHz:                             800,0000
+BogoMIPS:                                7200,00
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp vnmi md_clear flush_l1d arch_capabilities ibpb_exit_to_user
+Virtualization:                          VT-x
+L1d cache:                               256 KiB (8 instances)
+L1i cache:                               256 KiB (8 instances)
+L2 cache:                                2 MiB (8 instances)
+L3 cache:                                12 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-7
+Vulnerability Gather data sampling:      Mitigation; Microcode
+Vulnerability Indirect target selection: Mitigation; Aligned branch/return thunks
+Vulnerability Itlb multihit:             KVM: Mitigation: VMX disabled
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT disabled
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                     Mitigation; Microcode
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Mitigation; TSX disabled
+Vulnerability Vmscape:                   Mitigation; IBPB before exit to userspace
+
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       663Mi        30Gi       1,6Mi       293Mi        30Gi
+Swap:          8,0Gi          0B       8,0Gi
+
+Filesystem                        Type      Size  Used Avail Use% Mounted on
+tmpfs                             tmpfs     3,2G  1,6M  3,2G   1% /run
+efivarfs                          efivarfs  192K   77K  111K  41% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv ext4       98G   11G   83G  12% /
+tmpfs                             tmpfs      16G     0   16G   0% /dev/shm
+tmpfs                             tmpfs     5,0M     0  5,0M   0% /run/lock
+/dev/sda2                         ext4      2,0G  105M  1,7G   6% /boot
+/dev/sda1                         vfat      1,1G  6,2M  1,1G   1% /boot/efi
+tmpfs                             tmpfs     3,2G   12K  3,2G   1% /run/user/1000
+
+===== ALMACENAMIENTO =====
+NAME                        MODEL           SERIAL            SIZE TYPE  FSTYPE      FSVER    MOUNTPOINTS
+sda                         Samsung SSD 860 S42YNX0R803968Z 476,9G disk                       
+├─sda1                                                          1G part  vfat        FAT32    /boot/efi
+├─sda2                                                          2G part  ext4        1.0      /boot
+└─sda3                                                      473,9G part  crypto_LUKS 2        
+  └─dm_crypt-0                                              473,9G crypt LVM2_member LVM2 001 
+    └─ubuntu--vg-ubuntu--lv                                   100G lvm   ext4        1.0      /
+sdb                         Samsung SSD 860 S42NNX0RA02692M 953,9G disk                       
+├─sdb1                                                        100M part  vfat        FAT32    
+├─sdb2                                                         16M part                       
+├─sdb3                                                        953G part  ntfs                 
+└─sdb4                                                        788M part  ntfs                 
+
+/sys sysfs sysfs rw,nosuid,nodev,noexec,relatime
+/proc proc proc rw,nosuid,nodev,noexec,relatime
+/dev udev devtmpfs rw,nosuid,relatime,size=16321192k,nr_inodes=4080298,mode=755,inode64
+/dev/pts devpts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000
+/run tmpfs tmpfs rw,nosuid,nodev,noexec,relatime,size=3277372k,mode=755,inode64
+/sys/firmware/efi/efivars efivarfs efivarfs rw,nosuid,nodev,noexec,relatime
+/ /dev/mapper/ubuntu--vg-ubuntu--lv ext4 rw,relatime
+/sys/kernel/security securityfs securityfs rw,nosuid,nodev,noexec,relatime
+/dev/shm tmpfs tmpfs rw,nosuid,nodev,inode64
+/run/lock tmpfs tmpfs rw,nosuid,nodev,noexec,relatime,size=5120k,inode64
+/sys/fs/cgroup cgroup2 cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot
+/sys/fs/pstore pstore pstore rw,nosuid,nodev,noexec,relatime
+/sys/fs/bpf bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700
+/proc/sys/fs/binfmt_misc systemd-1 autofs rw,relatime,fd=32,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=658
+/dev/hugepages hugetlbfs hugetlbfs rw,nosuid,nodev,relatime,pagesize=2M
+/dev/mqueue mqueue mqueue rw,nosuid,nodev,noexec,relatime
+/sys/kernel/debug debugfs debugfs rw,nosuid,nodev,noexec,relatime
+/sys/kernel/tracing tracefs tracefs rw,nosuid,nodev,noexec,relatime
+/sys/fs/fuse/connections fusectl fusectl rw,nosuid,nodev,noexec,relatime
+/sys/kernel/config configfs configfs rw,nosuid,nodev,noexec,relatime
+/boot /dev/sda2 ext4 rw,relatime
+/boot/efi /dev/sda1 vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro
+/proc/sys/fs/binfmt_misc binfmt_misc binfmt_misc rw,nosuid,nodev,noexec,relatime
+/run/user/1000 tmpfs tmpfs rw,nosuid,nodev,relatime,size=3277368k,nr_inodes=819342,mode=700,uid=1000,gid=1000,inode64
+
+  PV                     VG        Fmt  Attr PSize   PFree  
+  /dev/mapper/dm_crypt-0 ubuntu-vg lvm2 a--  473,87g 373,87g
+  VG        #PV #LV #SN Attr   VSize   VFree  
+  ubuntu-vg   1   1   0 wz--n- 473,87g 373,87g
+  LV        VG        LSize   Attr       Devices                  
+  ubuntu-lv ubuntu-vg 100,00g -wi-ao---- /dev/mapper/dm_crypt-0(0)
+
+/dev/mapper/dm_crypt-0 is active and is in use.
+  type:    LUKS2
+  cipher:  aes-xts-plain64
+  keysize: 512 bits
+  key location: keyring
+  device:  /dev/sda3
+  sector size:  512
+  offset:  32768 sectors
+  size:    993781760 sectors
+  mode:    read/write
+
+===== RED =====
+lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
+enp5s0           DOWN           74:fe:48:67:be:cd <BROADCAST,MULTICAST> 
+enp6s0           DOWN           00:1b:21:e9:ba:cf <BROADCAST,MULTICAST> 
+enp7s0           DOWN           00:1b:21:e9:b4:95 <BROADCAST,MULTICAST> 
+eno1             UP             74:fe:48:67:be:cc <BROADCAST,MULTICAST,UP,LOWER_UP> 
+
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+enp5s0           DOWN           
+enp6s0           DOWN           
+enp7s0           DOWN           
+eno1             UP             192.168.2.104/24 metric 100 fe80::76fe:48ff:fe67:becc/64 
+
+default via 192.168.2.1 dev eno1 proto dhcp src 192.168.2.104 metric 100 
+192.168.2.0/24 dev eno1 proto kernel scope link src 192.168.2.104 metric 100 
+192.168.2.1 dev eno1 proto dhcp scope link src 192.168.2.104 metric 100 
+
+Netid State  Recv-Q Send-Q      Local Address:Port Peer Address:PortProcess                                                
+udp   UNCONN 0      0              127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=1416,fd=16))            
+udp   UNCONN 0      0           127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=1416,fd=14))            
+udp   UNCONN 0      0      192.168.2.104%eno1:68        0.0.0.0:*    users:(("systemd-network",pid=1410,fd=22))            
+tcp   LISTEN 0      4096        127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=1416,fd=15))            
+tcp   LISTEN 0      4096           127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=1416,fd=17))            
+tcp   LISTEN 0      4096              0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=1807,fd=3),("systemd",pid=1,fd=93))
+tcp   LISTEN 0      4096                 [::]:22           [::]:*    users:(("sshd",pid=1807,fd=4),("systemd",pid=1,fd=94))
+
+===== SSH =====
+disabled
+active
+maxauthtries 6
+permitrootlogin no
+pubkeyauthentication yes
+passwordauthentication no
+kbdinteractiveauthentication no
+x11forwarding yes
+
+total 16
+drwxr-xr-x 2 root root 4096 oct  1 21:21 .
+drwxr-xr-x 4 root root 4096 oct  1 20:15 ..
+-rw-r--r-- 1 root root  224 oct  1 21:21 00-srv-mm-ssh-hardening.conf
+-rw------- 1 root root   27 oct  1 20:15 50-cloud-init.conf
+
+===== FIREWALL Y PROTECCION =====
+Status: inactive
+
+apparmor module is loaded.
+117 profiles are loaded.
+23 profiles are in enforce mode.
+   /usr/bin/man
+   /usr/lib/snapd/snap-confine
+   lsb_release
+   man_filter
+   man_groff
+   nvidia_modprobe
+   nvidia_modprobe//kmod
+   plasmashell
+   plasmashell//QtWebEngineProcess
+   rsyslogd
+   tcpdump
+   ubuntu_pro_apt_news
+   ubuntu_pro_esm_cache
+   ubuntu_pro_esm_cache//apt_methods
+   ubuntu_pro_esm_cache//apt_methods_gpgv
+   ubuntu_pro_esm_cache//cloud_id
+   ubuntu_pro_esm_cache//dpkg
+   ubuntu_pro_esm_cache//ps
+   ubuntu_pro_esm_cache//ubuntu_distro_info
+   ubuntu_pro_esm_cache_systemctl
+   ubuntu_pro_esm_cache_systemd_detect_virt
+   unix-chkpwd
+   unprivileged_userns
+4 profiles are in complain mode.
+   transmission-cli
+   transmission-daemon
+   transmission-gtk
+   transmission-qt
+0 profiles are in prompt mode.
+0 profiles are in kill mode.
+90 profiles are in unconfined mode.
+   1password
+   Discord
+   MongoDB Compass
+   QtWebEngineProcess
+   balena-etcher
+   brave
+   buildah
+   cam
+   ch-checkns
+   ch-run
+   chrome
+   crun
+   devhelp
+   element-desktop
+   epiphany
+   evolution
+   firefox
+   flatpak
+   foliate
+   geary
+   github-desktop
+   goldendict
+   ipa_verify
+   kchmviewer
+   keybase
+   lc-compliance
+   libcamerify
+   linux-sandbox
+   loupe
+   lxc-attach
+   lxc-create
+   lxc-destroy
+   lxc-execute
+   lxc-stop
+   lxc-unshare
+   lxc-usernsexec
+   mmdebstrap
+   msedge
+   nautilus
+   notepadqq
+   obsidian
+   opam
+   opera
+   pageedit
+   podman
+   polypane
+   privacybrowser
+   qcam
+   qmapshack
+   qutebrowser
+   rootlesskit
+   rpm
+   rssguard
+   runc
+   sbuild
+   sbuild-abort
+   sbuild-adduser
+   sbuild-apt
+   sbuild-checkpackages
+   sbuild-clean
+   sbuild-createchroot
+   sbuild-destroychroot
+   sbuild-distupgrade
+   sbuild-hold
+   sbuild-shell
+   sbuild-unhold
+   sbuild-update
+   sbuild-upgrade
+   scide
+   signal-desktop
+   slack
+   slirp4netns
+   steam
+   stress-ng
+   surfshark
+   systemd-coredump
+   thunderbird
+   toybox
+   trinity
+   tup
+   tuxedo-control-center
+   userbindmount
+   uwsgi-core
+   vdens
+   virtiofsd
+   vivaldi-bin
+   vpnns
+   vscode
+   wike
+   wpcom
+1 processes have profiles defined.
+1 processes are in enforce mode.
+   /usr/sbin/rsyslogd (1500) rsyslogd
+0 processes are in complain mode.
+0 processes are in prompt mode.
+0 processes are in kill mode.
+0 processes are unconfined but have a profile defined.
+0 processes are in mixed mode.
+
+===== SERVICIOS =====
+  UNIT LOAD ACTIVE SUB DESCRIPTION
+
+0 loaded units listed.
+
+enabled
+active
+
+===== ACTUALIZACIONES PENDIENTES =====
+Listando...
+apparmor/noble-updates 4.0.1really4.0.1-0ubuntu0.24.04.8 amd64 [actualizable desde: 4.0.1really4.0.1-0ubuntu0.24.04.7]
+dmidecode/noble-updates 3.5-3ubuntu0.2 amd64 [actualizable desde: 3.5-3ubuntu0.1]
+krb5-locales/noble-updates 1.20.1-6ubuntu2.10 all [actualizable desde: 1.20.1-6ubuntu2.8]
+libapparmor1/noble-updates 4.0.1really4.0.1-0ubuntu0.24.04.8 amd64 [actualizable desde: 4.0.1really4.0.1-0ubuntu0.24.04.7]
+libaudit-common/noble-updates 1:3.1.2-2.1ubuntu0.1 all [actualizable desde: 1:3.1.2-2.1build1.1]
+libaudit1/noble-updates 1:3.1.2-2.1ubuntu0.1 amd64 [actualizable desde: 1:3.1.2-2.1build1.1]
+libgssapi-krb5-2/noble-updates 1.20.1-6ubuntu2.10 amd64 [actualizable desde: 1.20.1-6ubuntu2.8]
+libk5crypto3/noble-updates 1.20.1-6ubuntu2.10 amd64 [actualizable desde: 1.20.1-6ubuntu2.8]
+libkrb5-3/noble-updates 1.20.1-6ubuntu2.10 amd64 [actualizable desde: 1.20.1-6ubuntu2.8]
+libkrb5support0/noble-updates 1.20.1-6ubuntu2.10 amd64 [actualizable desde: 1.20.1-6ubuntu2.8]
+libnetplan1/noble-updates 1.1.2-8ubuntu1~24.04.3 amd64 [actualizable desde: 1.1.2-8ubuntu1~24.04.2]
+netplan-generator/noble-updates 1.1.2-8ubuntu1~24.04.3 amd64 [actualizable desde: 1.1.2-8ubuntu1~24.04.2]
+netplan.io/noble-updates 1.1.2-8ubuntu1~24.04.3 amd64 [actualizable desde: 1.1.2-8ubuntu1~24.04.2]
+python3-netplan/noble-updates 1.1.2-8ubuntu1~24.04.3 amd64 [actualizable desde: 1.1.2-8ubuntu1~24.04.2]
+sosreport/noble-updates 4.11.2-0ubuntu0~24.04.1 amd64 [actualizable desde: 4.10.2-0ubuntu0~24.04.1]
+
+===== ERRORES DEL ARRANQUE ACTUAL =====
+oct 01 20:47:57 srv-mm-01 kernel: x86/cpu: SGX disabled by BIOS.
+oct 01 20:48:06 srv-mm-01 login[1654]: PAM unable to dlopen(pam_lastlog.so): /usr/lib/security/pam_lastlog.so: cannot open shared object file: No such file or directory
+oct 01 20:48:06 srv-mm-01 login[1654]: PAM adding faulty module: pam_lastlog.so
+
+===== FIN =====
+2026-10-01T21:39:01+00:00

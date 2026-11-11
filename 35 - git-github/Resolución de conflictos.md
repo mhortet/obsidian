@@ -1,7 +1,6 @@
 ---
 tags:
-  - codigo
-  - software
+  - programacion
   - git
 Creado: 2026-06-08
 Autor:

@@ -8,7 +8,7 @@ source_id: "2026-06-28-mcp-herramientas-desarrollo"
 raw_path: "raw/sources/7 MCP que mejoran tu IA para programar.md"
 sources:
   - "https://www.youtube.com/watch?v=NNICQKFS3TU"
-tags: [ia, agentes, mcp, programacion, devtools]
+tags: [ia, agentes, mcp, programacion]
 review_after: 2026-09-28
 ---
 

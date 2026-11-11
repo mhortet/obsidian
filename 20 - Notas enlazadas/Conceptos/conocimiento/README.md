@@ -5,7 +5,7 @@ status: active
 created: 2026-06-28
 updated: 2026-07-01
 sources: []
-tags: [conceptos, conocimiento]
+tags: [conocimiento]
 review_after:
 ---
 

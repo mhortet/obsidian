@@ -1,0 +1,453 @@
+{
+  "home_assistant": {
+    "arch": "x86_64",
+    "dev": false,
+    "docker": true,
+    "hassio": true,
+    "installation_type": "Home Assistant OS",
+    "os_name": "Linux",
+    "os_version": "6.18.39-haos",
+    "python_version": "3.14.6",
+    "timezone": "Europe/Madrid",
+    "version": "2026.9.1",
+    "virtualenv": false,
+    "container_arch": "amd64",
+    "supervisor": "2026.08.0",
+    "host_os": "Home Assistant OS 18.2",
+    "docker_version": "29.6.2",
+    "chassis": "embedded",
+    "run_as_root": true
+  },
+  "custom_components": {
+    "dual_smart_thermostat": {
+      "documentation": "https://github.com/swingerman/ha-dual-smart-thermostat.git",
+      "version": "v0.13.1",
+      "requirements": []
+    },
+    "hacs": {
+      "documentation": "https://hacs.xyz/docs/use/",
+      "version": "2.0.5",
+      "requirements": [
+        "aiogithubapi>=22.10.1"
+      ]
+    },
+    "nodered": {
+      "documentation": "https://zachowj.github.io/node-red-contrib-home-assistant-websocket/guide/custom_integration/",
+      "version": "4.2.3",
+      "requirements": []
+    },
+    "localtuya": {
+      "documentation": "https://github.com/xZetsubou/hass-localtuya/",
+      "version": "2026.07.0",
+      "requirements": []
+    },
+    "huawei_solar": {
+      "documentation": "https://github.com/wlcrs/huawei_solar/wiki",
+      "version": "2.1.4",
+      "requirements": [
+        "huawei-solar>=3.0.7"
+      ]
+    }
+  },
+  "integration_manifest": {
+    "domain": "localtuya",
+    "name": "Local Tuya",
+    "codeowners": [],
+    "config_flow": true,
+    "dependencies": [],
+    "documentation": "https://github.com/xZetsubou/hass-localtuya/",
+    "integration_type": "hub",
+    "iot_class": "local_push",
+    "issue_tracker": "https://github.com/xZetsubou/hass-localtuya/issues",
+    "requirements": [],
+    "version": "2026.07.0",
+    "is_built_in": false,
+    "overwrites_built_in": false
+  },
+  "setup_times": {
+    "null": {
+      "setup": 0.0007699450070504099
+    },
+    "01M1VWFH756MHQAN84Z64FD3YA": {
+      "wait_import_platforms": -1.0713421659893356,
+      "config_entry_setup": 1.083982869007741
+    }
+  },
+  "data": {
+    "device_config": {
+      "friendly_name": "EV Charger",
+      "host": "192.168.2.106",
+      "local_key": "********" ,
+      "protocol_version": "3.5",
+      "enable_debug": false,
+      "entities": [
+        {
+          "friendly_name": "Max Corriente Cargador",
+          "entity_category": "diagnostic",
+          "unit_of_measurement": "A",
+          "device_class": "current",
+          "state_class": "measurement",
+          "id": "152",
+          "platform": "sensor",
+          "icon": ""
+        },
+        {
+          "friendly_name": "Corriente Carga del Cargador",
+          "entity_category": "config",
+          "min_value": 6.0,
+          "max_value": 32.0,
+          "step_size": 1.0,
+          "restore_on_reconnect": false,
+          "is_passive_entity": false,
+          "id": "150",
+          "platform": "number",
+          "icon": ""
+        },
+        {
+          "friendly_name": "medidas",
+          "entity_category": "diagnostic",
+          "id": "102",
+          "platform": "sensor",
+          "icon": ""
+        },
+        {
+          "friendly_name": "Programacion",
+          "entity_category": "diagnostic",
+          "id": "151",
+          "platform": "sensor",
+          "icon": ""
+        },
+        {
+          "friendly_name": "Estado Cargador",
+          "entity_category": "diagnostic",
+          "id": "109",
+          "platform": "sensor",
+          "icon": ""
+        }
+        
+      ],
+      "model": "d\u00e9 EV Charger",
+      "device_id": "bf0272b631feb6061aqhaw",
+      "node_id": null,
+      "dps_strings": [
+        "101 ( code: x_work_state , value: 101 )",
+        "102 ( code: x_metrics , value: {\"L1\":[2240,0,0],\"L2\":[2240,0,0],\"L3\":[2240,0,0],\"t\":280,\"p\":0,\"d\":0,\"e\":0} )",
+        "103 ( code: x_selftest , value: , cloud pull )",
+        "104 ( code: x_alarm , value: , cloud pull )",
+        "105 ( code: x_charge_history , value: {\"t\":\"2026-09-02 12:28:12\", \"s\":\"12:28\",\"e\":\"16:10\",\"d\":13415,\"c\":67}, cloud pull )",
+        "106 ( code: x_charger_info , value: {\"r\":\"Type B, AC 30mA + DC 6mA\",\"fv\":\"2.5.4\",\"cp\":\"12.0\",\"t\":\"170\",\"e\":\"2299\"} )",
+        "107 ( code: x_adjust_current , value: [6, 8, 10, 13, 16, 20, 25, 32] )",
+        "108 ( code: x_downcounter , value: 0, cloud pull )",
+        "109 ( code: x_work_st_debug , value: SLEEP )",
+        "110 ( code: x_single_fase_mode , value: , cloud pull )",
+        "111 ( code: x_debug , value: , cloud pull )",
+        "140 ( code: x_do_charge , value: False, cloud pull )",
+        "141 ( code: x_do_reset , value: False, cloud pull )",
+        "142 ( code: x_do_reboot , value: False, cloud pull )",
+        "150 ( code: x_charge_current , value: 9 )",
+        "151 ( code: x_charge_mode , value: {\"m\":0,\"dt\":0,\"ss\":\"00:00\",\"se\":\"08:00\"} )",
+        "152 ( code: x_max_current_cfg , value: 32 )",
+        "153 ( code: x_lang_cfg , value: , cloud pull )",
+        "154 ( code: x_socket_cfg , value: 0, cloud pull )",
+        "155 ( code: x_nfc_cfg , value: False )",
+        "156 ( code: x_earch_free_cfg , value: False )",
+        "157 ( code: x_product_varient , value: 1 )",
+        "188 ( code: x_heartbeat , value: False )",
+        "189 ( code: dp_num , value: 0, cloud pull )",
+        "190 ( code: x_plug_charge , value: False, cloud pull )"
+      ]
+    },
+    "device_cloud_info": {
+      "active_time": 1785149396,
+      "biz_type": 18,
+      "category": "dj",
+      "create_time": 1785149396,
+      "icon": "smart/icon/bay16327144559007oah/2b0a3683559f8e9da320c7bd43a078be.png",
+      "id": "bf0272b631feb6061aqhaw",
+      "ip": "4...1",
+      "lat": "",
+      "local_key": "e3|...|>C",
+      "lon": "",
+      "model": "",
+      "name": "d\u00e9 EV Charger",
+      "online": true,
+      "owner_id": "44857715",
+      "product_id": "gxrtu5vljdthtd3g",
+      "product_name": "d\u00e9 EV Charger",
+      "sub": false,
+      "time_zone": "+02:00",
+      "uid": "eu1...irA",
+      "update_time": 1788778699,
+      "uuid": "2c888f232871c042",
+      "dps_data": {
+        "101": {
+          "code": "x_work_state",
+          "custom_name": "",
+          "dp_id": 101,
+          "time": 1788866109553,
+          "type": "value",
+          "value": 300,
+          "id": 101,
+          "accessMode": "rw",
+          "values": "{\"type\": \"value\", \"max\": 10000, \"min\": 1, \"scale\": 0, \"step\": 1, \"unit\": \"\"}"
+        },
+        "102": {
+          "code": "x_metrics",
+          "custom_name": "",
+          "dp_id": 102,
+          "time": 1788866858239,
+          "type": "string",
+          "value": "{\"L1\":[2180,92,20],\"L2\":[2180,0,0],\"L3\":[2180,0,0],\"t\":280,\"p\":20,\"d\":7530,\"e\":4}",
+          "id": 102,
+          "accessMode": "rw",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}"
+        },
+        "103": {
+          "code": "x_selftest",
+          "custom_name": "",
+          "dp_id": 103,
+          "time": 1785149396740,
+          "type": "string",
+          "value": "",
+          "id": 103,
+          "accessMode": "ro",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}"
+        },
+        "104": {
+          "code": "x_alarm",
+          "custom_name": "",
+          "dp_id": 104,
+          "time": 1785149396740,
+          "type": "string",
+          "value": "",
+          "id": 104,
+          "accessMode": "ro",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}"
+        },
+        "105": {
+          "code": "x_charge_history",
+          "custom_name": "",
+          "dp_id": 105,
+          "time": 1788862398485,
+          "type": "string",
+          "value": "{\"t\":\"2026-09-08 12:04:26\", \"s\":\"12:04\",\"e\":\"12:11\",\"d\":451,\"c\":2}",
+          "id": 105,
+          "accessMode": "ro",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}"
+        },
+        "106": {
+          "code": "x_charger_info",
+          "custom_name": "",
+          "dp_id": 106,
+          "time": 1788866109554,
+          "type": "string",
+          "value": "{\"r\":\"Type B, AC 30mA + DC 6mA\",\"fv\":\"2.5.4\",\"cp\":\"6.0\",\"t\":\"190\",\"e\":\"2459\"}",
+          "id": 106,
+          "accessMode": "rw",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}"
+        },
+        "107": {
+          "code": "x_adjust_current",
+          "custom_name": "",
+          "dp_id": 107,
+          "time": 1788778702303,
+          "type": "string",
+          "value": "[6, 8, 10, 13, 16, 20, 25, 32]",
+          "id": 107,
+          "accessMode": "ro",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}"
+        },
+        "108": {
+          "code": "x_downcounter",
+          "custom_name": "",
+          "dp_id": 108,
+          "time": 1785149396740,
+          "type": "value",
+          "value": 0,
+          "id": 108,
+          "accessMode": "ro",
+          "values": "{\"type\": \"value\", \"max\": 86400, \"min\": 0, \"scale\": 0, \"step\": 1, \"unit\": \"\"}"
+        },
+        "109": {
+          "code": "x_work_st_debug",
+          "custom_name": "",
+          "dp_id": 109,
+          "time": 1788866109236,
+          "type": "enum",
+          "value": "WORKING",
+          "id": 109,
+          "accessMode": "ro",
+          "values": "{\"type\": \"enum\", \"range\": [\"SLEEP\", \"IDLE\", \"IDLEINS\", \"WORKING\", \"WAIT\", \"ERRORPAUSE\", \"PAUSE\", \"STOP\", \"EMPTY\"]}"
+        },
+        "140": {
+          "code": "x_do_charge",
+          "custom_name": "",
+          "dp_id": 140,
+          "time": 1785149396740,
+          "type": "bool",
+          "value": false,
+          "id": 140,
+          "accessMode": "rw",
+          "values": "{\"type\": \"bool\"}"
+        },
+        "141": {
+          "code": "x_do_reset",
+          "custom_name": "",
+          "dp_id": 141,
+          "time": 1785149396740,
+          "type": "bool",
+          "value": false,
+          "id": 141,
+          "accessMode": "rw",
+          "values": "{\"type\": \"bool\"}"
+        },
+        "142": {
+          "code": "x_do_reboot",
+          "custom_name": "",
+          "dp_id": 142,
+          "time": 1785149396740,
+          "type": "bool",
+          "value": false,
+          "id": 142,
+          "accessMode": "rw",
+          "values": "{\"type\": \"bool\"}"
+        },
+        "150": {
+          "code": "x_charge_current",
+          "custom_name": "",
+          "dp_id": 150,
+          "time": 1788865955783,
+          "type": "value",
+          "value": 10,
+          "id": 150,
+          "accessMode": "rw",
+          "values": "{\"type\": \"value\", \"max\": 32, \"min\": 6, \"scale\": 0, \"step\": 1, \"unit\": \"\"}"
+        },
+        "151": {
+          "code": "x_charge_mode",
+          "custom_name": "",
+          "dp_id": 151,
+          "time": 1788865961572,
+          "type": "string",
+          "value": "{\"m\":2,\"dt\":0,\"ss\":\"13:15\",\"se\":\"08:00\"}",
+          "id": 151,
+          "accessMode": "rw",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}"
+        },
+        "152": {
+          "code": "x_max_current_cfg",
+          "custom_name": "",
+          "dp_id": 152,
+          "time": 1788778702304,
+          "type": "value",
+          "value": 32,
+          "id": 152,
+          "accessMode": "rw",
+          "values": "{\"type\": \"value\", \"max\": 32, \"min\": 6, \"scale\": 0, \"step\": 1, \"unit\": \"\"}"
+        },
+        "153": {
+          "code": "x_lang_cfg",
+          "custom_name": "",
+          "dp_id": 153,
+          "time": 1785149396740,
+          "type": "string",
+          "value": "",
+          "id": 153,
+          "accessMode": "rw",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}"
+        },
+        "154": {
+          "code": "x_socket_cfg",
+          "custom_name": "",
+          "dp_id": 154,
+          "time": 1785149396740,
+          "type": "value",
+          "value": 0,
+          "id": 154,
+          "accessMode": "rw",
+          "values": "{\"type\": \"value\", \"max\": 2, \"min\": 0, \"scale\": 0, \"step\": 1, \"unit\": \"\"}"
+        },
+        "155": {
+          "code": "x_nfc_cfg",
+          "custom_name": "",
+          "dp_id": 155,
+          "time": 1788778702307,
+          "type": "bool",
+          "value": false,
+          "id": 155,
+          "accessMode": "rw",
+          "values": "{\"type\": \"bool\"}"
+        },
+        "156": {
+          "code": "x_earch_free_cfg",
+          "custom_name": "",
+          "dp_id": 156,
+          "time": 1788778704400,
+          "type": "bool",
+          "value": false,
+          "id": 156,
+          "accessMode": "rw",
+          "values": "{\"type\": \"bool\"}"
+        },
+        "157": {
+          "code": "x_product_varient",
+          "custom_name": "",
+          "dp_id": 157,
+          "time": 1788778702308,
+          "type": "value",
+          "value": 1,
+          "id": 157,
+          "accessMode": "ro",
+          "values": "{\"type\": \"value\", \"max\": 1000, \"min\": 0, \"scale\": 0, \"step\": 1, \"unit\": \"\"}"
+        },
+        "188": {
+          "code": "x_heartbeat",
+          "custom_name": "",
+          "dp_id": 188,
+          "time": 1788866841099,
+          "type": "bool",
+          "value": false,
+          "id": 188,
+          "accessMode": "rw",
+          "values": "{\"type\": \"bool\"}"
+        },
+        "189": {
+          "code": "dp_num",
+          "custom_name": "",
+          "dp_id": 189,
+          "time": 1785149396740,
+          "type": "value",
+          "value": 0,
+          "id": 189,
+          "accessMode": "ro",
+          "values": "{\"type\": \"value\", \"max\": 10000, \"min\": 0, \"scale\": 0, \"step\": 1, \"unit\": \"\"}"
+        },
+        "190": {
+          "code": "x_plug_charge",
+          "custom_name": "",
+          "dp_id": 190,
+          "time": 1785149396740,
+          "type": "bool",
+          "value": false,
+          "id": 190,
+          "accessMode": "rw",
+          "values": "{\"type\": \"bool\"}"
+        },
+        "110": {
+          "id": 110,
+          "accessMode": "rw",
+          "values": "{\"type\": \"bool\"}",
+          "code": "x_single_fase_mode"
+        },
+        "111": {
+          "id": 111,
+          "accessMode": "rw",
+          "values": "{\"type\": \"string\", \"maxlen\": 255}",
+          "code": "x_debug"
+        }
+      }
+    },
+    "Discovered_Devices": null
+  },
+  "issues": []
+}

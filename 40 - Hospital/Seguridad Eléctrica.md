@@ -1,7 +1,7 @@
 ---
 tags:
-  - SegElec
-  - ingeniería
+  - seguridad-electrica
+  - ingenieria
 Creado: 2026-06-13
 Relacionado:
   - "[[Manual Seguridad Eléctrica]]"

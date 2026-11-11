@@ -7,7 +7,7 @@ updated: 2026-06-28
 sources:
   - "20 - Notas enlazadas/Fuentes/2026-06-28-mcp-herramientas-desarrollo.md"
   - "20 - Notas enlazadas/Fuentes/2026-06-28-mcp-desde-cero.md"
-tags: [ia, agentes, mcp, programacion, devtools]
+tags: [ia, agentes, mcp, programacion]
 review_after: 2026-09-28
 ---
 

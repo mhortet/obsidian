@@ -1,8 +1,8 @@
 ---
 tags:
-  - Error
+  - incidencia
   - git
-  - software
+  - programacion
 Creado: 2026-06-06
 Autor:
 Relacionado:

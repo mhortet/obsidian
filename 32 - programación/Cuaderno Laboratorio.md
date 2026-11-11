@@ -1,10 +1,8 @@
 ---
 tags:
-  - codigo
-  - pendiente
-  - estructura
-  - IA
-  - ingeniería
+  - programacion
+  - arquitectura
+  - ia
 Creado:
 Relacionado:
 ---
@@ -40,5 +38,4 @@ No de apuntes.
 			No mejora rendimiento.
 		Conclusión:
 			Útil solo antes del merge.
-
 

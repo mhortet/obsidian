@@ -1,129 +1,114 @@
 ---
 tags:
-  - app
+  - qontrolmed
   - documentacion
-Creado: 2026-06-23
+Creado: 2026-06-25
 Relacionado:
 ---
 
-# Mapa documental del proyecto
-[[masgesth]]
-Fecha de revision: 2026-06-23
+# Analisis Paquete A Preventivos - 2026-06-25
 
-## Objetivo
+Estado: LISTO PARA IMPLEMENTAR
 
-Clasificar la documentacion del proyecto para que la siguiente sesion arranque
-con las fuentes vivas correctas y no con material historico o listas
-competidoras.
+## Alcance
 
-## Lectura recomendada al iniciar sesion
+Paquete A cubre solo:
 
-Lectura minima obligatoria:
+- observaciones generales de informe capturadas en tablet y visibles en sobremesa;
+- marcado `NA` en puntos cuantitativos de tablet cuando el control no aplica.
 
-1. `docs/security_delivery_playbook.md`
-2. `docs/estado_continuidad.md`
-3. `docs/plan_seguridad_consistencia.md`
+Quedan fuera de este paquete serie/inventario visible, referencias DESF ampliadas,
+busqueda por numero de serie y exportacion por bloques.
 
-Lectura solo si aplica:
+## Flujo actual mapeado
 
-- `docs/mapa_documental_proyecto.md`: tareas documentales o dudas sobre fuente
-  de verdad.
-- `docs/cola_triaje_campo.md`: trabajo de campo Preventivos.
-- `specifications/criterios_transversales_capas.md`: cambios de arquitectura,
-  persistencia, integraciones o entrega.
-- notas locales de `maxgesth_port` o `maxgestq_mov`: cuando se toque ese repo.
+1. Sobremesa exporta maestros a tablet desde
+   `src/preventivos/services/export_preventivos_service.py`.
+2. Tablet importa maestros en SQLite con `src/services/import_service.py`.
+3. Tablet guarda informes y resultados en `src/services/report_service.py`.
+4. Tablet exporta informes cerrados desde `src/services/export_service.py`.
+5. Sobremesa importa resultados con
+   `src/preventivos/services/import_tablet_service.py`.
+6. Sobremesa recalcula estado, deja el informe abierto y permite revision final.
+7. PDF e historico consumen las tablas MySQL de sobremesa.
 
-Soporte externo no versionado:
+## Observaciones
 
-- `D:\trabajo\Proyectos\diario_qontrolmed\sesion_YYYY-MM-DD_HH-mm.md`
+### Sobremesa
 
-## Documentacion viva canonica
+La sobremesa ya esta preparada para recibir observaciones generales:
 
-### Gobierno y continuidad
+- `informes_preventivo.observaciones` se muestra y edita en
+  `src/preventivos/ui/informe_preventivo_ui.py`.
+- `guardar_observaciones_informe` persiste el texto.
+- `import_tablet_service._insert_report` ya lee `informe["observaciones"]` si
+  la columna existe.
+- `pdf_service.generar_pdf_informe_preventivo` ya consulta
+  `i.observaciones` y lo pinta en el bloque de comentarios.
+- El cierre masivo de correctos excluye informes con observaciones.
 
-- `docs/security_delivery_playbook.md`: rutina de entrada, prioridad de etapa,
-  reglas de trabajo, tests y cierre.
-- `docs/estado_continuidad.md`: foto ejecutiva de reanudacion y riesgos
-  actuales.
-- `docs/plan_seguridad_consistencia.md`: roadmap unico hacia septiembre.
-- `docs/mapa_documental_proyecto.md`: clasificacion de fuentes vivas,
-  historicas y de apoyo.
-- `docs/Tareas Pendientes.md`: redireccion heredada; no es backlog operativo.
+Conclusion: no se requiere cambio de contrato MySQL si la columna ya existe en
+el entorno. Si el entorno objetivo no la tiene, falta migracion SQL explicita.
 
-### Campo y modulos moviles
+### Tablet
 
-- `docs/cola_triaje_campo.md`: observaciones reales de Preventivos ya aceptadas
-  para planificacion.
-- `D:/trabajo/Proyectos/maxgesth_port/docs/security_delivery_playbook.md`: nota
-  local de continuidad de Preventivos tablet.
-- `D:/trabajo/Proyectos/maxgestq_mov/docs/continuidad_local.md`: nota local de
-  continuidad de Quirofanos tablet.
+La tablet solo tiene `resultados_preventivo.observaciones`. No existe columna
+de observaciones generales en `informes_preventivo`, ni se exporta en el bloque
+`informes`.
 
-### Especificaciones
+Cambio necesario:
 
-- `specifications/criterios_transversales_capas.md`: criterios tecnicos
-  transversales.
-- `specifications/remote_tablet_preventivos.md`: contrato funcional
-  escritorio-tablet de Preventivos.
-- `specifications/modulo_analitico_y_campanas_preventivo.md`: referencia de
-  campanas y analitica futura, no frente inmediato.
-- `D:/trabajo/Proyectos/maxgestq_mov/specifications/remote_tablet_quirofanos_it.md`:
-  contrato funcional de Quirofanos tablet.
+- anadir `informes_preventivo.observaciones TEXT` en SQLite;
+- migrar con `ALTER TABLE informes_preventivo ADD COLUMN observaciones TEXT`;
+- exponer un campo de texto al final del formulario movil;
+- guardar y recuperar el texto en `ReportService`;
+- incluir `ip.observaciones` en la exportacion JSON de resultados.
 
-### Producto y operativa
+Compatibilidad:
 
-- `docs/documentacion_integral_proyecto_entregable.md`: documento amplio de
-  proyecto; debe revisarse antes de entrega formal porque puede contener
-  alcance mas extenso que la version inicial de septiembre.
-- `docs/Manual/manual_usuario_final_tecnicos_hospitalarios.md`: manual
-  operativo; actualizar solo cuando cambie comportamiento real.
-- `docs/roles_operativos_acceso.md`: regla vigente de acceso, bootstrap y roles.
-- `docs/checklist_configuracion_preproduccion.md`: ruta canonica de `.env`,
-  receta de uso normal/soporte y checklist inicial de instalacion.
-- `docs/migraciones_operativas_hardening.md`: orden de migraciones y diferencia
-  entre script base e incremental.
-- `docs/puntos_automaticos_quirofanos.md`: nota funcional de puntos por
-  quirofano.
+- JSON antiguo sin `observaciones` debe seguir importando como `NULL`;
+- JSON nuevo con `observaciones` sera consumido por sobremesa sin cambiar la
+  estructura base de `informes`/`resultados`.
 
-### Informes ejecutivos
+## NA cuantitativo
 
-- `docs/informe_ejecutivo_estado_2026-06-22.md`: revision supervisora de estado
-  actual, alcance de septiembre, standby y sugerencias.
+### Sobremesa
 
-## Material historico
+La sobremesa ya admite `NA` manual sobre puntos cuantitativos:
 
-El material de evolucion, propuestas superadas, cierres de iteracion o fotos de
-sesion no debe competir con la documentacion viva.
+- UI permite `NA` para `CUALITATIVO`, `CUANTITATIVO` y `SEGURIDAD`;
+- `actualizar_resultado_informe` guarda estado `NA` y `valor_leido = NULL`;
+- el resumen no cuenta `NA` como pendiente ni incidencia;
+- el cierre masivo acepta estados `B` o `NA`;
+- el PDF representa `NA`.
 
-Ubicaciones:
+Riesgo detectado: el PDF trata tambien `P` como `NA` visual en algunas tablas.
+No forma parte del Paquete A salvo que se decida corregirlo; conviene no mezclar
+ese ajuste con el contrato tablet.
 
-- `historico_doc/` en la raiz de cada modulo para backups y snapshots
-  documentales del repo.
-- `proyectos/historico_doc/` conserva material historico previo existente en
-  `maxgesth`.
-- `docs/diario_sesiones/` conserva evidencias versionadas de sesiones pasadas
-  cuando sigan siendo utiles como trazabilidad.
-- diario externo en `D:\trabajo\Proyectos\diario_qontrolmed\` para partes de
-  sesion no destinados a ser fuente viva.
+### Tablet
 
-## Regla de mantenimiento
+La tablet actualmente:
 
-- No mantener dos documentos vivos con el mismo objetivo.
-- Si un documento deja de condicionar la siguiente sesion, moverlo a historico
-  o dejarlo como redireccion explicita.
-- Si una decision afecta a produccion, seguridad, pruebas, continuidad, rutas o
-  contratos, actualizar playbook, continuidad y roadmap.
-- Si una validacion detallada solo sirve como evidencia, dejarla en diario o
-  documento tematico, no en continuidad.
-- Antes de editar documentos vivos, crear copia en `historico_doc`.
+- calcula cuantitativos desde valor numerico;
+- devuelve `P` si falta valor o el valor no es numerico;
+- solo tiene selector `B/M/NA` para cualitativos;
+- permite `NA` automatico para seguridad clase III;
+- al cerrar exige valor en puntos cuantitativos salvo `estado_auto`.
 
-## Alcance diferido
+Cambio necesario:
 
-Estos documentos pueden contener vision futura, pero no deben leerse como tarea
-inmediata de septiembre:
+- permitir un estado manual `NA` tambien en puntos cuantitativos;
+- conservar `estado = "NA"` y `valor_leido = ""` o `NULL` localmente;
+- al exportar JSON enviar `estado: "NA"` y `valor_leido: ""` o `null`;
+- mantener campo vacio sin `NA` como pendiente/no cerrable;
+- no convertir texto literal `"NA"` en valor numerico.
 
-- Compras operativas.
-- Informes de compra.
-- Informes directivos.
-- Analitica ampliada.
-- Nuevas prestaciones moviles no derivadas de campo.
+Contrato recomendado:
+
+- `resultado.estado = "NA"` es la fuente de verdad;
+- `resultado.valor_leido` debe ir vacio o `null` cuando el estado es `NA`;
+- `resultado.valor_referencia` puede conservarse si ya estaba informado, pero
+  no debe ser obligatorio para cerrar un punto `NA`;
+- `resultado.observaciones` sigue siendo observacion de punto, no observacion
+  general de

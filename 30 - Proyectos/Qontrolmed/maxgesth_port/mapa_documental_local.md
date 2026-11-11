@@ -1,10 +1,9 @@
 ---
 tags:
-  - app
+  - qontrolmed
   - aprendizaje
-  - codigo
-  - manuales
-  - mapa
+  - programacion
+  - documentacion
 Creado:
 Autor:
 Relacionado:

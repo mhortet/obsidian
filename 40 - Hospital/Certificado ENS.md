@@ -2,7 +2,6 @@
 tags:
   - auditoria
   - calidad
-  - concepto
   - datos-sensibles
   - gobierno
 Creado:

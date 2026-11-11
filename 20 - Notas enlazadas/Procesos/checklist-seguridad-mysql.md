@@ -5,7 +5,7 @@ status: seed
 created: 2026-06-27
 updated: 2026-06-27
 sources: ["20 - Notas enlazadas/Fuentes/2026-06-27-mysql-reference-architectures-security.md"]
-tags: [proceso, mysql, seguridad, base-de-datos, auditoria, checklist]
+tags: [mysql, seguridad, base-de-datos, auditoria]
 review_after: 2026-12-27
 ---
 

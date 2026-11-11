@@ -1,7 +1,7 @@
 ---
 tags:
-  - hospital
-  - Rx
+  - sanidad
+  - radiologia
 Creado:
 Autor:
 Relacionado:

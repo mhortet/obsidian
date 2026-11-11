@@ -5,7 +5,7 @@ status: active
 created: 2026-06-28
 updated: 2026-06-28
 sources: []
-tags: [qontrolmed, proyecto, continuidad]
+tags: [qontrolmed, gobierno]
 review_after: 2026-09-28
 ---
 

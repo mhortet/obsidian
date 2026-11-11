@@ -1,0 +1,220 @@
+path,tags_before,tags_after
+00 - Sistema/Indice.md,sistema | indice | gobierno,sistema | gobierno
+00 - Sistema/log.md,sistema | log,sistema
+00 - Sistema/meta/modelo-operativo.md,sistema | modelo-operativo | gobierno,sistema | gobierno
+00 - Sistema/meta/taxonomia.md,sistema | taxonomia,sistema
+15 - Notas diarias/README.md,diario | registro,
+20 - Notas enlazadas/Analisis/2026-07-01-humanidades-entrevista-hinton.md,humanidades | ia | filosofia | etica | sociedad,humanidades | ia | etica
+20 - Notas enlazadas/Analisis/2026-07-18-afirmaciones-entrenamiento-y-vision-ia-lopez-de-mantaras.md,ia | llm | entrenamiento | datos-sinteticos | trabajo-digital | conciencia | educacion | analisis-critico,ia | llm | entrenamiento | datos-sinteticos | trabajo-digital | conciencia | educacion
+20 - Notas enlazadas/Analisis/README.md,analisis | conocimiento,conocimiento
+20 - Notas enlazadas/Conceptos/conocimiento/npc-personaje-no-jugador.md,concepto | videojuegos | sistemas-interactivos | programacion,videojuegos | programacion
+20 - Notas enlazadas/Conceptos/conocimiento/README.md,conceptos | conocimiento,conocimiento
+20 - Notas enlazadas/Conceptos/gobierno/arquitectura-de-seguridad-mysql.md,mysql | seguridad | base-de-datos | arquitectura | defensa-en-profundidad | datos-sensibles,mysql | seguridad | base-de-datos | arquitectura | datos-sensibles
+20 - Notas enlazadas/Conceptos/gobierno/README.md,conceptos | gobierno | calidad | seguridad,gobierno | calidad | seguridad
+20 - Notas enlazadas/Conceptos/humanidades/experiencia-subjetiva-en-ia.md,humanidades | ia | filosofia-de-la-mente | conciencia,humanidades | ia | conciencia
+20 - Notas enlazadas/Conceptos/humanidades/humanismo-ante-superinteligencia.md,humanidades | ia | humanismo | etica | superinteligencia,humanidades | ia | etica
+20 - Notas enlazadas/Conceptos/humanidades/ia-maternal-y-etica-del-cuidado.md,humanidades | ia | etica | alineamiento | cuidado,humanidades | ia | etica
+20 - Notas enlazadas/Conceptos/humanidades/README.md,conceptos | humanidades,humanidades
+20 - Notas enlazadas/Conceptos/ia/entrenamiento-de-llm-datos-humanos-y-sinteticos.md,ia | llm | entrenamiento | datos | rlHF | datos-sinteticos | calidad,ia | llm | entrenamiento | datos-sinteticos | calidad
+20 - Notas enlazadas/Conceptos/ia/mcp-vs-api.md,concepto | ia | agentes | mcp | api | arquitectura,ia | agentes | mcp | arquitectura
+20 - Notas enlazadas/Conceptos/ia/model-context-protocol-mcp.md,ia | agentes | mcp | integraciones,ia | agentes | mcp | arquitectura
+20 - Notas enlazadas/Conceptos/ia/README.md,conceptos | ia | agentes,ia | agentes
+20 - Notas enlazadas/Conceptos/ingenieria/microscopia-de-fluorescencia.md,microscopia | fluorescencia | biologia-celular | laboratorio | equipamiento,laboratorio | equipamiento
+20 - Notas enlazadas/Conceptos/ingenieria/README.md,conceptos | ingenieria,ingenieria
+20 - Notas enlazadas/Conceptos/movilidad-electrica/README.md,conceptos | movilidad-electrica,movilidad-electrica
+20 - Notas enlazadas/Conceptos/programación/context7-mcp.md,ia | agentes | mcp | context7 | documentacion | programacion,ia | agentes | mcp | programacion | documentacion
+20 - Notas enlazadas/Conceptos/programación/fixture_concepto.md,software-testing | testing | conceptos | desarrollo,testing | programacion
+20 - Notas enlazadas/Conceptos/programación/herramientas-mcp-para-desarrollo.md,ia | agentes | mcp | programacion | devtools,ia | agentes | mcp | programacion
+20 - Notas enlazadas/Conceptos/programación/README.md,conceptos | programacion | desarrollo,programacion
+20 - Notas enlazadas/Conceptos/programación/semgrep-mcp.md,ia | agentes | mcp | semgrep | seguridad | sast | programacion,ia | agentes | mcp | seguridad | programacion
+20 - Notas enlazadas/Conceptos/README.md,conceptos | conocimiento,conocimiento
+20 - Notas enlazadas/Entidades/README.md,entidades | conocimiento,conocimiento
+20 - Notas enlazadas/Fuentes/2026-06-27-engram-cloud-contexto-compartido-agentes.md,ia | agentes | memoria | mcp | local-first,ia | agentes | memoria | mcp | arquitectura
+20 - Notas enlazadas/Fuentes/2026-06-27-microscopio-fluorescencia.md,fuente | microscopia | fluorescencia | biologia-celular | laboratorio,laboratorio
+20 - Notas enlazadas/Fuentes/2026-06-27-mysql-reference-architectures-security.md,fuente | mysql | seguridad | base-de-datos | arquitectura | ransomware | auditoria | cifrado,mysql | seguridad | base-de-datos | arquitectura | auditoria
+20 - Notas enlazadas/Fuentes/2026-06-28-creacion-mcp-go.md,ia | agentes | mcp | go | arquitectura | seguridad,ia | agentes | mcp | arquitectura | seguridad
+20 - Notas enlazadas/Fuentes/2026-06-28-mcp-desde-cero.md,ia | agentes | mcp | arquitectura | python,ia | agentes | mcp | arquitectura | programacion
+20 - Notas enlazadas/Fuentes/2026-06-28-mcp-explicado-productividad.md,ia | agentes | mcp | productividad,ia | agentes | mcp
+20 - Notas enlazadas/Fuentes/2026-06-28-mcp-herramientas-desarrollo.md,ia | agentes | mcp | programacion | devtools,ia | agentes | mcp | programacion
+20 - Notas enlazadas/Fuentes/2026-07-01-entrevista-geoffrey-hinton-monstruo-ia.md,ia | humanidades | etica | filosofia | sociedad | riesgo,ia | humanidades | etica | seguridad
+20 - Notas enlazadas/Fuentes/2026-07-18-video-ramon-lopez-de-mantaras-gran-mentira-ia.md,ia | modelos-de-lenguaje | entrenamiento | trabajo-digital | conciencia | educacion | regulacion,ia | llm | entrenamiento | trabajo-digital | conciencia | educacion | gobierno
+20 - Notas enlazadas/Fuentes/README.md,fuentes | conocimiento,conocimiento
+20 - Notas enlazadas/Notas Vivas/Roles.md,app | codigo | desarrollo | prompt | pendiente,qontrolmed | programacion | prompt
+20 - Notas enlazadas/Procesos/checklist-seguridad-mysql.md,proceso | mysql | seguridad | base-de-datos | auditoria | checklist,mysql | seguridad | base-de-datos | auditoria
+20 - Notas enlazadas/Procesos/ingesta-de-fuentes.md,proceso | fuentes | web-clipper,obsidian
+20 - Notas enlazadas/Sintesis/README.md,sintesis | conocimiento,conocimiento
+30 - Proyectos/Aprendizaje programacion con Fortnite/README.md,proyecto | aprendizaje | programacion | videojuegos | fortnite,aprendizaje | programacion | videojuegos | fortnite
+30 - Proyectos/Manuales/Flet.md,app | codigo | desarrollo | estructura | manuales,qontrolmed | programacion | arquitectura | documentacion
+30 - Proyectos/Manuales/git-chuleta.md,software | git,programacion | git
+30 - Proyectos/Manuales/git-postit.md,software | git,programacion | git
+30 - Proyectos/Manuales/Manual.md,app | manuales,qontrolmed | documentacion
+30 - Proyectos/Manuales/Seguridad Eléctrica/Anexos.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 1.md,SegElec | manuales,seguridad-electrica | documentacion
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 10.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 11.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 12.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 13.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 14.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 15.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 16.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 17.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 2.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 3.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 4.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 5.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 6.md,SegElec | manuales,seguridad-electrica | documentacion
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 7.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 8.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Capítulo 9.md,manuales | SegElec,documentacion | seguridad-electrica
+30 - Proyectos/Manuales/Seguridad Eléctrica/Manual Seguridad Eléctrica.md,app | manuales | hospital,qontrolmed | documentacion | sanidad
+30 - Proyectos/Qontrolmed/01_gobierno_y_decisiones/Legalizar.md,app | pendiente | desarrollo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/01_gobierno_y_decisiones/README.md,qontrolmed | gobierno | decisiones,qontrolmed | gobierno
+30 - Proyectos/Qontrolmed/02_historico/historial_actualizacion_puntos_control_20260614.md,app | estructura,qontrolmed | arquitectura
+30 - Proyectos/Qontrolmed/02_historico/Módulo compras.md,app | estructura,qontrolmed | arquitectura
+30 - Proyectos/Qontrolmed/02_historico/Módulo informe.md,app | codigo | desarrollo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/02_historico/Pos revisión flujo de preventivos.md,app | desarrollo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/02_historico/README.md,qontrolmed | historico,qontrolmed
+30 - Proyectos/Qontrolmed/03_entregables/documentacion_integral_proyecto_entregable.md,app | desarrollo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/03_entregables/Informe módulo Quirófano.md,analisis | app | desarrollo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/03_entregables/Informe sobre módulo preventivos.md,app | desarrollo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/03_entregables/LEEME_BOOTSTRAP.md,app | desarrollo | documentacion,qontrolmed | programacion | documentacion
+30 - Proyectos/Qontrolmed/03_entregables/LEEME_INSTALACION.md,app | desarrollo | documentacion,qontrolmed | programacion | documentacion
+30 - Proyectos/Qontrolmed/03_entregables/README.md,qontrolmed | entregables,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/dario_app/Sesion 2026-06-03.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/Sesion 2026-06-07.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/Sesion 2026-06-08.md,app | desarrollo | diario | codigo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_botones_informe_feedback.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_clase_aplicar_volver_confirmacion.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_clase_combo_limpieza_equipo.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_clase_dinamica_cualitativos.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_import_equipos_10_columnas.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_import_puntos_16_columnas.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_import_service_robustez.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_importacion_bd_vacia_borrado_doble.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_na_validacion_volver_inline.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_puntos_reutilizados.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_referencias_puntos_ui.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-15_report_service_ui_tactil.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/dario_app/session_2026-05-17_acceso_app_aplazado_pruebas_campo.md,app | codigo | desarrollo | diario,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/documentos_vivos/bootstrap_administrador_inicial.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/checklist_configuracion_preproduccion.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/checklist_ejecucion_upgrade_mysql_8_4_lts.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/checklist_validacion_hardening_permisos_ventanas.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/cola_triaje_campo.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/documentacion_integral_proyecto_entregable.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/estado_continuidad.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/guia_instalacion_rc_qontrolmed.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/informe_ejecutivo_estado_2026-06-22.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/mapa_documental_proyecto.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/migraciones_operativas_hardening.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/plan_seguridad_consistencia.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/plan_upgrade_mysql_8_0_44_a_8_4_lts.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/propuesta_modelo_roles_permisos.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/puntos_automaticos_quirofanos.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/Reorganización Documental.md,app | codigo | estructura,qontrolmed | programacion | arquitectura
+30 - Proyectos/Qontrolmed/documentos_vivos/roles_operativos_acceso.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/runbook_validacion_paquete_a_preventivos_datos_reales.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/ruta_pruebas_preproduccion_1h.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/documentos_vivos/security_delivery_playbook.md,app | documentacion,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/evolucion_proyecto.md,qontrolmed | evolucion | diario | proyecto,qontrolmed | gobierno
+30 - Proyectos/Qontrolmed/mapa_documental_qontrolmed.md,qontrolmed | documentacion | mapa,qontrolmed | documentacion
+30 - Proyectos/Qontrolmed/maxgesth_port/android_local_build.md,app | codigo | desarrollo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/maxgesth_port/android_remote_build.md,app | aprendizaje | desarrollo | github,qontrolmed | aprendizaje | programacion | git
+30 - Proyectos/Qontrolmed/maxgesth_port/estado_continuidad_local.md,app | aprendizaje | desarrollo | codigo,qontrolmed | aprendizaje | programacion
+30 - Proyectos/Qontrolmed/maxgesth_port/mapa_documental_local.md,app | aprendizaje | codigo | manuales | mapa,qontrolmed | aprendizaje | programacion | documentacion
+30 - Proyectos/Qontrolmed/Planificación julio.md,app | desarrollo | codigo,qontrolmed | programacion
+30 - Proyectos/Qontrolmed/promps/2026-07-16.md,prompt | app | desarrollo,prompt | qontrolmed | programacion
+30 - Proyectos/Qontrolmed/promps/2026-07-17.md,app | desarrollo | prompt,qontrolmed | programacion | prompt
+30 - Proyectos/Qontrolmed/promps/promp 07-06-2026.md,prompt | desarrollo,prompt | programacion
+30 - Proyectos/Qontrolmed/promps/Prompt 09-06-2026.md,app | prompt,qontrolmed | prompt
+30 - Proyectos/Qontrolmed/promps/Prompt 09-06-26.1.md,app | prompt,qontrolmed | prompt
+30 - Proyectos/Qontrolmed/promps/prompt 2026-06-22.md,prompt | desarrollo,prompt | programacion
+30 - Proyectos/Qontrolmed/promps/Promt 11-06-25.md,app | codigo | prompt | estructura,qontrolmed | programacion | prompt | arquitectura
+30 - Proyectos/Qontrolmed/README.md,qontrolmed | proyecto | continuidad,qontrolmed | gobierno
+30 - Proyectos/web_Qontrolmed/guia-visual-pagina-producto.md,desarrollo | app | web-clipper,programacion | qontrolmed | obsidian
+32 - programación/Aprendizaje.md,desarrollo | codigo | IA,programacion | ia
+32 - programación/Canonical logger.md,codigo | estructura,programacion | arquitectura
+32 - programación/Context7.md,codigo | desarrollo | IA,programacion | ia
+32 - programación/Cuaderno Laboratorio.md,codigo | pendiente | estructura | IA | ingeniería,programacion | arquitectura | ia | ingenieria
+32 - programación/error carga emulador android.md,androidstudio | Error | software,programacion | incidencia
+32 - programación/estructura.md,codigo | desarrollo | estructura | IA,programacion | arquitectura | ia
+32 - programación/fixture.md,desarrollo | software,programacion
+32 - programación/MCP propio.md,desarrollo | app | estructura | IA | pendiente,programacion | qontrolmed | arquitectura | ia
+32 - programación/Multiagentes.md,desarrollo | IA,programacion | ia
+32 - programación/Plantilla Agents.md,codigo | desarrollo | estructura | IA,programacion | arquitectura | ia
+32 - programación/Profundizar.md,desarrollo | pendiente | estructura | hard,programacion | arquitectura | aprendizaje
+32 - programación/Prompt.md,desarrollo | IA | prompt,programacion | ia | prompt
+32 - programación/SDD/Spec-Driven Development (SDD).md,desarrollo | IA,programacion | ia
+32 - programación/Tips Estructura.md,desarrollo | codigo | estructura | IA,programacion | arquitectura | ia
+33 - Recursos graficos/infografias-producto.md,agentes | arquitectura | desarrollo | IA,agentes | arquitectura | programacion | ia
+35 - git-github/35.1 - errores git-github-shell/error obsidian does not have a commit checked out error unable to index file obsidian.md,Error | git | software,incidencia | git | programacion
+35 - git-github/35.1 - errores git-github-shell/otro problema.md,Error | software | git,incidencia | programacion | git
+35 - git-github/comandos básicos.md,software | git,programacion | git
+35 - git-github/Como linkar el directorio.md,git | software,git | programacion
+35 - git-github/configuración ordenador.md,software | git,programacion | git
+35 - git-github/flujo diario.md,software | git,programacion | git
+35 - git-github/Flujo Normal.md,git | software,git | programacion
+35 - git-github/introducción e instalación.md,software | git,programacion | git
+35 - git-github/ramas y gestión de proyectos.md,software | git,programacion | git
+35 - git-github/Resolución de conflictos.md,codigo | software | git,programacion | git
+35 - git-github/Staging - Área de Ensayo o Indice.md,software | git,programacion | git
+35 - git-github/Ver y Borrar artefactos .apk.md,git | codigo | desarrollo,git | programacion
+37 - Sofware/Docker/Guia práctica Docker.md,software | docker,programacion
+"37 - Sofware/IArtificial/Mi trabajo es seleccionar, valorar y orientar. La IA se encarga de estructurar, enlazar, resumir y mantener la trazabilidad..md",analisis | auditoria | arquitectura | IA,auditoria | arquitectura | ia
+37 - Sofware/IArtificial/Por Qué IA local.md,IA | software,ia | programacion
+37 - Sofware/IArtificial/Temperatura agente.md,desarrollo | IA,programacion | ia
+37 - Sofware/IArtificial/tip.md,desarrollo | IA,programacion | ia
+37 - Sofware/MySQL/Comandos.md,SQL | software | app,base-de-datos | programacion | qontrolmed
+37 - Sofware/MySQL/restaurar pass MySQL.md,software | Error | SQL,programacion | incidencia | base-de-datos
+37 - Sofware/MySQL/SQL Windows.md,SQL | software,base-de-datos | programacion
+37 - Sofware/MySQL/Workbench.md,SQL | software,base-de-datos | programacion
+37 - Sofware/Obsidian/Priorizar colores.md,obsidian | software,obsidian | programacion
+40 - Hospital/Apagado Central Infinity.md,hospital | equipos,sanidad | equipamiento
+40 - Hospital/Cabina UV.md,equipos | hospital,equipamiento | sanidad
+40 - Hospital/Certificado ENS.md,auditoria | calidad | concepto | datos-sensibles | gobierno,auditoria | calidad | datos-sensibles | gobierno
+40 - Hospital/Codigo Calibración.md,Error | hospital,incidencia | sanidad
+40 - Hospital/conducción Ácido Citrico.md,hospital | equipos,sanidad | equipamiento
+40 - Hospital/Ecógrafo Philips.md,Error | hospital,incidencia | sanidad
+40 - Hospital/ecógrafos.md,hospital | manuales,sanidad | documentacion
+40 - Hospital/Error 1 - 319.md,Error | hospital,incidencia | sanidad
+40 - Hospital/Error M050 BV Endura.md,Philips | ArcoEscopia | Error | hospital,equipamiento | radiologia | incidencia | sanidad
+40 - Hospital/Filtros Cabinas Biologicas.md,equipos | hospital,equipamiento | sanidad
+40 - Hospital/Incidencia_Philips_IntelliVue_MX800_ECG.md,Error | hospital | equipos | mantenimiento,incidencia | sanidad | equipamiento | mantenimiento
+40 - Hospital/Incidente Frigorífico.md,hospital | Error,sanidad | incidencia
+40 - Hospital/Inclusión usuario en prisma.md,Prisma,sanidad
+40 - Hospital/Infinity.md,hospital | equipos,sanidad | equipamiento
+40 - Hospital/M050 BV Endura.md,Philips | ArcoEscopia | Error | hospital | radiologia,equipamiento | radiologia | incidencia | sanidad
+40 - Hospital/Mamógrafo Hologic.md,hospital | Rx,sanidad | radiologia
+40 - Hospital/PPT/1ª revisión Borrador.md,hospital | documentacion,sanidad | documentacion
+40 - Hospital/problema bomba isquemia.md,equipos | Error | hospital,equipamiento | incidencia | sanidad
+40 - Hospital/Procedimiento equipo Rigel.md,equipos | hospital,equipamiento | sanidad
+40 - Hospital/RX CIOS FUSION.md,Error | hospital | radiologia,incidencia | sanidad | radiologia
+40 - Hospital/RX Shimadzu.md,Error | hospital | radiologia,incidencia | sanidad | radiologia
+40 - Hospital/Salta protección en desinfección.md,Error | hospital,incidencia | sanidad
+40 - Hospital/Seguridad Eléctrica.md,SegElec | ingeniería,seguridad-electrica | ingenieria
+40 - Hospital/test manual Avance S5 no sube de 30 cmH2O.md,Error | hospital,incidencia | sanidad
+40 - Hospital/Zoncare Pantallazo Azul.md,Error | hospital,incidencia | sanidad
+40 - Hospital/Ácido Cítrico.md,hospital,sanidad
+45 - coches eléctricos/ByD Seal UDM-i/Batería y temperatura.md,ByD | movilidad_elec,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/Cargador.md,movilidad_elec | ByD,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/Descripción general del vehículo.md,ByD | movilidad_elec,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/DM-i.md,movilidad_elec | ByD,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/llave.md,ByD,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/Mantenimiento.md,ByD | movilidad_elec,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/Modos de conducción.md,ByD | movilidad_elec,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/NFC.md,ByD | movilidad_elec,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/Potencias de carga.md,movilidad_elec | ByD,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/Rodaje.md,ByD | movilidad_elec,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/setup_carga.md,movilidad_elec | ByD,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/sistema antirobo.md,ByD,movilidad-electrica
+45 - coches eléctricos/ByD Seal UDM-i/tiempo_carga.md,movilidad_elec | ByD,movilidad-electrica
+45 - coches eléctricos/Cargadores.md,movilidad_elec,movilidad-electrica
+45 - coches eléctricos/Carlinkit.md,ByD | movilidad-electrica,movilidad-electrica
+45 - coches eléctricos/Modo EV.md,ByD | movilidad_elec,movilidad-electrica
+45 - coches eléctricos/Modo HEV.md,movilidad_elec,movilidad-electrica
+45 - coches eléctricos/SOC.md,movilidad_elec,movilidad-electrica
+50 - Recursos/01 Plantillas/Excalidraw.md,Plantilla,plantilla
+50 - Recursos/01 Plantillas/Nota Atómica.md,Plantilla,plantilla
+50 - Recursos/01 Plantillas/Plantilla texto.md,Plantilla,plantilla
+50 - Recursos/01 Plantillas/Plantilla Técnica.md,Plantilla,plantilla
+55 - Ayuntamiento/README.md,area | ayuntamiento,administracion

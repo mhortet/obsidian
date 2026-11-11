@@ -1,6 +1,6 @@
 ---
 tags:
-  - hospital
+  - sanidad
 Creado: 2026-06-12
 Autor:
   - M.Hortet

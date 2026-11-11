@@ -1,10 +1,9 @@
 ---
 tags:
-  - desarrollo
-  - app
-  - estructura
-  - IA
-  - pendiente
+  - programacion
+  - qontrolmed
+  - arquitectura
+  - ia
 Creado: 2026-06-25
 Autor:
 Relacionado:

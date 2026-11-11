@@ -1,9 +1,8 @@
 ---
 tags:
-  - analisis
   - auditoria
   - arquitectura
-  - IA
+  - ia
 Creado: 2026-06-27
 Relacionado:
 ---

@@ -1,0 +1,171 @@
+APPLY_START phase=packages time=2026-11-06T11:09:01+01:00
+KEYS_BEGIN
+gpg: directory '/root/.gnupg' created
+gpg: keybox '/root/.gnupg/pubring.kbx' created
+pub   rsa4096 2025-08-23 [SC]
+      A05C 7A97 DA1A 26A9 B3F3  668D E132 63A6 A193 C189
+uid                      Nicola Murino <nicola@sftpgo.com>
+sub   rsa4096 2025-08-23 [E]
+
+pub   rsa4096 2025-10-23 [SC]
+      CC94 B39C 77AE 7342 A68B  8962 8A68 2D30 8D4E 5E73
+uid                      CloudFlare Software Packaging 2025 <help@cloudflare.com>
+sub   rsa4096 2025-10-23 [E]
+
+a8be38dd83f2f6b70b39f65532b42f0bd41859f5e6d61493e1286371069709e1  /usr/share/keyrings/sftpgo-archive-keyring.gpg
+1bd95f4082b320d541bee351560fc2765aa9f9cd8efa4c9e32135e63f252721d  /usr/share/keyrings/cloudflare-main.gpg
+KEYS_END
+Hit:1 https://repo.mysql.com/apt/ubuntu noble InRelease
+Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Hit:3 http://archive.ubuntu.com/ubuntu noble InRelease
+Get:4 https://pkg.cloudflare.com/cloudflared any InRelease [5039 B]
+Get:5 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:6 https://oss.sftpgo.com/apt noble InRelease [2506 B]
+Hit:7 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:8 https://pkg.cloudflare.com/cloudflared any/main amd64 Packages [375 B]
+Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1425 kB]
+Get:10 https://oss.sftpgo.com/apt noble/main amd64 Packages [682 B]
+Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main Translation-en [313 kB]
+Get:12 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1839 kB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [420 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [50.7 kB]
+Fetched 4309 kB in 2s (2553 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Recommended packages:
+  libjs-jquery libjs-sphinxdoc sphinx-rtd-theme-common mime-support
+The following NEW packages will be installed:
+  cloudflared restic sftpgo
+0 upgraded, 3 newly installed, 0 to remove and 29 not upgraded.
+Inst cloudflared (2026.10.7 cloudflared:pkg.cloudflare.com [amd64])
+Inst sftpgo (2.7.6-1 SFTPGo:oss.sftpgo.com [amd64])
+Inst restic (0.16.4-2ubuntu0.24.04.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf cloudflared (2026.10.7 cloudflared:pkg.cloudflare.com [amd64])
+Conf sftpgo (2.7.6-1 SFTPGo:oss.sftpgo.com [amd64])
+Conf restic (0.16.4-2ubuntu0.24.04.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Unit sftpgo.service does not exist, proceeding anyway.
+Unit cloudflared.service does not exist, proceeding anyway.
+Created symlink /etc/systemd/system/sftpgo.service -> /dev/null.
+Created symlink /etc/systemd/system/cloudflared.service -> /dev/null.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Recommended packages:
+  libjs-jquery libjs-sphinxdoc sphinx-rtd-theme-common mime-support
+The following NEW packages will be installed:
+  cloudflared restic sftpgo
+0 upgraded, 3 newly installed, 0 to remove and 29 not upgraded.
+Need to get 48.3 MB of archives.
+After this operation, 133 MB of additional disk space will be used.
+Get:1 https://pkg.cloudflare.com/cloudflared any/main amd64 cloudflared amd64 2026.10.7 [19.9 MB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 restic amd64 0.16.4-2ubuntu0.24.04.3 [7903 kB]
+Get:3 https://oss.sftpgo.com/apt noble/main amd64 sftpgo amd64 2.7.6-1 [20.4 MB]
+Fetched 48.3 MB in 12s (4026 kB/s)
+Selecting previously unselected package cloudflared.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 127003 files and directories currently installed.)
+Preparing to unpack .../cloudflared_2026.10.7_amd64.deb ...
+Unpacking cloudflared (2026.10.7) ...
+Selecting previously unselected package sftpgo.
+Preparing to unpack .../sftpgo_2.7.6-1_amd64.deb ...
+Unpacking sftpgo (2.7.6-1) ...
+Selecting previously unselected package restic.
+Preparing to unpack .../restic_0.16.4-2ubuntu0.24.04.3_amd64.deb ...
+Unpacking restic (0.16.4-2ubuntu0.24.04.3) ...
+Setting up sftpgo (2.7.6-1) ...
+[90m2026-11-06T11:09:20.961[0m [32mINF[0m [1mInitializing provider: "sqlite" config file: "/etc/sftpgo/sftpgo.json"[0m
+[90m2026-11-06T11:09:20.962[0m [32mINF[0m [1mcreating initial database schema, version 29[0m
+[90m2026-11-06T11:09:20.976[0m [32mINF[0m [1mupdating database schema version: 29 -> 30[0m
+[90m2026-11-06T11:09:20.983[0m [32mINF[0m [1mupdating database schema version: 30 -> 31[0m
+[90m2026-11-06T11:09:20.990[0m [32mINF[0m [1mupdating database data version: 31 -> 32[0m
+[90m2026-11-06T11:09:20.996[0m [32mINF[0m [1mupdating database schema version: 32 -> 33[0m
+[90m2026-11-06T11:09:21.007[0m [32mINF[0m [1mData provider successfully initialized/updated[0m
+Failed to preset unit, unit /etc/systemd/system/sftpgo.service is masked.
+/usr/bin/deb-systemd-helper: error: systemctl preset failed on sftpgo.service: No such file or directory
+sftpgo.service is a disabled or a static unit, not starting it.
+Setting up restic (0.16.4-2ubuntu0.24.04.3) ...
+Setting up cloudflared (2026.10.7) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+
+Running kernel seems to be up-to-date.
+
+The processor microcode seems to be up-to-date.
+
+Restarting services...
+
+Service restarts being deferred:
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+cloudflared 2026.10.7 install ok installed
+restic 0.16.4-2ubuntu0.24.04.3 install ok installed
+sftpgo 2.7.6-1 install ok installed
+sftpgo:
+  Installed: 2.7.6-1
+  Candidate: 2.7.6-1
+  Version table:
+ *** 2.7.6-1 500
+        500 https://oss.sftpgo.com/apt noble/main amd64 Packages
+        100 /var/lib/dpkg/status
+cloudflared:
+  Installed: 2026.10.7
+  Candidate: 2026.10.7
+  Version table:
+ *** 2026.10.7 500
+        500 https://pkg.cloudflare.com/cloudflared any/main amd64 Packages
+        100 /var/lib/dpkg/status
+restic:
+  Installed: 0.16.4-2ubuntu0.24.04.3
+  Candidate: 0.16.4-2ubuntu0.24.04.3
+  Version table:
+ *** 0.16.4-2ubuntu0.24.04.3 500
+        500 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+        500 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages
+        100 /var/lib/dpkg/status
+     0.16.4-2 500
+        500 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+Netid State  Recv-Q Send-Q     Local Address:Port Peer Address:PortProcess                                                 
+udp   UNCONN 0      0             127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=16))             
+udp   UNCONN 0      0          127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=14))             
+udp   UNCONN 0      0      192.168.1.31%eno1:68        0.0.0.0:*    users:(("systemd-network",pid=2138,fd=22))             
+tcp   LISTEN 0      4096          127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=17))             
+tcp   LISTEN 0      4096       127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=15))             
+tcp   LISTEN 0      4096             0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=2344,fd=3),("systemd",pid=1,fd=144))
+tcp   LISTEN 0      4096                [::]:22           [::]:*    users:(("sshd",pid=2344,fd=4),("systemd",pid=1,fd=145))
+PACKAGES_PHASE_RESULT=OK
+APPLY_END phase=packages time=2026-11-06T11:09:22+01:00
+APPLY_START phase=configure time=2026-11-06T11:17:39+01:00
+PACKAGE_UNIT_BEGIN
+# Unit sftpgo.service is masked.
+# Unit cloudflared.service is masked.
+PACKAGE_UNIT_END
+Removed "/etc/systemd/system/sftpgo.service".
+SFTPGO_LISTEN_BEGIN
+Netid State  Recv-Q Send-Q     Local Address:Port  Peer Address:PortProcess                                                 
+udp   UNCONN 0      0             127.0.0.54:53         0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=16))             
+udp   UNCONN 0      0          127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=14))             
+udp   UNCONN 0      0      192.168.1.31%eno1:68         0.0.0.0:*    users:(("systemd-network",pid=2138,fd=22))             
+tcp   LISTEN 0      4096          127.0.0.54:53         0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=17))             
+tcp   LISTEN 0      4096           127.0.0.1:18080      0.0.0.0:*    users:(("sftpgo",pid=21121,fd=6))                      
+tcp   LISTEN 0      4096           127.0.0.1:18081      0.0.0.0:*    users:(("sftpgo",pid=21121,fd=7))                      
+tcp   LISTEN 0      4096       127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=15))             
+tcp   LISTEN 0      4096             0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=2344,fd=3),("systemd",pid=1,fd=108))
+tcp   LISTEN 0      4096                [::]:22            [::]:*    users:(("sshd",pid=2344,fd=4),("systemd",pid=1,fd=109))
+SFTPGO_LISTEN_END
+Validating rules from  /etc/cloudflared/config.documentos.invalid.yml
+OK
+Using rules from /etc/cloudflared/config.documentos.invalid.yml
+Matched rule #0
+	hostname: documentos.invalid
+	service: http://127.0.0.1:18080
+Using rules from /etc/cloudflared/config.documentos.invalid.yml
+Matched rule #1
+	service: http_status:404
+CONFIGURE_PHASE_RESULT=OK
+SFTPGO_TEMPORARILY_ACTIVE_FOR_LOCAL_SETUP=true
+APPLY_END phase=configure time=2026-11-06T11:17:43+01:00

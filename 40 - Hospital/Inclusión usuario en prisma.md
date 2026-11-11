@@ -1,6 +1,6 @@
 ---
 tags:
-  - Prisma
+  - sanidad
 Creado: 2026-05-04
 Relacionado:
 Año publicación:

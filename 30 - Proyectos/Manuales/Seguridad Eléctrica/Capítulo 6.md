@@ -1,7 +1,7 @@
 ---
 tags:
-  - SegElec
-  - manuales
+  - seguridad-electrica
+  - documentacion
 Referencias:
   - "[[Capítulo 7]]"
 ---

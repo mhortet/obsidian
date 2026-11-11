@@ -9,7 +9,7 @@ sources:
   - "https://context7.com/docs/clients/codex"
   - "https://context7.com/docs/security/data-privacy"
   - "20 - Notas enlazadas/Fuentes/2026-06-28-mcp-herramientas-desarrollo.md"
-tags: [ia, agentes, mcp, context7, documentacion, programacion]
+tags: [ia, agentes, mcp, programacion, documentacion]
 review_after: 2026-09-28
 ---
 

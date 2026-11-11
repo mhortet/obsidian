@@ -8,7 +8,7 @@ source_id: "2026-06-28-mcp-desde-cero"
 raw_path: "raw/sources/MCP desde cero Conecta tu IA a cualquier dato.md"
 sources:
   - "https://www.youtube.com/watch?v=nqzVrkhmNTg"
-tags: [ia, agentes, mcp, arquitectura, python]
+tags: [ia, agentes, mcp, arquitectura, programacion]
 review_after: 2026-09-28
 ---
 

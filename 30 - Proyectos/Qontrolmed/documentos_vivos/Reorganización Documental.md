@@ -1,8 +1,8 @@
 ---
 tags:
-  - app
-  - codigo
-  - estructura
+  - qontrolmed
+  - programacion
+  - arquitectura
 Creado: 2026-06-15
 Relacionado:
 ---

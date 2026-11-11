@@ -3,9 +3,9 @@ title: "IA"
 type: register
 status: active
 created: 2026-06-28
-updated: 2026-06-28
+updated: 2026-07-18
 sources: []
-tags: [conceptos, ia, agentes]
+tags: [ia, agentes]
 review_after:
 ---
 
@@ -17,6 +17,7 @@ No usar esta carpeta para enfoques especificos de desarrollo de software asistid
 
 ## Notas
 
+- [[entrenamiento-de-llm-datos-humanos-y-sinteticos]]
 - [[model-context-protocol-mcp|Model Context Protocol (MCP)]]
 - [[servidores-mcp-locales-y-remotos]]
 - [[contexto-persistente-para-agentes]]

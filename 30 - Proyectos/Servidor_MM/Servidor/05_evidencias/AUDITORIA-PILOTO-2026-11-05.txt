@@ -1,0 +1,54 @@
+
+=== FECHA E IDENTIDAD ===
+2026-11-05T11:27:09+01:00
+srv-mm-01
+
+=== VERSION MYSQL ===
+/usr/sbin/mysqld  Ver 8.4.11 for Linux on x86_64 (MySQL Community Server - GPL)
+
+=== SERVICIOS ===
+mysql: inactive
+disabled
+ufw: active
+enabled
+ssh.socket: active
+enabled
+
+=== FIREWALL ===
+Status: active
+
+     To                         Action      From
+     --                         ------      ----
+[ 1] 22/tcp                     ALLOW IN    192.168.1.0/24             # SSH LAN nueva 2026-10-31
+[ 2] 22/tcp                     ALLOW IN    192.168.0.0/24             # SSH LAN cliente 2026-10-31
+
+
+=== ESCUCHAS TCP ===
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                
+LISTEN 0      4096      127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=17))            
+LISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=15))            
+LISTEN 0      4096         0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=2344,fd=3),("systemd",pid=1,fd=89))
+LISTEN 0      4096            [::]:22           [::]:*    users:(("sshd",pid=2344,fd=4),("systemd",pid=1,fd=90))
+
+=== OPCIONES MYSQL NO SECRETAS ===
+
+=== METADATOS CERTIFICADOS (SIN CONTENIDO) ===
+server-cert.pem mysql:mysql 644
+server-key.pem mysql:mysql 600
+client-key.pem mysql:mysql 600
+private_key.pem mysql:mysql 600
+ca-key.pem mysql:mysql 600
+client-cert.pem mysql:mysql 644
+ca.pem mysql:mysql 644
+public_key.pem mysql:mysql 644
+
+=== MONTAJES ===
+TARGET         SOURCE                            FSTYPE OPTIONS
+/var/lib/mysql /dev/mapper/ubuntu--vg-mysql_data ext4   rw,nosuid,nodev,relatime
+TARGET          SOURCE                             FSTYPE OPTIONS
+/srv/compartido /dev/mapper/ubuntu--vg-shared_data ext4   rw,nosuid,nodev,noexec,relatime
+
+=== SALUD ===
+NO_REBOOT_REQUIRED
+
+AUDITORIA_FINALIZADA

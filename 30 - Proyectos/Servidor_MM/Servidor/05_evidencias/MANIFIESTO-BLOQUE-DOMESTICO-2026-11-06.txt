@@ -1,0 +1,30 @@
+MANIFIESTO_BLOQUE_DOMESTICO_2026-11-06
+Alcance: artefactos sin secretos preparados tras la aprobación del plan
+Staging remoto: /home/vicente/bloque-domestico-20261106
+Validación: hashes local/remoto coincidentes y bash -n correcto
+
+38351cc3d45c7793d40520ced02b6825b845ae445e90ee13936d16d6b2368d34  aceptar-bloque-domestico-20261106.sh
+a14828bd4b7e749c07b18decea8c77206aeafeb65b511c2bc110994d63ec6e2a  aplicar-bloque-domestico-20261106.sh
+bd9116d74839d578f95f877a9a938c78a647c3c944f14c0a9239cfeea8440101  cloudflared-documentos.invalid.yml
+7693ddecec93b7a938b8fa8f4d011a4b8cfe900e05efc8826dda3894397b3f73  preflight-bloque-domestico-20261106.sh
+ca162390f53d1b41243fdb9bfa0f8c9fc6fca2f970650240e3b4ba885bede316  revertir-bloque-domestico-20261106.sh
+61e25de6e8a247b0f91e20a19b241e4ea7ba117ed7bd484ebacbf3e452e8f7e4  corregir-acceso-sftpgo-20261106.sh
+14adbb08853bcb932ff595fb12b981bf089372a5df3073156f77fcb82741e409  sftpgo-loopback-piloto.env.example
+55ff76b7e248b2ac88ee887448a5b7ccbdf4733cf4216aa4c0c56d9a6e960a6e  srv-mm-sftpgo-hardening.conf.example
+
+Secretos incluidos: ninguno
+Datos del cliente incluidos: ninguno
+Ejecución privilegiada al crear el manifiesto: no
+
+EVIDENCIA_RECOGIDA
+417c8839f0f84d3bfa78164267f49f17e0f7ab95e05af407da7a7d0e5f2c6829  PREFLIGHT-BLOQUE-DOMESTICO-2026-11-06.txt
+b91d2fc4ad8ac7aac8d7772d944f1a486d1e62f8cd56bc4369ef9f9ae30f4d99  APLICACION-BLOQUE-DOMESTICO-2026-11-06.txt
+3459534597ad8cc2f88f7c8113dc1ea9982796bd19cd3575cd3cc0c3f3766040  CORRECCION-ACL-SFTPGO-2026-11-06.txt
+2c9fc2be24af58341ddd54a1377c746598de2f5474802e61371c437eb76bf460  CIERRE-BLOQUE-DOMESTICO-PAUSA-2026-11-06.txt
+1c169fc300561b04fefd5d088a7a8e642ba766fd1539eceab948b769c12e190e  PRUEBA-WEBCLIENT-FICTICIA-2026-11-06.txt
+acea71f96676985a31895cb805396afe5126836f5f8e91ef5c0ecc2315b686dd  ACEPTACION-BLOQUE-DOMESTICO-2026-11-06.txt
+47753cab23f2327da2e9d971a44266795161473427ba416ac7a3661973c19e6c  ACEPTACION-FUNCIONAL-WEBCLIENT-2026-11-06.txt
+
+NOTA_EVIDENCIA_APLICACION: copia local refrescada desde el registro remoto al reanudar; contiene las fases packages y configure.
+NOTA_CORRECCION_ACEPTACION: corregido el retorno falso de assert_mysql_safe bajo set -e; el original e2e7d154... queda preservado en el staging remoto como .pre-fix-e2e7d154.
+

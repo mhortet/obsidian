@@ -1,7 +1,7 @@
 ---
 tags:
-  - IA
-  - software
+  - ia
+  - programacion
 Creado: 2026-06-18
 Relacionado:
 ---

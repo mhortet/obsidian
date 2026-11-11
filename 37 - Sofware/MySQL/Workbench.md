@@ -1,7 +1,7 @@
 ---
 tags:
-  - SQL
-  - software
+  - base-de-datos
+  - programacion
 Creado:
 Relacionado:
 ---

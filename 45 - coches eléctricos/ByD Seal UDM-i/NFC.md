@@ -1,7 +1,6 @@
 ---
 tags:
-  - ByD
-  - movilidad_elec
+  - movilidad-electrica
 Creado: 2026-06-26
 Autor:
   - M.Hortet

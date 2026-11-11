@@ -8,7 +8,7 @@ source_id: "2026-06-27-engram-cloud-contexto-compartido-agentes"
 raw_path: "raw/sources/La EVOLUCIÓN del contexto compartido entre AGENTES Engram Cloud.md"
 sources:
   - "https://www.youtube.com/watch?v=JPZkbGgJNUQ"
-tags: [ia, agentes, memoria, mcp, local-first]
+tags: [ia, agentes, memoria, mcp, arquitectura]
 review_after: 2026-09-27
 ---
 

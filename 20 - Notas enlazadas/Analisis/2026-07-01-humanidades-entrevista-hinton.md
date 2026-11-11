@@ -7,7 +7,7 @@ updated: 2026-07-01
 sources:
   - "20 - Notas enlazadas/Fuentes/2026-07-01-entrevista-geoffrey-hinton-monstruo-ia.md"
   - "raw/sources/“He creado un MONSTRUO”. Entrevista con Geoff Hinton, el PADRE de la IA.md"
-tags: [humanidades, ia, filosofia, etica, sociedad]
+tags: [humanidades, ia, etica]
 review_after: 2026-10-01
 ---
 

@@ -1,0 +1,78 @@
+PREFLIGHT_SIN_CAMBIOS_2026-11-06
+Zona horaria: Europe/Madrid
+Inicio remoto observado: 2026-11-06T10:31:47+01:00
+Alcance: solo lectura; sin sudo remoto, sin arranque de MySQL y sin cambios en el servidor
+
+PUESTO_WINDOWS
+hostname=SobreMesaMaxi
+ipv4=192.168.1.107/24
+gateway=192.168.1.1
+fortinet_adapter_1=desconectado
+fortinet_adapter_2=desconectado
+ruta_vpn_activa=no_observada
+tcp_192.168.1.31_22=correcto
+ssh_identity=una_identidad_ed25519_cargada; huella omitida de esta evidencia
+
+SERVIDOR
+hostname=srv-mm-01
+ipv4_domestica_usada=192.168.1.31
+kernel=6.8.0-147-generic
+uptime=23_horas_25_minutos_en_segunda_consulta
+reboot_required=no
+failed_units=0
+journal_priority_err_today=sin_entradas_visibles_para_vicente
+
+SERVICIOS
+mysql_active=inactive
+mysql_enabled=disabled
+mysqld_process=ausente
+tcp_3306=ausente
+tcp_33060=ausente
+ssh_service_active=active
+ssh_service_enabled=disabled
+ssh_socket_active=active
+ssh_socket_enabled=enabled
+ufw_service_active=active
+ufw_service_enabled=enabled
+nota_ssh=ssh.service_esta_activado_por_ssh.socket; no_se_detecta_fallo
+
+ESCUCHAS
+tcp=127.0.0.53:53,127.0.0.54:53,0.0.0.0:22,[::]:22
+udp=127.0.0.53:53,127.0.0.54:53,192.168.1.31:68
+otros_puertos=ninguno_observado
+
+ALMACENAMIENTO
+root_fs=/dev/mapper/ubuntu--vg-ubuntu--lv ext4 98G 12G_usados 82G_disponibles 13_por_ciento
+shared_fs=/dev/mapper/ubuntu--vg-shared_data ext4 220G 28K_usados 218G_disponibles 1_por_ciento
+mysql_fs=/dev/mapper/ubuntu--vg-mysql_data ext4 63G 199M_usados 62G_disponibles 1_por_ciento
+shared_mount_options=rw,nosuid,nodev,noexec,relatime
+srv_mode=0755_root_root
+shared_mode=0750_root_root
+repositorio_path=ausente
+
+MYSQL_CONFIG
+file=/etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf
+sha256=4d8677b4e7510c62970125b5b8a58c388b06b4e11bca87afc440f4f5627d8927
+bind_address=127.0.0.1
+mysqlx=OFF
+require_secure_transport=ON
+ssl_paths=configuradas; clave_privada_no_leida_ni_mostrada
+
+PAQUETES
+sftpgo=no_instalado
+cloudflared=no_instalado
+restic=no_instalado
+restic_candidate_before_new_repos=0.16.4-2ubuntu0.24.04.3
+
+RESULTADO
+linea_base_coincide=si
+cambios_servidor=ninguno
+bloque_tecnico_nuevo=propuesto; pendiente_de_aprobacion
+
+CIERRE_LOCAL
+ssh_identity_srv_mm=retirada
+ssh_agent_identities=0
+ssh_connections_established_to_server=0
+ssh_agent_service=Running
+ssh_agent_start_type=Manual
+

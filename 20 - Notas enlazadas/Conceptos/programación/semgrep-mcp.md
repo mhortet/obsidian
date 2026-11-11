@@ -8,7 +8,7 @@ sources:
   - "https://github.com/semgrep/semgrep"
   - "https://github.com/semgrep/mcp"
   - "20 - Notas enlazadas/Fuentes/2026-06-28-mcp-herramientas-desarrollo.md"
-tags: [ia, agentes, mcp, semgrep, seguridad, sast, programacion]
+tags: [ia, agentes, mcp, seguridad, programacion]
 review_after: 2026-09-28
 ---
 

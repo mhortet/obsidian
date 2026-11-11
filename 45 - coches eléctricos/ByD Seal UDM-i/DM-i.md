@@ -1,7 +1,6 @@
 ---
 tags:
-  - movilidad_elec
-  - ByD
+  - movilidad-electrica
 Creado: 2026-06-19
 Relacionado:
 ---

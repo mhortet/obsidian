@@ -1,10 +1,9 @@
 ---
 tags:
-  - app
-  - codigo
-  - desarrollo
-  - estructura
-  - manuales
+  - qontrolmed
+  - programacion
+  - arquitectura
+  - documentacion
 Creado: 2026-06-08
 Autor:
   - M.Hortet

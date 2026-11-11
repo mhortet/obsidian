@@ -1,7 +1,7 @@
 ---
 tags:
-  - app
-  - manuales
+  - qontrolmed
+  - documentacion
 Relacionado:
   - "[[Legalizar]]"
   - "[[Tareas Pendientes]]"

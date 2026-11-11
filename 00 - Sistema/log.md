@@ -5,7 +5,7 @@ status: active
 created: 2026-06-27
 updated: 2026-07-01
 sources: []
-tags: [sistema, log]
+tags: [sistema]
 review_after:
 ---
 
@@ -130,3 +130,77 @@ Tipos recomendados: `bootstrap`, `ingest`, `query`, `lint`, `decision`, `mainten
 - Se crean los conceptos `humanismo-ante-superinteligencia.md`, `experiencia-subjetiva-en-ia.md` e `ia-maternal-y-etica-del-cuidado.md`.
 - Se actualizan indice, taxonomia, README de fuentes, README de conceptos, README de analisis y registro de fuentes.
 - La transcripcion cruda se conserva intacta y se marca como fuente con problemas de codificacion; las predicciones y cifras se tratan como opinion experta hasta verificacion externa.
+
+## [2026-07-18] ingest | Entrevista a Ramón López de Mántaras y contraste de entrenamiento de IA
+
+- Se procesa `raw/sources/dr. ramón lópez de mántaras - Buscar con Google.md` sin modificar la captura original.
+- Se identifica el vídeo `pmsTzFLM8rI`, *La Gran Mentira de la Inteligencia Artificial Que Nadie te Cuenta*, del canal Vidas Ajenas.
+- Se documenta que el raw es una página de resultados de Google y no una transcripción; la revisión usa el índice temporal, el resumen del vídeo y fuentes externas, y exige comprobar el vídeo antes de citar literalmente.
+- Se crea la ficha `20 - Notas enlazadas/Fuentes/2026-07-18-video-ramon-lopez-de-mantaras-gran-mentira-ia.md`.
+- Se crea el análisis `20 - Notas enlazadas/Analisis/2026-07-18-afirmaciones-entrenamiento-y-vision-ia-lopez-de-mantaras.md`.
+- Se crea el concepto `20 - Notas enlazadas/Conceptos/ia/entrenamiento-de-llm-datos-humanos-y-sinteticos.md`.
+- Se distingue preentrenamiento, postentrenamiento, feedback, inferencia y operación humana.
+- Se interpreta «ChatGPT» como metonimia habitual de los asistentes basados en LLM, salvo menciones específicas a OpenAI o versiones GPT.
+- Se contrastan trabajo digital, datos sintéticos, colapso de modelo, leyes de escala, alucinaciones, grounding, corporeidad y delegación cognitiva.
+- Se enlaza la posición de López de Mántaras con la fuente previa sobre Geoffrey Hinton para mostrar desacuerdos sobre conciencia y riesgo.
+- Se actualizan índice, README de fuentes, análisis e IA, y registro de fuentes.
+
+## [2026-07-18] maintenance | Gobierno y normalizacion de tags
+
+- Se inventarian 119 formas distintas de tags en el ambito controlado de la boveda.
+- Se define un vocabulario canonico de 43 tags en `00 - Sistema/meta/tags-controlados.json`, con alias, eliminaciones y limites de uso.
+- Se normaliza el frontmatter de 219 notas; se unifican mayusculas, tildes, abreviaturas, guiones, singular/plural y etiquetas equivalentes.
+- Se establece `qontrolmed` como tag canonico del proyecto y `app` como alias historico, de acuerdo con el uso en diarios, prompts y documentos de la aplicacion.
+- Se eliminan tags que duplicaban metadatos (`source`, `concept`, estados y tipos) o eran demasiado circunstanciales.
+- Se limita cada nota a cinco tags y a dos dominios generales, conservando los tags especificos que aportan recuperacion real.
+- Se incorpora `00 - Sistema/tools/obsidian_tags.py` para informar, comprobar y normalizar; `obsidian_lint.py` ejecuta tambien esta validacion.
+- Se actualizan `AGENTS.md`, la taxonomia y la checklist para impedir que futuras ingestas creen tags arbitrarios.
+- Se excluye `raw/` de la normalizacion para preservar las capturas originales.
+- Se guarda la trazabilidad completa en `00 - Sistema/meta/auditorias/tags-normalizacion-2026-07-18.csv`.
+
+## [2026-07-18] analysis | Evaluacion de Gentle-AI, Engram y memoria local de Codex
+
+- Se revisan los repositorios actuales de Gentle-AI y Engram y su integracion documentada con Codex en Windows.
+- Se contrasta la propuesta con la memoria local nativa descrita en la documentacion oficial de Codex.
+- Se crea `20 - Notas enlazadas/Analisis/2026-07-18-evaluacion-gentle-ai-engram-memoria-codex.md`.
+- Se concluye aplicar una adopcion incremental: probar primero la memoria nativa de Codex, valorar Engram local solo ante una carencia demostrada y no implantar por ahora Gentle-AI completo.
+- Se mantienen Obsidian como memoria canonica y la exclusion de datos sensibles como criterios de gobierno.
+- Se actualiza `00 - Sistema/Indice.md` con el nuevo analisis.
+
+## [2026-10-31] maintenance | Acceso SSH y cambio de red de srv-mm-01
+
+- Se documenta el cambio controlado de acceso SSH desde la LAN de preparacion `192.168.1.0/24` y la retirada de la regla obsoleta `192.168.2.0/24`.
+- Se registra la preautorizacion TCP/22 de `192.168.0.0/24`, subred comunicada por el cliente pero pendiente de direccion, gateway, DHCP, DNS y validacion en sede.
+- Se crea `30 - Proyectos/Servidor_MM/Servidor/ESTADO-ACCESO-SSH-Y-RED-2026-10-31.md` como evidencia y relevo operativo.
+- Se crea `30 - Proyectos/Servidor_MM/Servidor/GUIA-DIDACTICA-CAMBIO-DE-RED-SSH-UFW.md` para aprendizaje y reutilizacion segura del procedimiento.
+- Se actualizan `CONTINUAR-SIGUIENTE-SESION.md`, la revision documental vigente y el indice de la boveda.
+- Se ejecutan `obsidian_lint.py` y `obsidian_tags.py check`: cero errores; los avisos restantes son anteriores o ajenos a este proyecto.
+
+## [2026-11-01] maintenance | Cierre seguro y organizacion documental de srv-mm-01
+
+- Se localiza `srv-mm-01` en `192.168.1.31` mediante MAC, clave SSH y hostname después de que `.30` fuese reasignada a otro equipo.
+- El propietario reserva `.31` por DHCP para la MAC de `eno1`; la reserva se valida después de un reinicio.
+- Se detecta MySQL activo por arranque automático, sin conexiones y filtrado por UFW; se auditan sus valores efectivos y se deja `disabled`, `inactive` y con 3306/33060 cerrados.
+- `unattended-upgrade` instala actualizaciones de seguridad y el kernel 6.8.0-147; se realiza un reinicio controlado y se revalidan red, SSH, UFW, MySQL, montajes y salud del sistema.
+- Se reorganiza `30 - Proyectos/Servidor_MM/Servidor/` en seguimiento, gobierno, planes, operación, guías, evidencias, herramientas, recursos y archivo.
+- Se crean `README.md`, un estado operativo, un diario, un relevo autosuficiente, una guía didáctica y una plantilla reutilizable para futuros proyectos.
+- Se conservan los nombres originales y el relevo anterior se archiva; los enlaces relativos nuevos se validan.
+- `obsidian_lint.py` termina con cero errores. Los avisos globales de revisión y tags pertenecen a contenido preexistente ajeno a este proyecto.
+
+## [2026-11-06] maintenance | Preparación doméstica de srv-mm-01 sin datos del cliente
+
+- Se revalida `srv-mm-01` por SSH estricto y en solo lectura: MySQL continúa detenido/deshabilitado, sin 3306/33060 ni unidades fallidas; SSH opera por `ssh.socket` y UFW está activo.
+- Se confirma que SFTPGo, `cloudflared` y `restic` no están instalados y que `/srv/compartido/repositorio` no existe.
+- Se crea el plan propuesto `30 - Proyectos/Servidor_MM/Servidor/02_planes_y_arquitectura/PLAN-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md`, limitado a datos ficticios, bindings loopback, Cloudflare sin recursos y copia local no 3-2-1.
+- Se actualizan documento maestro, diario, README y relevo. No se modificó el servidor ni se instalaron paquetes; la ejecución queda pendiente de una única aprobación explícita.
+- `obsidian_lint.py` termina con cero errores; los avisos globales son anteriores o ajenos a este proyecto.
+
+## [2026-11-06] maintenance | Ejecución parcial y pausa segura del bloque doméstico
+
+- Se ejecutan preflight, instalación y configuración del bloque aprobado con SFTPGo Community, `cloudflared` inerte y `restic`, sin datos del cliente ni recursos externos.
+- Se crean cuentas ficticias con TOTP y permisos mínimos; no se incorporan contraseñas, secretos o códigos de recuperación a la bóveda.
+- Se detecta un bloqueo de tránsito en `/srv/compartido`; tras aprobación específica se instala `acl` y se aplica únicamente `u:sftpgo:--x`, con reversión documentada.
+- Se validan autenticación, creación de carpeta y primera carga ficticia. Quedan pendientes descarga, sobrescritura, pruebas negativas, revocación y restauración local `restic`.
+- Se cierra el túnel local y se confirma SFTPGo `inactive/disabled`, `cloudflared inactive/masked`, MySQL `inactive/disabled`, puertos del bloque cerrados, cero unidades fallidas y agente SSH vacío.
+- Se actualizan el documento maestro a versión 1.2, diario, manifiesto, README, estado de pausa y relevo autosuficiente.
+- `obsidian_lint.py` termina con cero errores; los 39 avisos globales y los avisos de tags son preexistentes o ajenos a este proyecto.

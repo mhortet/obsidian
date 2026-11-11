@@ -1,7 +1,6 @@
 ---
 tags:
-  - software
-  - docker
+  - programacion
 Creado: 2026-06-10
 Autor:
   - Notebooklm

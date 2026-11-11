@@ -1,0 +1,148 @@
+{
+  "home_assistant": {
+    "arch": "x86_64",
+    "dev": false,
+    "docker": true,
+    "hassio": true,
+    "installation_type": "Home Assistant OS",
+    "os_name": "Linux",
+    "os_version": "6.12.85-haos",
+    "python_version": "3.14.6",
+    "timezone": "Europe/Madrid",
+    "version": "2026.8.3",
+    "virtualenv": false,
+    "container_arch": "amd64",
+    "supervisor": "2026.07.5",
+    "host_os": "Home Assistant OS 17.3",
+    "docker_version": "29.3.1",
+    "chassis": "embedded",
+    "run_as_root": true
+  },
+  "custom_components": {
+    "dual_smart_thermostat": {
+      "documentation": "https://github.com/swingerman/ha-dual-smart-thermostat.git",
+      "version": "v0.12.0",
+      "requirements": []
+    },
+    "hacs": {
+      "documentation": "https://hacs.xyz/docs/use/",
+      "version": "2.0.5",
+      "requirements": [
+        "aiogithubapi>=22.10.1"
+      ]
+    },
+    "nodered": {
+      "documentation": "https://zachowj.github.io/node-red-contrib-home-assistant-websocket/guide/custom_integration/",
+      "version": "4.2.3",
+      "requirements": []
+    }
+  },
+  "integration_manifest": {
+    "domain": "tuya",
+    "name": "Tuya",
+    "codeowners": [
+      "Tuya",
+      "zlinoliver"
+    ],
+    "config_flow": true,
+    "dependencies": [
+      "ffmpeg"
+    ],
+    "dhcp": [
+      {
+        "macaddress": "105A17*"
+      },
+      {
+        "macaddress": "10D561*"
+      },
+      {
+        "macaddress": "1869D8*"
+      },
+      {
+        "macaddress": "381F8D*"
+      },
+      {
+        "macaddress": "508A06*"
+      },
+      {
+        "macaddress": "68572D*"
+      },
+      {
+        "macaddress": "708976*"
+      },
+      {
+        "macaddress": "7CF666*"
+      },
+      {
+        "macaddress": "84E342*"
+      },
+      {
+        "macaddress": "D4A651*"
+      },
+      {
+        "macaddress": "D81F12*"
+      }
+    ],
+    "documentation": "https://www.home-assistant.io/integrations/tuya",
+    "integration_type": "hub",
+    "iot_class": "cloud_push",
+    "loggers": [
+      "tuya_sharing"
+    ],
+    "requirements": [
+      "tuya-device-handlers==0.0.26",
+      "tuya-device-sharing-sdk==0.2.14"
+    ],
+    "is_built_in": true,
+    "overwrites_built_in": false
+  },
+  "setup_times": {
+    "null": {
+      "setup": 0.00024972599976536003
+    },
+    "01KEHXZXGQ562MGFZRXCXMFDFJ": {
+      "config_entry_setup": 2.589429692000067
+    },
+    "01KFQN7KG50HJH808T2XF8ZDTB": {
+      "config_entry_setup": 2.5963730759999635
+    },
+    "01M1VBERHRNS3VVXC5R6ZA5SEK": {
+      "wait_import_platforms": -0.075219515000299,
+      "config_entry_setup": 4.60864874500021
+    }
+  },
+  "data": {
+    "endpoint": "https://apigw.tuyaeu.com",
+    "terminal_id": "1788698411902aOhkL8",
+    "mqtt_connected": true,
+    "disabled_by": null,
+    "disabled_polling": false,
+    "id": "bf0272b631feb6061aqhaw",
+    "name": "d\u00e9 EV Charger",
+    "category": "dj",
+    "product_id": "gxrtu5vljdthtd3g",
+    "product_name": "d\u00e9 EV Charger",
+    "online": true,
+    "sub": false,
+    "time_zone": "+02:00",
+    "active_time": "2026-07-27T10:49:56+00:00",
+    "create_time": "2026-07-27T10:49:56+00:00",
+    "update_time": "2026-07-27T10:49:56+00:00",
+    "function": {},
+    "local_strategy": {},
+    "status_range": {},
+    "status": {},
+    "set_up": false,
+    "support_local": true,
+    "quirk": null,
+    "warnings": null,
+    "home_assistant": {
+      "name": "d\u00e9 EV Charger",
+      "name_by_user": null,
+      "disabled": false,
+      "disabled_by": null,
+      "entities": []
+    }
+  },
+  "issues": []
+}

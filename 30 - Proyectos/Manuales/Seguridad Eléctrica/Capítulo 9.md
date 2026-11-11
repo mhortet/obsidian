@@ -1,7 +1,7 @@
 ---
 tags:
-  - manuales
-  - SegElec
+  - documentacion
+  - seguridad-electrica
 Referencias:
 ---
 # PARTE IV - ENSAYOS DE SEGURIDAD ELÉCTRICA

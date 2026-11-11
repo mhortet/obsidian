@@ -9,7 +9,7 @@ sources:
   - "30 - Proyectos/Qontrolmed/plan_seguridad_consistencia.md"
   - "30 - Proyectos/Qontrolmed/02_historico/Roadmap.md"
   - "30 - Proyectos/Qontrolmed/cola_triaje_campo.md"
-tags: [qontrolmed, evolucion, diario, proyecto]
+tags: [qontrolmed, gobierno]
 review_after: 2026-09-28
 ---
 

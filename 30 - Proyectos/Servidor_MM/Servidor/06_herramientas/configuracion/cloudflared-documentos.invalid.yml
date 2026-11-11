@@ -1,0 +1,11 @@
+# Plantilla inerte: no contiene credenciales ni crea recursos Cloudflare.
+tunnel: 00000000-0000-0000-0000-000000000000
+credentials-file: /etc/cloudflared/00000000-0000-0000-0000-000000000000.json
+
+ingress:
+  - hostname: documentos.invalid
+    service: http://127.0.0.1:18080
+    originRequest:
+      connectTimeout: 10s
+  - service: http_status:404
+

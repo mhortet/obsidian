@@ -1,0 +1,80 @@
+PREFLIGHT_BLOQUE_DOMESTICO_2026-11-06
+TIME=2026-11-06T11:06:43+01:00
+HOST=srv-mm-01
+MYSQL_ACTIVE=inactive
+MYSQL_ENABLED=disabled
+FAILED_UNITS=0
+CNF_SHA256=4d8677b4e7510c62970125b5b8a58c388b06b4e11bca87afc440f4f5627d8927
+SSH_SERVICE_ACTIVE=active
+SSH_SOCKET_ACTIVE=active
+SSH_SOCKET_ENABLED=enabled
+UFW_SERVICE_ACTIVE=active
+UFW_SERVICE_ENABLED=enabled
+UFW_BEGIN
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    192.168.1.0/24             # SSH LAN nueva 2026-10-31
+22/tcp                     ALLOW IN    192.168.0.0/24             # SSH LAN cliente 2026-10-31
+
+Status: active
+
+     To                         Action      From
+     --                         ------      ----
+[ 1] 22/tcp                     ALLOW IN    192.168.1.0/24             # SSH LAN nueva 2026-10-31
+[ 2] 22/tcp                     ALLOW IN    192.168.0.0/24             # SSH LAN cliente 2026-10-31
+
+UFW_END
+LISTEN_BEGIN
+Netid State  Recv-Q Send-Q     Local Address:Port Peer Address:PortProcess                                                 
+udp   UNCONN 0      0             127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=16))             
+udp   UNCONN 0      0          127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=14))             
+udp   UNCONN 0      0      192.168.1.31%eno1:68        0.0.0.0:*    users:(("systemd-network",pid=2138,fd=22))             
+tcp   LISTEN 0      4096          127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=17))             
+tcp   LISTEN 0      4096       127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=1962,fd=15))             
+tcp   LISTEN 0      4096             0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=2344,fd=3),("systemd",pid=1,fd=157))
+tcp   LISTEN 0      4096                [::]:22           [::]:*    users:(("sshd",pid=2344,fd=4),("systemd",pid=1,fd=158))
+LISTEN_END
+FILESYSTEM_BEGIN
+Filesystem                         Type      Size  Used Avail Use% Mounted on
+efivarfs                           efivarfs  192K   77K  111K  41% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv  ext4       98G   12G   82G  13% /
+/dev/mapper/ubuntu--vg-shared_data ext4      220G   28K  218G   1% /srv/compartido
+/dev/mapper/ubuntu--vg-mysql_data  ext4       63G  199M   62G   1% /var/lib/mysql
+/dev/sda2                          ext4      2.0G  201M  1.6G  11% /boot
+/dev/sda1                          vfat      1.1G  6.2M  1.1G   1% /boot/efi
+/      /dev/mapper/ubuntu--vg-ubuntu--lv ext4   rw,relatime
+/srv/compartido /dev/mapper/ubuntu--vg-shared_data ext4   rw,nosuid,nodev,noexec,relatime
+drwxr-xr-x 755 root:root /srv
+drwxr-x--- 750 root:root /srv/compartido
+FILESYSTEM_END
+PACKAGES_BEGIN
+sftpgo=not-installed
+cloudflared=not-installed
+restic=not-installed
+restic:
+  Installed: (none)
+  Candidate: 0.16.4-2ubuntu0.24.04.3
+  Version table:
+     0.16.4-2ubuntu0.24.04.3 500
+        500 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+        500 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages
+     0.16.4-2 500
+        500 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+PACKAGES_END
+NETWORK_PRECHECK_BEGIN
+116.203.250.108 STREAM oss.sftpgo.com
+116.203.250.108 DGRAM  
+116.203.250.108 RAW    
+104.18.1.118    STREAM pkg.cloudflare.com
+104.18.1.118    DGRAM  
+104.18.1.118    RAW    
+104.18.0.118    STREAM 
+SFTPGO_KEY_HTTP=200
+CLOUDFLARE_KEY_HTTP=200
+NETWORK_PRECHECK_END
+PREFLIGHT_RESULT=OK

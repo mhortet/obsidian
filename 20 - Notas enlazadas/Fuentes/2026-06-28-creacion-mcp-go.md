@@ -8,7 +8,7 @@ source_id: "2026-06-28-creacion-mcp-go"
 raw_path: "raw/sources/🔥 ASÍ se crea  un MCP - CON @Achetronic.md"
 sources:
   - "https://www.youtube.com/watch?v=tjGopRhYa4I"
-tags: [ia, agentes, mcp, go, arquitectura, seguridad]
+tags: [ia, agentes, mcp, arquitectura, seguridad]
 review_after: 2026-09-28
 ---
 

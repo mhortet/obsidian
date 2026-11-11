@@ -5,7 +5,7 @@ status: seed
 created: 2026-06-29
 updated: 2026-06-29
 sources: []
-tags: [concepto, videojuegos, sistemas-interactivos, programacion]
+tags: [videojuegos, programacion]
 review_after:
 ---
 

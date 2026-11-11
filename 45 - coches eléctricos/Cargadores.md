@@ -1,6 +1,6 @@
 ---
 tags:
-  - movilidad_elec
+  - movilidad-electrica
 Creado: 2026-06-18
 Relacionado:
 ---

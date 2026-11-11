@@ -1,0 +1,18 @@
+CIERRE_BLOQUE_DOMESTICO_PAUSA_2026-11-06
+Comprobacion remota de solo lectura posterior a la parada interactiva del propietario
+
+SFTPGO_ACTIVE=inactive
+SFTPGO_ENABLED=disabled
+CLOUDFLARED_ACTIVE=inactive
+CLOUDFLARED_ENABLED=masked
+MYSQL_ACTIVE=inactive
+MYSQL_ENABLED=disabled
+BLOCK_LISTENERS_18080_18081_3306_33060=none
+FAILED_UNITS=none
+
+LOCAL_SSH_TUNNEL=closed
+SSH_IDENTITY_REMOVED=id_ed25519_srv_mm
+SSH_AGENT_IDENTITIES=none
+
+Datos del cliente incluidos: ninguno
+Secretos incluidos: ninguno

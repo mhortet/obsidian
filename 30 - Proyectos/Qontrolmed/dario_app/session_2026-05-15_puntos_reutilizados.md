@@ -1,9 +1,7 @@
 ---
 tags:
-  - app
-  - codigo
-  - desarrollo
-  - diario
+  - qontrolmed
+  - programacion
 Relacionado:
 Creado: 2026-05-15
 ---

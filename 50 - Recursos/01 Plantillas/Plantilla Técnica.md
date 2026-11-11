@@ -1,6 +1,6 @@
 ---
 tags:
-  - Plantilla
+  - plantilla
 Creado:
 Autor:
 Relacionado:

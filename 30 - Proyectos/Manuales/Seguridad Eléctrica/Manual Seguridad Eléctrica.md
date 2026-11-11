@@ -1,8 +1,8 @@
 ---
 tags:
-  - app
-  - manuales
-  - hospital
+  - qontrolmed
+  - documentacion
+  - sanidad
 Relacionado:
   - "[[Manual Seguridad Eléctrica]]"
 Creado:

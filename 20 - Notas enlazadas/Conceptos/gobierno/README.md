@@ -5,7 +5,7 @@ status: active
 created: 2026-06-28
 updated: 2026-06-28
 sources: []
-tags: [conceptos, gobierno, calidad, seguridad]
+tags: [gobierno, calidad, seguridad]
 review_after:
 ---
 

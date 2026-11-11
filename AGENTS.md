@@ -50,6 +50,7 @@ Las carpetas `30 - Proyectos/`, `32 - programación/` y las areas `40 - Hospital
 - Fechar lo temporal: normativa, software, precios, proveedores, responsables, equipos, protocolos y evidencia sanitaria pueden caducar.
 - Proteger informacion sensible: no incorporar datos personales, datos de pacientes, credenciales, imagenes clinicas identificables ni informacion innecesariamente sensible.
 - Mantener continuidad: todo cambio relevante en un proyecto debe dejar una nota de estado, una decision o una entrada en log.
+- Mantener tags controlados: consultar `00 - Sistema/meta/tags-controlados.json`, usar como maximo cinco por nota y no inventar variantes. `type` y `status` no se repiten como tags. `app` es alias historico de `qontrolmed`.
 
 ## Frontmatter recomendado
 
@@ -100,7 +101,8 @@ Ejecutar mantenimiento cuando se pida "revision", "limpieza", "lint", "puesta al
 2. Revisar notas `needs-review`.
 3. Buscar enlaces rotos, duplicados, capturas sin procesar y fuentes sin ficha.
 4. Revisar contenido con `review_after` vencido.
-5. Actualizar indice, log y registros.
+5. Ejecutar `python "00 - Sistema/tools/obsidian_tags.py" check`.
+6. Actualizar indice, log y registros.
 
 ## Criterio sanitario
 

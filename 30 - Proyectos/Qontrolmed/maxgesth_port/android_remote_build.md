@@ -1,9 +1,9 @@
 ---
 tags:
-  - app
+  - qontrolmed
   - aprendizaje
-  - desarrollo
-  - github
+  - programacion
+  - git
 Creado: 2026-07-12
 Autor:
 Relacionado:

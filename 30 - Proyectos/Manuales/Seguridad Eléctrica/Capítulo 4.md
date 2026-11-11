@@ -1,7 +1,7 @@
 ---
 tags:
-  - manuales
-  - SegElec
+  - documentacion
+  - seguridad-electrica
 Referencias:
 ---
 # PARTE II - RIESGO ELÉCTRICO

@@ -1,7 +1,7 @@
 ---
 tags:
-  - equipos
-  - hospital
+  - equipamiento
+  - sanidad
 Creado: 2026-06-05
 Autor: M.Hortet
 Relacionado:

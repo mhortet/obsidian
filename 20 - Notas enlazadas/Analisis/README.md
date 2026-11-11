@@ -3,9 +3,9 @@ title: "Analisis"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-07-01
+updated: 2026-07-18
 sources: []
-tags: [analisis, conocimiento]
+tags: [conocimiento]
 review_after:
 ---
 
@@ -22,4 +22,5 @@ Ejemplos:
 
 ## Analisis recientes
 
+- [[2026-07-18-afirmaciones-entrenamiento-y-vision-ia-lopez-de-mantaras]]
 - [[2026-07-01-humanidades-entrevista-hinton]]

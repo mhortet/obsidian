@@ -1,0 +1,61 @@
+ACL_FIX_START=2026-11-06T11:55:01+01:00
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  acl
+0 upgraded, 1 newly installed, 0 to remove and 29 not upgraded.
+Inst acl (2.3.2-1build1.1 Ubuntu:24.04/noble-updates [amd64])
+Conf acl (2.3.2-1build1.1 Ubuntu:24.04/noble-updates [amd64])
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  acl
+0 upgraded, 1 newly installed, 0 to remove and 29 not upgraded.
+Need to get 39.4 kB of archives.
+After this operation, 197 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 acl amd64 2.3.2-1build1.1 [39.4 kB]
+Fetched 39.4 kB in 0s (92.1 kB/s)
+Selecting previously unselected package acl.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 127326 files and directories currently installed.)
+Preparing to unpack .../acl_2.3.2-1build1.1_amd64.deb ...
+Unpacking acl (2.3.2-1build1.1) ...
+Setting up acl (2.3.2-1build1.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+
+Running kernel seems to be up-to-date.
+
+The processor microcode seems to be up-to-date.
+
+Restarting services...
+
+Service restarts being deferred:
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+acl 2.3.2-1build1.1 install ok installed
+ACL_RESULT_BEGIN
+user::rwx
+user:sftpgo:--x
+group::r-x
+mask::r-x
+other::---
+
+ACL_RESULT_END
+udp UNCONN 0      0             127.0.0.54:53    0.0.0.0:* users:(("systemd-resolve",pid=1962,fd=16))             
+udp UNCONN 0      0          127.0.0.53%lo:53    0.0.0.0:* users:(("systemd-resolve",pid=1962,fd=14))             
+udp UNCONN 0      0      192.168.1.31%eno1:68    0.0.0.0:* users:(("systemd-network",pid=2138,fd=22))             
+tcp LISTEN 0      4096          127.0.0.54:53    0.0.0.0:* users:(("systemd-resolve",pid=1962,fd=17))             
+tcp LISTEN 0      4096           127.0.0.1:18080 0.0.0.0:* users:(("sftpgo",pid=21121,fd=6))                      
+tcp LISTEN 0      4096           127.0.0.1:18081 0.0.0.0:* users:(("sftpgo",pid=21121,fd=7))                      
+tcp LISTEN 0      4096       127.0.0.53%lo:53    0.0.0.0:* users:(("systemd-resolve",pid=1962,fd=15))             
+tcp LISTEN 0      4096             0.0.0.0:22    0.0.0.0:* users:(("sshd",pid=2344,fd=3),("systemd",pid=1,fd=113))
+tcp LISTEN 0      4096                [::]:22       [::]:* users:(("sshd",pid=2344,fd=4),("systemd",pid=1,fd=116))
+ACL_FIX_REVERSAL=setfacl -x u:sftpgo /srv/compartido
+ACL_FIX_RESULT=OK
+ACL_FIX_END=2026-11-06T11:55:04+01:00

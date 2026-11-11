@@ -5,7 +5,7 @@ status: active
 created: 2026-06-27
 updated: 2026-06-27
 sources: []
-tags: [sistema, modelo-operativo, gobierno]
+tags: [sistema, gobierno]
 review_after: 2026-09-27
 ---
 

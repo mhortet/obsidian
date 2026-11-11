@@ -3,7 +3,7 @@ title: "Checklist de calidad documental"
 type: process
 status: active
 created: 2026-06-27
-updated: 2026-06-27
+updated: 2026-07-18
 sources: []
 tags: [sistema, calidad, mantenimiento]
 review_after: 2026-09-27
@@ -18,6 +18,14 @@ review_after: 2026-09-27
 - Se distingue entre dato de la fuente e interpretacion propia.
 - Se enlazan conceptos, entidades, proyectos o sintesis relacionados.
 - Se marca `review_after` si el contenido puede caducar.
+
+## Para tags
+
+- Todos pertenecen a `00 - Sistema/meta/tags-controlados.json`.
+- Hay cinco o menos por nota y no más de dos dominios.
+- No duplican tipo, estado, carpeta o formato documental.
+- No introducen variantes de mayúsculas, acentos, singular/plural, guion o guion bajo.
+- Un tag nuevo representa un eje reutilizable, no una palabra que aparece una sola vez.
 
 ## Para una nota sanitaria
 
@@ -41,4 +49,3 @@ review_after: 2026-09-27
 - Buscar notas `needs-review`.
 - Revisar enlaces rotos o duplicados evidentes.
 - Actualizar `00 - Sistema/Indice.md` y `00 - Sistema/log.md` si cambia la estructura.
-

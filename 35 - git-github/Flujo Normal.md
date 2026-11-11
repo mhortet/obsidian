@@ -1,7 +1,7 @@
 ---
 tags:
   - git
-  - software
+  - programacion
 ---
 Working Tree              -> zona de trabajo
    ↓ git add

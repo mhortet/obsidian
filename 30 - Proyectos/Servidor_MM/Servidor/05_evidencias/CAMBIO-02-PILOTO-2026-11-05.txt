@@ -1,0 +1,38 @@
+/etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf: OK
+REGISTRO_ROOT=/root/srv-mm-piloto-20261105/cambio02.LmrGkZWM
+2026-11-05T11:37:51+01:00
+VALIDACION_OK
+CERTIFICADO_PUBLICO=ca.pem
+subject=CN = MySQL_Server_8.4.11_Auto_Generated_CA_Certificate
+issuer=CN = MySQL_Server_8.4.11_Auto_Generated_CA_Certificate
+notBefore=Oct  4 16:03:16 2026 GMT
+notAfter=Oct  1 16:03:16 2036 GMT
+No extensions in certificate
+Certificate will not expire
+CERTIFICADO_PUBLICO=server-cert.pem
+subject=CN = MySQL_Server_8.4.11_Auto_Generated_Server_Certificate
+issuer=CN = MySQL_Server_8.4.11_Auto_Generated_CA_Certificate
+notBefore=Oct  4 16:03:16 2026 GMT
+notAfter=Oct  1 16:03:16 2036 GMT
+No extensions in certificate
+Certificate will not expire
+/var/lib/mysql/server-cert.pem: OK
+NOTA: la cadena y vigencia no demuestran identidad apta para el cliente.
+127.0.0.1:3306
+VERSION()	@@bind_address	@@require_secure_transport	@@tls_version
+8.4.11	127.0.0.1	1	TLSv1.2,TLSv1.3
+Variable_name	Value
+Ssl_server_not_after	Oct  1 16:03:16 2036 GMT
+Variable_name	Value
+ssl_ca	ca.pem
+Variable_name	Value
+ssl_cert	server-cert.pem
+PLUGIN_NAME	PLUGIN_STATUS
+mysqlx	DISABLED
+RUNTIME_OK
+CODIGO_CLIENTE_TCP=1
+ERROR 1698
+PRUEBA_SIN_TLS_INCONCLUSA
+PARANDO_MYSQL
+MYSQL_FINAL_INACTIVE_DISABLED_SIN_ESCUCHAS
+CAMBIO02_FINALIZADO_CON_PRUEBA_INCONCLUSA

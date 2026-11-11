@@ -8,7 +8,7 @@ source_id: "2026-06-28-mcp-explicado-productividad"
 raw_path: "raw/sources/Que es MCP Explicado fácil en 5 minutos, con ej.  productividad.md"
 sources:
   - "https://www.youtube.com/watch?v=QLsgTPzf32g"
-tags: [ia, agentes, mcp, productividad]
+tags: [ia, agentes, mcp]
 review_after: 2026-09-28
 ---
 

@@ -1,6 +1,6 @@
 ---
 tags:
-  - app
+  - qontrolmed
   - documentacion
 Creado: 2026-05-12
 Relacionado:

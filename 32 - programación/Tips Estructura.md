@@ -1,9 +1,8 @@
 ---
 tags:
-  - desarrollo
-  - codigo
-  - estructura
-  - IA
+  - programacion
+  - arquitectura
+  - ia
 Creado: 2026-06-25
 Relacionado:
 ---

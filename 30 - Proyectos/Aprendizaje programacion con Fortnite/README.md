@@ -9,7 +9,7 @@ sources:
   - https://dev.epicgames.com/documentation/en-us/fortnite/programming-with-verse-in-unreal-editor-for-fortnite
   - https://dev.epicgames.com/documentation/fortnite/build-a-game-in-unreal-editor-for-fortnite
   - https://safety.epicgames.com/en-US/parental-controls
-tags: [proyecto, aprendizaje, programacion, videojuegos, fortnite]
+tags: [aprendizaje, programacion, videojuegos, fortnite]
 review_after: 2026-09-01
 ---
 

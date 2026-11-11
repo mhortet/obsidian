@@ -1,10 +1,9 @@
 ---
 tags:
-  - Philips
-  - ArcoEscopia
-  - Error
-  - hospital
+  - equipamiento
   - radiologia
+  - incidencia
+  - sanidad
 Creado: 2026-06-01
 Autor: M.Hortet
 Relacionado:

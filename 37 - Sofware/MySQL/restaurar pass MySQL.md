@@ -1,8 +1,8 @@
 ---
 tags:
-  - software
-  - Error
-  - SQL
+  - programacion
+  - incidencia
+  - base-de-datos
 Creado:
 Autor:
 Relacionado:

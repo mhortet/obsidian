@@ -1,6 +1,5 @@
 ---
 tags:
-  - ByD
   - movilidad-electrica
 Creado:
 Relacionado:

@@ -1,0 +1,39 @@
+/etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf: OK
+REGISTRO_ROOT=/root/srv-mm-piloto-20261105/cambio03.VMDmZx9j
+2026-11-05T11:43:09+01:00
+/var/lib/mysql/piloto-tls/server-cert.pem: OK
+/var/lib/mysql/piloto-tls/server-cert.pem: OK
+/var/lib/mysql/piloto-tls/server-cert.pem: OK
+NOMBRE_INCORRECTO_RECHAZADO
+Certificate will not expire
+subject=CN = Servidor MM CA Piloto Domestico 20261105
+issuer=CN = Servidor MM CA Piloto Domestico 20261105
+notBefore=Nov  5 10:43:09 2026 GMT
+notAfter=Nov  5 10:43:09 2027 GMT
+sha256 Fingerprint=22:F1:1B:3E:9D:96:BB:37:06:84:8B:72:76:6C:22:40:6F:30:60:35:95:90:13:E4:D6:46:DC:54:7B:E9:82:B4
+Certificate will not expire
+subject=CN = srv-mm-01
+issuer=CN = Servidor MM CA Piloto Domestico 20261105
+notBefore=Nov  5 10:43:10 2026 GMT
+notAfter=Feb  3 10:43:10 2027 GMT
+sha256 Fingerprint=D9:AB:C3:D5:99:1E:20:E7:AD:72:72:D5:7E:CA:20:73:F4:C7:1C:CA:85:6C:75:86:88:D7:0F:7C:C3:24:30:8F
+X509v3 Subject Alternative Name: 
+    DNS:srv-mm-01, IP Address:127.0.0.1, IP Address:192.168.1.31
+bind-address 127.0.0.1
+mysqlx OFF
+require-secure-transport TRUE
+ssl-ca /var/lib/mysql/piloto-tls/ca.pem
+ssl-cert /var/lib/mysql/piloto-tls/server-cert.pem
+ssl-key /var/lib/mysql/piloto-tls/server-key.pem
+root:root 644 /etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf
+root:root 700 /root/srv-mm-piloto-20261105/ca-piloto
+root:root 600 /root/srv-mm-piloto-20261105/ca-piloto/ca-key.pem
+mysql:mysql 750 /var/lib/mysql/piloto-tls
+mysql:mysql 600 /var/lib/mysql/piloto-tls/server-key.pem
+mysql:mysql 644 /var/lib/mysql/piloto-tls/ca.pem
+mysql:mysql 644 /var/lib/mysql/piloto-tls/server-cert.pem
+4d8677b4e7510c62970125b5b8a58c388b06b4e11bca87afc440f4f5627d8927  /etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf
+34c12fdfa3e4b15af8ed1693cbca81112bcd5036c74b0843b06cb596569a1d95  /var/lib/mysql/piloto-tls/ca.pem
+432cea5727e751eeb4bc994c376c3a8134f243a1a2c331bead70b5c1dc76bfbc  /var/lib/mysql/piloto-tls/server-cert.pem
+MYSQL_INACTIVE_DISABLED_SIN_ESCUCHAS
+CAMBIO03_COMPLETADO

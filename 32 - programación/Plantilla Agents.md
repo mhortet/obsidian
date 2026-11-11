@@ -1,9 +1,8 @@
 ---
 tags:
-  - codigo
-  - desarrollo
-  - estructura
-  - IA
+  - programacion
+  - arquitectura
+  - ia
 Creado: 2026-06-24
 Autor:
   - "@Mouredev"

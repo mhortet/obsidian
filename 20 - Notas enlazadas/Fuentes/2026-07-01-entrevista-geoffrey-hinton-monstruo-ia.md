@@ -8,7 +8,7 @@ source_id: "2026-07-01-entrevista-geoffrey-hinton-monstruo-ia"
 raw_path: "raw/sources/“He creado un MONSTRUO”. Entrevista con Geoff Hinton, el PADRE de la IA.md"
 sources:
   - "https://www.youtube.com/watch?v=oroCGlPeXgs"
-tags: [ia, humanidades, etica, filosofia, sociedad, riesgo]
+tags: [ia, humanidades, etica, seguridad]
 review_after: 2026-10-01
 ---
 

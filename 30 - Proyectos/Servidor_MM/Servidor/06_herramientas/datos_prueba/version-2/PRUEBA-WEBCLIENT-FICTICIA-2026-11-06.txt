@@ -1,0 +1,5 @@
+ARCHIVO FICTICIO DE ENSAYO
+Proyecto: srv-mm-01
+Fecha: 2026-11-06
+Version: 2
+Contenido: prueba de sobrescritura sin datos del cliente ni datos personales.

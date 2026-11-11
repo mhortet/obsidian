@@ -1,7 +1,7 @@
 ---
 tags:
   - git
-  - software
+  - programacion
 ---
 
 git remote add origin https://github.com/mhortet/obsidian.git

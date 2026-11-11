@@ -1,7 +1,7 @@
 ---
 tags:
-  - equipos
-  - hospital
+  - equipamiento
+  - sanidad
 Creado:
 Autor:
 Relacionado:

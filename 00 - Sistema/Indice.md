@@ -3,9 +3,9 @@ title: "Indice operativo"
 type: register
 status: active
 created: 2026-06-27
-updated: 2026-07-01
+updated: 2026-11-01
 sources: []
-tags: [sistema, indice, gobierno]
+tags: [sistema, gobierno]
 review_after: 2026-09-27
 ---
 
@@ -19,9 +19,11 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 - [log.md](log.md): cronologia append-only de cambios de metodo, ingestas y mantenimiento.
 - [meta/modelo-operativo.md](meta/modelo-operativo.md): cadencia y definicion de terminado.
 - [meta/taxonomia.md](meta/taxonomia.md): tipos de nota, estados y dominios.
+- [meta/tags-controlados.json](meta/tags-controlados.json): vocabulario canonico, alias y limites de uso de tags.
 - [meta/checklist-calidad.md](meta/checklist-calidad.md): control de calidad documental.
 - [meta/registro-fuentes.csv](meta/registro-fuentes.csv): registro tabular de fuentes procesadas.
 - [tools/obsidian_lint.py](tools/obsidian_lint.py): validacion suave de la capa curada.
+- [tools/obsidian_tags.py](tools/obsidian_tags.py): inventario, comprobacion y normalizacion reproducible de tags.
 
 ## Capa curada
 
@@ -34,6 +36,9 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 
 ### Primeras ingestas
 
+- [Entrevista a Ramón López de Mántaras: La gran mentira de la IA](../20 - Notas enlazadas/Fuentes/2026-07-18-video-ramon-lopez-de-mantaras-gran-mentira-ia.md): fuente crítica sobre capacidades, trabajo humano, conciencia, educación y gobierno de la IA.
+- [Afirmaciones sobre entrenamiento y visión de la IA de López de Mántaras](../20 - Notas enlazadas/Analisis/2026-07-18-afirmaciones-entrenamiento-y-vision-ia-lopez-de-mantaras.md): contraste de sus tesis con evidencia sobre feedback humano, datos sintéticos, escalado, comprensión y delegación cognitiva.
+- [Entrenamiento de LLM con datos humanos y sintéticos](../20 - Notas enlazadas/Conceptos/ia/entrenamiento-de-llm-datos-humanos-y-sinteticos.md): distinciones entre preentrenamiento, postentrenamiento, feedback, inferencia y colapso de modelo.
 - [El microscopio de fluorescencia](../20 - Notas enlazadas/Fuentes/2026-06-27-microscopio-fluorescencia.md): fuente didactica sobre microscopia de fluorescencia.
 - [Microscopia de fluorescencia](../20 - Notas enlazadas/Conceptos/ingenieria/microscopia-de-fluorescencia.md): concepto reutilizable derivado de la fuente.
 - [MySQL Reference Architectures for Security](../20 - Notas enlazadas/Fuentes/2026-06-27-mysql-reference-architectures-security.md): white paper de Oracle sobre seguridad de bases de datos MySQL.
@@ -42,6 +47,7 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 - [Engram Cloud y contexto compartido entre agentes](../20 - Notas enlazadas/Fuentes/2026-06-27-engram-cloud-contexto-compartido-agentes.md): fuente sobre memoria persistente local-first para agentes.
 - [Contexto persistente para agentes](../20 - Notas enlazadas/Conceptos/ia/contexto-persistente-para-agentes.md): concepto para diferenciar memoria canonica, operativa y acceso por MCP.
 - [Opciones de integracion de contexto persistente para agentes](../20 - Notas enlazadas/Analisis/2026-06-27-opciones-integracion-contexto-persistente-agentes.md): analisis de opciones y recomendacion incremental.
+- [Evaluacion de Gentle-AI, Engram y la memoria local de Codex](../20 - Notas enlazadas/Analisis/2026-07-18-evaluacion-gentle-ai-engram-memoria-codex.md): decision actual sobre memoria nativa, Engram local y conveniencia de implantar Gentle-AI.
 - [MCP desde cero](../20 - Notas enlazadas/Fuentes/2026-06-28-mcp-desde-cero.md): fuente amplia sobre arquitectura, primitivos, conexion e implementacion de servidores MCP.
 - [Model Context Protocol (MCP)](../20 - Notas enlazadas/Conceptos/ia/model-context-protocol-mcp.md): concepto base sobre MCP como capa de herramientas para agentes.
 - [Herramientas MCP para desarrollo](../20 - Notas enlazadas/Conceptos/programación/herramientas-mcp-para-desarrollo.md): taxonomia practica de conectores utiles en desarrollo asistido por IA.
@@ -68,6 +74,7 @@ Este es el mapa de entrada de la boveda. No sustituye a las carpetas historicas;
 ## Proyectos vivos
 
 - [Aprendizaje de programacion con Fortnite](../30 - Proyectos/Aprendizaje programacion con Fortnite/README.md): apunte para retomar en septiembre de 2026 como posible puerta de entrada familiar a la programacion mediante Fortnite Creative, UEFN y Verse.
+- [Servidor seguro para pyme sanitaria](../30 - Proyectos/Servidor_MM/Servidor/README.md): mapa documental, estado operativo, decisiones, continuidad, evidencias y guias de `srv-mm-01`.
 
 ## Prioridad de implantacion
 

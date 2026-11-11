@@ -1,7 +1,7 @@
 ---
 tags:
-  - desarrollo
-  - IA
+  - programacion
+  - ia
   - prompt
 Creado: 2026-06-25
 Relacionado:

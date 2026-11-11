@@ -2,8 +2,8 @@
 tags:
   - agentes
   - arquitectura
-  - desarrollo
-  - IA
+  - programacion
+  - ia
 Creado:
 Relacionado:
 ---

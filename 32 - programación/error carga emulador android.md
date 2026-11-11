@@ -1,8 +1,7 @@
 ---
 tags:
-  - androidstudio
-  - Error
-  - software
+  - programacion
+  - incidencia
 Creado:
 Autor:
 Relacionado:

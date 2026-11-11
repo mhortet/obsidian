@@ -7,7 +7,7 @@ updated: 2026-06-27
 source_id: "2026-06-27-microscopio-fluorescencia"
 raw_path: "raw/sources/El microscopio de fluorescencia.md"
 sources: ["raw/sources/El microscopio de fluorescencia.md", "https://www.youtube.com/watch?v=3Mv-u1hZp38"]
-tags: [fuente, microscopia, fluorescencia, biologia-celular, laboratorio]
+tags: [laboratorio]
 review_after: 2028-06-27
 ---
 

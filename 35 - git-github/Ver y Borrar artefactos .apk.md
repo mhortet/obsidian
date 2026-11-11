@@ -1,8 +1,7 @@
 ---
 tags:
   - git
-  - codigo
-  - desarrollo
+  - programacion
 Creado:
 Autor:
 Relacionado:

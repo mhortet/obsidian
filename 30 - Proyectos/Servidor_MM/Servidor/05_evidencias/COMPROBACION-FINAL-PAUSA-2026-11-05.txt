@@ -1,0 +1,11 @@
+2026-11-05T12:32:45+01:00
+srv-mm-01
+inactive
+disabled
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      4096      127.0.0.54:53        0.0.0.0:*          
+LISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*          
+LISTEN 0      4096         0.0.0.0:22        0.0.0.0:*          
+LISTEN 0      4096            [::]:22           [::]:*          
+4d8677b4e7510c62970125b5b8a58c388b06b4e11bca87afc440f4f5627d8927  /etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf
+MARCA_CIERRE_PRESENTE
