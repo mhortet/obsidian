@@ -3,7 +3,7 @@ title: "srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimient
 type: project
 status: active
 created: 2026-11-05
-updated: 2026-11-06
+updated: 2026-11-12
 sources:
   - "00_seguimiento/estados/ESTADO-INSTALACION-2026-10-01.md"
   - "00_seguimiento/estados/REVALIDACION-Y-PROPUESTAS-2026-10-04.md"
@@ -14,17 +14,18 @@ sources:
   - "00_seguimiento/estados/ESTADO-ACEPTACION-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md"
   - "02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md"
   - "03_operacion_y_runbooks/INICIAR-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md"
+  - "00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md"
 tags: [documentacion, seguridad, administracion]
-review_after: 2026-11-12
+review_after: 2026-11-19
 ---
 
 # srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimiento
 
-**Versión:** 1.4 · **Fecha de corte:** 6 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.  
+**Versión:** 1.5 · **Fecha de corte:** 12 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
 **Estado de entrega:** documentación consolidada de preparación y piloto; puesta en producción y aceptación del cliente pendientes.  
 **Clasificación:** uso del cliente y personal de mantenimiento autorizado. Contiene información de infraestructura; distribuir de forma controlada.
 
-Este es el documento maestro que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial técnico. La versión 1.4 incorpora la fase propuesta posterior a la aceptación: auditoría remota de solo lectura y preparación local parametrizada que puede realizarse sin datos del cliente. No autoriza cambios en el servidor, producción ni datos reales.
+Este es el documento maestro que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial técnico. La versión 1.5 incorpora el incidente de gráfica/consola del 12/11, la auditoría de arranque y la aceptación reversible de `nomodeset`. No autoriza producción ni datos reales.
 
 ## Índice
 
@@ -82,11 +83,20 @@ La documentación antigua contiene pendientes que después se completaron. Esta 
 | Segundo disco | Samsung SSD 860 PRO 1 TB, `/dev/sdb`, 953,9 GiB observados | Particiones anteriores VFAT/NTFS; no autorizado para reutilización [F1, F3] |
 | Red activa | Intel I219-LM, `eno1`, MAC `74:fe:48:67:be:cc` | Identidad contrastada en cambios de red [F1, F4] |
 | Otras interfaces | `enp5s0`, `enp6s0`, `enp7s0`, inactivas en auditoría inicial | Revalidar disponibilidad, modelo y cableado antes de usarlas [F1] |
+| Consola gráfica | Intel UHD 630 integrada; NVIDIA GA106 retirada el 12/11 | VGA y DisplayPort aceptados con `nomodeset`; NVIDIA pendiente diagnóstico físico [F17] |
 | Firmware | AMI 5.13, fecha 23/04/2021 | DMI identifica sistema/placa como `Default string`; modelo físico pendiente [F1, F3] |
 | Arranque | UEFI; Secure Boot deshabilitado | Confirmado en preparación; no consta cambio posterior [F1–F3] |
 | Alimentación / SAI | Sin inventario o ensayo operativo confirmado | Faltan modelo de fuente, SAI, autonomía y recuperación de energía |
 
 No consta inventario físico completo de chasis, placa, módulos RAM, ubicación definitiva, garantía o equipo de sustitución. Los nombres `/dev/sda` y `/dev/sdb` son los observados: antes de operaciones de disco se debe contrastar identidad física, modelo y capacidad.
+
+#### Consola tras retirar la NVIDIA — 12/11/2026
+
+La NVIDIA GA106 de 12 GiB, que los arranques anteriores identificaban como `boot VGA` con framebuffer `nouveau`, produjo cuatro pitidos de POST y fue retirada por el propietario. Sin ella, la Intel UHD 630 pasó a asumir la consola: el firmware y LUKS se veían por VGA, pero al cargar `i915` aparecieron `dotclock = 0`, advertencia DRM y ausencia de modos, perdiéndose la señal. El sistema no estaba bloqueado; continuaba arrancando y atendía apagados controlados.
+
+Tras un ensayo temporal satisfactorio, el propietario autorizó añadir solo `nomodeset` a `GRUB_CMDLINE_LINUX_DEFAULT`. Se conservó `/etc/default/grub.pre-nomodeset-20261112T1325`, se ejecutó `update-grub` y se validó el archivo generado. El hash vigente de `/etc/default/grub` es `b9aede8e2827937cb4e0d6f087e0f8f6813e5e93c17a0e090a082820b728c361`. Se completaron tres arranques persistentes: dos con VGA y uno con DisplayPort; `simpledrm` conservó la consola hasta login, red y SSH funcionaron, y no reaparecieron los errores de `i915` [F17].
+
+`nomodeset` limita la gestión gráfica avanzada y el audio HDMI/DP, pero no afecta al uso previsto de consola. No fijar resolución ni reinstalar la NVIDIA sin un nuevo plan. La reversión consiste en retirar `nomodeset`, ejecutar `update-grub` y validar, o restaurar la copia fechada. La entrega debe incluir una ruta de consola probada para firmware, LUKS y login; no debe depender de que el cliente aporte un monitor DisplayPort.
 
 ### 3.2. Estructura de almacenamiento
 
@@ -448,6 +458,7 @@ Fuentes internas revisadas para esta consolidación. Los enlaces conservan el de
 | F14 | [Estado de pausa del bloque doméstico](00_seguimiento/estados/ESTADO-PAUSA-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md), [aplicación](05_evidencias/APLICACION-BLOQUE-DOMESTICO-2026-11-06.txt), [corrección ACL](05_evidencias/CORRECCION-ACL-SFTPGO-2026-11-06.txt) y [cierre](05_evidencias/CIERRE-BLOQUE-DOMESTICO-PAUSA-2026-11-06.txt) |
 | F15 | [Aceptación final del bloque doméstico](00_seguimiento/estados/ESTADO-ACEPTACION-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md), [pruebas WebClient](05_evidencias/ACEPTACION-FUNCIONAL-WEBCLIENT-2026-11-06.txt), [restic y cierre técnico](05_evidencias/ACEPTACION-BLOQUE-DOMESTICO-2026-11-06.txt) y [manifiesto](05_evidencias/MANIFIESTO-BLOQUE-DOMESTICO-2026-11-06.txt) |
 | F16 | [Plan posterior a la aceptación sin datos del cliente](02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md) y [runbook de inicio](03_operacion_y_runbooks/INICIAR-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md); propuesta documental, sin nueva conexión ni cambio del servidor |
+| F17 | [Estado del incidente de arranque, vídeo y red](00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md), [evidencia técnica](05_evidencias/INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.txt) y [script reversible de `nomodeset`](06_herramientas/scripts/aplicar-nomodeset-consola-20261112.sh) |
 
 Las comparativas y cuestionarios en la carpeta superior `Servidor_MM` aportan contexto de objetivos y alternativas. Sus menciones a Samba, Cockpit, Windows Server o virtualización no demuestran una instalación. La auditoría Windows archivada es una línea base anterior, no el estado de Ubuntu actual. No se ha importado al documento ningún secreto ni contenido de archivos privados.
 
@@ -468,6 +479,7 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 
 | Versión | Fecha | Cambio | Evidencia / validación |
 | --- | --- | --- | --- |
+| 1.5 | 2026-11-12 | Incidente de gráfica, auditoría de arranque/red, retirada de NVIDIA y aceptación reversible de consola con `nomodeset` en dos arranques VGA y uno DisplayPort. | F17; consola, red, SSH, montajes y servicios validados; NVIDIA pendiente diagnóstico físico. |
 | 1.4 | 2026-11-06 | Preparación del siguiente bloque posible sin datos del cliente: auditoría remota de solo lectura, revisión local y artefactos parametrizados. | F16; plan propuesto, sin conexión nueva ni cambio del servidor. |
 | 1.3 | 2026-11-06 | Aceptación completa del bloque doméstico: WebClient, límites, autenticación, revocación/reversión, copia/restauración `restic`, corrección del script y cierre final. | F15; servicios detenidos, sin datos reales ni recursos Cloudflare, copia local no 3-2-1. |
 | 1.2 | 2026-11-06 | Ejecución parcial del bloque doméstico: paquetes, bindings loopback, cuentas ficticias con TOTP, ACL mínima, creación de carpeta y primera carga; pausa segura con servicios detenidos. | F14; pendientes funcionales y `restic` conservados, sin datos reales ni recursos Cloudflare. |
@@ -485,3 +497,4 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 | 2026-11-01 | Identificación correcta `.31`, reserva DHCP, MySQL deshabilitado y reinicio validado |
 | 2026-11-05 | Piloto TLS/funcional, ID manuales, restauración completa ficticia, revisión de código y plan previo al traslado |
 | 2026-11-06 | Instalación y aceptación doméstica SFTPGo/restic con datos ficticios; Cloudflare inerte y cierre seguro |
+| 2026-11-12 | Incidente de gráfica y red; retirada de NVIDIA, auditoría y aceptación de consola VGA/DisplayPort con `nomodeset` reversible |

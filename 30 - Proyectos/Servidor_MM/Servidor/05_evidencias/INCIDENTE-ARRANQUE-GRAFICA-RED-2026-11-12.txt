@@ -1,0 +1,93 @@
+INCIDENTE DE ARRANQUE, VIDEO Y RED — srv-mm-01
+Fecha de captura: 2026-11-12
+Alcance: auditoria remota de solo lectura; sin cambios en el servidor
+
+IDENTIDAD Y ARRANQUES
+- Host validado por clave SSH conocida: vicente@srv-mm-01, 192.168.1.31.
+- MAC validada: eno1 74:fe:48:67:be:cc.
+- Sistema: Ubuntu 24.04.5 LTS; kernel 6.8.0-147-generic.
+- Arranques observados el 12/11: 11:43, 11:49 y 11:59 CET.
+- Los apagados breves mediante el boton fueron atendidos por systemd-logind y terminaron en poweroff ordenado.
+
+VIDEO
+- Tras retirar la grafica NVIDIA GA106 de 12 GiB, la Intel UHD 630 integrada queda como VGA principal.
+- En los tres arranques sin la NVIDIA, i915 registra:
+  * ERROR: crtc 51: Can't calculate constants, dotclock = 0.
+  * WARNING en drm_vblank durante la inicializacion de i915.
+  * Cannot find any crtc or sizes.
+- /sys/class/drm muestra DP-1/2/3 y HDMI-A-1/2/3 como disconnected, sin modos.
+- El propietario confirma uso de salida SVGA. El firmware conserva video durante POST y LUKS; al cargar i915 se pierde la senal analogica.
+- Los arranques historicos del 01/11 y 05/11 usaban la NVIDIA como boot VGA y nouveau como framebuffer primario.
+- No se asigna significado exacto a los cuatro pitidos: la placa solo se identifica como Default string, BIOS AMI 5.13 de 23/04/2021.
+
+RED
+- eno1 se configuro al arrancar, pero no tuvo portadora hasta intervencion fisica.
+- Cronologia del arranque actual:
+  * 11:59:32: eno1 Link UP, sin carrier.
+  * 12:14:28–12:15:15: varios Gained/Lost carrier durante manipulacion del enlace.
+  * 12:15:19: carrier estable y DHCP 192.168.1.31/24, gateway 192.168.1.1.
+- Enlace actual: 100 Mb/s full duplex, autonegociacion activa, sin errores RX/TX observados.
+- El switch fue identificado por el propietario como 3Com OfficeConnect 3C16792B, modelo de 16 puertos 10/100BASE-TX. Por tanto, 100 Mb/s es la velocidad maxima normal de ese tramo y no demuestra degradacion del cable.
+- Las transiciones de carrier coinciden con la manipulacion fisica para recuperar el enlace. Netplan no se modifico.
+- systemd-networkd-wait-online agoto 120 segundos y es la unica unidad fallida.
+
+SALUD BASICA
+- Memoria: 31 GiB; aproximadamente 30 GiB disponibles; swap 8 GiB sin uso.
+- Temperaturas: CPU 34 C; PCH 41 C; zonas ACPI 27,8–38 C.
+- Sin MCE, machine-check, errores PCIe AER, errores de E/S, errores EXT4 ni bloqueos de CPU encontrados.
+- smartd activo y monitorizando los dos Samsung SSD 860; sin avisos SMART de fallo encontrados en el registro revisado.
+- LUKS2/LVM y los volumenes raiz, MySQL y compartido montados; espacio libre normal.
+- Aviso independiente: FAT sdb1 del SSD secundario figura como no desmontado correctamente. Esta particion no esta montada ni se reparo.
+- No hay reinicio pendiente.
+
+SERVICIOS Y EXPOSICION
+- ssh.socket/ssh.service y UFW activos.
+- MySQL inactive/disabled.
+- SFTPGo inactive/disabled.
+- cloudflared inactive/masked.
+- Escuchas observadas: SSH 22 y resolved local; no 3306/33060 ni servicios de aplicacion.
+
+LIMITES
+- No se cambio GRUB, kernel, i915, Netplan, UFW, SSH, servicios, BIOS, discos ni firmware.
+- No se reinstalo la grafica retirada.
+- La comprobacion SMART directa privilegiada y una prueba de memoria fuera de linea no formaron parte de esta auditoria.
+- Cierre local: id_ed25519_srv_mm retirada de ssh-agent; el agente confirmo cero identidades. Windows denego detener el servicio, que queda Running con inicio Manual y vacio.
+
+VALIDACION POSTERIOR TRAS REUBICACION
+- El propietario conecto el monitor directamente por DisplayPort a la grafica integrada.
+- Tras desbloquear LUKS, la consola permanecio visible y mostro la peticion de login.
+- Desde el puesto administrador se revalido sin autenticacion SSH: 192.168.1.31 respondio 2/2 ICMP, la MAC fue 74:fe:48:67:be:cc y TCP/22 estaba accesible.
+- El propietario confirma que antes del incidente utilizaba monitores VGA, incluido el monitor actual, sin este comportamiento. Los registros historicos muestran que entonces la NVIDIA era boot VGA y nouveau proporcionaba el framebuffer principal.
+- Conclusion: la perdida de video queda reproducida y resuelta operativamente mediante DisplayPort. El fallo aparece al retirar la NVIDIA y pasar la consola a la Intel/i915; no se atribuye al monitor VGA por si solo.
+
+ENSAYO TEMPORAL NOMODESET
+- El propietario autorizo un ensayo de un solo arranque, sin modificacion persistente de GRUB.
+- Durante este ensayo, el menu de GRUB aparecio automaticamente en el arranque; no fue necesario pulsar Esc, Shift u otra tecla.
+- Con VGA como unica salida, se edito temporalmente la entrada normal de Ubuntu y se anadio solo nomodeset a la linea del kernel.
+- GRUB, LUKS y la peticion de login permanecieron visibles por VGA.
+- Despues del desbloqueo, 192.168.1.31 respondio 2/2 ICMP y TCP/22 estaba accesible.
+- Conclusion: nomodeset es suficiente para conservar la consola VGA; no se ha demostrado necesidad de fijar GRUB_GFXMODE ni una resolucion concreta.
+- Pendiente: comprobar despues de un arranque limpio si el menu sigue mostrandose o si su aparicion dependia de recordfail por los intentos anteriores.
+
+CAMBIO PERSISTENTE AUTORIZADO Y PRIMERA ACEPTACION
+- El propietario autorizo expresamente aplicar el cambio minimo persistente y realizar el primer reinicio de aceptacion con VGA.
+- Script conservado: 06_herramientas/scripts/aplicar-nomodeset-consola-20261112.sh.
+- SHA256 del script local y remoto: 38434c10b33e633bb0b9ce25162eacf0ba43aacdf3e8d786f417f28d02d32c33.
+- Precondicion: hash original de /etc/default/grub 3bfb893728053e0a1dcc45b81b460473c50f98e85541db8d8b9ba719bad2c4fc.
+- Copia de reversion creada con modo 0600: /etc/default/grub.pre-nomodeset-20261112T1325.
+- Cambio unico: GRUB_CMDLINE_LINUX_DEFAULT="nomodeset". No se fijo resolucion, no se cambio timeout/menu y no se modifico BIOS, kernel o controlador.
+- update-grub finalizo; grub-script-check valido /boot/grub/grub.cfg y el script confirmo nomodeset en las entradas Linux.
+- Hash nuevo de /etc/default/grub: b9aede8e2827937cb4e0d6f087e0f8f6813e5e93c17a0e090a082820b728c361.
+- Hash generado de /boot/grub/grub.cfg: 261eb48b90beff03bebef9b9bb50a07b2a9c1faba271a108397c4bf45095d166.
+- os-prober detecto el Windows antiguo de /dev/sdb1 y genero su entrada UEFI. No se monto ni modifico esa particion.
+- Primer reinicio limpio: boot ID c6d75bb5-2121-4b70-88c9-8206c0f4de01; /proc/cmdline incluye nomodeset sin edicion manual.
+- Consola VGA visible desde firmware/LUKS hasta login. simpledrm conserva fb0; no reaparecen dotclock=0, Cannot find any crtc ni la traza DRM de i915.
+- Aviso esperado: el codec de audio HDMI no se vincula a i915; no afecta a consola ni a servicios de servidor.
+- Red: eno1 obtuvo carrier y DHCP 192.168.1.31 en unos cuatro segundos; SSH accesible.
+- Cero unidades fallidas; MySQL y SFTPGo inactive/disabled; cloudflared inactive/masked; UFW y SSH activos.
+- Raiz, /boot, /boot/efi, /var/lib/mysql y /srv/compartido montados con espacio normal.
+- Aceptacion ampliada cerrada: tres arranques persistentes superados, dos con VGA y uno con DisplayPort.
+- Segundo arranque, VGA: boot ID 92945f0693134a73b76138474e19d2f3; consola y login visibles.
+- Tercer arranque, DisplayPort: boot ID 8c4452bb20014ab1b950b1504f469878; consola y login visibles.
+- Verificacion remota final: nomodeset y simpledrm activos; sin dotclock=0, Cannot find any crtc, trazas DRM ni unidades fallidas.
+- El apagado intermedio fue limpio; red 192.168.1.31, SSH/UFW y montajes operativos; MySQL, SFTPGo y cloudflared conservaron su estado seguro.

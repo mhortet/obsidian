@@ -85,6 +85,8 @@ Leer relevo
 
 A 2026-11-06, `srv-mm-01` usa temporalmente la LAN doméstica `192.168.1.0/24` y tiene reserva DHCP `192.168.1.31` para la MAC `74:fe:48:67:be:cc`. El kernel activo documentado es `6.8.0-147-generic`. SSH funciona por clave y UFW está activo. MySQL 8.4.11 y SFTPGo están `disabled/inactive`; `cloudflared` está `masked/inactive`; no hay puertos del bloque en escucha. La red del cliente `192.168.0.0/24` continúa sin validarse en sede.
 
+Incidente de consola del 2026-11-12: se retiró la NVIDIA GA106 después de cuatro pitidos de POST y la Intel UHD 630 perdió la salida VGA al cargar `i915`. Se aplicó de forma autorizada `nomodeset` en GRUB, con copia y reversión; la consola quedó aceptada en tres arranques persistentes —dos VGA y uno DisplayPort—, sin errores DRM, fallos de unidades ni cambios en servicios. La NVIDIA permanece retirada y pendiente de diagnóstico físico. Véase [estado del incidente](00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md).
+
 Revalidación del 2026-11-05: SSH disponible, MySQL detenido/deshabilitado y sin escucha 3306/33060; sistema sin fallos ni reinicio pendiente. Aceptado piloto doméstico de un puesto con datos ficticios. No se han aplicado cambios de configuración; las reglas UFW requieren revalidación con sudo.
 
 

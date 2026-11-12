@@ -1,5 +1,27 @@
 # Misión persistente: servidor seguro para pyme del sector sanitario
 
+## Relación operativa con Qontrolmed
+
+`Servidor_MM` y `Qontrolmed` forman desde el 12 de noviembre de 2026 un trabajo coordinado con dos puntos de entrada válidos:
+
+- plataforma, infraestructura y operación: `H:\02.Trabajo\obsidian\30 - Proyectos\Servidor_MM\Servidor`;
+- aplicación, código, pruebas y release: `D:\trabajo\Proyectos\maxgesth`.
+
+Una sesión puede comenzar desde cualquiera de las dos carpetas. Antes de actuar en un asunto que pueda afectar al conjunto, hay que leer las instrucciones y el relevo vigente de ambos proyectos:
+
+1. `Servidor_MM/Servidor/AGENTS.md` y `Servidor_MM/Servidor/CONTINUAR-SIGUIENTE-SESION.md`;
+2. `maxgesth/AGENTS.md` y `maxgesth/CONTINUAR-SIGUIENTE-SESION.md`.
+
+No asumir que el archivo con fecha más reciente de una sola carpeta representa el estado completo. La fuente de verdad se reparte así:
+
+- `Servidor_MM` gobierna hardware, arranque, Ubuntu, almacenamiento, LUKS, red, SSH/UFW, servicios, MySQL del servidor, SFTPGo, copias y operación;
+- `Qontrolmed` gobierna alcance funcional, código, esquema esperado, TLS de la aplicación, tests, CI, empaquetado, RC y release;
+- las decisiones transversales deben enlazar evidencia y planes de ambos lados sin duplicar ni contradecir fuentes.
+
+Las autorizaciones también permanecen separadas. Un plan aprobado en Qontrolmed no autoriza por sí mismo cambios en el servidor, y un plan aprobado en Servidor_MM no autoriza cambios funcionales, builds o releases de Qontrolmed. Cuando una tarea afecte a ambos, debe existir un plan transversal o dos planes compatibles con alcance, orden, aceptación y reversión explícitos.
+
+Al cerrar una sesión transversal, actualizar los dos relevos o dejar en ambos un enlace inequívoco al estado vigente. Si solo cambia uno de los proyectos, actualizar su relevo y comprobar si el otro necesita al menos una referencia de continuidad.
+
 ## Objetivo
 
 Convertir, solo después de una auditoría y de la aprobación explícita del propietario, el ordenador de este espacio de trabajo en un servidor de una pequeña empresa que gestiona información sobre instalaciones y equipos de hospitales y clínicas.

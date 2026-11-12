@@ -1,34 +1,65 @@
 ---
-title: "Continuación srv-mm-01 — bloque doméstico aceptado"
+title: "Continuación srv-mm-01 — reanudación tras incidente de consola"
 type: register
 status: active
 created: 2026-11-01
-updated: 2026-11-06
+updated: 2026-11-12
 sources:
+  - "00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md"
+  - "03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md"
+  - "../../Qontrolmed/01_gobierno_y_decisiones/CONTINUAR-SIGUIENTE-SESION.md"
   - "00_seguimiento/estados/ESTADO-ACEPTACION-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md"
   - "02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md"
   - "03_operacion_y_runbooks/INICIAR-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md"
   - "05_evidencias/ACEPTACION-FUNCIONAL-WEBCLIENT-2026-11-06.txt"
   - "05_evidencias/ACEPTACION-BLOQUE-DOMESTICO-2026-11-06.txt"
 tags: [documentacion, seguridad, administracion]
-review_after: 2026-11-13
+review_after: 2026-11-14
 ---
 
 # Punto seguro de continuación
 
+## Entrada coordinada
+
+Esta sesión puede iniciarse desde esta carpeta o desde `D:\trabajo\Proyectos\maxgesth`. En ambos casos se deben leer los `AGENTS.md` y relevos de `Servidor_MM` y `Qontrolmed` antes de ejecutar trabajo transversal. La infraestructura y la aplicación conservan fuentes de verdad y autorizaciones separadas; véase `AGENTS.md`.
+
 ## Leer primero
 
 1. `AGENTS.md`.
-2. `00_seguimiento/estados/ESTADO-ACEPTACION-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md`.
-3. `02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md`.
-4. `03_operacion_y_runbooks/INICIAR-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md`.
-5. `DOCUMENTACION-SERVIDOR-UBUNTU.md`.
-6. `02_planes_y_arquitectura/PLAN-PREPARACION-PREVIA-Y-PUESTA-EN-SEDE-2026-11-05.md`.
+2. `00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md`.
+3. `03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md`.
+4. `00_seguimiento/estados/ESTADO-ACEPTACION-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md`.
+5. `02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md`.
+6. `DOCUMENTACION-SERVIDOR-UBUNTU.md`.
+7. `../../Qontrolmed/01_gobierno_y_decisiones/CONTINUAR-SIGUIENTE-SESION.md` como relevo funcional vigente, creado el 10/11 y actualizado el 11/11.
+
+El servidor quedó **apagado de forma controlada el 12/11/2026**. La primera tarea del 13/11 no es continuar directamente la fase posterior: debe ejecutarse el runbook de reanudación tras el incidente y superar sus dos puertas, arranque físico y revalidación remota de solo lectura.
+
+La consola quedó aceptada en tres arranques persistentes —dos VGA y uno DisplayPort— con `nomodeset`. La NVIDIA GA106 permanece retirada. No reinstalarla, no modificar BIOS/UEFI, no reparar `sdb1` y no cambiar GRUB salvo un plan nuevo aprobado.
 
 El bloque doméstico SFTPGo/`cloudflared`/`restic` sin datos del cliente está completado. No repetir instalación, cuentas, TOTP, pruebas de cuota o restauración salvo nueva necesidad documentada.
 
+## Contexto funcional vigente de Qontrolmed
+
+El relevo del servidor del 6/11 no era el último relevo del trabajo conjunto. El proyecto `Qontrolmed` conserva un relevo creado el 10/11 y actualizado el 11/11. Ese documento es la fuente vigente para el estado de aplicación:
+
+- rama `codex/produccion-readiness` publicada;
+- P0 local parcialmente completado y P1 local implementado;
+- 44 pruebas correctas, Bandit sin hallazgos medios/altos y auditoría directa de dependencias sin avisos conocidos;
+- código TLS, recuperación, retirada de DDL runtime, CI bloqueante y provisión de CA trabajados localmente;
+- servidor, MySQL real, datos reales y `.env` no modificados ni inspeccionados;
+- ninguna RC construida o instalada;
+- GitHub CI/Gitleaks remoto pendiente por autenticación caducada de `gh`;
+- producto todavía `NO-GO` para producción; objetivo limitado a piloto privado controlado.
+
+No regresar al plan funcional del 6/11 como si fuera el último punto de Qontrolmed. Tras recuperar el servidor, continuar desde el relevo Qontrolmed del 10/11–11/11 y revalidar su estado de rama antes de editar.
+
 ## Estado vigente
 
+- Servidor apagado de forma controlada al cierre del 12/11/2026.
+- `nomodeset` persistente; reversión disponible en `/etc/default/grub.pre-nomodeset-20261112T1325`.
+- NVIDIA GA106 retirada y pendiente de diagnóstico físico separado.
+- Última red doméstica observada: `192.168.1.31`, enlace esperado a 100 Mb/s por límite del switch 3Com; revalidar, no asumir.
 - SFTPGo Community `2.7.6-1` instalado, `inactive/disabled`.
 - `cloudflared 2026.10.7` instalado, `inactive/masked`, sin túnel, token, DNS o recursos reales.
 - `restic 0.16.4-2ubuntu0.24.04.3` y `acl 2.3.2-1build1.1` instalados.
@@ -59,7 +90,15 @@ El script de aceptación vigente tiene SHA-256 `38351cc3d45c7793d40520ced02b6825
 
 ## Próximo trabajo
 
-No queda trabajo autorizado pendiente dentro del bloque doméstico. Sí puede avanzarse, sin las evidencias del cliente, mediante el [plan posterior a la aceptación](02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md): auditoría remota de solo lectura, revisión de los artefactos existentes y preparación local de plantillas y runbooks parametrizados. El [inicio de la próxima sesión](03_operacion_y_runbooks/INICIAR-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md) fija el orden y las condiciones de parada.
+### Prioridad inmediata — 13/11/2026
+
+Seguir `03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md`. Arrancar una vez de forma controlada, comprobar consola/LUKS/login y revalidar de solo lectura el cierre seguro. Si hay diferencias, conservar evidencia y detenerse antes de corregir. Si coincide, registrar `REVALIDACION_TRAS_INCIDENTE=OK`.
+
+### Continuación condicionada
+
+No queda trabajo autorizado pendiente dentro del bloque doméstico del servidor. Una vez superada la revalidación tras el incidente, la prioridad funcional es retomar `Qontrolmed` desde su relevo vigente y comprobar rama, diff y pruebas antes de continuar el siguiente bloque local proporcional al piloto privado.
+
+También puede avanzarse, si se decide trabajar específicamente en la plataforma del servidor, mediante la parte de auditoría de solo lectura y preparación local del [plan posterior a la aceptación](02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md). Ese plan del servidor sigue propuesto y no autoriza cambios remotos.
 
 Este nuevo plan está **propuesto, no aprobado**. No autoriza cambios en el servidor. Si la auditoría identifica una mejora remota, se documentará en un plan técnico separado y se detendrá antes de aplicarla.
 

@@ -1,3 +1,15 @@
+---
+tags:
+  - ia
+  - prompt
+Creado:
+Autor:
+Relacionado:
+---
+## Resumen
+
+## Descripción
+
 
 PROMPT portada cuaderno Fondo panorámico cinematográfico para portada de cuaderno digital, relación de aspecto 16:9. El tema es [Vista general de un quirofano mezclado con una uci]. Estética de academia oscura (dark academia), iluminación tenue y misteriosa. Crucial: La parte superior y el centro tienen una luz suave, pero toda la mitad inferior y los laterales deben desvanecerse en una sombra oscura intensa y un efecto de viñeteado negro. Sin texto, sin letras, fondo limpio. Estilo: [Ultra realista, resolución 8k, fotorrealista]. 
 
