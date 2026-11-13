@@ -25,7 +25,7 @@
       "query": "tag:#desarrollo  ",
       "color": {
         "a": 1,
-        "rgb": 13428121
+        "rgb": 12913657
       }
     },
     {
@@ -68,5 +68,5 @@
   "linkStrength": 0.846354166666667,
   "linkDistance": 309,
   "scale": 0.11660891579457253,
-  "close": true
+  "close": false
 }

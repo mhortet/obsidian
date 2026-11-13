@@ -110,9 +110,9 @@ Esta sesión puede iniciarse desde esta carpeta o desde `H:\02.Trabajo\obsidian\
 
 ## Pendiente inmediato
 
-1. Decidir entre promover la siguiente migración de P2E o diseñar el runbook
-   de reconciliación para instalaciones donde `ruta_certificado` ya exista sin
-   ledger. No migrar todavía una base real ni construir una RC.
+1. Diseñar el bootstrap mínimo de maestros de Preventivos y el runbook de
+   primera puesta en marcha, manteniendo separados datos iniciales, DDL y
+   migraciones. No usar todavía datos reales ni construir una RC.
 2. Mantener como pendientes de sede el inventario real de puestos, DNS/CA y
    destino de copia independiente; no bloquean el desarrollo local.
 3. Ejecutar futuras consultas autenticadas de `gh` desde el contexto autorizado
@@ -166,6 +166,30 @@ servidor permaneció encendido.
 
 P2G está publicado en `8c6b0e7`: CI `43469627567` y Security Checks
 `43469627563` finalizaron correctamente.
+
+El propietario decidió que la implantación parte de bases nuevas y que los
+datos locales anteriores son pruebas sin valor de migración. P2H inventarió el
+contrato greenfield de Preventivos: diez tablas propias, dependencias con
+Gestión/Quirófanos y JSON offline de ida y vuelta. La reconciliación histórica
+queda diferida; el siguiente bloque es crear SQL base de Preventivos.
+
+P2H está publicado en `73beaa2`: CI `43472291142` y Security Checks
+`43472291363` finalizaron correctamente.
+
+P2I dejó implementada la estructura base vacía de Preventivos: diez
+tablas ordenadas, relaciones internas, referencias lógicas entre esquemas y
+cinco pruebas específicas. La validación local cerró con 88 pruebas,
+manifiesto y Bandit correctos. Está publicado en `689ae06`: CI `43473769165`
+y Security Checks `43473769241` finalizaron correctamente. No se conectó a
+MySQL ni se modificaron los repositorios móviles; la integración sintética
+corresponde a P2J.
+
+P2J validó la base greenfield contra MySQL 8.4.11 sintético: doble ejecución,
+10 tablas, 12 claves foráneas, ciclo funcional mínimo y rechazos negativos
+correctos. Esquema, TLS y carpeta temporal se retiraron; MySQL quedó
+`inactive/disabled` y sin puertos. Validación local: 90 pruebas y Bandit
+correcto. Publicado en `a969c39`: CI `43476382817` y Security Checks
+`43476383169` finalizaron correctamente.
 
 ## Límites actuales
 

@@ -78,6 +78,16 @@ cerrados, TLS temporal retirado, SFTPGo `inactive/disabled` y Cloudflared
 propietario. Plan:
 `02_planes_y_arquitectura/PLAN-VENTANA-P2G-CERTIFICADOS-MYSQL-SINTETICO-2026-11-13.md`.
 
+P2J validó el 13/11 la base greenfield de Preventivos contra MySQL 8.4.11 con
+esquema y datos exclusivamente sintéticos. Dos ejecuciones dejaron 10 tablas,
+12 claves foráneas y el ciclo mínimo correcto. Al cerrar se retiraron esquema,
+TLS y `/tmp/qontrolmed-p2j-20261113`; MySQL quedó `inactive/disabled`, sin
+3306/33060, SFTPGo `inactive/disabled` y Cloudflared `inactive/masked`. El
+servidor permanece encendido. Fuente funcional y evidencia:
+`D:\trabajo\Proyectos\maxgesth\docs\05_evidencias\VALIDACION-P2J-PREVENTIVOS-MYSQL-SINTETICO-2026-11-13.md`.
+El bloque está publicado en `a969c39`; CI `43476382817` y Security Checks
+`43476383169` finalizaron correctamente.
+
 ## Aceptación completada
 
 - Descarga y sobrescritura con SHA-256 coincidentes.
