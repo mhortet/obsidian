@@ -3,7 +3,7 @@ title: "Continuar siguiente sesión de Qontrolmed"
 type: state
 status: active
 created: 2026-11-10
-updated: 2026-11-11
+updated: 2026-11-13
 tags: [qontrolmed, continuidad, produccion]
 review_after: 2026-11-17
 ---
@@ -102,22 +102,70 @@ Esta sesión puede iniciarse desde esta carpeta o desde `H:\02.Trabajo\obsidian\
   selección explícita, comparación SHA-256 e índice de procedencia. Qontrolmed
   permanece como única fuente oficial; el destino de consulta no se importa ni
   se limpia automáticamente.
+- Revalidación coordinada de `srv-mm-01` completada el 13 de noviembre:
+  `REVALIDACION_TRAS_INCIDENTE=OK`, IP reservada vigente `192.168.1.31`, línea
+  base segura coincidente y apagado controlado. `.30` es únicamente el alias
+  histórico de la clave de host SSH. El servidor permanece apagado hasta que
+  un plan aprobado requiera volver a utilizarlo.
 
 ## Pendiente inmediato
 
-1. Revisar, versionar y publicar P2B; comprobar CI y Security Checks remotos.
-2. Preparar un plan independiente para la prueba integrada del ledger contra
-   MySQL sintético; no arrancar ni usar el servidor hasta que ese plan defina
-   versión, cuenta, destino, precheck, postcheck y reversión.
-3. Mantener como pendientes de sede el inventario real de puestos, DNS/CA y
+1. Decidir entre promover la siguiente migración de P2E o diseñar el runbook
+   de reconciliación para instalaciones donde `ruta_certificado` ya exista sin
+   ledger. No migrar todavía una base real ni construir una RC.
+2. Mantener como pendientes de sede el inventario real de puestos, DNS/CA y
    destino de copia independiente; no bloquean el desarrollo local.
-4. Ejecutar futuras consultas autenticadas de `gh` desde el contexto autorizado
+3. Ejecutar futuras consultas autenticadas de `gh` desde el contexto autorizado
    con acceso al llavero; no repetir el login mientras la comprobación elevada
    siga siendo correcta.
-5. Resolver la revisión de objetos Git como `conservar`, `recuperar` o
+4. Resolver la revisión de objetos Git como `conservar`, `recuperar` o
    `descartar`; cualquier poda requerirá un bloque posterior independiente.
-6. No integrar el cambio histórico de marcas ni construir una RC hasta superar
+5. No integrar el cambio histórico de marcas ni construir una RC hasta superar
    las puertas P2 y posteriores.
+
+P2B ya está publicado en `aeb0c2e`: CI `43083258291` y Security Checks
+`43083258293` finalizaron correctamente.
+
+P2C quedó completado el 13/11 contra MySQL 8.4.11 sintético. Se validaron TLS
+con identidad, estructura, restricciones, mínimo privilegio y los cuatro
+estados del comprobador. El servidor volvió a su línea base segura y no se
+construyó ninguna RC.
+
+P2C está publicado en `674dbcd`: CI `43408673786` y Security Checks
+`43408673712` finalizaron correctamente.
+
+P2D está implementado localmente: guard de ledger de solo lectura anterior al
+login, cierre seguro de conexiones, recursos de build y 76 pruebas correctas.
+Está publicado en `51ddb90`: CI `43409940569` y Security Checks `43409940328`
+finalizaron correctamente.
+
+P2E quedó completado localmente el 13/11: las diez migraciones restantes se
+clasificaron por necesidad, dependencias, riesgo y recuperación sin ejecutar
+SQL ni modificar el manifiesto. La siguiente candidata individual es
+`migracion_certificados_equipos_medida.sql`; las cadenas de roles, Preventivos
+y puntos automáticos permanecen separadas y los puentes legados no se
+promoverán por defecto.
+
+P2E está publicado en `b7f4086`: CI `43463086022` y Security Checks
+`43463086644` finalizaron correctamente.
+
+P2F quedó implementado localmente: certificados se promovió como
+`quirofanos-0002-certificados-equipos-medida`, el SQL se endureció con
+pre/postchecks y recuperación, el build incluye el recurso y el guard bloquea
+un ledger detenido en v1. Validación local: 81 pruebas, manifiesto y Bandit
+correctos. No se ejecutó MySQL; la integración sintética corresponde a P2G.
+
+P2F está publicado en `fe99684`: CI `43464360995` y Security Checks
+`43464360775` finalizaron correctamente.
+
+P2G completó la integración de `quirofanos-0002` contra MySQL 8.4.11
+sintético: estructura y datos preservados, reejecución rechazada, v1
+`migration-required`, v1+v2 `compatible` y cuenta lectora sin escritura. La
+limpieza devolvió MySQL a `inactive/disabled`, sin puertos ni TLS temporal; el
+servidor permaneció encendido.
+
+P2G está publicado en `8c6b0e7`: CI `43469627567` y Security Checks
+`43469627563` finalizaron correctamente.
 
 ## Límites actuales
 

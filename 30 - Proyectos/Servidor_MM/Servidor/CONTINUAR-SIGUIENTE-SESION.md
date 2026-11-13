@@ -3,7 +3,7 @@ title: "Continuación srv-mm-01 — reanudación tras incidente de consola"
 type: register
 status: active
 created: 2026-11-01
-updated: 2026-11-12
+updated: 2026-11-13
 sources:
   - "00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md"
   - "03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md"
@@ -33,7 +33,7 @@ Esta sesión puede iniciarse desde esta carpeta o desde `D:\trabajo\Proyectos\ma
 6. `DOCUMENTACION-SERVIDOR-UBUNTU.md`.
 7. `../../Qontrolmed/01_gobierno_y_decisiones/CONTINUAR-SIGUIENTE-SESION.md` como relevo funcional vigente, creado el 10/11 y actualizado el 11/11.
 
-El servidor quedó **apagado de forma controlada el 12/11/2026**. La primera tarea del 13/11 no es continuar directamente la fase posterior: debe ejecutarse el runbook de reanudación tras el incidente y superar sus dos puertas, arranque físico y revalidación remota de solo lectura.
+El servidor fue encendido por el propietario el 13/11/2026 para P2G y permanece en línea. Las puertas de arranque físico y revalidación remota anteriores terminaron con `REVALIDACION_TRAS_INCIDENTE=OK`.
 
 La consola quedó aceptada en tres arranques persistentes —dos VGA y uno DisplayPort— con `nomodeset`. La NVIDIA GA106 permanece retirada. No reinstalarla, no modificar BIOS/UEFI, no reparar `sdb1` y no cambiar GRUB salvo un plan nuevo aprobado.
 
@@ -56,10 +56,10 @@ No regresar al plan funcional del 6/11 como si fuera el último punto de Qontrol
 
 ## Estado vigente
 
-- Servidor apagado de forma controlada al cierre del 12/11/2026.
+- Servidor encendido y en línea al cierre de P2G del 13/11/2026.
 - `nomodeset` persistente; reversión disponible en `/etc/default/grub.pre-nomodeset-20261112T1325`.
 - NVIDIA GA106 retirada y pendiente de diagnóstico físico separado.
-- Última red doméstica observada: `192.168.1.31`, enlace esperado a 100 Mb/s por límite del switch 3Com; revalidar, no asumir.
+- Dirección doméstica vigente `192.168.1.31`, reservada en el router y revalidada a 100 Mb/s por límite del switch 3Com. `.30` es solo el alias histórico de la clave de host SSH.
 - SFTPGo Community `2.7.6-1` instalado, `inactive/disabled`.
 - `cloudflared 2026.10.7` instalado, `inactive/masked`, sin túnel, token, DNS o recursos reales.
 - `restic 0.16.4-2ubuntu0.24.04.3` y `acl 2.3.2-1build1.1` instalados.
@@ -70,6 +70,13 @@ No regresar al plan funcional del 6/11 como si fuera el último punto de Qontrol
 - Túnel local cerrado, identidad `id_ed25519_srv_mm` retirada, agente SSH vacío y sin conexiones establecidas.
 
 No se documentaron contraseñas, secretos TOTP, códigos de recuperación, cookies o la contraseña `restic`.
+
+P2G validó `quirofanos-0002` contra MySQL 8.4.11 con esquema, cuenta y datos
+sintéticos. La ventana terminó con MySQL `inactive/disabled`, 3306/33060
+cerrados, TLS temporal retirado, SFTPGo `inactive/disabled` y Cloudflared
+`inactive/masked`. El servidor permaneció encendido por decisión del
+propietario. Plan:
+`02_planes_y_arquitectura/PLAN-VENTANA-P2G-CERTIFICADOS-MYSQL-SINTETICO-2026-11-13.md`.
 
 ## Aceptación completada
 
@@ -92,11 +99,23 @@ El script de aceptación vigente tiene SHA-256 `38351cc3d45c7793d40520ced02b6825
 
 ### Prioridad inmediata — 13/11/2026
 
-Seguir `03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md`. Arrancar una vez de forma controlada, comprobar consola/LUKS/login y revalidar de solo lectura el cierre seguro. Si hay diferencias, conservar evidencia y detenerse antes de corregir. Si coincide, registrar `REVALIDACION_TRAS_INCIDENTE=OK`.
+Completada. Arranque normal, LUKS, consola VGA, red, SSH, montajes y línea base segura coincidieron. MySQL y SFTPGo permanecieron `inactive/disabled`, `cloudflared` `inactive/masked`, no hubo unidades fallidas ni puertos de aplicación. La identidad SSH fue retirada y el servidor se apagó con `sudo systemctl poweroff`.
+
+Queda como hallazgo separado una referencia de `/etc/pam.d/login` a
+`pam_lastlog.so` ausente. No bloqueó el acceso finalmente realizado ni el
+apagado y no autoriza una corrección sin diagnóstico y plan.
 
 ### Continuación condicionada
 
 No queda trabajo autorizado pendiente dentro del bloque doméstico del servidor. Una vez superada la revalidación tras el incidente, la prioridad funcional es retomar `Qontrolmed` desde su relevo vigente y comprobar rama, diff y pruebas antes de continuar el siguiente bloque local proporcional al piloto privado.
+
+El 13/11 se preparó y ejecutó el plan compatible
+`02_planes_y_arquitectura/PLAN-VENTANA-P2C-LEDGER-MYSQL-SINTETICO-2026-11-13.md`
+para probar el ledger contra MySQL 8.4.11 con un esquema y una cuenta
+temporales, escucha solo en loopback y retirada completa. P2C terminó
+correctamente; MySQL volvió a `inactive/disabled`, sin proceso ni puertos, y la
+configuración TLS temporal quedó retirada. No repetir la ventana salvo una
+nueva necesidad documentada.
 
 También puede avanzarse, si se decide trabajar específicamente en la plataforma del servidor, mediante la parte de auditoría de solo lectura y preparación local del [plan posterior a la aceptación](02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md). Ese plan del servidor sigue propuesto y no autoriza cambios remotos.
 

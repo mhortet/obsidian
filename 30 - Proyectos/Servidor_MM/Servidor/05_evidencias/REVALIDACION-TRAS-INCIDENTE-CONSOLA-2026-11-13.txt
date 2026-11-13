@@ -1,0 +1,23 @@
+REVALIDACION TRAS INCIDENTE DE CONSOLA — 2026-11-13
+
+RESULTADO=OK
+REVALIDACION_TRAS_INCIDENTE=OK
+
+Arranque físico desde apagado completo, desbloqueo LUKS y consola VGA.
+Sin cambios en GRUB, BIOS/UEFI, hardware, discos, red, paquetes o servicios.
+
+- Host: srv-mm-01; Ubuntu 24.04.5 LTS; kernel 6.8.0-147-generic.
+- Boot ID: 9a2c695a-0f86-45ed-a8dc-4f3828a9f759.
+- nomodeset presente; framebuffer simpledrmdrmfb; cero unidades fallidas.
+- IP vigente 192.168.1.31, reservada en el router; .30 es alias histórico SSH.
+- eno1 con portadora a 100 Mb/s; SSH y UFW activos.
+- MySQL y SFTPGo inactive/disabled; cloudflared inactive/masked.
+- Sin listeners 3306, 33060, 18080 o 18081.
+- Raíz y /srv/compartido montados; smartd activo; no se tocó sdb1.
+
+Hallazgo separado: /etc/pam.d/login referencia pam_lastlog.so, ausente. Produjo
+avisos durante un intento de login, pero no bloqueó el acceso finalmente
+realizado, LUKS, SSH ni el apagado. No se modificó PAM.
+
+Cierre: identidad SSH retirada, agente vacío y apagado local controlado con
+sudo systemctl poweroff. TCP/22 dejó de responder. Servidor apagado.

@@ -3,7 +3,7 @@ title: "srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimient
 type: project
 status: active
 created: 2026-11-05
-updated: 2026-11-12
+updated: 2026-11-13
 sources:
   - "00_seguimiento/estados/ESTADO-INSTALACION-2026-10-01.md"
   - "00_seguimiento/estados/REVALIDACION-Y-PROPUESTAS-2026-10-04.md"
@@ -21,11 +21,11 @@ review_after: 2026-11-19
 
 # srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimiento
 
-**Versión:** 1.5 · **Fecha de corte:** 12 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
+**Versión:** 1.7 · **Fecha de corte:** 13 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
 **Estado de entrega:** documentación consolidada de preparación y piloto; puesta en producción y aceptación del cliente pendientes.  
 **Clasificación:** uso del cliente y personal de mantenimiento autorizado. Contiene información de infraestructura; distribuir de forma controlada.
 
-Este es el documento maestro que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial técnico. La versión 1.5 incorpora el incidente de gráfica/consola del 12/11, la auditoría de arranque y la aceptación reversible de `nomodeset`. No autoriza producción ni datos reales.
+Este es el documento maestro que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial técnico. La versión 1.7 incorpora la validación P2C del ledger contra MySQL sintético y el hallazgo de selección de certificado TLS. No autoriza producción ni datos reales.
 
 ## Índice
 
@@ -365,6 +365,18 @@ La política de actualizaciones automáticas, avisos y reinicios todavía necesi
 
 Antes de un reinicio o apagado: acordar la interrupción, comprobar que no hay copias ni transacciones activas y confirmar disponibilidad de recuperación LUKS. No se ha acreditado recuperación remota autónoma desde arranque en frío.
 
+Para un apagado local controlado, iniciar sesión en la consola con el usuario
+administrativo y ejecutar:
+
+```bash
+sudo systemctl poweroff
+```
+
+La contraseña se introduce solo en la consola y nunca se copia a documentación
+o evidencias. Esperar al apagado físico y verificar desde el puesto de
+administración que SSH deja de responder. Este procedimiento fue ejecutado y
+comprobado el 13/11/2026.
+
 Antes de cambiar firewall o red: mantener una sesión de recuperación, guardar la configuración y validar una **conexión nueva** desde el origen autorizado antes de retirar la regla anterior. Una sesión ya abierta no demuestra que el acceso nuevo funcione. No restaurar una copia antigua de UFW sin revisar qué subred habilita.
 
 No iniciar MySQL para una consulta rutinaria. Una futura ventana de prueba debe limitar escucha y origen, definir tiempo máximo y cerrar cuentas, regla temporal y servicio al terminar. El arranque permanente requiere aceptación específica de la fase productiva.
@@ -459,6 +471,7 @@ Fuentes internas revisadas para esta consolidación. Los enlaces conservan el de
 | F15 | [Aceptación final del bloque doméstico](00_seguimiento/estados/ESTADO-ACEPTACION-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md), [pruebas WebClient](05_evidencias/ACEPTACION-FUNCIONAL-WEBCLIENT-2026-11-06.txt), [restic y cierre técnico](05_evidencias/ACEPTACION-BLOQUE-DOMESTICO-2026-11-06.txt) y [manifiesto](05_evidencias/MANIFIESTO-BLOQUE-DOMESTICO-2026-11-06.txt) |
 | F16 | [Plan posterior a la aceptación sin datos del cliente](02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md) y [runbook de inicio](03_operacion_y_runbooks/INICIAR-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md); propuesta documental, sin nueva conexión ni cambio del servidor |
 | F17 | [Estado del incidente de arranque, vídeo y red](00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md), [evidencia técnica](05_evidencias/INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.txt) y [script reversible de `nomodeset`](06_herramientas/scripts/aplicar-nomodeset-consola-20261112.sh) |
+| F18 | [Revalidación tras el incidente](05_evidencias/REVALIDACION-TRAS-INCIDENTE-CONSOLA-2026-11-13.txt), [diario de sesión](00_seguimiento/diario/2026-11-13-revalidacion-tras-incidente.md) y [runbook ejecutado](03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md) |
 
 Las comparativas y cuestionarios en la carpeta superior `Servidor_MM` aportan contexto de objetivos y alternativas. Sus menciones a Samba, Cockpit, Windows Server o virtualización no demuestran una instalación. La auditoría Windows archivada es una línea base anterior, no el estado de Ubuntu actual. No se ha importado al documento ningún secreto ni contenido de archivos privados.
 
@@ -479,6 +492,8 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 
 | Versión | Fecha | Cambio | Evidencia / validación |
 | --- | --- | --- | --- |
+| 1.7 | 2026-11-13 | Ventana P2C con MySQL 8.4.11 en loopback; detección segura del certificado automático sin SAN, selección TLS piloto temporal, validación del ledger y reversión completa. | Plan P2C coordinado; MySQL final `inactive/disabled`, puertos y drop-in ausentes. |
+| 1.6 | 2026-11-13 | Reanudación desde apagado completo, revalidación remota de solo lectura, aclaración de IP reservada `.31`, cierre controlado y comando local `sudo systemctl poweroff`. | F18; `REVALIDACION_TRAS_INCIDENTE=OK`, TCP/22 cerrado después del apagado y agente SSH vacío. |
 | 1.5 | 2026-11-12 | Incidente de gráfica, auditoría de arranque/red, retirada de NVIDIA y aceptación reversible de consola con `nomodeset` en dos arranques VGA y uno DisplayPort. | F17; consola, red, SSH, montajes y servicios validados; NVIDIA pendiente diagnóstico físico. |
 | 1.4 | 2026-11-06 | Preparación del siguiente bloque posible sin datos del cliente: auditoría remota de solo lectura, revisión local y artefactos parametrizados. | F16; plan propuesto, sin conexión nueva ni cambio del servidor. |
 | 1.3 | 2026-11-06 | Aceptación completa del bloque doméstico: WebClient, límites, autenticación, revocación/reversión, copia/restauración `restic`, corrección del script y cierre final. | F15; servicios detenidos, sin datos reales ni recursos Cloudflare, copia local no 3-2-1. |
@@ -498,3 +513,13 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 | 2026-11-05 | Piloto TLS/funcional, ID manuales, restauración completa ficticia, revisión de código y plan previo al traslado |
 | 2026-11-06 | Instalación y aceptación doméstica SFTPGo/restic con datos ficticios; Cloudflare inerte y cierre seguro |
 | 2026-11-12 | Incidente de gráfica y red; retirada de NVIDIA, auditoría y aceptación de consola VGA/DisplayPort con `nomodeset` reversible |
+
+## Actualización P2G — 13/11/2026
+
+Se ejecutó una ventana temporal autorizada para validar
+`quirofanos-0002-certificados-equipos-medida` contra MySQL 8.4.11 con esquema,
+cuenta y datos exclusivamente sintéticos. Tras la aceptación se retiraron los
+objetos y TLS temporales. MySQL quedó `inactive/disabled`, sin 3306/33060;
+SFTPGo `inactive/disabled` y Cloudflared `inactive/masked`. El servidor quedó
+encendido por decisión del propietario. Detalle en
+`02_planes_y_arquitectura/PLAN-VENTANA-P2G-CERTIFICADOS-MYSQL-SINTETICO-2026-11-13.md`.

@@ -1,7 +1,7 @@
 ---
 title: "Reanudar srv-mm-01 tras el incidente de consola"
 type: process
-status: active
+status: completed
 created: 2026-11-12
 updated: 2026-11-12
 sources:
@@ -101,7 +101,13 @@ Registrar el hecho y detener el trabajo dependiente. No arrancar servicios, no r
 ## Cierre obligatorio
 
 1. Repetir estados de servicios, unidades fallidas y listeners.
-2. Confirmar si el servidor queda encendido o apagarlo de forma controlada por decisión del propietario.
+2. Confirmar si el servidor queda encendido o apagarlo de forma controlada por decisión del propietario. Para apagar desde la consola local, iniciar sesión con el usuario administrativo y ejecutar:
+
+   ```bash
+   sudo systemctl poweroff
+   ```
+
+   La contraseña se introduce únicamente en la consola; no se escribe en el chat, comandos registrados ni evidencias. Esperar al apagado físico y comprobar desde el puesto administrador que SSH deja de responder.
 3. Cerrar SSH y retirar la identidad del agente.
 4. Actualizar evidencia, diario, estado del incidente si cambia, documento maestro y relevo.
 5. Separar hechos, inferencias, recomendaciones y pendientes; no declarar resuelto un asunto físico no probado.
@@ -115,5 +121,21 @@ Registrar el hecho y detener el trabajo dependiente. No arrancar servicios, no r
 - Evidencia fechada y sesión cerrada sin secretos ni datos personales.
 
 ## Prompt de arranque
+
+## Resultado del 13/11/2026
+
+Las dos puertas se superaron y se registró `REVALIDACION_TRAS_INCIDENTE=OK`.
+El arranque normal mostró firmware, LUKS y login por VGA; la comprobación
+remota confirmó `nomodeset`, `simpledrmdrmfb`, cero unidades fallidas, montajes
+esperados, red `192.168.1.31` a 100 Mb/s, SSH/UFW activos y servicios de
+aplicación detenidos. La identidad SSH se retiró del agente y el servidor se
+apagó desde la consola con `sudo systemctl poweroff`; después TCP/22 dejó de
+responder.
+
+La IP `.31` está reservada en el router y es la dirección vigente. `.30` es
+solo el alias histórico bajo el que se conserva la clave de host SSH. Se
+observó además una referencia de PAM a `pam_lastlog.so` ausente durante el
+login local. No bloqueó el acceso finalmente realizado ni el apagado, no se
+corrigió en esta sesión y queda pendiente de diagnóstico.
 
 > Retomamos `srv-mm-01` el 13/11/2026 con el servidor apagado. Lee `AGENTS.md`, `CONTINUAR-SIGUIENTE-SESION.md` y `03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md`. Empieza por el arranque físico controlado y la revalidación de solo lectura. No reinstales la NVIDIA, no cambies GRUB/BIOS/red/discos/servicios/paquetes y no arranques MySQL, SFTPGo ni cloudflared. Si la línea base coincide, abre el relevo Qontrolmed creado el 10/11 y actualizado el 11/11, revalida `codex/produccion-readiness`, diff y pruebas, y continúa solo trabajo local autorizado; si el servidor difiere, conserva evidencia y detente antes de corregir.

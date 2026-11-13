@@ -1,9 +1,9 @@
 ---
 title: "Publicación documental curada de Qontrolmed en Obsidian"
 type: state
-status: active
+status: completed
 created: 2026-11-12
-updated: 2026-11-12
+updated: 2026-11-13
 sources:
   - "../../../scripts/documentacion/seleccion_obsidian.json"
   - "../../03_operacion_y_runbooks/PUBLICAR-DOCUMENTACION-CURADA-EN-OBSIDIAN.md"
@@ -98,3 +98,18 @@ python scripts/documentacion/publicar_obsidian.py
 - Lint completo de la bóveda: 0 errores y 81 avisos. Los avisos corresponden a
   revisiones vencidas y taxonomía preexistente, incluidas etiquetas de los
   documentos copiados; no impidieron la publicación ni modificaron el origen.
+
+## Revalidación antes de versionar — 13/11/2026
+
+- publicación completa en un destino temporal: 40 documentos copiados;
+- segunda comprobación sobre ese destino: 0 copias pendientes;
+- 42 ficheros resultantes, incluidos índice y estado técnico;
+- compilación Python correcta;
+- suite completa de Qontrolmed: 68 pruebas correctas;
+- Bandit: cero hallazgos medios o altos;
+- manifiesto de migraciones P2: válido;
+- CI `43083258291` y Security Checks `43083258293` correctos para P2B
+  (`aeb0c2e`).
+
+La caché `__pycache__` generada durante la compilación permanece ignorada y no
+se incorpora al repositorio.
