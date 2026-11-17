@@ -2,7 +2,7 @@
 title: "Qontrolmed — consulta publicada"
 type: project
 status: active
-updated: 2026-11-13
+updated: 2026-11-16
 tags: [qontrolmed, documentacion]
 ---
 
@@ -11,8 +11,8 @@ tags: [qontrolmed, documentacion]
 > Copia unidireccional de solo consulta. La fuente oficial se encuentra en
 > `D:\trabajo\Proyectos\maxgesth`. No editar aquí para cambiar el proyecto.
 
-- Publicación: `2026-11-13T18:49:15+01:00`
-- Revisión Git de origen: `a969c39`
+- Publicación: `2026-11-16T12:23:01+01:00`
+- Revisión Git de origen: `92d27cf`
 - Selección: `scripts/documentacion/seleccion_obsidian.json`
 
 ## Documentos
@@ -32,11 +32,19 @@ tags: [qontrolmed, documentacion]
 - [[docs/00_seguimiento/diario/2026-11-13-p2h-contrato-greenfield-preventivos.md]]
 - [[docs/00_seguimiento/diario/2026-11-13-p2i-base-mysql-preventivos.md]]
 - [[docs/00_seguimiento/diario/2026-11-13-p2j-integracion-preventivos-mysql.md]]
+- [[docs/00_seguimiento/diario/2026-11-15-p2k-bootstrap-minimo-preventivos.md]]
+- [[docs/00_seguimiento/diario/2026-11-15-p2l-inventario-maestros-preventivos.md]]
+- [[docs/00_seguimiento/diario/2026-11-15-p2m-puntos-control-quirofanos.md]]
+- [[docs/00_seguimiento/diario/2026-11-15-p2n-excel-revision-maestros.md]]
+- [[docs/00_seguimiento/diario/2026-11-16-especificaciones-operativas-piloto.md]]
+- [[docs/00_seguimiento/diario/2026-11-16-inicio-p2p-esquemas-e-identidades.md]]
 - [[docs/00_seguimiento/estados/ESTADO-REORGANIZACION-DOCUMENTAL-2026-11-10.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-AUTORIZACION-INTEGRAL-PLANES-Y-P1-LOCAL-2026-11-11.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-CICLO-VIDA-SOPORTE-RELEASE-PILOTO-2026-11-10.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-PILOTO-PRIVADO-EVALUACION-2026-11-11.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-IMPLANTACION-DESDE-CERO-Y-DATOS-PRUEBA-2026-11-13.md]]
+- [[docs/01_gobierno_y_decisiones/DECISION-CONSERVAR-MAESTROS-PREVENTIVOS-SIN-HISTORICO-2026-11-15.md]]
+- [[docs/01_gobierno_y_decisiones/DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md]]
 - [[docs/01_gobierno_y_decisiones/politica_datos_iniciales_piloto.md]]
 - [[docs/01_gobierno_y_decisiones/propuesta_modelo_roles_permisos.md]]
 - [[docs/01_gobierno_y_decisiones/roles_operativos_acceso.md]]
@@ -49,6 +57,11 @@ tags: [qontrolmed, documentacion]
 - [[docs/02_planes_y_arquitectura/PLAN-EJECUCION-P2H-CONTRATO-GREENFIELD-PREVENTIVOS-2026-11-13.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-EJECUCION-P2I-BASE-MYSQL-PREVENTIVOS-2026-11-13.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-EJECUCION-P2J-INTEGRACION-PREVENTIVOS-MYSQL-2026-11-13.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-EJECUCION-P2K-BOOTSTRAP-MINIMO-PREVENTIVOS-2026-11-15.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-EJECUCION-P2L-INVENTARIO-MAESTROS-PREVENTIVOS-2026-11-15.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-EJECUCION-P2M-INVENTARIO-PUNTOS-CONTROL-QUIROFANOS-2026-11-15.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-P2O-CARGA-MAESTROS-SRV-MM-01-2026-11-15.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-P2P-ESQUEMAS-DEFINITIVOS-IDENTIDADES-Y-ACCESOS-2026-11-16.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/criterios_transversales_capas.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/modulo_analitico_y_campanas_preventivo.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/remote_tablet_preventivos.md]]
@@ -58,9 +71,11 @@ tags: [qontrolmed, documentacion]
 - [[docs/03_operacion_y_runbooks/guia_instalacion_rc_qontrolmed.md]]
 - [[docs/03_operacion_y_runbooks/migraciones_operativas_hardening.md]]
 - [[docs/03_operacion_y_runbooks/PUBLICAR-DOCUMENTACION-CURADA-EN-OBSIDIAN.md]]
+- [[docs/03_operacion_y_runbooks/PRIMERA-PUESTA-EN-MARCHA-PREVENTIVOS.md]]
 - [[docs/03_operacion_y_runbooks/RUNBOOK-RECONCILIACION-TLS-CA-P0-2026-11-11.md]]
 - [[docs/03_operacion_y_runbooks/security_delivery_playbook.md]]
 - [[docs/04_guias_didacticas/GUIA-DIDACTICA-DE-SESIONES-Y-COMANDOS.md]]
+- [[docs/04_guias_didacticas/GUIA-WORKBENCH-TUNEL-SSH-SRV-MM-01.md]]
 - [[docs/05_evidencias/auditorias/CLASIFICACION-MIGRACIONES-P2E-2026-11-13.md]]
 - [[docs/04_guias_didacticas/Manual/manual_usuario_final_tecnicos_hospitalarios.md]]
 - [[docs/04_guias_didacticas/Manual/capturas/compras_detalle.png]]

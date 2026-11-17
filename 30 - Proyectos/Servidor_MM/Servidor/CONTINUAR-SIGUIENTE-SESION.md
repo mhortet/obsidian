@@ -3,7 +3,7 @@ title: "Continuación srv-mm-01 — reanudación tras incidente de consola"
 type: register
 status: active
 created: 2026-11-01
-updated: 2026-11-13
+updated: 2026-11-16
 sources:
   - "00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md"
   - "03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md"
@@ -55,6 +55,35 @@ El relevo del servidor del 6/11 no era el último relevo del trabajo conjunto. E
 No regresar al plan funcional del 6/11 como si fuera el último punto de Qontrolmed. Tras recuperar el servidor, continuar desde el relevo Qontrolmed del 10/11–11/11 y revalidar su estado de rama antes de editar.
 
 ## Estado vigente
+
+- P2P quedó pausado el 16/11/2026 a petición del propietario después de crear y
+  validar los esquemas definitivos `gestion`, `preventivos` y `quirofanos`.
+  Los tres `piloto_mm_*` permanecen como reversión; la copia previa verificó
+  SHA-256 y las parejas origen/destino tienen 13/10/7 tablas. MySQL fue
+  observado `active/disabled`, ligado a `127.0.0.1:3306`, y Workbench mostró
+  los seis esquemas mediante túnel SSH. No se abrió 3306 en LAN, no se creó
+  cuenta runtime y no se activó SFTPGo. La próxima sesión debe empezar con
+  inventario de solo lectura de roles, permisos y usuarios de `gestion`, antes
+  de planificar el bootstrap. Fuente funcional:
+  `D:\trabajo\Proyectos\maxgesth\docs\02_planes_y_arquitectura\PLAN-P2P-ESQUEMAS-DEFINITIVOS-IDENTIDADES-Y-ACCESOS-2026-11-16.md`.
+
+- La decisión transversal del 16/11/2026 fija un máximo previsto de cuatro o
+  cinco puestos concurrentes, LAN de sede `192.168.0.0/24` con direcciones
+  estables mediante reservas DHCP, y tres identidades separadas:
+  administrador funcional de Qontrolmed, cuenta técnica MySQL de mínimo
+  privilegio y administrador técnico por SSH/túnel. Se excluyen datos de
+  pacientes y clínicos, pero se protegen los datos personales mínimos de
+  usuarios y técnicos. La red, cuentas y acceso remoto concretos siguen
+  pendientes de plan y validación en sede. Fuente:
+  `D:\trabajo\Proyectos\maxgesth\docs\01_gobierno_y_decisiones\DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md`.
+
+- P2O completó el 15/11/2026 la reconstrucción de los tres esquemas
+  `piloto_mm_*` y la carga de maestros aprobados. Copia previa y log:
+  `/var/backups/qontrolmed/p2o-20261115/`. MySQL quedó `active/disabled`, ligado
+  a `127.0.0.1`; 3306 no está abierto en LAN. Workbench se validó mediante
+  túnel SSH local y `qontrolmed_admin@localhost`, limitado a los tres esquemas.
+  El SQL temporal remoto fue retirado. La fuente funcional es el plan P2O de
+  Qontrolmed.
 
 - Servidor encendido y en línea al cierre de P2G del 13/11/2026.
 - `nomodeset` persistente; reversión disponible en `/etc/default/grub.pre-nomodeset-20261112T1325`.

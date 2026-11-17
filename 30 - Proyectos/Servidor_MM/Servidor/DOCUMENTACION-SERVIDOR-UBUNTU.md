@@ -3,8 +3,9 @@ title: "srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimient
 type: project
 status: active
 created: 2026-11-05
-updated: 2026-11-13
+updated: 2026-11-16
 sources:
+  - "D:/trabajo/Proyectos/maxgesth/docs/01_gobierno_y_decisiones/DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md"
   - "00_seguimiento/estados/ESTADO-INSTALACION-2026-10-01.md"
   - "00_seguimiento/estados/REVALIDACION-Y-PROPUESTAS-2026-10-04.md"
   - "00_seguimiento/estados/ESTADO-OPERATIVO-SRV-MM-01-2026-11-01.md"
@@ -21,11 +22,11 @@ review_after: 2026-11-19
 
 # srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimiento
 
-**Versión:** 1.7 · **Fecha de corte:** 13 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
+**Versión:** 1.8 · **Fecha de corte:** 16 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
 **Estado de entrega:** documentación consolidada de preparación y piloto; puesta en producción y aceptación del cliente pendientes.  
 **Clasificación:** uso del cliente y personal de mantenimiento autorizado. Contiene información de infraestructura; distribuir de forma controlada.
 
-Este es el documento maestro que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial técnico. La versión 1.7 incorpora la validación P2C del ledger contra MySQL sintético y el hallazgo de selección de certificado TLS. No autoriza producción ni datos reales.
+Este es el documento maestro que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial técnico. La versión 1.8 incorpora las especificaciones operativas comunicadas por el propietario sobre capacidad, red de sede, separación de identidades y alcance de datos. No autoriza producción ni cambios en la red, cuentas o servicios.
 
 ## Índice
 
@@ -46,9 +47,11 @@ Este es el documento maestro que se actualizará al recibir nueva información. 
 
 ## 1. Objetivo y alcance
 
-Preparar un servidor dedicado para una pequeña empresa que gestiona instalaciones y equipos de hospitales y clínicas. Los servicios previstos son un repositorio documental con acceso seguro y una base MySQL para Qontrolmed, con administración, copias y recuperación verificables.
+Preparar un servidor dedicado para una pequeña empresa que gestiona instalaciones y equipos de hospitales y clínicas. Qontrolmed tendrá un máximo previsto de cuatro o cinco puestos concurrentes. Los servicios previstos son un repositorio documental con acceso seguro y una base MySQL para Qontrolmed, con administración, copias y recuperación verificables.
 
-El alcance de información comprende inventario, mantenimiento, documentación técnica, ubicaciones, contratos, incidencias y configuración de instalaciones y equipos. Quedan excluidos datos de pacientes, historias clínicas, diagnósticos, imágenes médicas e identificadores clínicos. Los datos de contacto y registros que identifiquen a personas requieren protección, aunque no sean clínicos.
+El alcance de información comprende inventario, mantenimiento, documentación técnica, ubicaciones, contratos, incidencias, configuración de instalaciones y equipos e informes de revisión. Quedan excluidos datos de pacientes, historias clínicas, diagnósticos, imágenes médicas e identificadores clínicos. Se conservarán únicamente los datos personales mínimos de usuarios y técnicos necesarios para autenticación, autorización, contacto y trazabilidad; requieren protección aunque no sean clínicos.
+
+Los usuarios funcionales se gestionan en Qontrolmed y no equivalen a cuentas administrativas de MySQL. El administrador de gestión de la aplicación podrá mantener maestros y usuarios funcionales desde puestos autorizados de la LAN. La aplicación utilizará una cuenta técnica MySQL separada y de mínimo privilegio. La administración técnica del servidor y de MySQL utilizará otra identidad, principalmente desde el ordenador autorizado del propietario y, cuando proceda, desde la LAN, mediante SSH por clave y túneles protegidos. MySQL, SSH y SMB no se publicarán directamente en Internet.
 
 El piloto del 5 de noviembre se limita a la vivienda de preparación, un puesto Windows y datos ficticios. Sus resultados no constituyen autorización para cargar datos reales ni aceptación de producción. Los nombres de módulos, incluido «Quirófanos», no amplían el alcance permitido de datos.
 
@@ -156,7 +159,7 @@ En firmware se detectaron actualizaciones de KEK, base UEFI y dbx, con una Platf
 | Cambio de LAN, 31/10 | Se documentó temporalmente `192.168.1.30` | Histórico; el 01/11 `.30` correspondía a otro equipo |
 | Preparación vigente, 01–05/11 | `192.168.1.31/24`, reserva DHCP para MAC `74:fe:48:67:be:cc`; gateway/DNS `192.168.1.1` documentados 01/11 | Solo entorno doméstico |
 | Puesto de piloto, 05/11 | Windows `192.168.1.107` | Único origen LAN autorizado durante ventanas del piloto |
-| Sede del cliente | Rango comunicado `192.168.0.0/24` | Sin validación in situ; IP, gateway, DNS, DHCP y VLAN pendientes |
+| Sede del cliente | Rango comunicado `192.168.0.0/24`; máximo previsto de cuatro o cinco puestos concurrentes con direcciones estables mediante reservas DHCP del router | Sin validación in situ; IP del servidor, gateway, DNS, reservas DHCP y VLAN pendientes |
 
 La reserva `.31` se comprobó tras reiniciar. Ubuntu sigue utilizando DHCP; no se convirtió en IP estática por Netplan. No asumir una IP de sede por similitud con la doméstica.
 
@@ -492,6 +495,7 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 
 | Versión | Fecha | Cambio | Evidencia / validación |
 | --- | --- | --- | --- |
+| 1.8 | 2026-11-16 | Consolidación de capacidad prevista, LAN de sede, reservas DHCP, separación entre usuarios funcionales, cuenta técnica y administración técnica, y delimitación de datos no clínicos. | Decisión de especificaciones operativas de Qontrolmed de 2026-11-16; actualización documental sin cambios operativos. |
 | 1.7 | 2026-11-13 | Ventana P2C con MySQL 8.4.11 en loopback; detección segura del certificado automático sin SAN, selección TLS piloto temporal, validación del ledger y reversión completa. | Plan P2C coordinado; MySQL final `inactive/disabled`, puertos y drop-in ausentes. |
 | 1.6 | 2026-11-13 | Reanudación desde apagado completo, revalidación remota de solo lectura, aclaración de IP reservada `.31`, cierre controlado y comando local `sudo systemctl poweroff`. | F18; `REVALIDACION_TRAS_INCIDENTE=OK`, TCP/22 cerrado después del apagado y agente SSH vacío. |
 | 1.5 | 2026-11-12 | Incidente de gráfica, auditoría de arranque/red, retirada de NVIDIA y aceptación reversible de consola con `nomodeset` en dos arranques VGA y uno DisplayPort. | F17; consola, red, SSH, montajes y servicios validados; NVIDIA pendiente diagnóstico físico. |

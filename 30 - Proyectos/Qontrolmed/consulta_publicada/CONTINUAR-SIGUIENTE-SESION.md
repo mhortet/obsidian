@@ -3,7 +3,7 @@ title: "Continuar siguiente sesión de Qontrolmed"
 type: state
 status: active
 created: 2026-11-10
-updated: 2026-11-13
+updated: 2026-11-16
 tags: [qontrolmed, continuidad, produccion]
 review_after: 2026-11-17
 ---
@@ -110,9 +110,42 @@ Esta sesión puede iniciarse desde esta carpeta o desde `H:\02.Trabajo\obsidian\
 
 ## Pendiente inmediato
 
-1. Diseñar el bootstrap mínimo de maestros de Preventivos y el runbook de
-   primera puesta en marcha, manteniendo separados datos iniciales, DDL y
-   migraciones. No usar todavía datos reales ni construir una RC.
+### Punto de continuación P2P — 16/11/2026
+
+La sesión P2P quedó pausada a petición del propietario después de completar la
+fase 0. Se crearon y validaron `gestion`, `preventivos` y `quirofanos`; los tres
+`piloto_mm_*` se conservan como reversión. La copia P2P verificó SHA-256, las
+parejas tienen 13/10/7 tablas, MySQL quedó observado `active/disabled` en
+`127.0.0.1:3306` y Workbench mostró visualmente los seis esquemas mediante
+túnel SSH. `qontrolmed_admin@localhost` está limitado a esos seis esquemas.
+
+La fase 1 solo está iniciada. No se han creado usuarios funcionales o
+documentales reales, cuenta runtime ni reglas LAN. Se aclaró el bootstrap: hay
+que sembrar roles/permisos e insertar el usuario inicial en
+`gestion.usuarios`; Qontrolmed solicita después la primera contraseña mediante
+el modo controlado, que debe volver a
+`QONTROLMED_ALLOW_PASSWORDLESS_LOGIN=0` al finalizar.
+
+Próxima acción exacta: revalidación de solo lectura e inventario depurado de
+`gestion.roles`, `gestion.permisos`, `gestion.roles_permisos` y
+`gestion.usuarios`; después preparar el plan de bootstrap. No abrir 3306 en
+LAN, no conectar Qontrolmed y no activar SFTPGo antes de ese bloque. Fuente:
+`docs/02_planes_y_arquitectura/PLAN-P2P-ESQUEMAS-DEFINITIVOS-IDENTIDADES-Y-ACCESOS-2026-11-16.md`.
+
+La decisión de especificaciones operativas del 16/11 fija un máximo previsto
+de cuatro o cinco puestos concurrentes, LAN de sede `192.168.0.0/24` con
+reservas DHCP, separación entre administrador funcional, cuenta técnica de la
+aplicación y administrador técnico, y exclusión de datos clínicos sin negar los
+datos personales mínimos de usuarios y técnicos. La configuración concreta de
+red, cuentas y acceso remoto continúa pendiente de validación y plan de sede.
+Fuente:
+`docs/01_gobierno_y_decisiones/DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md`.
+
+1. Revisar con el propietario el libro Excel ya generado con los cuatro
+   maestros de Preventivos y `quirofanos.puntos_control`. La siguiente decisión
+   funcional es clasificar cada registro como conservar, modificar o excluir;
+   todavía no se ha preparado ni ejecutado ninguna carga sobre la base
+   definitiva.
 2. Mantener como pendientes de sede el inventario real de puestos, DNS/CA y
    destino de copia independiente; no bloquean el desarrollo local.
 3. Ejecutar futuras consultas autenticadas de `gh` desde el contexto autorizado
@@ -190,6 +223,39 @@ correctos. Esquema, TLS y carpeta temporal se retiraron; MySQL quedó
 `inactive/disabled` y sin puertos. Validación local: 90 pruebas y Bandit
 correcto. Publicado en `a969c39`: CI `43476382817` y Security Checks
 `43476383169` finalizaron correctamente.
+
+P2K quedó completado localmente desde `33bbf84`: define el bootstrap mínimo de
+Preventivos como estructura P2I inicialmente vacía. La interpretación de que
+los maestros debían descartarse fue corregida el 15/11: se conservan las cuatro
+tablas maestras locales y solo las seis tablas operativas empiezan vacías.
+
+P2L quedó completado el 15/11. Se creó en MySQL local una cuenta exclusiva de
+inventario con `SELECT` sobre `preventivos.*`; su contraseña fue introducida
+por el propietario y no se registró. El inventario confirmó 8 tipos, 7
+plantillas, 390 puntos y 160 relaciones, con cero incidencias en cinco controles
+agregados. Las seis tablas operativas contienen histórico y quedan excluidas.
+Para Quirófanos, el propietario decidió conservar únicamente el maestro
+`puntos_control`; P2M confirmó 136 filas, todas activas y sin anomalías en los
+controles agregados. Cualquier exportación debe excluir el resto del esquema.
+
+P2N quedó completado el 15/11 y revalidado en la sesión de entrega. El libro
+`outputs/01a1debb-87f9-7e60-8b3a-211f0cc67495/Qontrolmed_maestros_revision_2026-11-15.xlsx`
+contiene una hoja de resumen y cinco hojas revisables: 8 tipos de equipo, 7
+plantillas, 390 puntos preventivos, 160 relaciones plantilla-punto y 136 puntos
+de quirófanos. Los campos extraídos se mantienen separados de las columnas
+`Decisión revisión` y `Observaciones de revisión`; no se incluyen tablas
+operativas ni históricas. El libro fue reimportado y revisado visualmente en
+sus seis hojas. Tras la validación se eliminaron los CSV, previsualizaciones,
+scripts y dependencias temporales; solo permanece el XLSX de entrega. SHA-256:
+`B09685B4ECB0B43C418B1A71FBACFD86E7AEC59BCF3D654F0066E3AC5F7B7009`.
+
+P2O quedó completado el 15/11 sobre `srv-mm-01`. Tras copia previa verificada se
+recrearon los tres esquemas `piloto_mm_*` de ensayo y se cargaron los maestros
+aprobados: 7 tipos, 6 plantillas, 390 puntos preventivos, 146 relaciones y 136
+puntos de quirófanos. Los controles de huérfanos y tablas operativas dieron
+cero. Workbench accede mediante túnel SSH local, sin abrir 3306 en LAN, con
+`qontrolmed_admin@localhost` limitado a los tres esquemas. MySQL permanece
+`active/disabled`; el SQL temporal fue retirado y la copia previa se conserva.
 
 ## Límites actuales
 
