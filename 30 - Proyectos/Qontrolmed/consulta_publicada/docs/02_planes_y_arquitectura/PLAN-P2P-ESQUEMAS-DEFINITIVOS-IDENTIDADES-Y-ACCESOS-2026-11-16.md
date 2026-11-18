@@ -3,7 +3,7 @@ title: "P2P — Esquemas definitivos, identidades y accesos"
 type: plan
 status: active
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-17
 sources:
   - "Comunicación del propietario de 2026-11-16"
   - "docs/01_gobierno_y_decisiones/DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md"
@@ -217,3 +217,23 @@ bootstrap. El modo excepcional debe volver a
 
 No abrir 3306 en LAN, no crear la cuenta runtime y no activar SFTPGo hasta
 cerrar ese inventario y el plan siguiente.
+
+## 9. Reanudación del 17/11/2026
+
+La revalidación por SSH confirmó `srv-mm-01`, MySQL `active/disabled`, ninguna
+unidad fallida y escucha exclusiva en `127.0.0.1:3306`. A petición expresa del
+propietario, este habilitó el arranque automático mediante `systemctl enable
+mysql`, introduciendo su credencial `sudo` directamente y sin compartirla.
+
+La comprobación posterior observó MySQL `active/enabled`, ninguna unidad
+fallida y la misma escucha exclusiva en loopback. Este cambio no abre MySQL a
+la LAN ni altera esquemas, cuentas o datos. La reversión es `sudo systemctl
+disable mysql`; detener el servicio sería una decisión separada.
+
+El inventario funcional se repitió y cerró mediante una única consulta de solo
+lectura. `gestion.roles`, `gestion.permisos`, `gestion.roles_permisos` y
+`gestion.usuarios` contienen 0 filas; los controles de huérfanos y referencias
+inválidas también devolvieron 0. No se consultaron valores personales, hashes o
+contraseñas y no hubo escrituras. El siguiente bloque es P2Q: sembrar 4 roles,
+40 permisos y 75 asignaciones, y crear de forma controlada el administrador
+inicial.

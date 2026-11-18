@@ -66,7 +66,7 @@ El piloto del 5 de noviembre se limita a la vivienda de preparación, un puesto 
 | Salud | Sin unidades fallidas; servicios del bloque detenidos al cierre | Confirmado 06/11; no equivale a auditoría integral [F15] |
 | Red | `eno1`, `192.168.1.31/24`, DHCP con reserva doméstica | Confirmado 01/11 y 05/11; temporal [F4, F5] |
 | Administración | SSH por clave, TCP/22; UFW activo | Confirmado; detalle de reglas con límites descritos en §5 |
-| MySQL | 8.4.11 instalado; `inactive/disabled`, sin proceso ni 3306/33060 | Versión auditada 05/11; cierre independiente posterior a restauración [F6, F7] |
+| MySQL | 8.4.11 instalado; `active/enabled`, limitado a `127.0.0.1:3306` | Arranque automático decidido y revalidado el 17/11; sin apertura LAN. P2R/P2T cerrados con cuenta temporal retirada. |
 | Datos del piloto | Tres esquemas ficticios; 33 tablas funcionales | Confirmado; copias y restauraciones conservadas [F7] |
 | Aplicación | Qontrolmed probado en copia aislada del puesto Windows | No instalado como aplicación de servidor ni desplegado sobre la habitual [F6, F8] |
 | Documentos y acceso remoto externo | SFTPGo aceptado en ensayo ficticio solo por loopback; `cloudflared` instalado pero inerte | Al cierre SFTPGo `inactive/disabled`, `cloudflared inactive/masked`; sin túnel, DNS o exposición externa [F15] |
@@ -323,7 +323,11 @@ ss -lnt
 test -e /var/run/reboot-required && echo REINICIO_PENDIENTE
 ```
 
-En el estado actual se espera MySQL `inactive` y `disabled`, ningún listener 3306/33060, montajes presentes y ninguna unidad fallida. Las consultas `is-active`/`is-enabled` pueden devolver código distinto de cero precisamente por estar MySQL detenido/deshabilitado; se debe interpretar su texto. La ausencia del archivo de reinicio no acredita por sí sola que el sistema esté actualizado.
+En el estado actual se espera MySQL `active` y `enabled`, con escucha exclusiva
+en `127.0.0.1:3306`, montajes presentes y ninguna unidad fallida. Este cambio
+fue decidido por el propietario y verificado el 17/11/2026; no autoriza una
+regla LAN ni una cuenta runtime. La ausencia del archivo de reinicio no acredita
+por sí sola que el sistema esté actualizado.
 
 Comprobaciones con privilegios, introduciendo la contraseña solo en la consola local cuando se solicite:
 
@@ -497,6 +501,7 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 | --- | --- | --- | --- |
 | 1.8 | 2026-11-16 | Consolidación de capacidad prevista, LAN de sede, reservas DHCP, separación entre usuarios funcionales, cuenta técnica y administración técnica, y delimitación de datos no clínicos. | Decisión de especificaciones operativas de Qontrolmed de 2026-11-16; actualización documental sin cambios operativos. |
 | 1.7 | 2026-11-13 | Ventana P2C con MySQL 8.4.11 en loopback; detección segura del certificado automático sin SAN, selección TLS piloto temporal, validación del ledger y reversión completa. | Plan P2C coordinado; MySQL final `inactive/disabled`, puertos y drop-in ausentes. |
+| 1.8 | 2026-11-17 | Arranque automático de MySQL, esquemas definitivos y cierre P2R/P2T del bootstrap funcional con TLS verificado. | MySQL `active/enabled` solo en `127.0.0.1:3306`; cuenta y scripts temporales retirados; sin apertura LAN. |
 | 1.6 | 2026-11-13 | Reanudación desde apagado completo, revalidación remota de solo lectura, aclaración de IP reservada `.31`, cierre controlado y comando local `sudo systemctl poweroff`. | F18; `REVALIDACION_TRAS_INCIDENTE=OK`, TCP/22 cerrado después del apagado y agente SSH vacío. |
 | 1.5 | 2026-11-12 | Incidente de gráfica, auditoría de arranque/red, retirada de NVIDIA y aceptación reversible de consola con `nomodeset` en dos arranques VGA y uno DisplayPort. | F17; consola, red, SSH, montajes y servicios validados; NVIDIA pendiente diagnóstico físico. |
 | 1.4 | 2026-11-06 | Preparación del siguiente bloque posible sin datos del cliente: auditoría remota de solo lectura, revisión local y artefactos parametrizados. | F16; plan propuesto, sin conexión nueva ni cambio del servidor. |

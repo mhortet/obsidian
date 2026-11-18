@@ -3,7 +3,7 @@ title: "Continuar siguiente sesión de Qontrolmed"
 type: state
 status: active
 created: 2026-11-10
-updated: 2026-11-16
+updated: 2026-11-18
 tags: [qontrolmed, continuidad, produccion]
 review_after: 2026-11-17
 ---
@@ -140,6 +140,135 @@ datos personales mínimos de usuarios y técnicos. La configuración concreta de
 red, cuentas y acceso remoto continúa pendiente de validación y plan de sede.
 Fuente:
 `docs/01_gobierno_y_decisiones/DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md`.
+
+Actualización del 17/11: el propietario habilitó el arranque automático de
+MySQL y la verificación posterior confirmó `active/enabled`, sin unidades
+fallidas y escucha exclusiva en `127.0.0.1:3306`. No se abrió la LAN ni se
+alteraron esquemas o datos. Reversión: `sudo systemctl disable mysql`. El
+inventario depurado quedó cerrado tras recuperar Workbench: 0 roles, 0
+permisos, 0 relaciones y 0 usuarios; los controles de huérfanos y referencias
+inválidas devolvieron 0. No hubo escrituras ni exposición de datos sensibles.
+El siguiente bloque es revisar y autorizar P2Q para aplicar las semillas
+4/40/75 y crear el administrador inicial mediante el flujo controlado.
+
+P2Q fue autorizado y su fase SQL quedó verificada: 4 roles, 40 permisos, 75
+asignaciones, 0 huérfanos y un único superusuario activo sin `password_hash`.
+La copia previa P2Q se conserva y la carpeta temporal fue retirada. MySQL sigue
+`active/enabled` y solo en loopback. La primera contraseña no se asignó y el
+modo sin contraseña no se activó, porque todavía no existe la cuenta técnica
+runtime; no se reutilizará `qontrolmed_admin` en la aplicación. La próxima
+decisión es autorizar un bloque de cuenta runtime mínima y conexión controlada.
+
+El propietario autorizó ese bloque, pero el precheck detectó que la instalación
+disponible corresponde al 15/07/2026, anterior al bootstrap seguro, TLS
+endurecido y guard de esquema actuales, y no contiene aún la CA pública. No se
+creó la cuenta runtime, no se inspeccionó ni modificó el `.env` y la RC antigua
+no se conectó. La próxima decisión debe cubrir una build actual controlada o un
+arnés temporal validado; no hay autorización implícita para construir o
+instalar una RC.
+
+### Cierre P2R/P2T — 17/11/2026
+
+P2S quedó completado: copia verificada en
+`/var/backups/qontrolmed/p2s-20261117T083320Z`,
+`quirofanos.equipos_medida.ruta_certificado` reconciliada a `VARCHAR(500)` y
+ledger canónico con versiones 1 y 2. MySQL continuó `active/enabled`, sin
+unidades fallidas y limitado a `127.0.0.1:3306`.
+
+P2R completó el bootstrap funcional mediante el código actual. La cuenta
+temporal pasó `SELECT 1` por socket y túnel, Qontrolmed conectó con TLS e
+identidad verificados y el propietario asignó la primera contraseña del
+administrador mediante la UI. El cierre confirmó 4 roles, 40 permisos, 75
+asignaciones, cero huérfanos, un superusuario activo con hash presente y ledger
+v1/v2 `applied`.
+
+P2T resolvió previamente la contradicción descubierta entre P2S, que había
+registrado las dos versiones como `recovered`, y el guard de runtime, que las
+rechaza por diseño. Se creó y verificó copia previa y se actualizaron solo las
+dos filas canónicas a `applied` después de validar estructura, identificadores
+y hashes.
+
+El cierre retiró la cuenta `qontrolmed_bootstrap`, los scripts remotos, el
+túnel 13306 y la CA pública temporal. MySQL quedó `active/enabled`, sin unidades
+fallidas y solo en `127.0.0.1:3306`. Un fallo del lanzador eliminó el `.env`
+local durante los intentos; se reconstruyó con entrada local del propietario,
+loopback, modo sin contraseña desactivado y sin exponer valores. Pasaron 23
+pruebas de TLS, guard y bootstrap.
+
+Siguiente bloque recomendado: diseñar y autorizar la cuenta runtime definitiva
+de mínimo privilegio y su conexión controlada. No abrir 3306 en LAN, no
+reutilizar cuentas administrativas y no construir ni instalar una RC sin un
+plan específico. Fuentes:
+`docs/02_planes_y_arquitectura/PLAN-P2R-BOOTSTRAP-DESDE-DESARROLLO-2026-11-17.md`
+y `docs/02_planes_y_arquitectura/PLAN-P2T-CANONIZACION-RESULTADO-LEDGER-QUIROFANOS-2026-11-17.md`.
+
+### Propuesta P2U — 18/11/2026
+
+Se preparó, sin conexión ni cambios en el servidor, el plan transversal P2U
+para crear y validar una identidad runtime MySQL por puesto, limitada por
+origen, con TLS y privilegios por tabla. Incluye pruebas positivas, denegación
+de DDL/administración/Compras, retirada de datos sintéticos y reversión por
+eliminación de la identidad exacta. El plan permanece **propuesto y no
+autorizado**; no se ha creado ninguna cuenta ni se ha modificado `.env`.
+
+Próxima decisión exacta: revisar y autorizar el bloque completo P2U antes de
+conectar a `srv-mm-01`. Fuente:
+`docs/02_planes_y_arquitectura/PLAN-P2U-CUENTA-RUNTIME-MINIMO-PRIVILEGIO-2026-11-18.md`.
+
+P2U fue autorizado y ejecutado después. El precheck, las copias SHA-256 y los
+privilegios mínimos fueron correctos, pero la conexión fuerte descubrió que el
+certificado MySQL actual carece de SAN. La cadena y vigencia son correctas,
+pero no puede verificarse la identidad `127.0.0.1`; no se debilitó
+`ssl_verify_identity`. La cuenta runtime fue retirada y los temporales se
+eliminaron. MySQL terminó `active/enabled`, sin unidades fallidas y solo en
+loopback.
+
+Próxima decisión exacta: revisar y autorizar P2V para emitir e instalar, con
+copia y reversión, un certificado MySQL con `IP:127.0.0.1` y
+`DNS:srv-mm-01`. P2V no abre la LAN ni decide todavía la identidad de sede.
+Fuente:
+`docs/02_planes_y_arquitectura/PLAN-P2V-CERTIFICADO-MYSQL-CON-SAN-2026-11-18.md`.
+
+P2V se autorizó, pero quedó cancelado sin cambios: el precheck demostró que
+MySQL usa `/var/lib/mysql/piloto-tls/` y que su certificado activo ya incluye
+SAN para `srv-mm-01`, `127.0.0.1` y `192.168.1.31`. El diagnóstico inicial de
+P2U había inspeccionado y copiado la CA automática inactiva.
+
+P2U se reanudó desde una cuenta nueva y terminó correctamente. La CA activa se
+resolvió desde `@@ssl_ca`; pasaron TLS con identidad, lectura de los tres
+esquemas, denegaciones de Compras/ledger/DDL y rechazo sin TLS. La cuenta
+`qontrolmed_runtime_dev@localhost` queda activa con mínimo privilegio y
+`REQUIRE SSL`. Se retiraron CA, secreto de proceso, túnel y temporales. MySQL
+quedó `active/enabled`, cero unidades fallidas y solo en
+`127.0.0.1:3306`.
+
+Siguiente bloque recomendado: validar un smoke test funcional controlado con
+el código actual y esta cuenta, sin reutilizar la RC histórica ni instalar una
+RC nueva; después decidir la provisión por puesto y la conectividad de sede.
+
+P2W quedó completado el 18/11. La configuración efímera reveló y corrigió que
+`.env` sobrescribía variables explícitas del proceso; ahora el entorno tiene
+prioridad y existe prueba de regresión. El smoke validó TLS, guard, login y
+apertura/cierre de Gestión mínima, Preventivos y Quirófanos. También detectó y
+corrigió que el superusuario exponía Compras: quedan ocultas Compras,
+Estadísticas, proveedores, repuestos, marcas, tipos de trabajo e importaciones
+históricas, sin borrar su código.
+
+El cierre confirmó 95 pruebas correctas, `.env` intacto, limpieza de secreto,
+CA, túnel y temporales, y MySQL `active/enabled`, sin unidades fallidas y solo
+en loopback. No hubo escrituras funcionales, RC, instalación ni apertura LAN.
+Fuente:
+`docs/02_planes_y_arquitectura/PLAN-P2W-SMOKE-FUNCIONAL-RUNTIME-DESARROLLO-2026-11-18.md`.
+
+Siguiente decisión recomendada: revisar el diff P2U/P2W y separar commits
+documentales, arneses y código; después diseñar la provisión de identidad por
+puesto y la conectividad de sede, sin abrir todavía MySQL a la LAN.
+
+La explicación formativa de las dos últimas sesiones quedó consolidada en
+`docs/04_guias_didacticas/GUIA-DIDACTICA-ADMINISTRADOR-FUNCIONAL-Y-CUENTA-RUNTIME-MYSQL-2026-11-18.md`.
+La guía separa administrador funcional, cuentas MySQL administrativa,
+temporal y runtime; explica los reintentos y resume el estado final sin
+secretos.
 
 1. Revisar con el propietario el libro Excel ya generado con los cuatro
    maestros de Preventivos y `quirofanos.puntos_control`. La siguiente decisión

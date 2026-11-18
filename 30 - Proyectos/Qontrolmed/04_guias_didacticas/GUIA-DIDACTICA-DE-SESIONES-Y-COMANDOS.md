@@ -389,3 +389,67 @@ Una nota es suficiente cuando otra persona puede:
 
 La explicación formativa no sustituye las validaciones técnicas. Debe acompañar
 el trabajo real y reflejar tanto los éxitos como los fallos.
+
+## 12. Gobierno local de migraciones
+
+### Manifiesto de migraciones
+
+`bd/migraciones/manifest.json` registra únicamente migraciones que han
+completado el contrato P2. Cada registro fija identificador, esquema, versión,
+estado, dependencias, ruta, hash SHA-256, precheck, postcheck y recuperación.
+
+El hash permite detectar que el SQL cambió después de su revisión. No demuestra
+que el contenido sea correcto ni sustituye una revisión técnica. Se calcula
+sobre texto UTF-8 con finales de línea LF para que el mismo SQL produzca el
+mismo valor en Windows y Linux.
+
+### Validador de solo lectura
+
+```powershell
+python scripts/db/validar_manifest_migraciones.py
+```
+
+El comando lee JSON y ficheros SQL, comprueba metadatos, orden, rutas y hashes y
+termina sin conectarse a MySQL. Un manifiesto válido no aplica migraciones ni
+certifica el estado de una base real.
+
+Una migración presente en `bd/migraciones/` pero ausente del manifiesto sigue
+siendo material inventariado, no una migración aprobada para ejecución.
+
+### Comprobación de compatibilidad
+
+El comprobador P2B recibe filas ya leídas y las compara en memoria con un
+manifiesto validado. Devuelve uno de cuatro estados:
+
+- `compatible`: coincidencia exacta y aplicada;
+- `migration-required`: ledger coherente, pero faltan migraciones conocidas;
+- `inconsistent`: ausencia, error de lectura, duplicado, salto, hash distinto o
+  resultado no aplicado;
+- `unsupported-newer`: la base declara una versión posterior.
+
+El comprobador no abre conexiones ni ejecuta SQL. Integrarlo en una herramienta
+real requerirá otra capa que solo lea el ledger mediante TLS y mínimo privilegio.
+
+## 13. Publicación documental en Obsidian
+
+La documentación oficial de Qontrolmed permanece en el repositorio. Para
+consultarla en Obsidian sin volver a introducir ediciones manuales o fuentes
+paralelas se publica una selección explícita y unidireccional.
+
+Antes de escribir se puede revisar la diferencia:
+
+```powershell
+python scripts/documentacion/publicar_obsidian.py --comprobar
+```
+
+Si existen cambios seleccionados, la publicación se realiza con:
+
+```powershell
+python scripts/documentacion/publicar_obsidian.py
+```
+
+El primer comando no escribe; el segundo compara el hash SHA-256 y copia solo
+los ficheros distintos. El manifiesto
+`scripts/documentacion/seleccion_obsidian.json` decide qué contenido tiene
+valor de seguimiento, aprendizaje o consulta futura. El proceso no importa
+ediciones desde Obsidian ni borra material previo.

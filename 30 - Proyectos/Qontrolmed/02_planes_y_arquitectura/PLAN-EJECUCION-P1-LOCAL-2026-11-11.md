@@ -1,7 +1,7 @@
 ---
 title: "Plan de ejecución P1 local"
 type: plan
-status: active
+status: completed
 created: 2026-11-11
 updated: 2026-11-11
 sources:
@@ -18,6 +18,38 @@ review_after: 2026-11-18
 
 Cerrar localmente los bloqueos críticos de conexión, mínimo privilegio y
 controles de seguridad necesarios antes de construir una nueva RC.
+
+El destino vigente es un piloto privado de evaluación, no una release
+comercial. Authenticode y requisitos empresariales de distribución quedan fuera
+de P1.
+
+## Estado de ejecución de 11 de noviembre de 2026
+
+- contrato TLS, recuperación de conexión y guarda de esquema implementados;
+- `ALTER TABLE` automático retirado del runtime;
+- provisión local de CA con hash y ACL incorporada a los scripts;
+- dependencias vulnerables actualizadas y controles de CI hechos bloqueantes;
+- 44 pruebas locales correctas y Bandit sin hallazgos medios o altos;
+- auditoría directa de dependencias sin avisos conocidos;
+- rama publicada; la validación remota quedó cerrada posteriormente mediante
+  GitHub web por un fallo persistente de autenticación de la herramienta local.
+
+## Cierre de validación remota de 11 de noviembre de 2026
+
+- commit validado: `7c4a3314b25ac9fcc86930a40ea8084aa77965a5`;
+- CI #69, run `43004407025`: correcto; el job `Static syntax check`
+  instaló dependencias, compiló `main.py` y `src/` y ejecutó la batería de
+  pruebas definida en el workflow;
+- Security Checks #58, run `43004406817`: correcto;
+- `Dependency audit`, `Bandit SAST` y `Gitleaks secrets scan` finalizaron
+  correctamente y sin `continue-on-error`;
+- el resumen de Gitleaks indicó `No leaks detected`;
+- las 44 pruebas se repitieron localmente con resultado `OK` antes del cierre;
+- no se construyó ni instaló ninguna RC y no se accedió a servidor o datos.
+
+P1 queda completado para su alcance local. Este cierre no supera P2 ni autoriza
+producción: continúan pendientes el gobierno de esquema, las migraciones, las
+copias y las validaciones de sede.
 
 ## 2. Autorización y alcance
 

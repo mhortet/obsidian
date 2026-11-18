@@ -94,4 +94,3 @@ rg -n -i "192\.168\.0\.0/24|Puestos autorizados|Cuenta técnica|datos personales
 
 - Incorporar estos parámetros al futuro plan transversal de instalación y
   aceptación en sede.
-

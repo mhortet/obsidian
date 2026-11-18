@@ -69,4 +69,3 @@ requiriendo protección aunque no sean clínicos.
   autenticación, denegación de orígenes no autorizados y recuperación.
 - Esta decisión no autoriza por sí sola cambios de router, Netplan, UFW,
   cuentas, MySQL, túneles ni despliegue en sede.
-

@@ -386,3 +386,20 @@ impidiera una reversión segura, se documentaría antes de salir del plan.
 
 **Límite actual**: P1 sigue siendo local. No incluye servidor, MySQL real, datos
 reales, CA real ni construcción de RC.
+
+## 14. Simplificación a piloto privado de evaluación
+
+El propietario aclaró que Qontrolmed es un proyecto personal, destinado por
+ahora a una única empresa conocida y sin respaldo ni decisión para venta o
+distribución comercial. Se aprobó simplificar el gobierno del proyecto para
+evitar que requisitos propios de un producto comercial bloqueen el aprendizaje
+y la prueba real.
+
+Se difieren Authenticode productivo, SLA, distribución pública, licencia y
+estructura comercial. Se mantienen TLS, mínimo privilegio, copias,
+restauración, migraciones controladas, pruebas y rollback porque protegen la
+operativa incluso en un piloto amistoso.
+
+La matriz P0 se normalizó: el propietario asume mantenimiento y releases; los
+datos de puestos, DNS/CA y copia externa quedan pendientes de sede y no bloquean
+el desarrollo local.

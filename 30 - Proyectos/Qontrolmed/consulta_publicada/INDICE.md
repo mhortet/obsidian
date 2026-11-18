@@ -2,7 +2,7 @@
 title: "Qontrolmed — consulta publicada"
 type: project
 status: active
-updated: 2026-11-16
+updated: 2026-11-18
 tags: [qontrolmed, documentacion]
 ---
 
@@ -11,8 +11,8 @@ tags: [qontrolmed, documentacion]
 > Copia unidireccional de solo consulta. La fuente oficial se encuentra en
 > `D:\trabajo\Proyectos\maxgesth`. No editar aquí para cambiar el proyecto.
 
-- Publicación: `2026-11-16T12:23:01+01:00`
-- Revisión Git de origen: `92d27cf`
+- Publicación: `2026-11-18T13:19:45+01:00`
+- Revisión Git de origen: `11faaa8`
 - Selección: `scripts/documentacion/seleccion_obsidian.json`
 
 ## Documentos
@@ -38,6 +38,7 @@ tags: [qontrolmed, documentacion]
 - [[docs/00_seguimiento/diario/2026-11-15-p2n-excel-revision-maestros.md]]
 - [[docs/00_seguimiento/diario/2026-11-16-especificaciones-operativas-piloto.md]]
 - [[docs/00_seguimiento/diario/2026-11-16-inicio-p2p-esquemas-e-identidades.md]]
+- [[docs/00_seguimiento/diario/2026-11-17-reanudacion-p2p-y-arranque-mysql.md]]
 - [[docs/00_seguimiento/estados/ESTADO-REORGANIZACION-DOCUMENTAL-2026-11-10.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-AUTORIZACION-INTEGRAL-PLANES-Y-P1-LOCAL-2026-11-11.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-CICLO-VIDA-SOPORTE-RELEASE-PILOTO-2026-11-10.md]]
@@ -62,6 +63,9 @@ tags: [qontrolmed, documentacion]
 - [[docs/02_planes_y_arquitectura/PLAN-EJECUCION-P2M-INVENTARIO-PUNTOS-CONTROL-QUIROFANOS-2026-11-15.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-P2O-CARGA-MAESTROS-SRV-MM-01-2026-11-15.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-P2P-ESQUEMAS-DEFINITIVOS-IDENTIDADES-Y-ACCESOS-2026-11-16.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-P2Q-BOOTSTRAP-FUNCIONAL-INICIAL-2026-11-17.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-P2R-BOOTSTRAP-DESDE-DESARROLLO-2026-11-17.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-P2S-RECONCILIACION-LEDGER-QUIROFANOS-2026-11-17.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/criterios_transversales_capas.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/modulo_analitico_y_campanas_preventivo.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/remote_tablet_preventivos.md]]
@@ -75,6 +79,7 @@ tags: [qontrolmed, documentacion]
 - [[docs/03_operacion_y_runbooks/RUNBOOK-RECONCILIACION-TLS-CA-P0-2026-11-11.md]]
 - [[docs/03_operacion_y_runbooks/security_delivery_playbook.md]]
 - [[docs/04_guias_didacticas/GUIA-DIDACTICA-DE-SESIONES-Y-COMANDOS.md]]
+- [[docs/04_guias_didacticas/GUIA-DIDACTICA-ADMINISTRADOR-FUNCIONAL-Y-CUENTA-RUNTIME-MYSQL-2026-11-18.md]]
 - [[docs/04_guias_didacticas/GUIA-WORKBENCH-TUNEL-SSH-SRV-MM-01.md]]
 - [[docs/05_evidencias/auditorias/CLASIFICACION-MIGRACIONES-P2E-2026-11-13.md]]
 - [[docs/04_guias_didacticas/Manual/manual_usuario_final_tecnicos_hospitalarios.md]]

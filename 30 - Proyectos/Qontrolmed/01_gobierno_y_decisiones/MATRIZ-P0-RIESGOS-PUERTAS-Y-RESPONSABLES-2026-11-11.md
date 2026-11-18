@@ -74,19 +74,21 @@ construcción de RC.
 - backup independiente y restauración probada;
 - RPO/RTO medidos.
 
-## 4. Decisiones abiertas
-Entiendo que Propietario soy yo ¿no?
+## 4. Decisiones del piloto
 
-| Decisión             | Opciones o dato requerido                   | Responsable                 | Estado      |
-| -------------------- | ------------------------------------------- | --------------------------- | ----------- |
-| Puestos autorizados  | Identificador, SO, IP/reserva y responsable | Administrador + cliente     | ok          |
-| DNS y CA             | Nombre estable, cadena y custodia           | Administrador               | ok          |
-| Copia independiente  | Destino, cifrado, acceso y alertas          | Propietario + administrador | ok          |
-| Soporte              | Horario, canal, contacto y severidades      | Propietario + cliente       | propietario |
-| Releases             | Custodia, publicación y aprobación          | Propietario                 | ok          |
-| Authenticode         | Aplicar en piloto o aplazar formalmente     | Propietario                 | ok          |
-| Retención documental | Auditoría, PDF, certificados y exports      | Cliente + propietario       | ok          |
-| Día de RTO           | Natural o laborable                         | Cliente + propietario       | laborable   |
+En este proyecto, **Propietario** es el usuario que dirige Qontrolmed. Durante
+el piloto también asume mantenimiento, publicación y aprobación de releases.
+
+| Decisión | Decisión o dato mínimo | Responsable | Estado |
+| --- | --- | --- | --- |
+| Puestos autorizados | Solo los equipos reales del piloto; registrar identificador, Windows, IP/reserva y responsable antes de conectarlos | Propietario + empresa piloto | Pendiente de sede |
+| DNS y CA | Nombre estable y CA pública para MySQL; no se exige dominio público ni acceso remoto en el primer piloto | Propietario/administrador | Pendiente de encender y revalidar servidor |
+| Copia independiente | Copia cifrada fuera del mismo servidor antes de depender de datos reales; destino concreto pendiente | Propietario | Pendiente de sede |
+| Soporte | Mejor esfuerzo, sin SLA; contacto 08:00–22:00 según disponibilidad; teléfono/WhatsApp para bloqueos y correo para el resto | Propietario | Definido para piloto |
+| Releases | Repositorio privado, tag, hashes, notas, versión vigente y anterior; propietario publica y aprueba | Propietario | Definido para piloto |
+| Authenticode | Aplazado hasta una decisión comercial; se puede dejar preparado el punto de firma | Propietario | Diferido |
+| Retención documental | Mínima y proporcional; logs técnicos 15 días; documentos reales se acordarán antes de incorporarlos | Propietario + empresa piloto | Parcial; no bloquea desarrollo local |
+| Día de RTO | Objetivo de recuperación de 1 día laborable, sin garantía contractual en el piloto | Propietario + empresa piloto | Definido para piloto |
 
 ## 5. Matriz mínima de pruebas
 

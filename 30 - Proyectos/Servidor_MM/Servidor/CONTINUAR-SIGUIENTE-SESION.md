@@ -3,7 +3,7 @@ title: "Continuación srv-mm-01 — reanudación tras incidente de consola"
 type: register
 status: active
 created: 2026-11-01
-updated: 2026-11-16
+updated: 2026-11-17
 sources:
   - "00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md"
   - "03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md"
@@ -55,6 +55,20 @@ El relevo del servidor del 6/11 no era el último relevo del trabajo conjunto. E
 No regresar al plan funcional del 6/11 como si fuera el último punto de Qontrolmed. Tras recuperar el servidor, continuar desde el relevo Qontrolmed del 10/11–11/11 y revalidar su estado de rama antes de editar.
 
 ## Estado vigente
+
+- **Cierre transversal P2R/P2T — 17/11/2026.** P2T corrigió, con copia previa
+  verificada, las dos filas canónicas del ledger de `quirofanos` desde
+  `recovered` a `applied` después de validar estructura, versiones,
+  identificadores y hashes. P2R completó después el bootstrap funcional con
+  TLS e identidad verificados: el propietario asignó la primera contraseña del
+  administrador desde la UI. El cierre depurado confirmó 4 roles, 40 permisos,
+  75 asignaciones, cero huérfanos, un superusuario activo con hash presente y
+  ledger v1/v2 `applied`. Se retiraron la cuenta temporal, los scripts de
+  `/tmp`, el túnel 13306 y la CA pública temporal. MySQL quedó
+  `active/enabled`, sin unidades fallidas y solo en `127.0.0.1:3306`. No se
+  abrió la LAN ni se creó la cuenta runtime definitiva. Fuente funcional:
+  `D:\trabajo\Proyectos\maxgesth\docs\02_planes_y_arquitectura\PLAN-P2R-BOOTSTRAP-DESDE-DESARROLLO-2026-11-17.md`
+  y plan P2T adyacente.
 
 - P2P quedó pausado el 16/11/2026 a petición del propietario después de crear y
   validar los esquemas definitivos `gestion`, `preventivos` y `quirofanos`.
