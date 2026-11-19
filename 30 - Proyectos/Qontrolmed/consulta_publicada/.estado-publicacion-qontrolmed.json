@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "published_at": "2026-11-18T13:19:45+01:00",
+  "published_at": "2026-11-18T13:25:42+01:00",
   "source": "D:\\trabajo\\Proyectos\\maxgesth",
-  "git_revision": "11faaa8",
+  "git_revision": "90e40ad",
   "files": {
     "README.md": "a79939e198479c9ff43e5f42dff4f0ae0c001b3e45f939f595f2140ed073c3b4",
-    "CONTINUAR-SIGUIENTE-SESION.md": "00f1f5dc292769885e0440c756a23d474c0df7b322a8471100e75d876e352d02",
+    "CONTINUAR-SIGUIENTE-SESION.md": "50f25878dee79ee0b37c688d04cbdf629cc26b8cde498d2561231730921834a3",
     "docs/00_seguimiento/diario/README.md": "e161c6d624b48ebf3992946b3e74013fccb75f99468392bc748c7d9eed778c41",
     "docs/00_seguimiento/diario/_plantilla_sesion.md": "6a3628f2c05b07e67681b01bbd962b712d0cbae5c4f62b80cff7b07effe3c748",
     "docs/00_seguimiento/diario/2026-11-11-cierre-p1-e-inventario-p2.md": "3116afa0c78b65c90472dd4d1e1216ce787b82d0bd2b69c13012ba5e4fd64943",
@@ -53,6 +53,7 @@
     "docs/02_planes_y_arquitectura/PLAN-P2Q-BOOTSTRAP-FUNCIONAL-INICIAL-2026-11-17.md": "b952a638bdc01f599ebff7c9eca16e2a0da9c018952020b18c2f659c6db11a16",
     "docs/02_planes_y_arquitectura/PLAN-P2R-BOOTSTRAP-DESDE-DESARROLLO-2026-11-17.md": "cbe2e5d13f5800966f409fa7ca8db0ef488c45a73c14fe9e8b55dc8e8bdc1603",
     "docs/02_planes_y_arquitectura/PLAN-P2S-RECONCILIACION-LEDGER-QUIROFANOS-2026-11-17.md": "f23d3042784b550118691dae33d1c04279823b1ce8d01aa3ab6f0b24f560208e",
+    "docs/02_planes_y_arquitectura/PLAN-P2X-PROVISION-PUESTOS-Y-CONEXION-SEDE-2026-11-18.md": "77d1fcf2ea5ea89fdaf894cc0dc37b43120bb763a8f62553f27e1a401292f7dd",
     "docs/02_planes_y_arquitectura/especificaciones/criterios_transversales_capas.md": "3246bd86fa050b438eb815bfc39f88b4419008521a299ce3a0663dea18461183",
     "docs/02_planes_y_arquitectura/especificaciones/modulo_analitico_y_campanas_preventivo.md": "fb9dd6cc704befa784d8d8c7aa65ccc19e50452512b234d10508e8421a895728",
     "docs/02_planes_y_arquitectura/especificaciones/remote_tablet_preventivos.md": "10bd8620efee55a7c3346fafb2239dd2d84fc4868c86ceb525235d2fa0563463",

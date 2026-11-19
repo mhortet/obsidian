@@ -3,7 +3,7 @@ title: "Continuación srv-mm-01 — reanudación tras incidente de consola"
 type: register
 status: active
 created: 2026-11-01
-updated: 2026-11-17
+updated: 2026-11-19
 sources:
   - "00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md"
   - "03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md"
@@ -149,6 +149,14 @@ La copia `restic` es un ensayo cifrado local en el mismo servidor/disco, no inde
 El script de aceptación vigente tiene SHA-256 `38351cc3d45c7793d40520ced02b6825b845ae445e90ee13936d16d6b2368d34`. Corrige el retorno falso de `assert_mysql_safe` bajo `set -e`. El original `e2e7d154...` se conserva en el staging remoto como `.pre-fix-e2e7d154` para reversión y trazabilidad.
 
 ## Próximo trabajo
+
+### Fase activa: equipo actual — 19/11/2026
+
+La continuación exacta es ejecutar
+`02_planes_y_arquitectura/PLAN-REVISION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md`:
+revalidación de solo lectura de SFTPGo y de la gestión de subida/bajada. No
+repetir la aceptación doméstica salvo desviación observada y no iniciar
+trabajo de portátil o sede.
 
 ### Prioridad inmediata — 13/11/2026
 

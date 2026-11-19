@@ -51,6 +51,15 @@ Convertir, solo después de una auditoría y de la aprobación explícita del pr
 - La necesidad de que el propietario introduzca una contraseña local o ejecute un comando con privilegios es un requisito técnico, no una nueva solicitud de autorización. No pedir secretos por el chat ni debilitar sudo para evitar esa intervención.
 - Ante fallo, aplicar la reversión prevista y conservar evidencia; detener las acciones dependientes si las condiciones de aceptación no se cumplen.
 - Esta regla sustituye las instrucciones documentales anteriores que exijan aprobación de cada paso dentro de un plan ya autorizado. No convierte propuestas no aprobadas o decisiones pendientes en autorizaciones implícitas.
+
+## Planificación por fase física
+
+- La secuencia es `equipo actual`, `portátil` y `sede`.
+- Cada plan muestra solo el trabajo pendiente de la fase activa.
+- Al cerrar una fase, el relevo indica únicamente el paso a la siguiente; su
+  plan se redacta entonces con el estado observado.
+- Fuente coordinada:
+  `D:\trabajo\Proyectos\maxgesth\docs\01_gobierno_y_decisiones\DECISION-SECUENCIA-EQUIPO-PORTATIL-SEDE-2026-11-19.md`.
 ## Resultado esperado
 
 Mantener estos entregables vivos:

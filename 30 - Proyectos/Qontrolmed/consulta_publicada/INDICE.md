@@ -11,8 +11,8 @@ tags: [qontrolmed, documentacion]
 > Copia unidireccional de solo consulta. La fuente oficial se encuentra en
 > `D:\trabajo\Proyectos\maxgesth`. No editar aquí para cambiar el proyecto.
 
-- Publicación: `2026-11-18T13:19:45+01:00`
-- Revisión Git de origen: `11faaa8`
+- Publicación: `2026-11-18T13:25:42+01:00`
+- Revisión Git de origen: `90e40ad`
 - Selección: `scripts/documentacion/seleccion_obsidian.json`
 
 ## Documentos
@@ -66,6 +66,7 @@ tags: [qontrolmed, documentacion]
 - [[docs/02_planes_y_arquitectura/PLAN-P2Q-BOOTSTRAP-FUNCIONAL-INICIAL-2026-11-17.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-P2R-BOOTSTRAP-DESDE-DESARROLLO-2026-11-17.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-P2S-RECONCILIACION-LEDGER-QUIROFANOS-2026-11-17.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-P2X-PROVISION-PUESTOS-Y-CONEXION-SEDE-2026-11-18.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/criterios_transversales_capas.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/modulo_analitico_y_campanas_preventivo.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/remote_tablet_preventivos.md]]

@@ -270,6 +270,26 @@ La guía separa administrador funcional, cuentas MySQL administrativa,
 temporal y runtime; explica los reintentos y resume el estado final sin
 secretos.
 
+### Punto de entrada preparado para la próxima sesión — P2X
+
+El trabajo P2P–P2W quedó separado en tres commits y publicado hasta `11faaa8`.
+CI `44303019641` y Security Checks `44303019607` finalizaron correctamente. El
+árbol quedó limpio al preparar este relevo.
+
+El siguiente bloque propuesto es P2X. Su primera fase es únicamente local:
+definir identidad MySQL por puesto, ciclo de alta/baja/rotación, plantillas con
+marcadores, provisión segura de `.env`/CA, ACL y matriz de pruebas. No autoriza
+abrir MySQL a la LAN ni crear cuentas reales.
+
+Primera acción exacta: leer
+`docs/02_planes_y_arquitectura/PLAN-P2X-PROVISION-PUESTOS-Y-CONEXION-SEDE-2026-11-18.md`
+y decidir si se autoriza solo su fase A. Si se aprueba, extraer la matriz P2U y
+convertirla en contrato por puesto sin conectar al servidor.
+
+La fase operativa queda condicionada al inventario real de sede: puestos, MAC,
+reservas DHCP, IP/DNS del servidor, certificado, responsable y ventana. No se
+reutilizarán las direcciones domésticas actuales.
+
 1. Revisar con el propietario el libro Excel ya generado con los cuatro
    maestros de Preventivos y `quirofanos.puntos_control`. La siguiente decisión
    funcional es clasificar cada registro como conservar, modificar o excluir;

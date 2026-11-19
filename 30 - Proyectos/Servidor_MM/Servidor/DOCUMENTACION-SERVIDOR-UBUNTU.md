@@ -3,7 +3,7 @@ title: "srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimient
 type: project
 status: active
 created: 2026-11-05
-updated: 2026-11-16
+updated: 2026-11-19
 sources:
   - "D:/trabajo/Proyectos/maxgesth/docs/01_gobierno_y_decisiones/DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md"
   - "00_seguimiento/estados/ESTADO-INSTALACION-2026-10-01.md"
@@ -22,11 +22,15 @@ review_after: 2026-11-19
 
 # srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimiento
 
-**Versión:** 1.8 · **Fecha de corte:** 16 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
+**Versión:** 1.9 · **Fecha de corte:** 19 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
 **Estado de entrega:** documentación consolidada de preparación y piloto; puesta en producción y aceptación del cliente pendientes.  
 **Clasificación:** uso del cliente y personal de mantenimiento autorizado. Contiene información de infraestructura; distribuir de forma controlada.
 
 Este es el documento maestro que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial técnico. La versión 1.8 incorpora las especificaciones operativas comunicadas por el propietario sobre capacidad, red de sede, separación de identidades y alcance de datos. No autoriza producción ni cambios en la red, cuentas o servicios.
+
+La versión 1.9 establece como fase activa el trabajo desde el equipo actual y
+enlaza `02_planes_y_arquitectura/PLAN-REVISION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
+Los planes de esta fase no anticipan tareas de otros equipos o ubicaciones.
 
 ## Índice
 
