@@ -6,7 +6,7 @@ created: 2026-11-19
 updated: 2026-11-19
 sources:
   - "../../02_planes_y_arquitectura/PLAN-REVISION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md"
-tags: [servidor-mm, sesion, sftpgo, continuidad]
+tags: [documentacion, gobierno, seguridad]
 review_after: 2026-11-26
 ---
 
@@ -35,5 +35,17 @@ servicios, red, cuentas o datos.
 
 ## Continuación exacta
 
-Reanudar desde esta carpeta con la revalidación remota de solo lectura del
-plan vigente. No iniciar trabajo de portátil o sede.
+La revalidación remota de solo lectura terminó correctamente. Se confirmaron
+servicios, listeners, versiones, montaje, ACL, bindings efectivos, cuentas
+ficticias, TOTP, permisos, cuota, límite de fichero y protección del ensayo
+`restic`, sin mostrar secretos ni modificar el servidor.
+
+La primera versión del arnés no interpretó campos binarios de SQLite y declaró
+el marcador final pese al error. Se corrigió a `set -euo pipefail`, se añadió
+decodificación segura y se incorporó la tabla de administradores. La ejecución
+final terminó sin errores; SHA-256 de la evidencia:
+`69616C8EAA8EA8405F25322A9573E084571CCFE08F44EBAD5F807E80EE080831`.
+
+El bloque Servidor_MM de la fase equipo actual queda cerrado. La continuación
+coordinada pasa a Qontrolmed para preparar y validar la RC y el paquete local.
+No iniciar todavía trabajo de portátil o sede.

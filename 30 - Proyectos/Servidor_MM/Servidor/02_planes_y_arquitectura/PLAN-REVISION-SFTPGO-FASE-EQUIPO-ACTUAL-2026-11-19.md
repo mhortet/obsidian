@@ -1,14 +1,14 @@
 ---
 title: "Revisión SFTPGo y gestión documental desde el equipo actual"
 type: plan
-status: authorized
+status: completed
 created: 2026-11-19
 updated: 2026-11-19
 sources:
   - "../00_seguimiento/estados/ESTADO-ACEPTACION-BLOQUE-DOMESTICO-SIN-DATOS-CLIENTE-2026-11-06.md"
   - "../DOCUMENTACION-SERVIDOR-UBUNTU.md"
   - "D:/trabajo/Proyectos/maxgesth/docs/01_gobierno_y_decisiones/DECISION-SECUENCIA-EQUIPO-PORTATIL-SEDE-2026-11-19.md"
-tags: [servidor-mm, sftpgo, documentos, equipo-actual]
+tags: [administracion, seguridad, documentacion]
 review_after: 2026-11-26
 ---
 
@@ -66,3 +66,22 @@ por versión anterior y ningún artefacto local se transfiere sin validación.
 La fase termina cuando SFTPGo y la gestión documental quedan revalidados y no
 resta trabajo necesario ejecutable desde este equipo. El relevo indicará
 entonces pasar a **portátil**, sin anticipar su plan.
+
+## Resultado — 19/11/2026
+
+La auditoría remota de solo lectura terminó sin modificar el servidor. SFTPGo
+permanece `inactive/disabled`, `cloudflared` `inactive/masked`, no hay
+listeners documentales ni unidades fallidas y MySQL conserva su estado
+coordinado `active/enabled` solo en `127.0.0.1:3306`.
+
+Los overrides efectivos separan WebClient `127.0.0.1:18080` y WebAdmin
+`127.0.0.1:18081`; SFTP, FTP y WebDAV están deshabilitados. Las cuentas
+ficticias `documental-piloto` y `admin-piloto` siguen activas con TOTP. La
+cuenta documental conserva exclusivamente listado, descarga, subida,
+sobrescritura y creación de carpetas, cuota de 250 MiB y máximo de 50 MiB por
+archivo. No se mostraron secretos ni códigos de recuperación.
+
+El ensayo `restic` continúa restringido a `root` y sigue siendo local al mismo
+servidor, por lo que no constituye copia independiente ni 3-2-1. La aceptación
+funcional del 06/11 permanece válida y no se repitió. Evidencia:
+`../05_evidencias/REVALIDACION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.txt`.

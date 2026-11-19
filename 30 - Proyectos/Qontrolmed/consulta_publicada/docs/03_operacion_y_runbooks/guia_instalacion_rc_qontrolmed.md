@@ -1,6 +1,6 @@
 # Guía de instalación de la RC de Qontrolmed
 
-Fecha de revisión: 2026-07-17
+Fecha de revisión: 2026-11-19
 
 ## Alcance
 
@@ -34,9 +34,13 @@ aplicación una credencial que el propio proceso necesita consumir.
 ## Instalación inicial
 
 1. Verificar el ZIP y el `MANIFEST-SHA256.csv` recibido.
-2. Extraer el paquete en una carpeta temporal controlada.
-3. Abrir PowerShell como administrador.
-4. Ejecutar desde el paquete:
+2. Comprobar que `SOURCE-COMMIT.txt`, `SBOM.cdx.json`,
+   `NOTAS-DE-VERSION.md` y `EVIDENCIA-PRUEBAS.txt` están presentes.
+   Ejecutar además `scripts\verificar_paquete_qontrolmed_rc.ps1` indicando la
+   carpeta extraída y, cuando se conozca, el commit esperado.
+3. Extraer el paquete en una carpeta temporal controlada.
+4. Abrir PowerShell como administrador.
+5. Ejecutar desde el paquete:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\instalar_qontrolmed_rc.ps1
@@ -185,3 +189,22 @@ No continuar si:
   modelo previsto;
 - no se ha ensayado backup/restauración;
 - falla el login normal o algún módulo necesario para el primer corte.
+
+## Reversión y desinstalación de ensayo
+
+El desinstalador requiere las dos rutas absolutas de forma explícita y no
+acepta raíces ni las carpetas generales `Program Files`/`ProgramData`. Antes de
+retirar nada, revisar la operación con `-WhatIf`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\desinstalar_qontrolmed_rc.ps1 `
+  -InstallDir 'C:\Ruta\Ensayo\Qontrolmed' `
+  -DataDir 'C:\Ruta\Ensayo\QontrolmedData' `
+  -WhatIf
+```
+
+Repetir sin `-WhatIf` únicamente para la instalación local controlada ya
+validada. `-KeepData` retira los binarios y conserva configuración y salidas;
+sin esa opción también elimina el árbol de datos indicado, después de validar
+su marcador Qontrolmed. En un puesto real, la conservación o restauración de
+datos requiere su procedimiento operativo específico.

@@ -22,7 +22,7 @@ review_after: 2026-11-19
 
 # srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimiento
 
-**Versión:** 1.9 · **Fecha de corte:** 19 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
+**Versión:** 2.0 · **Fecha de corte:** 19 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
 **Estado de entrega:** documentación consolidada de preparación y piloto; puesta en producción y aceptación del cliente pendientes.  
 **Clasificación:** uso del cliente y personal de mantenimiento autorizado. Contiene información de infraestructura; distribuir de forma controlada.
 
@@ -31,6 +31,10 @@ Este es el documento maestro que se actualizará al recibir nueva información. 
 La versión 1.9 establece como fase activa el trabajo desde el equipo actual y
 enlaza `02_planes_y_arquitectura/PLAN-REVISION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
 Los planes de esta fase no anticipan tareas de otros equipos o ubicaciones.
+
+La versión 2.0 cierra la revalidación SFTPGo de esa fase. La auditoría fue de
+solo lectura, no detectó desviaciones que exigieran repetir la aceptación y
+mantiene pendientes la identidad real, exposición externa y copia 3-2-1.
 
 ## Índice
 
@@ -67,13 +71,13 @@ El piloto del 5 de noviembre se limita a la vivienda de preparación, un puesto 
 | --- | --- | --- |
 | Equipo | `srv-mm-01`, Ubuntu 24.04.5 LTS, x86-64 | Confirmado en auditoría y revalidación [F1, F5] |
 | Kernel | `6.8.0-147-generic` | Confirmado tras reinicio del 01/11 y revalidación del 05/11 [F4, F5] |
-| Salud | Sin unidades fallidas; servicios del bloque detenidos al cierre | Confirmado 06/11; no equivale a auditoría integral [F15] |
+| Salud | Sin unidades fallidas; SFTPGo y Cloudflared detenidos | Revalidado 19/11; auditoría acotada al bloque documental [F19] |
 | Red | `eno1`, `192.168.1.31/24`, DHCP con reserva doméstica | Confirmado 01/11 y 05/11; temporal [F4, F5] |
 | Administración | SSH por clave, TCP/22; UFW activo | Confirmado; detalle de reglas con límites descritos en §5 |
 | MySQL | 8.4.11 instalado; `active/enabled`, limitado a `127.0.0.1:3306` | Arranque automático decidido y revalidado el 17/11; sin apertura LAN. P2R/P2T cerrados con cuenta temporal retirada. |
 | Datos del piloto | Tres esquemas ficticios; 33 tablas funcionales | Confirmado; copias y restauraciones conservadas [F7] |
 | Aplicación | Qontrolmed probado en copia aislada del puesto Windows | No instalado como aplicación de servidor ni desplegado sobre la habitual [F6, F8] |
-| Documentos y acceso remoto externo | SFTPGo aceptado en ensayo ficticio solo por loopback; `cloudflared` instalado pero inerte | Al cierre SFTPGo `inactive/disabled`, `cloudflared inactive/masked`; sin túnel, DNS o exposición externa [F15] |
+| Documentos y acceso remoto externo | SFTPGo aceptado y revalidado en ensayo ficticio solo por loopback; `cloudflared` instalado pero inerte | El 19/11 SFTPGo `inactive/disabled`, `cloudflared inactive/masked`; WebClient `127.0.0.1:18080`, WebAdmin `127.0.0.1:18081`; sin túnel, DNS o exposición externa [F19] |
 | Producción | No aceptada | Faltan requisitos, controles y pruebas de §12 |
 
 La documentación antigua contiene pendientes que después se completaron. Esta guía aplica la evidencia posterior: la restauración funcional de 33 tablas **sí está completada**. La IP doméstica vigente es `.31`; `.30` es histórica y no debe reutilizarse por suposición.
@@ -193,7 +197,7 @@ El diseño propone SFTPGo WebClient detrás de Cloudflare Tunnel + Access para d
 | SMART / smartd | Sí | Lecturas y autotests cortos correctos; avisos pendientes |
 | MySQL Community Server 8.4.11 | Sí | Parado/deshabilitado al cierre; configuración de piloto, no servicio de producción |
 | Qontrolmed | Copia Windows aislada | Pruebas funcionales parciales completadas; paquete y aceptación pendientes |
-| SFTPGo, `cloudflared`, `restic`, `acl` | Instalados y aceptados en ensayo doméstico ficticio | SFTPGo `inactive/disabled`; `cloudflared inactive/masked`; restauración local `restic` verificada; ACL nominal mínima para tránsito. Sin túnel, DNS, destino externo o 3-2-1 [F15] |
+| SFTPGo, `cloudflared`, `restic`, `acl` | Instalados, aceptados y revalidados en ensayo doméstico ficticio | SFTPGo `inactive/disabled`; `cloudflared inactive/masked`; WebClient/WebAdmin solo loopback y protocolos alternativos deshabilitados; restauración local `restic` verificada. Sin túnel, DNS, destino externo o 3-2-1 [F19] |
 | Samba/SMB, Cockpit, VPN, Docker o virtualización | Sin evidencia de despliegue operativo en las fuentes revisadas | Las comparativas iniciales son alternativas, no inventario de servicios |
 
 ### 6.1. MySQL
@@ -400,6 +404,10 @@ Hay copias lógicas ficticias y restauraciones verificadas del piloto. Las de R3
 
 El 06/11 se añadió un ensayo `restic` cifrado bajo `/root/srv-mm-preparacion-20261106/restic-ensayo`. Copió documentos ficticios y configuración consistente de SFTPGo con el servicio detenido, superó `restic check`, restauró 245,364 MiB en una ruta nueva y confirmó hashes documentales y `SQLITE_INTEGRITY=ok`. El snapshot `ad68b9ac` sigue siendo local al mismo servidor/disco y no cambia la ausencia de 3-2-1 [F15].
 
+El 19/11 se confirmó que el repositorio permanece `0700 root:root` y su
+contraseña `0600 root:root`. No se abrió ni se repitió la restauración porque
+no apareció una desviación que lo justificara [F19].
+
 No se acredita política 3-2-1 operativa, destino externo, cifrado de las copias, retención, automatización, alertas, responsable ni restauración completa del sistema. LUKS protege almacenamiento en reposo, pero no sustituye copias. El SSD de 1 TB conserva datos anteriores y no puede formatearse para copias sin orden explícita y plan de reversión.
 
 Antes de producción se deben acordar pérdida máxima de datos admisible (RPO) y tiempo máximo de recuperación (RTO), destino independiente, custodia externa de recuperación, retención, control de acceso y ensayo documentado. La restauración debe realizarse en un destino nuevo y comparar estructura y datos adecuados al uso; no sobrescribir producción como prueba.
@@ -483,6 +491,7 @@ Fuentes internas revisadas para esta consolidación. Los enlaces conservan el de
 | F16 | [Plan posterior a la aceptación sin datos del cliente](02_planes_y_arquitectura/PLAN-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md) y [runbook de inicio](03_operacion_y_runbooks/INICIAR-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md); propuesta documental, sin nueva conexión ni cambio del servidor |
 | F17 | [Estado del incidente de arranque, vídeo y red](00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md), [evidencia técnica](05_evidencias/INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.txt) y [script reversible de `nomodeset`](06_herramientas/scripts/aplicar-nomodeset-consola-20261112.sh) |
 | F18 | [Revalidación tras el incidente](05_evidencias/REVALIDACION-TRAS-INCIDENTE-CONSOLA-2026-11-13.txt), [diario de sesión](00_seguimiento/diario/2026-11-13-revalidacion-tras-incidente.md) y [runbook ejecutado](03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md) |
+| F19 | [Estado de revalidación SFTPGo](00_seguimiento/estados/ESTADO-REVALIDACION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md), [evidencia depurada](05_evidencias/REVALIDACION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.txt) y [runbook operativo](03_operacion_y_runbooks/OPERAR-SFTPGO-DOCUMENTAL-2026-11-19.md) |
 
 Las comparativas y cuestionarios en la carpeta superior `Servidor_MM` aportan contexto de objetivos y alternativas. Sus menciones a Samba, Cockpit, Windows Server o virtualización no demuestran una instalación. La auditoría Windows archivada es una línea base anterior, no el estado de Ubuntu actual. No se ha importado al documento ningún secreto ni contenido de archivos privados.
 
@@ -503,6 +512,7 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 
 | Versión | Fecha | Cambio | Evidencia / validación |
 | --- | --- | --- | --- |
+| 2.0 | 2026-11-19 | Revalidación de solo lectura de SFTPGo, bindings efectivos, cuentas ficticias, TOTP, permisos, límites, ACL y protección del ensayo `restic`; cierre del bloque Servidor_MM de la fase equipo actual. | F19; sin cambios remotos ni repetición de pruebas funcionales. |
 | 1.8 | 2026-11-16 | Consolidación de capacidad prevista, LAN de sede, reservas DHCP, separación entre usuarios funcionales, cuenta técnica y administración técnica, y delimitación de datos no clínicos. | Decisión de especificaciones operativas de Qontrolmed de 2026-11-16; actualización documental sin cambios operativos. |
 | 1.7 | 2026-11-13 | Ventana P2C con MySQL 8.4.11 en loopback; detección segura del certificado automático sin SAN, selección TLS piloto temporal, validación del ledger y reversión completa. | Plan P2C coordinado; MySQL final `inactive/disabled`, puertos y drop-in ausentes. |
 | 1.8 | 2026-11-17 | Arranque automático de MySQL, esquemas definitivos y cierre P2R/P2T del bootstrap funcional con TLS verificado. | MySQL `active/enabled` solo en `127.0.0.1:3306`; cuenta y scripts temporales retirados; sin apertura LAN. |

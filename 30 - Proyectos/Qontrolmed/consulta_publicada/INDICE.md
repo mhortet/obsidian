@@ -2,7 +2,7 @@
 title: "Qontrolmed — consulta publicada"
 type: project
 status: active
-updated: 2026-11-18
+updated: 2026-11-19
 tags: [qontrolmed, documentacion]
 ---
 
@@ -11,8 +11,8 @@ tags: [qontrolmed, documentacion]
 > Copia unidireccional de solo consulta. La fuente oficial se encuentra en
 > `D:\trabajo\Proyectos\maxgesth`. No editar aquí para cambiar el proyecto.
 
-- Publicación: `2026-11-18T13:25:42+01:00`
-- Revisión Git de origen: `90e40ad`
+- Publicación: `2026-11-19T19:20:52+01:00`
+- Revisión Git de origen: `dd4badf`
 - Selección: `scripts/documentacion/seleccion_obsidian.json`
 
 ## Documentos
@@ -39,6 +39,9 @@ tags: [qontrolmed, documentacion]
 - [[docs/00_seguimiento/diario/2026-11-16-especificaciones-operativas-piloto.md]]
 - [[docs/00_seguimiento/diario/2026-11-16-inicio-p2p-esquemas-e-identidades.md]]
 - [[docs/00_seguimiento/diario/2026-11-17-reanudacion-p2p-y-arranque-mysql.md]]
+- [[docs/00_seguimiento/diario/2026-11-19-p2x-provision-puestos-fase-a.md]]
+- [[docs/00_seguimiento/diario/2026-11-19-secuencia-equipo-portatil-sede.md]]
+- [[docs/00_seguimiento/diario/2026-11-19-preparacion-rc-equipo-actual.md]]
 - [[docs/00_seguimiento/estados/ESTADO-REORGANIZACION-DOCUMENTAL-2026-11-10.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-AUTORIZACION-INTEGRAL-PLANES-Y-P1-LOCAL-2026-11-11.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-CICLO-VIDA-SOPORTE-RELEASE-PILOTO-2026-11-10.md]]
@@ -46,6 +49,7 @@ tags: [qontrolmed, documentacion]
 - [[docs/01_gobierno_y_decisiones/DECISION-IMPLANTACION-DESDE-CERO-Y-DATOS-PRUEBA-2026-11-13.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-CONSERVAR-MAESTROS-PREVENTIVOS-SIN-HISTORICO-2026-11-15.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md]]
+- [[docs/01_gobierno_y_decisiones/DECISION-SECUENCIA-EQUIPO-PORTATIL-SEDE-2026-11-19.md]]
 - [[docs/01_gobierno_y_decisiones/politica_datos_iniciales_piloto.md]]
 - [[docs/01_gobierno_y_decisiones/propuesta_modelo_roles_permisos.md]]
 - [[docs/01_gobierno_y_decisiones/roles_operativos_acceso.md]]
@@ -67,6 +71,8 @@ tags: [qontrolmed, documentacion]
 - [[docs/02_planes_y_arquitectura/PLAN-P2R-BOOTSTRAP-DESDE-DESARROLLO-2026-11-17.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-P2S-RECONCILIACION-LEDGER-QUIROFANOS-2026-11-17.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-P2X-PROVISION-PUESTOS-Y-CONEXION-SEDE-2026-11-18.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-CIERRE-FASE-EQUIPO-ACTUAL-2026-11-19.md]]
+- [[docs/02_planes_y_arquitectura/CONTRATO-P2X-IDENTIDAD-RUNTIME-POR-PUESTO-2026-11-19.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/criterios_transversales_capas.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/modulo_analitico_y_campanas_preventivo.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/remote_tablet_preventivos.md]]
@@ -77,11 +83,13 @@ tags: [qontrolmed, documentacion]
 - [[docs/03_operacion_y_runbooks/migraciones_operativas_hardening.md]]
 - [[docs/03_operacion_y_runbooks/PUBLICAR-DOCUMENTACION-CURADA-EN-OBSIDIAN.md]]
 - [[docs/03_operacion_y_runbooks/PRIMERA-PUESTA-EN-MARCHA-PREVENTIVOS.md]]
+- [[docs/03_operacion_y_runbooks/PROVISIONAR-PUESTO-QONTROLMED-P2X.md]]
 - [[docs/03_operacion_y_runbooks/RUNBOOK-RECONCILIACION-TLS-CA-P0-2026-11-11.md]]
 - [[docs/03_operacion_y_runbooks/security_delivery_playbook.md]]
 - [[docs/04_guias_didacticas/GUIA-DIDACTICA-DE-SESIONES-Y-COMANDOS.md]]
 - [[docs/04_guias_didacticas/GUIA-DIDACTICA-ADMINISTRADOR-FUNCIONAL-Y-CUENTA-RUNTIME-MYSQL-2026-11-18.md]]
 - [[docs/04_guias_didacticas/GUIA-WORKBENCH-TUNEL-SSH-SRV-MM-01.md]]
+- [[docs/07_recursos/plantillas/INVENTARIO-SEDE-P2X.md]]
 - [[docs/05_evidencias/auditorias/CLASIFICACION-MIGRACIONES-P2E-2026-11-13.md]]
 - [[docs/04_guias_didacticas/Manual/manual_usuario_final_tecnicos_hospitalarios.md]]
 - [[docs/04_guias_didacticas/Manual/capturas/compras_detalle.png]]

@@ -152,11 +152,20 @@ El script de aceptación vigente tiene SHA-256 `38351cc3d45c7793d40520ced02b6825
 
 ### Fase activa: equipo actual — 19/11/2026
 
-La continuación exacta es ejecutar
-`02_planes_y_arquitectura/PLAN-REVISION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md`:
-revalidación de solo lectura de SFTPGo y de la gestión de subida/bajada. No
-repetir la aceptación doméstica salvo desviación observada y no iniciar
-trabajo de portátil o sede.
+El bloque Servidor_MM quedó completado mediante
+`02_planes_y_arquitectura/PLAN-REVISION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
+La revalidación de solo lectura confirmó SFTPGo `inactive/disabled`,
+Cloudflared `inactive/masked`, bindings WebClient/WebAdmin separados en
+loopback, protocolos alternativos deshabilitados, cuentas ficticias activas
+con TOTP, permisos y límites esperados, y ensayo `restic` restringido pero no
+independiente. No se modificó el servidor ni se repitió la aceptación del
+06/11.
+
+La continuación exacta de la fase coordinada está en
+`D:\trabajo\Proyectos\maxgesth\docs\02_planes_y_arquitectura\PLAN-CIERRE-FASE-EQUIPO-ACTUAL-2026-11-19.md`:
+preparar y validar localmente la RC y el paquete autocontenido de Qontrolmed.
+No iniciar todavía trabajo de portátil o sede. Fuente del cierre del servidor:
+`00_seguimiento/estados/ESTADO-REVALIDACION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
 
 ### Prioridad inmediata — 13/11/2026
 

@@ -1,9 +1,9 @@
 ---
 title: "P2X — Provisión por puesto y diseño de conexión de sede"
 type: plan
-status: proposed
+status: completed-phase-a
 created: 2026-11-18
-updated: 2026-11-18
+updated: 2026-11-19
 sources:
   - "docs/02_planes_y_arquitectura/PLAN-P2U-CUENTA-RUNTIME-MINIMO-PRIVILEGIO-2026-11-18.md"
   - "docs/02_planes_y_arquitectura/PLAN-P2W-SMOKE-FUNCIONAL-RUNTIME-DESARROLLO-2026-11-18.md"
@@ -16,9 +16,10 @@ review_after: 2026-11-25
 
 ## Estado
 
-Plan preparado para revisión en la próxima sesión. Está **propuesto y no
-autorizado**. No permite abrir MySQL a la LAN, modificar UFW, crear cuentas de
-puestos reales, emitir certificados, instalar una RC ni utilizar datos reales.
+La fase A local fue autorizada por el propietario y completada el 19/11/2026.
+La fase B permanece pendiente y no autorizada. Este cierre no permite abrir
+MySQL a la LAN, modificar UFW, crear cuentas de puestos reales, emitir
+certificados, instalar una RC ni utilizar datos reales.
 
 ## Punto de partida validado
 
@@ -79,6 +80,12 @@ La fase A no se conecta al servidor ni crea cuentas reales.
 
 No se inventarán estos valores usando la red doméstica actual.
 
+Las IP de servidor y puestos pueden ser **propuestas por el propietario**
+dentro de un plan provisional, pero no se considerarán asignadas hasta
+comprobar en sede el rango DHCP, las reservas existentes, la puerta de enlace,
+el DNS y la ausencia de conflictos. La falta de respuesta del cliente no
+bloquea la preparación local ni obliga a cerrar ahora esos valores.
+
 ## Fase B — operación futura, no autorizada por este documento
 
 Cuando exista inventario de sede y un plan transversal aprobado:
@@ -110,6 +117,27 @@ plan independiente con copias, reglas y cuentas exactas, y reversión por puesto
 
 ## Primera acción de la próxima sesión
 
-Revisar este plan con el propietario y decidir si se autoriza únicamente la
-fase A local. Si se autoriza, comenzar por extraer la matriz P2U vigente y
-convertirla en un contrato de identidad por puesto sin conectar al servidor.
+Preparar, cuando se aproxime la instalación, una propuesta concreta de
+direccionamiento y completar el inventario de sede. Después se redactará un
+plan transversal independiente para la fase B, separando las acciones que
+pueden ejecutarse remotamente de las que requieren una ventana local.
+
+## Resultado de la fase A — 19/11/2026
+
+- contrato de identidad y ciclo de vida por puesto documentado;
+- plantillas administrativas no ejecutables para alta, verificación, rotación
+  y baja, con marcadores obligatorios y secreto solicitado sin eco;
+- procedimiento de provisión de `.env`, CA, hash y ACL de Windows;
+- matriz de aceptación y denegación por puesto;
+- inventario de sede con responsables, estado y modalidad de ejecución;
+- pruebas estáticas para impedir marcadores silenciosos, privilegios globales,
+  DDL o reutilización de la cuenta de desarrollo;
+- ninguna conexión al servidor ni modificación de red, cuentas o datos.
+
+Artefactos principales:
+
+- `docs/02_planes_y_arquitectura/CONTRATO-P2X-IDENTIDAD-RUNTIME-POR-PUESTO-2026-11-19.md`;
+- `docs/03_operacion_y_runbooks/PROVISIONAR-PUESTO-QONTROLMED-P2X.md`;
+- `docs/07_recursos/plantillas/INVENTARIO-SEDE-P2X.md`;
+- `scripts/db/plantillas_p2x/`;
+- `tests/test_p2x_workstation_templates.py`.

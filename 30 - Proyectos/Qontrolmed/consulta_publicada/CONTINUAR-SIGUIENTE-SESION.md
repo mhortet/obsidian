@@ -3,7 +3,7 @@ title: "Continuar siguiente sesión de Qontrolmed"
 type: state
 status: active
 created: 2026-11-10
-updated: 2026-11-18
+updated: 2026-11-19
 tags: [qontrolmed, continuidad, produccion]
 review_after: 2026-11-17
 ---
@@ -15,6 +15,19 @@ review_after: 2026-11-17
 Esta sesión puede iniciarse desde esta carpeta o desde `H:\02.Trabajo\obsidian\30 - Proyectos\Servidor_MM\Servidor`. En ambos casos se deben leer los `AGENTS.md` y relevos de `Qontrolmed` y `Servidor_MM` antes de ejecutar trabajo transversal. La aplicación y la infraestructura conservan fuentes de verdad y autorizaciones separadas; véase `AGENTS.md`.
 
 ## Punto seguro
+
+- Fase activa: `equipo actual`; no iniciar todavía portátil ni sede.
+- Servidor_MM cerró su bloque SFTPGo. En Qontrolmed, el paquete local
+  `0.1.0-rc.1` está construido desde `c79bcec8099724cadfc37fae6aa14f50a28c4d11`
+  y validado estructuralmente, pero **no es aún una RC candidata**.
+- Pasaron 102 pruebas, Bandit, `pip-audit` y Gitleaks. El ZIP local, ignorado
+  por Git, tiene SHA-256
+  `4618C7258347106E0E62F920E9214E6940B11FA4057B10EDD3F9AB2B64D542DB`.
+- Pendiente exacto: aceptar y completar el ensayo elevado aislado de
+  instalación, CA sintética/ACL, verificación y desinstalación mediante
+  `dist_rc\VALIDAR-INSTALACION-LOCAL-0.1.0-rc.1.ps1`. El UAC fue cancelado el
+  19/11 y no se modificaron rutas del sistema ni instalaciones existentes.
+- No crear tag, publicar artefactos ni cerrar la fase hasta superar esa puerta.
 
 - Rama de trabajo: `codex/produccion-readiness`.
 - Base P0: `907648df368312f985e7797eed5a43f78cdf8234`.
@@ -109,6 +122,22 @@ Esta sesión puede iniciarse desde esta carpeta o desde `H:\02.Trabajo\obsidian\
   un plan aprobado requiera volver a utilizarlo.
 
 ## Pendiente inmediato
+
+### Fase activa: equipo actual — 19/11/2026
+
+El propietario fijó una secuencia física obligatoria: terminar primero todo lo
+ejecutable desde este equipo, después pasar al portátil y, una vez cerrado ese
+bloque, trabajar en sede. Los planes documentarán únicamente la fase activa y
+al cerrarla indicarán solo el cambio a la siguiente.
+
+El plan transversal vigente es
+`docs/02_planes_y_arquitectura/PLAN-CIERRE-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
+La continuación inmediata se realizará desde la carpeta de Servidor_MM para
+revalidar el estado de SFTPGo y la gestión de subida/bajada de documentos bajo
+su plan compatible. Después se retomará en Qontrolmed el cierre de RC y
+paquete local de esta misma fase.
+
+No iniciar todavía trabajo propio de portátil o sede.
 
 ### Punto de continuación P2P — 16/11/2026
 
@@ -270,25 +299,32 @@ La guía separa administrador funcional, cuentas MySQL administrativa,
 temporal y runtime; explica los reintentos y resume el estado final sin
 secretos.
 
-### Punto de entrada preparado para la próxima sesión — P2X
+### Cierre de la fase A de P2X — 19/11/2026
 
 El trabajo P2P–P2W quedó separado en tres commits y publicado hasta `11faaa8`.
 CI `44303019641` y Security Checks `44303019607` finalizaron correctamente. El
 árbol quedó limpio al preparar este relevo.
 
-El siguiente bloque propuesto es P2X. Su primera fase es únicamente local:
-definir identidad MySQL por puesto, ciclo de alta/baja/rotación, plantillas con
-marcadores, provisión segura de `.env`/CA, ACL y matriz de pruebas. No autoriza
-abrir MySQL a la LAN ni crear cuentas reales.
+El propietario autorizó la fase A local de P2X y aclaró que los datos ausentes
+del cliente no deben bloquear la preparación: el propietario puede proponer
+parte del direccionamiento y los detalles pendientes pueden completarse al
+aproximarse la fase operativa o, cuando sea seguro, mediante una intervención
+remota posterior.
 
-Primera acción exacta: leer
-`docs/02_planes_y_arquitectura/PLAN-P2X-PROVISION-PUESTOS-Y-CONEXION-SEDE-2026-11-18.md`
-y decidir si se autoriza solo su fase A. Si se aprueba, extraer la matriz P2U y
-convertirla en contrato por puesto sin conectar al servidor.
+La fase A quedó completada sin conexión al servidor. Se definieron el contrato
+de identidad separada por puesto, el ciclo de alta/baja/rotación, cuatro
+plantillas administrativas no ejecutables, la provisión segura de `.env`/CA y
+ACL, la matriz de aceptación/denegación y el inventario de sede. Las IP
+propuestas no serán definitivas hasta comprobar router, DHCP y conflictos.
+Pasaron 100 pruebas, incluidas 5 nuevas de P2X.
 
-La fase operativa queda condicionada al inventario real de sede: puestos, MAC,
-reservas DHCP, IP/DNS del servidor, certificado, responsable y ventana. No se
-reutilizarán las direcciones domésticas actuales.
+La fase B sigue no autorizada. Próxima acción exacta: cuando se aproxime la
+instalación, rellenar al menos el primer puesto y preparar una propuesta de
+direccionamiento; después redactar el plan transversal de fase B separando lo
+remoto viable de la ventana de sede. No abrir MySQL a la LAN, modificar UFW,
+crear identidades reales, emitir certificados ni instalar una RC antes de ese
+plan. Fuente:
+`docs/02_planes_y_arquitectura/PLAN-P2X-PROVISION-PUESTOS-Y-CONEXION-SEDE-2026-11-18.md`.
 
 1. Revisar con el propietario el libro Excel ya generado con los cuatro
    maestros de Preventivos y `quirofanos.puntos_control`. La siguiente decisión
