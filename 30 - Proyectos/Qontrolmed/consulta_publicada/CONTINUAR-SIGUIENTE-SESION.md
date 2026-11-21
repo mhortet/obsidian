@@ -3,7 +3,7 @@ title: "Continuar siguiente sesión de Qontrolmed"
 type: state
 status: active
 created: 2026-11-10
-updated: 2026-11-19
+updated: 2026-11-21
 tags: [qontrolmed, continuidad, produccion]
 review_after: 2026-11-17
 ---
@@ -16,18 +16,33 @@ Esta sesión puede iniciarse desde esta carpeta o desde `H:\02.Trabajo\obsidian\
 
 ## Punto seguro
 
-- Fase activa: `equipo actual`; no iniciar todavía portátil ni sede.
-- Servidor_MM cerró su bloque SFTPGo. En Qontrolmed, el paquete local
-  `0.1.0-rc.1` está construido desde `c79bcec8099724cadfc37fae6aa14f50a28c4d11`
-  y validado estructuralmente, pero **no es aún una RC candidata**.
+- Fase `portátil` cerrada el 21/11/2026. El kit completo y sus 11 archivos se
+  verificaron por tamaño y SHA-256 tanto en el disco local como en el USB. La
+  RC se instaló y retiró en un ensayo sintético sin conexión al servidor; el
+  proceso x64 inició y respondió sobre Windows ARM64. El portátil queda como
+  herramienta de administración/transporte y puesto de prueba. Corresponde
+  preparar y aprobar el plan de la fase `sede` antes de efectuar cambios.
+- El inventario pendiente para sede incluye Defender, Firewall y cifrado del
+  portátil, red real, acceso físico/LUKS, identidad SSH, DNS/Cloudflare,
+  Cloudflared, CA, cuenta runtime, copias y aceptación. Ninguno de esos cambios
+  está autorizado por el cierre de la fase portátil.
+- Servidor_MM cerró su bloque SFTPGo. En Qontrolmed, la RC candidata local
+  `0.1.0-rc.1` está construida y validada desde
+  `c79bcec8099724cadfc37fae6aa14f50a28c4d11`.
 - Pasaron 102 pruebas, Bandit, `pip-audit` y Gitleaks. El ZIP local, ignorado
   por Git, tiene SHA-256
   `4618C7258347106E0E62F920E9214E6940B11FA4057B10EDD3F9AB2B64D542DB`.
-- Pendiente exacto: aceptar y completar el ensayo elevado aislado de
-  instalación, CA sintética/ACL, verificación y desinstalación mediante
-  `dist_rc\VALIDAR-INSTALACION-LOCAL-0.1.0-rc.1.ps1`. El UAC fue cancelado el
-  19/11 y no se modificaron rutas del sistema ni instalaciones existentes.
-- No crear tag, publicar artefactos ni cerrar la fase hasta superar esa puerta.
+- El ensayo elevado aislado terminó con
+  `VALIDACION_INSTALACION_LOCAL=OK`: instalación, CA sintética/ACL,
+  verificación, `-WhatIf` y desinstalación real correctas, sin residuos.
+- El EXE abrió la ventana `Gestion Documental`, respondió y se cerró de forma
+  controlada usando `PROGRAMDATA` y configuración sintéticos.
+- Tag anotado local: `v0.1.0-rc.1`. No se han publicado el tag, el ZIP ni los
+  commits locales pendientes en el remoto.
+- Kit preparado para trasladar al portátil:
+  `dist_rc\KIT-PORTATIL-QONTROLMED-0.1.0-rc.1\`. Es una única carpeta con RC,
+  hash, manifiesto e instrucciones/relevos mínimos para Codex; no requiere
+  copiar completos `maxgesth` o `Servidor_MM`.
 
 - Rama de trabajo: `codex/produccion-readiness`.
 - Base P0: `907648df368312f985e7797eed5a43f78cdf8234`.
@@ -35,7 +50,8 @@ Esta sesión puede iniciarse desde esta carpeta o desde `H:\02.Trabajo\obsidian\
   `codex/estructura-documental-20261110` con ese mismo commit.
 - P1 local ha modificado código de conexión, guarda de esquema, dependencias y
   scripts de instalación; no se ha modificado servidor, MySQL real ni `.env`.
-- No se ha construido ni instalado una RC.
+- No se ha instalado la RC en ningún puesto real; solo se ensayó en rutas
+  locales aisladas y posteriormente retiradas.
 - `compartido/.env` permanece local, ignorado y sin inspeccionar.
 - La revisión de 11 de noviembre no tocó código funcional, servidor ni datos.
 
@@ -123,21 +139,20 @@ Esta sesión puede iniciarse desde esta carpeta o desde `H:\02.Trabajo\obsidian\
 
 ## Pendiente inmediato
 
-### Fase activa: equipo actual — 19/11/2026
+### Siguiente fase física: portátil — plan preparado, no ejecutado
 
 El propietario fijó una secuencia física obligatoria: terminar primero todo lo
 ejecutable desde este equipo, después pasar al portátil y, una vez cerrado ese
 bloque, trabajar en sede. Los planes documentarán únicamente la fase activa y
 al cerrarla indicarán solo el cambio a la siguiente.
 
-El plan transversal vigente es
-`docs/02_planes_y_arquitectura/PLAN-CIERRE-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
-La continuación inmediata se realizará desde la carpeta de Servidor_MM para
-revalidar el estado de SFTPGo y la gestión de subida/bajada de documentos bajo
-su plan compatible. Después se retomará en Qontrolmed el cierre de RC y
-paquete local de esta misma fase.
-
-No iniciar todavía trabajo propio de portátil o sede.
+El plan transversal
+`docs/02_planes_y_arquitectura/PLAN-CIERRE-FASE-EQUIPO-ACTUAL-2026-11-19.md`
+está completado: SFTPGo quedó cerrado en Servidor_MM y la RC/paquete local en
+Qontrolmed superaron sus puertas. Corresponde pasar a **portátil** cuando el
+propietario decida iniciar esa sesión. El plan preparado limita la primera
+acción al inventario real y a la verificación del kit; las decisiones variables
+se completarán con lo observado. No iniciar sede.
 
 ### Punto de continuación P2P — 16/11/2026
 

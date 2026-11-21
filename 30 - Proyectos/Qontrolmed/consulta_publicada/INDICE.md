@@ -2,7 +2,7 @@
 title: "Qontrolmed — consulta publicada"
 type: project
 status: active
-updated: 2026-11-19
+updated: 2026-11-21
 tags: [qontrolmed, documentacion]
 ---
 
@@ -11,8 +11,8 @@ tags: [qontrolmed, documentacion]
 > Copia unidireccional de solo consulta. La fuente oficial se encuentra en
 > `D:\trabajo\Proyectos\maxgesth`. No editar aquí para cambiar el proyecto.
 
-- Publicación: `2026-11-19T19:20:52+01:00`
-- Revisión Git de origen: `dd4badf`
+- Publicación: `2026-11-21T13:35:58+01:00`
+- Revisión Git de origen: `4493d67`
 - Selección: `scripts/documentacion/seleccion_obsidian.json`
 
 ## Documentos
@@ -42,6 +42,8 @@ tags: [qontrolmed, documentacion]
 - [[docs/00_seguimiento/diario/2026-11-19-p2x-provision-puestos-fase-a.md]]
 - [[docs/00_seguimiento/diario/2026-11-19-secuencia-equipo-portatil-sede.md]]
 - [[docs/00_seguimiento/diario/2026-11-19-preparacion-rc-equipo-actual.md]]
+- [[docs/00_seguimiento/diario/2026-11-20-preparacion-fase-portatil.md]]
+- [[docs/00_seguimiento/diario/2026-11-21-cierre-fase-portatil.md]]
 - [[docs/00_seguimiento/estados/ESTADO-REORGANIZACION-DOCUMENTAL-2026-11-10.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-AUTORIZACION-INTEGRAL-PLANES-Y-P1-LOCAL-2026-11-11.md]]
 - [[docs/01_gobierno_y_decisiones/DECISION-CICLO-VIDA-SOPORTE-RELEASE-PILOTO-2026-11-10.md]]
@@ -72,6 +74,7 @@ tags: [qontrolmed, documentacion]
 - [[docs/02_planes_y_arquitectura/PLAN-P2S-RECONCILIACION-LEDGER-QUIROFANOS-2026-11-17.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-P2X-PROVISION-PUESTOS-Y-CONEXION-SEDE-2026-11-18.md]]
 - [[docs/02_planes_y_arquitectura/PLAN-CIERRE-FASE-EQUIPO-ACTUAL-2026-11-19.md]]
+- [[docs/02_planes_y_arquitectura/PLAN-FASE-PORTATIL-2026-11-20.md]]
 - [[docs/02_planes_y_arquitectura/CONTRATO-P2X-IDENTIDAD-RUNTIME-POR-PUESTO-2026-11-19.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/criterios_transversales_capas.md]]
 - [[docs/02_planes_y_arquitectura/especificaciones/modulo_analitico_y_campanas_preventivo.md]]

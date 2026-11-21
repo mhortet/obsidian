@@ -3,7 +3,7 @@ title: "Continuación srv-mm-01 — reanudación tras incidente de consola"
 type: register
 status: active
 created: 2026-11-01
-updated: 2026-11-19
+updated: 2026-11-21
 sources:
   - "00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md"
   - "03_operacion_y_runbooks/REANUDAR-TRAS-INCIDENTE-CONSOLA-2026-11-13.md"
@@ -150,6 +150,24 @@ El script de aceptación vigente tiene SHA-256 `38351cc3d45c7793d40520ced02b6825
 
 ## Próximo trabajo
 
+### Transición a sede — 21/11/2026
+
+Qontrolmed cerró la fase `portátil`. El kit completo se verificó por tamaño y
+SHA-256 en el disco local y en el USB; la RC se instaló y retiró mediante un
+ensayo sintético sin conexión al servidor. El proceso x64 inició y respondió en
+Windows ARM64. El portátil queda preparado como equipo de
+administración/transporte y puesto de prueba, con OpenSSH disponible.
+
+La siguiente fase física es `sede`, pero todavía requiere un plan específico
+aprobado. Ese plan deberá comenzar por revalidar portátil, consola/LUKS, red y
+huella SSH; después definirá, con aceptación y reversión, Cloudflare/DNS,
+Cloudflared, MySQL/CA, identidad runtime, SFTPGo, copias y aceptación de
+Qontrolmed. El cierre del portátil no autoriza a crear un túnel, token o DNS,
+desenmascarar/activar `cloudflared`, abrir puertos, cambiar UFW o conectar la RC.
+
+Fuente funcional:
+`D:\trabajo\Proyectos\maxgesth\docs\02_planes_y_arquitectura\PLAN-FASE-PORTATIL-2026-11-20.md`.
+
 ### Fase activa: equipo actual — 19/11/2026
 
 El bloque Servidor_MM quedó completado mediante
@@ -161,10 +179,21 @@ con TOTP, permisos y límites esperados, y ensayo `restic` restringido pero no
 independiente. No se modificó el servidor ni se repitió la aceptación del
 06/11.
 
-La continuación exacta de la fase coordinada está en
-`D:\trabajo\Proyectos\maxgesth\docs\02_planes_y_arquitectura\PLAN-CIERRE-FASE-EQUIPO-ACTUAL-2026-11-19.md`:
-preparar y validar localmente la RC y el paquete autocontenido de Qontrolmed.
-No iniciar todavía trabajo de portátil o sede. Fuente del cierre del servidor:
+La fase coordinada `equipo actual` quedó cerrada el 20/11/2026. Qontrolmed
+preparó y validó localmente la RC candidata `0.1.0-rc.1`, ligada al commit
+`c79bcec8099724cadfc37fae6aa14f50a28c4d11`: controles bloqueantes, paquete,
+manifiesto/SBOM, instalación aislada, CA sintética/ACL, verificación,
+desinstalación y smoke test del EXE correctos. No se instaló en puestos reales
+ni se modificó el servidor. Fuente funcional:
+`D:\trabajo\Proyectos\maxgesth\docs\02_planes_y_arquitectura\PLAN-CIERRE-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
+
+La fase física **portátil** quedó completada el 21/11/2026. Qontrolmed cerró su
+plan en
+`D:\trabajo\Proyectos\maxgesth\docs\02_planes_y_arquitectura\PLAN-FASE-PORTATIL-2026-11-20.md`:
+inventario depurado, kit completo verificado, ensayo sintético instalado y
+revertido y OpenSSH disponible, sin conectar al servidor ni iniciar
+infraestructura. Corresponde preparar y aprobar el plan de sede. Fuente del
+cierre del servidor:
 `00_seguimiento/estados/ESTADO-REVALIDACION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
 
 ### Prioridad inmediata — 13/11/2026

@@ -1,9 +1,9 @@
 ---
 title: "Cierre de preparación desde el equipo actual"
 type: plan
-status: authorized
+status: completed
 created: 2026-11-19
-updated: 2026-11-19
+updated: 2026-11-20
 sources:
   - "docs/01_gobierno_y_decisiones/DECISION-SECUENCIA-EQUIPO-PORTATIL-SEDE-2026-11-19.md"
   - "docs/02_planes_y_arquitectura/PLAN-P2X-PROVISION-PUESTOS-Y-CONEXION-SEDE-2026-11-18.md"
@@ -72,7 +72,7 @@ La fase termina cuando los dos proyectos acreditan que no queda trabajo
 necesario ejecutable desde este equipo. El relevo indicará entonces pasar a la
 fase **portátil**, sin anticipar su plan.
 
-## Estado de ejecución del 19/11/2026
+## Estado de ejecución y cierre — 20/11/2026
 
 - El bloque SFTPGo de Servidor_MM está cerrado y enlazado desde su relevo.
 - El circuito de empaquetado se completó en el commit
@@ -86,10 +86,19 @@ fase **portátil**, sin anticipar su plan.
   `4618C7258347106E0E62F920E9214E6940B11FA4057B10EDD3F9AB2B64D542DB`.
 - El verificador confirmó 8.078 entradas ZIP, hashes internos, SBOM, evidencia,
   commit exacto y ausencia de `.env` real.
-- La prueba elevada de instalación, ACL, CA sintética, verificación y
-  desinstalación no se ejecutó porque el aviso UAC fue cancelado. No se
-  modificaron `Program Files`, `ProgramData` ni instalaciones existentes.
+- La prueba elevada aislada terminó con
+  `VALIDACION_INSTALACION_LOCAL=OK`: instalación, CA sintética, ACL,
+  verificación con el usuario actual, simulación `-WhatIf` y desinstalación
+  real correctas. No dejó la ruta `dist_rc\validacion_local` ni modificó
+  `Program Files`, `ProgramData` o instalaciones existentes.
+- El smoke test ejecutó el EXE con `PROGRAMDATA` aislado y configuración
+  sintética: la ventana `Gestion Documental` apareció, respondió y se cerró de
+  forma controlada. Quedó así resuelto el aviso de autodetección Tkinter de
+  PyInstaller.
+- El tag anotado local `v0.1.0-rc.1` apunta al commit fuente exacto. El tag y
+  los commits locales pendientes no se han publicado en el remoto.
 
-Por tanto, el paquete queda **preparado pero no declarado RC candidata** y la
-fase `equipo actual` permanece abierta. No corresponde iniciar portátil o sede
-hasta completar la prueba local administrativa y documentar su resultado.
+El paquete queda declarado **RC candidata local**, el plan se considera
+completado y la fase `equipo actual` queda cerrada. El siguiente cambio de fase
+será **portátil**; no se inicia ni se anticipa aquí su plan, y sede permanece
+fuera de alcance.
