@@ -3,7 +3,7 @@ title: "srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimient
 type: project
 status: active
 created: 2026-11-05
-updated: 2026-11-19
+updated: 2026-11-21
 sources:
   - "D:/trabajo/Proyectos/maxgesth/docs/01_gobierno_y_decisiones/DECISION-ESPECIFICACIONES-OPERATIVAS-PILOTO-2026-11-16.md"
   - "00_seguimiento/estados/ESTADO-INSTALACION-2026-10-01.md"
@@ -17,16 +17,16 @@ sources:
   - "03_operacion_y_runbooks/INICIAR-FASE-POST-ACEPTACION-SIN-DATOS-CLIENTE-2026-11-06.md"
   - "00_seguimiento/estados/ESTADO-INCIDENTE-ARRANQUE-GRAFICA-RED-2026-11-12.md"
 tags: [documentacion, seguridad, administracion]
-review_after: 2026-11-19
+review_after:
 ---
 
 # srv-mm-01 — Documentación del servidor Ubuntu y guía de mantenimiento
 
-**Versión:** 2.0 · **Fecha de corte:** 19 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
-**Estado de entrega:** documentación consolidada de preparación y piloto; puesta en producción y aceptación del cliente pendientes.  
-**Clasificación:** uso del cliente y personal de mantenimiento autorizado. Contiene información de infraestructura; distribuir de forma controlada.
+**Versión:** 2.1 · **Fecha de corte:** 21 de noviembre de 2026 · **Zona horaria:** Europe/Madrid.
+**Estado:** memoria técnica interna consolidada; implantación en sede y aceptación del cliente pendientes.
+**Clasificación:** uso interno y personal de mantenimiento autorizado. Contiene información de infraestructura; distribuir de forma controlada.
 
-Este es el documento maestro que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial técnico. La versión 1.8 incorpora las especificaciones operativas comunicadas por el propietario sobre capacidad, red de sede, separación de identidades y alcance de datos. No autoriza producción ni cambios en la red, cuentas o servicios.
+Este es el documento maestro técnico que se actualizará al recibir nueva información. Los registros originales se conservan como evidencia e historial. La documentación destinada al cliente se mantiene en `08_entrega_cliente/`, donde se presenta el uso, la administración y el mantenimiento sin mezclar historia de desarrollo.
 
 La versión 1.9 establece como fase activa el trabajo desde el equipo actual y
 enlaza `02_planes_y_arquitectura/PLAN-REVISION-SFTPGO-FASE-EQUIPO-ACTUAL-2026-11-19.md`.
@@ -35,6 +35,11 @@ Los planes de esta fase no anticipan tareas de otros equipos o ubicaciones.
 La versión 2.0 cierra la revalidación SFTPGo de esa fase. La auditoría fue de
 solo lectura, no detectó desviaciones que exigieran repetir la aceptación y
 mantiene pendientes la identidad real, exposición externa y copia 3-2-1.
+
+La versión 2.1 prepara la entrega documental, corrige contradicciones internas
+y refleja el cierre de la fase portátil. La siguiente fase es sede y necesita
+un plan específico basado en el estado observado; esta revisión documental no
+autoriza cambios técnicos.
 
 ## Índice
 
@@ -195,8 +200,8 @@ El diseño propone SFTPGo WebClient detrás de Cloudflare Tunnel + Access para d
 | UFW | Sí | Activo; reglas y límites en §5 |
 | Sincronización horaria | NTP activo y reloj sincronizado en preparación | Revalidar periódicamente; no se establece aquí un daemon concreto |
 | SMART / smartd | Sí | Lecturas y autotests cortos correctos; avisos pendientes |
-| MySQL Community Server 8.4.11 | Sí | Parado/deshabilitado al cierre; configuración de piloto, no servicio de producción |
-| Qontrolmed | Copia Windows aislada | Pruebas funcionales parciales completadas; paquete y aceptación pendientes |
+| MySQL Community Server 8.4.11 | Sí | Último estado coordinado `active/enabled`, limitado a `127.0.0.1:3306`; sin apertura LAN |
+| Qontrolmed | RC `0.1.0-rc.1` preparada | Kit y ensayo sintético cerrados en la fase portátil; instalación y aceptación en sede pendientes |
 | SFTPGo, `cloudflared`, `restic`, `acl` | Instalados, aceptados y revalidados en ensayo doméstico ficticio | SFTPGo `inactive/disabled`; `cloudflared inactive/masked`; WebClient/WebAdmin solo loopback y protocolos alternativos deshabilitados; restauración local `restic` verificada. Sin túnel, DNS, destino externo o 3-2-1 [F19] |
 | Samba/SMB, Cockpit, VPN, Docker o virtualización | Sin evidencia de despliegue operativo en las fuentes revisadas | Las comparativas iniciales son alternativas, no inventario de servicios |
 
@@ -204,7 +209,7 @@ El diseño propone SFTPGo WebClient detrás de Cloudflare Tunnel + Access para d
 
 Se instaló el 04/10 desde el repositorio oficial MySQL, rama `mysql-8.4-lts`, para Ubuntu `noble` y `amd64`, después de verificar firma y metadatos. Fuente: `/etc/apt/sources.list.d/mysql-8.4-lts.sources`; keyring: `/usr/share/keyrings/mysql-2025.gpg`. Se documentaron 12 paquetes nuevos, sin retiradas ni actualizaciones adicionales en esa instalación [F3].
 
-`root@localhost` usa `auth_socket`; esto no equivale a acceso remoto de root sin contraseña. Las cuentas internas estaban bloqueadas. Las cuentas del piloto quedaron bloqueadas al cierre; no existe evidencia de cuentas de aplicación productivas aceptadas.
+`root@localhost` usa `auth_socket`; esto no equivale a acceso remoto de root sin contraseña. Las cuentas internas estaban bloqueadas. La identidad runtime de desarrollo `qontrolmed_runtime_dev@localhost` fue validada con TLS y mínimo privilegio; no debe convertirse por simple reutilización en la identidad definitiva de un puesto de sede. Las cuentas reales por puesto se crearán bajo el plan correspondiente.
 
 Archivo de piloto `/etc/mysql/mysql.conf.d/90-qontrolmed-piloto.cnf`, `root:root 0644`:
 
@@ -224,13 +229,22 @@ Certificado exclusivo del piloto: SAN `srv-mm-01`, `127.0.0.1` y `192.168.1.31`;
 
 ### 6.2. Qontrolmed
 
-La aplicación se ejecutó en Windows y conectó a MySQL por LAN con TLS verificado durante el piloto. No es una aplicación web desplegada en Ubuntu según la evidencia revisada.
+Qontrolmed es una aplicación de puesto Windows que utiliza MySQL en
+`srv-mm-01`; no es una aplicación web desplegada en Ubuntu. Las fases P2U–P2W
+validaron con el código actual TLS e identidad, guard de esquema, login,
+apertura y cierre de Gestión mínima, Preventivos y Quirófanos, mínimo
+privilegio y denegaciones de funciones fuera del piloto.
 
-En la copia aislada se incorporaron verificación de CA e identidad, timeouts finitos, desactivación de `LOCAL INFILE`, recuperación acotada antes de una operación nueva y cierre de sesiones. Las escrituras de resultado incierto no se repiten automáticamente. El alta de marcas conserva ID manuales históricos; el formulario/servicio se corrigió para transmitirlos y validarlos [F6, F8].
+La RC `0.1.0-rc.1` y su kit fueron verificados antes y durante la fase portátil.
+Se realizó una instalación y retirada sintéticas sin conexión al servidor. La
+fase portátil no autoriza conectar la RC, crear identidades reales, abrir
+MySQL a la LAN o instalar en puestos de sede. Esas actuaciones pertenecen al
+plan específico de sede y a su aceptación.
 
-La copia revisada está en `C:\Users\Maxi\Documents\Codex\2026-11-05\u\work\qontrolmed-piloto`, rama `pilot/mysql-tls-20261105`, base `014bf7c7b3c80c514786c36d1135efe00202b7a0`. Cambios sin commit, merge ni despliegue sobre la aplicación habitual al corte documental. El ZIP de revisión conservado en el proyecto es una instantánea, no un instalador.
-
-**Bloqueo de empaquetado:** el instalador aún no proporciona/exige de forma coherente la CA pública de sede en la ruta usada por la aplicación. Falta alinear plantilla, instalador, configurador, verificador, permisos y pruebas. El código falla de forma segura si falta la CA, pero eso no hace reproducible la instalación [F8].
+Los usuarios funcionales de Qontrolmed, las cuentas runtime MySQL por puesto y
+la administración técnica son identidades distintas. La gestión operativa del
+cliente se documenta en `08_entrega_cliente/` y se completará con capturas y
+valores reales después de la implantación.
 
 ## 7. Actuaciones y comandos ejecutados
 
@@ -394,7 +408,10 @@ comprobado el 13/11/2026.
 
 Antes de cambiar firewall o red: mantener una sesión de recuperación, guardar la configuración y validar una **conexión nueva** desde el origen autorizado antes de retirar la regla anterior. Una sesión ya abierta no demuestra que el acceso nuevo funcione. No restaurar una copia antigua de UFW sin revisar qué subred habilita.
 
-No iniciar MySQL para una consulta rutinaria. Una futura ventana de prueba debe limitar escucha y origen, definir tiempo máximo y cerrar cuentas, regla temporal y servicio al terminar. El arranque permanente requiere aceptación específica de la fase productiva.
+No modificar MySQL para una consulta rutinaria. En el último estado coordinado
+el servicio está `active/enabled` y escucha solo en loopback. Cualquier apertura
+a LAN, nueva identidad, certificado de sede o cambio de arranque requiere el
+plan específico correspondiente.
 
 ## 11. Copias, recuperación e incidencias
 
@@ -459,7 +476,10 @@ Todos los responsables de validación quedan **por designar por el cliente**, sa
 | P16 | Antes de entrega | Normalizar `known_hosts` e identidades de mantenimiento | Host contrastado sin alias histórico y acceso/retirada de identidad probados |
 | P17 | Antes de entrega | Custodia externa de documentación y recuperación | Copia accesible a responsable autorizado incluso si falla el servidor |
 
-La primera entrega propuesta comprende documentos y administración, manteniendo MySQL/Qontrolmed fuera del servicio productivo. Para declararla operativa hay que cerrar sus dependencias de red, identidad, copias, energía y aceptación; no basta con instalar SFTPGo o un túnel. La fase MySQL/Qontrolmed requiere además sus pendientes específicos.
+La estructura de entrega al cliente está preparada en `08_entrega_cliente/`,
+pero no se declarará final hasta cerrar en sede red, identidades, túnel,
+copias, energía, instalación, formación y aceptación. No basta con instalar
+SFTPGo, un túnel o Qontrolmed de forma aislada.
 
 Los anteriores P18 y P19 se cerraron el 06/11: el bloque doméstico fue aprobado, ejecutado y aceptado con datos ficticios; sus servicios quedaron detenidos y la evidencia depurada se conserva en F15. Este cierre no resuelve P01–P17 ni autoriza producción.
 
@@ -512,10 +532,12 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 
 | Versión | Fecha | Cambio | Evidencia / validación |
 | --- | --- | --- | --- |
+| 2.1 | 2026-11-21 | Separación entre memoria técnica y entrega al cliente; corrección del estado de MySQL/Qontrolmed; estructura de manuales, administración de usuarios, mantenimiento, incidencias e inventario; cierre documental de portátil y transición a sede. | Relevo coordinado del 21/11 y revisión documental; sin cambios en servidor o servicios. |
 | 2.0 | 2026-11-19 | Revalidación de solo lectura de SFTPGo, bindings efectivos, cuentas ficticias, TOTP, permisos, límites, ACL y protección del ensayo `restic`; cierre del bloque Servidor_MM de la fase equipo actual. | F19; sin cambios remotos ni repetición de pruebas funcionales. |
+| 1.9 | 2026-11-19 | Apertura y cierre de la fase equipo actual bajo la secuencia equipo actual, portátil y sede. | Plan y estado de revalidación SFTPGo; sin anticipar cambios de otras fases. |
 | 1.8 | 2026-11-16 | Consolidación de capacidad prevista, LAN de sede, reservas DHCP, separación entre usuarios funcionales, cuenta técnica y administración técnica, y delimitación de datos no clínicos. | Decisión de especificaciones operativas de Qontrolmed de 2026-11-16; actualización documental sin cambios operativos. |
 | 1.7 | 2026-11-13 | Ventana P2C con MySQL 8.4.11 en loopback; detección segura del certificado automático sin SAN, selección TLS piloto temporal, validación del ledger y reversión completa. | Plan P2C coordinado; MySQL final `inactive/disabled`, puertos y drop-in ausentes. |
-| 1.8 | 2026-11-17 | Arranque automático de MySQL, esquemas definitivos y cierre P2R/P2T del bootstrap funcional con TLS verificado. | MySQL `active/enabled` solo en `127.0.0.1:3306`; cuenta y scripts temporales retirados; sin apertura LAN. |
+| 1.8a | 2026-11-17 | Arranque automático de MySQL, esquemas definitivos y cierre P2R/P2T del bootstrap funcional con TLS verificado. Esta revisión fue etiquetada inicialmente como 1.8 y se renombra aquí para resolver la colisión histórica sin ocultarla. | MySQL `active/enabled` solo en `127.0.0.1:3306`; cuenta y scripts temporales retirados; sin apertura LAN. |
 | 1.6 | 2026-11-13 | Reanudación desde apagado completo, revalidación remota de solo lectura, aclaración de IP reservada `.31`, cierre controlado y comando local `sudo systemctl poweroff`. | F18; `REVALIDACION_TRAS_INCIDENTE=OK`, TCP/22 cerrado después del apagado y agente SSH vacío. |
 | 1.5 | 2026-11-12 | Incidente de gráfica, auditoría de arranque/red, retirada de NVIDIA y aceptación reversible de consola con `nomodeset` en dos arranques VGA y uno DisplayPort. | F17; consola, red, SSH, montajes y servicios validados; NVIDIA pendiente diagnóstico físico. |
 | 1.4 | 2026-11-06 | Preparación del siguiente bloque posible sin datos del cliente: auditoría remota de solo lectura, revisión local y artefactos parametrizados. | F16; plan propuesto, sin conexión nueva ni cambio del servidor. |
@@ -536,13 +558,3 @@ Actualizar siempre este archivo con la nueva información, sin generar otra guí
 | 2026-11-05 | Piloto TLS/funcional, ID manuales, restauración completa ficticia, revisión de código y plan previo al traslado |
 | 2026-11-06 | Instalación y aceptación doméstica SFTPGo/restic con datos ficticios; Cloudflare inerte y cierre seguro |
 | 2026-11-12 | Incidente de gráfica y red; retirada de NVIDIA, auditoría y aceptación de consola VGA/DisplayPort con `nomodeset` reversible |
-
-## Actualización P2G — 13/11/2026
-
-Se ejecutó una ventana temporal autorizada para validar
-`quirofanos-0002-certificados-equipos-medida` contra MySQL 8.4.11 con esquema,
-cuenta y datos exclusivamente sintéticos. Tras la aceptación se retiraron los
-objetos y TLS temporales. MySQL quedó `inactive/disabled`, sin 3306/33060;
-SFTPGo `inactive/disabled` y Cloudflared `inactive/masked`. El servidor quedó
-encendido por decisión del propietario. Detalle en
-`02_planes_y_arquitectura/PLAN-VENTANA-P2G-CERTIFICADOS-MYSQL-SINTETICO-2026-11-13.md`.

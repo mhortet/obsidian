@@ -19,6 +19,19 @@ review_after: 2026-11-14
 
 # Punto seguro de continuación
 
+## Preparación documental para el cliente — 21/11/2026
+
+Se creó `08_entrega_cliente/` con la estructura de manuales de uso,
+administración de usuarios, mantenimiento, copias, incidencias, inventario y
+acta. Los datos variables están marcados como `PENDIENTE DE SEDE` o
+`PENDIENTE DE SEDE Y TÚNEL`; no deben completarse por suposición.
+
+También se crearon `00_seguimiento/ESTADO-ACTUAL-CONSOLIDADO.md`,
+`00_seguimiento/CRONOLOGIA-MAESTRA.md` y los registros maestros de decisiones
+y planes. `DOCUMENTACION-SERVIDOR-UBUNTU.md` pasa a ser memoria técnica interna
+versión 2.1. No se eliminó ni movió ninguna fuente o evidencia y no hubo
+cambios en el servidor.
+
 ## Entrada coordinada
 
 Esta sesión puede iniciarse desde esta carpeta o desde `D:\trabajo\Proyectos\maxgesth`. En ambos casos se deben leer los `AGENTS.md` y relevos de `Servidor_MM` y `Qontrolmed` antes de ejecutar trabajo transversal. La infraestructura y la aplicación conservan fuentes de verdad y autorizaciones separadas; véase `AGENTS.md`.
