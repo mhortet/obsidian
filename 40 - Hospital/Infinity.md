@@ -8,7 +8,7 @@ Autor:
 Relacionado:
 ---
 ## Resumen
-Configuración de la central y monitores Dragër Infinity para asignación de nuevos nombres y reconocimiento por la cental
+Configuración de la central y monitores Dräge Infinity para asignación de nuevos nombres y reconocimiento por la cental
 ## Descripción
 
 Monitores: Infinity Delta XL
